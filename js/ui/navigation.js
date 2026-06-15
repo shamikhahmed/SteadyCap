@@ -5,7 +5,6 @@ const Navigation = (() => {
     { id: 'recovery', label: 'Recovery', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>` },
     { id: 'emergency', label: 'SOS', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`, sos: true },
     { id: 'knowledge', label: 'Learn', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>` },
-    { id: 'journal', label: 'Journal', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>` },
     { id: 'profile', label: 'You', icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>` },
   ];
 
@@ -17,11 +16,15 @@ const Navigation = (() => {
 
   function readStoredTab() {
     const current = sessionStorage.getItem(TAB_KEY);
-    if (current) return current;
+    if (current) {
+      if (current === 'journal') return 'dashboard';
+      return current;
+    }
     const legacy = sessionStorage.getItem(LEGACY_TAB_KEY);
     if (legacy) {
-      sessionStorage.setItem(TAB_KEY, legacy);
-      return legacy;
+      const tab = legacy === 'journal' ? 'dashboard' : legacy;
+      sessionStorage.setItem(TAB_KEY, tab);
+      return tab;
     }
     return 'dashboard';
   }

@@ -113,12 +113,16 @@ const Notifications = (() => {
   function showPush(title, body, tag) {
     if (!isSupported() || Notification.permission !== 'granted') return;
     try {
-      new Notification(title, { body, tag: tag || 'dos-reminder', icon: './assets/icons/icon-192.png' });
+      new Notification(title, { body, tag: tag || 'steadycap-reminder', icon: './assets/icons/icon-192.png' });
     } catch (e) {}
   }
 
+  function firedKey() {
+    return StorageMigrate.session('steadycap_fired', ['dos_fired']);
+  }
+
   function fireDueNotifications() {
-    const fired = JSON.parse(sessionStorage.getItem('dos_fired') || '{}');
+    const fired = JSON.parse(sessionStorage.getItem(firedKey()) || '{}');
     const key = todayKey();
     if (!fired[key]) fired[key] = {};
     const mins = nowMinutes();
@@ -129,7 +133,7 @@ const Notifications = (() => {
       if (fired[key][fireKey]) return;
       if (mins >= item.tMins && mins < item.tMins + 5) {
         fired[key][fireKey] = true;
-        sessionStorage.setItem('dos_fired', JSON.stringify(fired));
+        sessionStorage.setItem(firedKey(), JSON.stringify(fired));
         showPush('SteadyCap', `${item.label} — ${item.sub}`, fireKey);
         if (window.App) App.showToast(`Reminder: ${item.label}`, 'info');
       }

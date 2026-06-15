@@ -219,6 +219,13 @@ const Dashboard = (() => {
       ${buildNudgeBanner(missed)}
       ${buildSOS()}
 
+      <div class="section-header">
+        <span class="section-title">Daily check-in</span>
+        ${Journal.getStreak() > 0 ? `<span class="today-progress-pill">${Journal.getStreak()}d streak</span>` : ''}
+        <button class="section-link" onclick="Navigation.go('journal')">History</button>
+      </div>
+      <div id="daily-checkin-wrap" style="padding:0 20px 8px"></div>
+
       <div class="section-header"><span class="section-title">Today&apos;s Routines</span>
         <button class="section-link" onclick="Navigation.go('profile')">Edit</button>
       </div>
@@ -242,6 +249,8 @@ const Dashboard = (() => {
       ` : ''}
       <div style="height:16px"></div>
     `;
+
+    if (window.Journal) Journal.renderInline(document.getElementById('daily-checkin-wrap'));
   }
 
   function _toggle(kind, key) {

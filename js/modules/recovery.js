@@ -1,7 +1,7 @@
 'use strict';
 const Recovery = (() => {
   let currentHabitId = null;
-  const STORAGE_KEY = 'dos_recovery_habit';
+  const STORAGE_KEY = StorageMigrate.session('steadycap_recovery_habit', ['dos_recovery_habit']);
 
   function habitType(habit) {
     return habit.isCustom ? 'custom' : habit.type;

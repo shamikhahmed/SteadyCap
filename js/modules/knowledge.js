@@ -4,11 +4,13 @@ const Knowledge = (() => {
   let activeCategory = 'All';
   let bookmarks = [];
 
+  const BOOKMARK_KEY = StorageMigrate.local('steadycap_bookmarks', ['dos_bookmarks']);
+
   function getBookmarks() {
-    try { return JSON.parse(localStorage.getItem('dos_bookmarks') || '[]'); } catch (e) { return []; }
+    try { return JSON.parse(localStorage.getItem(BOOKMARK_KEY) || '[]'); } catch (e) { return []; }
   }
   function saveBookmarks(bm) {
-    try { localStorage.setItem('dos_bookmarks', JSON.stringify(bm)); } catch (e) {}
+    try { localStorage.setItem(BOOKMARK_KEY, JSON.stringify(bm)); } catch (e) {}
   }
 
   function render() {

@@ -35,7 +35,8 @@ const Emergency = (() => {
     const screen = document.getElementById('screen-emergency');
     if (!screen) return;
     const habits = State.getAllHabits();
-    const selectedId = sessionStorage.getItem('dos_recovery_habit');
+    const habitKey = StorageMigrate.session('steadycap_recovery_habit', ['dos_recovery_habit']);
+    const selectedId = sessionStorage.getItem(habitKey);
     const primary = habits.find(h => h.id === selectedId) || habits[0];
 
     const dots = [0,1,2,3,4].map(i =>

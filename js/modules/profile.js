@@ -354,7 +354,7 @@ const Profile = (() => {
         ts: d.getTime(),
       });
     }
-    localStorage.setItem('dos_journal_v1', JSON.stringify(journalEntries));
+    localStorage.setItem(StorageMigrate.local('steadycap_journal_v1', ['dos_journal_v1']), JSON.stringify(journalEntries));
     if (!silent) App.showToast('Demo recovery profile loaded', 'success');
     render();
     if (window.Recovery) Recovery.render();

@@ -1,6 +1,6 @@
 'use strict';
 const State = (() => {
-  const KEY = 'dos_v2';
+  const KEY = StorageMigrate.local('steadycap_v2', ['dos_v2']);
   const DEFAULT = {
     user: { name: '', currency: 'USD', goals: [], triggers: [], spiritualMode: false, hairTreatment: 'none' },
     habits: [],
@@ -232,9 +232,13 @@ const State = (() => {
     save();
   }
 
+  function journalKey() {
+    return StorageMigrate.local('steadycap_journal_v1', ['dos_journal_v1']);
+  }
+
   function exportJSON() {
     let journal = [];
-    try { journal = JSON.parse(localStorage.getItem('dos_journal_v1') || '[]'); } catch (e) {}
+    try { journal = JSON.parse(localStorage.getItem(journalKey()) || '[]'); } catch (e) {}
     return JSON.stringify({ ...data, journal }, null, 2);
   }
 
@@ -246,7 +250,7 @@ const State = (() => {
       delete copy.journal;
       data = { ...JSON.parse(JSON.stringify(DEFAULT)), ...copy };
       if (Array.isArray(journal)) {
-        try { localStorage.setItem('dos_journal_v1', JSON.stringify(journal)); } catch (e) {}
+        try { localStorage.setItem(journalKey(), JSON.stringify(journal)); } catch (e) {}
       }
       save();
       return true;

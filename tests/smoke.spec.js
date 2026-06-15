@@ -26,4 +26,22 @@ test.describe('SteadyCap smoke', () => {
     await expect(page.locator('#screen-dashboard.active')).toBeVisible({ timeout: 10000 });
     await expect(page.getByText('Linked recovery', { exact: true }).first()).toBeVisible({ timeout: 10000 });
   });
+
+  test('daily check-in widget on Today tab', async ({ page }) => {
+    await page.goto('/?demo=1');
+    await page.waitForLoadState('domcontentloaded');
+    await page.waitForFunction(() => typeof window.Journal !== 'undefined');
+    await expect(page.getByText('Daily check-in', { exact: true })).toBeVisible({ timeout: 10000 });
+    await expect(page.locator('#daily-checkin-wrap .mood-btn')).toHaveCount(4);
+    await page.locator('#daily-checkin-wrap .mood-btn').first().click();
+    await page.locator('#daily-checkin-wrap #journal-save').click();
+    await expect(page.getByText(/Check-in saved/i)).toBeVisible({ timeout: 5000 });
+  });
+
+  test('journal tab removed from bottom nav', async ({ page }) => {
+    await page.goto('/?demo=1');
+    await page.waitForLoadState('domcontentloaded');
+    await expect(page.locator('.nav-tab[data-tab="journal"]')).toHaveCount(0);
+    await expect(page.locator('.nav-tab')).toHaveCount(5);
+  });
 });
