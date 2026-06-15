@@ -219,10 +219,9 @@ const Profile = (() => {
         <button class="btn btn-ghost" style="width:100%" onclick="Profile._exportClinicianSummary()">🖨 Export Clinician Summary</button>
       </div>
 
-      <div class="section-header"><span class="section-title">Enterprise Demo</span></div>
+      <div class="section-header"><span class="section-title">Try demo</span></div>
       <div style="padding:0 20px 12px">
-        <p class="t-caption t-dim" style="margin-bottom:10px;line-height:1.5">Load anonymized sample habits, journal triggers, and craving history for investor demos — no code edits required.</p>
-        <button class="btn btn-primary" style="width:100%;margin-bottom:8px" onclick="Profile._loadDemo()">📦 Load Demo Recovery Profile</button>
+        <p class="t-caption t-dim" style="margin-bottom:10px;line-height:1.5">Sample data loads in a separate session via <strong>?demo=1</strong> — your real recovery profile is never overwritten from Settings.</p>
       </div>
 
       <div style="padding:0 20px;margin-bottom:8px">
@@ -284,8 +283,13 @@ const Profile = (() => {
     reader.readAsText(file);
   }
 
+  function _snapshotBeforeDestructive() {
+    try { localStorage.setItem('steadycap_pin_backup', State.exportJSON()); } catch (e) {}
+  }
+
   function loadDemoData(opts) {
     const silent = opts && opts.silent;
+    if (!silent) _snapshotBeforeDestructive();
     if (!silent && !confirm('Load demo recovery profile? Replaces current data with anonymized sample habits, journal entries, and craving log.')) return;
     const day = 86400000;
     const now = Date.now();
@@ -367,14 +371,15 @@ const Profile = (() => {
   }
 
   function _reset() {
-    if (confirm('Reset ALL data? This cannot be undone.')) {
-      State.reset();
-      App.showToast('Data reset', 'info');
-      State.set('onboardingComplete', false);
-      document.getElementById('nav').style.display = 'none';
-      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-      if (window.Onboarding) Onboarding.render();
-    }
+    if (!confirm('Reset ALL data? Export a backup first if you need to recover later.')) return;
+    _snapshotBeforeDestructive();
+    if (!confirm('Final confirmation — reset everything on this device?')) return;
+    State.reset();
+    App.showToast('Data reset', 'info');
+    State.set('onboardingComplete', false);
+    document.getElementById('nav').style.display = 'none';
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    if (window.Onboarding) Onboarding.render();
   }
 
   function _editHabit(id, isCustom) {
