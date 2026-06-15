@@ -48,9 +48,11 @@ const Dashboard = (() => {
     const items = Notifications.getDueItems();
     const period = Notifications.getPeriod();
     if (!items.length) {
-      return `<div class="today-empty">
-        <div class="t-caption">No routines set up yet.</div>
-        <button class="btn btn-ghost" style="margin-top:12px;font-size:0.82rem" onclick="Navigation.go('profile')">Set up in Profile →</button>
+      return `<div class="today-empty" style="text-align:center;padding:20px 16px">
+        <div style="font-size:36px;margin-bottom:10px">🌅</div>
+        <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px">No routines yet</div>
+        <div style="font-size:13px;color:var(--text2);line-height:1.5;margin-bottom:14px">Daily routines anchor your recovery. Medicine reminders, skincare, hair care — small acts of self-care add up.</div>
+        <button class="btn btn-ghost" style="font-size:0.85rem;padding:10px 20px" onclick="Navigation.go('profile')">Set up my routines →</button>
       </div>`;
     }
 
@@ -138,7 +140,12 @@ const Dashboard = (() => {
 
   function buildHabitProgress(habits) {
     if (!habits.length) {
-      return `<div class="today-empty"><div class="t-caption">No habits tracked yet.</div></div>`;
+      return `<div class="today-empty" style="text-align:center;padding:20px 16px">
+        <div style="font-size:36px;margin-bottom:10px">🧡</div>
+        <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px">Your recovery starts here</div>
+        <div style="font-size:13px;color:var(--text2);line-height:1.5;margin-bottom:14px">Every hour clean is progress. Add your first habit and SteadyCap will track your milestones, predict hard moments, and celebrate every win.</div>
+        <button class="btn btn-primary" style="font-size:0.9rem;padding:12px 24px" onclick="Navigation.go('recovery')">Begin my recovery →</button>
+      </div>`;
     }
     const totalDays = habits.reduce((s, h) => s + RecoveryEngine.daysClean(h.quitTime), 0);
     const score = RecoveryEngine.recoveryScore(habits);

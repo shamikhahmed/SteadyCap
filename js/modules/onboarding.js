@@ -1,6 +1,6 @@
 'use strict';
 const Onboarding = (() => {
-  let step = 1;
+  let step = 0;
   let selectedHabits = [];
   let habitConfigs = {};
 
@@ -14,7 +14,8 @@ const Onboarding = (() => {
 
   function renderStep() {
     const screen = document.getElementById('screen-onboarding');
-    if (step === 1) screen.innerHTML = buildStep1();
+    if (step === 0) screen.innerHTML = buildWelcome();
+    else if (step === 1) screen.innerHTML = buildStep1();
     else if (step === 2) screen.innerHTML = buildStep2();
     else if (step === 3) screen.innerHTML = buildStep3();
   }
@@ -23,6 +24,31 @@ const Onboarding = (() => {
     return `<div class="ob-progress">${[1,2,3].map(i =>
       `<div class="ob-dot${i < active ? ' done' : i === active ? ' active' : ''}"></div>`
     ).join('')}</div>`;
+  }
+
+  function buildWelcome() {
+    return `<div class="ob-screen" style="text-align:center;padding:0 28px;justify-content:center;min-height:100dvh;display:flex;flex-direction:column;align-items:center;gap:0">
+      <div style="font-size:72px;line-height:1;margin-bottom:20px;filter:drop-shadow(0 4px 24px rgba(255,150,80,0.35))">🧡</div>
+      <div class="ob-logo" style="font-size:26px;margin-bottom:12px">SteadyCap</div>
+      <div class="ob-title" style="font-size:28px;font-weight:900;letter-spacing:-0.03em;margin-bottom:14px;line-height:1.2">Recovery is a system.<br>Not a streak.</div>
+      <div class="ob-sub" style="font-size:16px;line-height:1.6;max-width:300px;margin-bottom:36px">This app tracks your progress — no judgment, no streaks lost forever. Every day counts. Even the hard ones.</div>
+      <div style="display:flex;flex-direction:column;gap:10px;width:100%;max-width:320px;margin-bottom:24px">
+        <div style="display:flex;align-items:center;gap:12px;background:rgba(255,150,80,0.08);border:1px solid rgba(255,150,80,0.2);border-radius:14px;padding:14px 16px">
+          <span style="font-size:20px">🔒</span>
+          <span style="font-size:13px;color:var(--text2,#ccc)">Private by default — your data never leaves this device</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;background:rgba(255,150,80,0.08);border:1px solid rgba(255,150,80,0.2);border-radius:14px;padding:14px 16px">
+          <span style="font-size:20px">🧠</span>
+          <span style="font-size:13px;color:var(--text2,#ccc)">Craving forecasts that actually predict hard moments</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;background:rgba(255,150,80,0.08);border:1px solid rgba(255,150,80,0.2);border-radius:14px;padding:14px 16px">
+          <span style="font-size:20px">🆘</span>
+          <span style="font-size:13px;color:var(--text2,#ccc)">5-phase SOS when you need it most — works offline</span>
+        </div>
+      </div>
+      <button class="btn btn-primary" onclick="Onboarding._goToStep1()" style="width:100%;max-width:320px;padding:16px;font-size:16px;font-weight:700;border-radius:16px">I'm ready to start →</button>
+      <p style="font-size:12px;color:var(--text3,#666);margin-top:14px">Takes about 90 seconds</p>
+    </div>`;
   }
 
   function buildStep1() {
@@ -161,6 +187,11 @@ const Onboarding = (() => {
     }
   }
 
+  function _goToStep1() {
+    step = 1;
+    renderStep();
+  }
+
   function _nextStep1() {
     if (selectedHabits.length === 0) return;
     step = 2;
@@ -178,7 +209,7 @@ const Onboarding = (() => {
   }
 
   function _back() {
-    if (step > 1) { step--; renderStep(); }
+    if (step > 0) { step--; renderStep(); }
   }
 
   function _finish() {
@@ -207,6 +238,6 @@ const Onboarding = (() => {
     if (window.App) App.launch();
   }
 
-  return { render, _toggleHabit, _setQuit, _setField, _nextStep1, _nextStep2, _back, _finish };
+  return { render, _goToStep1, _toggleHabit, _setQuit, _setField, _nextStep1, _nextStep2, _back, _finish };
 })();
 window.Onboarding = Onboarding;
