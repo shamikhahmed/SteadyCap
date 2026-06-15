@@ -1,5 +1,8 @@
 # Changelog — SteadyCap
 
+## 2.1.1 (2026-06-15)
+- Restore pre–Capricorn identity home-screen icons (192/512/1024); service worker cache bump.
+
 ## 2.1.0 (2026-06-15)
 - Daily check-in on Today tab with mood + streak (journal merged into dashboard).
 - Journal tab removed from nav; full history via Today → History.
