@@ -26,8 +26,11 @@ const Recovery = (() => {
     const habits = State.getAllHabits();
 
     if (!habits.length) {
-      screen.innerHTML = `<div style="padding:40px 20px;text-align:center;color:var(--text3)">No habits tracked yet.<br><br>
-        <button class="btn btn-primary" onclick="Navigation.go('dashboard')" style="max-width:200px;margin:0 auto">Go Home</button></div>`;
+      screen.innerHTML = `<div style="padding:40px 20px;text-align:center;color:var(--text3)">
+        <div style="font-size:36px;margin-bottom:10px">🧡</div>
+        <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:8px">No habits yet</div>
+        <div style="font-size:13px;color:var(--text2);line-height:1.5;margin-bottom:16px">Add a habit in Profile to start tracking recovery milestones.</div>
+        <button class="btn btn-primary" onclick="Navigation.go('profile');setTimeout(function(){Profile._addHabit()},200)" style="max-width:240px;margin:0 auto">Add habit in Profile →</button></div>`;
       return;
     }
 

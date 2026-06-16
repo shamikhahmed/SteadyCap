@@ -137,7 +137,7 @@ const Journal = (() => {
     screen.innerHTML = `
     <div style="padding-bottom:20px;">
       <div style="padding:calc(env(safe-area-inset-top,20px) + 20px) 20px 12px;">
-        <button type="button" class="btn btn-ghost" style="padding:0;margin-bottom:12px;font-size:0.82rem" onclick="Navigation.go('dashboard')">← Today</button>
+        <button type="button" class="btn btn-ghost" style="min-height:44px;padding:10px 14px;margin-bottom:12px;font-size:0.88rem;font-weight:600" onclick="Navigation.go('dashboard')">← Back to Today</button>
         <div class="t-label t-dim">JOURNAL HISTORY</div>
         <div class="t-title" style="margin-top:4px;">Past entries</div>
       </div>

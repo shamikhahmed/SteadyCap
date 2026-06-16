@@ -144,7 +144,7 @@ const Dashboard = (() => {
         <div style="font-size:36px;margin-bottom:10px">🧡</div>
         <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px">Your recovery starts here</div>
         <div style="font-size:13px;color:var(--text2);line-height:1.5;margin-bottom:14px">Every hour clean is progress. Add your first habit and SteadyCap will track your milestones, predict hard moments, and celebrate every win.</div>
-        <button class="btn btn-primary" style="font-size:0.9rem;padding:12px 24px" onclick="Navigation.go('recovery')">Begin my recovery →</button>
+        <button class="btn btn-primary" style="font-size:0.9rem;padding:12px 24px" onclick="Navigation.go('profile');setTimeout(function(){Profile._addHabit()},200)">Add your first habit →</button>
       </div>`;
     }
     const totalDays = habits.reduce((s, h) => s + RecoveryEngine.daysClean(h.quitTime), 0);

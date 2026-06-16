@@ -1368,6 +1368,10 @@ input, select, textarea {
   font-family: var(--font);
   text-transform: uppercase;
   letter-spacing: 0.06em;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 10px 8px;
+  margin: -10px -8px;
 }
 
 .today-checklist {
