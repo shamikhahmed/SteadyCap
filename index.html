@@ -37,6 +37,7 @@
 <meta name="twitter:image" content="https://shamikhahmed.github.io/assets/screenshots/steadycap.png">
 </head>
 <body>
+  <div class="cap-ambient" aria-hidden="true"></div>
   <div id="app">
     <div id="screens">
       <div id="screen-onboarding" class="screen"></div>
@@ -79,5 +80,11 @@
   <script src="./js/modules/profile.js"></script>
   <script src="./js/modules/journal.js"></script>
   <script src="./js/app.js"></script>
+  <script src="./js/capricorn-premium-nav.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (window.CapPremiumNav) CapPremiumNav.init();
+    });
+  </script>
 </body>
 </html>
