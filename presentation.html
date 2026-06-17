@@ -6,7 +6,7 @@
 <title>SteadyCap — Recovery is a system. Not a streak.</title>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
+:root{--accent:#c9652b;
   --bg:#080808;--bg2:#0F0F0F;--bg3:#161616;--bg4:#1C1C1E;
   --glass:rgba(255,255,255,0.04);--glass2:rgba(255,255,255,0.07);
   --border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.13);
@@ -171,6 +171,13 @@ h2{font-size:clamp(26px,4vw,48px);font-weight:700;letter-spacing:-.025em;line-he
 .pstat-v{font-size:1.4rem;font-weight:800}.pstat-l{font-size:8px;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-top:3px}
 .s1-glow{position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(255,107,53,.08) 0%,transparent 70%);pointer-events:none}
 @media(max-width:700px){.slide{padding:40px 20px}.grid2,.grid3{grid-template-columns:1fr}.phone{width:250px;height:500px}}
+
+.deck-shot{display:block;width:100%;height:auto;margin:0;object-fit:cover;object-position:top center}
+.phone-b:has(.deck-shot),.phone-body:has(.deck-shot),.phone-screen:has(.deck-shot),.phone-inner:has(.deck-shot),.term-b:has(.deck-shot){padding:0!important;min-height:0!important;overflow:hidden}
+.term-b .deck-shot{border-radius:0 0 12px 12px}
+.deck-shot-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:1.5rem 0}
+.deck-shot-frame{width:min(100%,280px);border-radius:24px;overflow:hidden;border:2px solid rgba(255,255,255,.12);box-shadow:0 20px 50px rgba(0,0,0,.35)}
+
 </style>
 
   <link rel="stylesheet" href="css/capricorn-core.css">
@@ -433,109 +440,7 @@ h2{font-size:clamp(26px,4vw,48px);font-weight:700;letter-spacing:-.025em;line-he
 <div class="phone-notch">
 </div>
 <div class="phone-screen">
-<div class="phone-scroll">
-
-<div class="m-greet">Good morning,<br>Shamikh
-</div>
-
-<div class="m-pill">3 / 7 tasks done
-</div>
-
-<div class="m-sos"><span class="m-sos-ic">🆘</span><div><div class="m-sos-t">Emergency SOS
-</div><div class="m-sos-s">One tap when cravings hit
-
-</div>
-</div>
-</div>
-
-<div class="m-sec">Today's Routines
-</div>
-
-<div class="m-group">
-<div class="m-ghead"><span>💊 Medicines</span><span class="m-gprog">2/3</span>
-</div>
-
-<div class="m-row"><div class="m-box on">✓
-</div><div><div class="m-lbl">Sertraline 50mg
-</div><div class="m-sub">Morning dose
-
-</div>
-</div><span class="m-badge">08:00</span>
-</div>
-
-<div class="m-row"><div class="m-box on">✓
-</div><div><div class="m-lbl">Vitamin D3
-</div><div class="m-sub">With breakfast
-
-</div>
-</div><span class="m-badge">08:00</span>
-</div>
-
-<div class="m-row"><div class="m-box">
-</div><div><div class="m-lbl">Ibuprofen
-</div><div class="m-sub">As needed
-
-</div>
-</div><span class="m-badge asneeded">PRN</span>
-
-</div>
-</div>
-
-<div class="m-group">
-<div class="m-ghead"><span>✨ Skincare AM</span><span class="m-gprog">1/4</span>
-</div>
-
-<div class="m-row"><div class="m-box on">✓
-</div><div class="m-lbl">Gentle cleanser
-
-</div>
-</div>
-
-<div class="m-row"><div class="m-box">
-</div><div class="m-lbl">Vitamin C serum
-
-</div>
-</div>
-
-<div class="m-row"><div class="m-box">
-</div><div class="m-lbl">SPF 50 moisturiser
-
-</div>
-</div>
-</div>
-
-<div class="m-group">
-<div class="m-ghead"><span>💇 Hair AM</span><span class="m-gprog">0/2</span>
-</div>
-
-<div class="m-row"><div class="m-box">
-</div><div class="m-lbl">Minoxidil foam
-
-</div>
-</div>
-
-<div class="m-row"><div class="m-box">
-</div><div class="m-lbl">Scalp massage
-
-</div>
-</div>
-</div>
-
-<div class="m-sec">Habit Progress
-</div>
-
-<div class="m-group" style="text-align:center;padding:14px"><div style="font-size:10px;color:var(--text3)">RECOVERY SCORE
-</div>
-<div style="font-size:28px;font-weight:800;color:var(--orange)">87
-</div>
-<div style="font-size:9px;color:var(--teal);margin-top:4px">Vape · Day 14
-
-</div>
-</div>
-
-
-</div>
-</div>
+<div class="phone-scroll"><img class="deck-shot" src="https://shamikhahmed.github.io/assets/screenshots/steadycap-2.png" alt="SteadyCap daily dashboard" width="280" height="606" loading="lazy" decoding="async"></div>
 <div class="phone-nav"><div class="pnav on"><span class="pnav-ic">☀️</span>Today
 </div><div class="pnav"><span class="pnav-ic">🫁</span>Recovery
 </div><div class="pnav sos"><span class="pnav-ic">🆘</span>SOS

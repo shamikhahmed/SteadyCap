@@ -10,7 +10,7 @@
 <style>
 /* ── Reset & Base ─────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
+:root{--accent:#c9652b;
   --bg: #080808;
   --bg2: #0F0F0F;
   --bg3: #161616;
@@ -962,6 +962,13 @@ body {
   canvas { display: none !important; }
   #s1-gradient, #s4-nebula, #s3-bg, #s16-gradient { display: block; }
 }
+
+.deck-shot{display:block;width:100%;height:auto;margin:0;object-fit:cover;object-position:top center}
+.phone-b:has(.deck-shot),.phone-body:has(.deck-shot),.phone-screen:has(.deck-shot),.phone-inner:has(.deck-shot),.term-b:has(.deck-shot){padding:0!important;min-height:0!important;overflow:hidden}
+.term-b .deck-shot{border-radius:0 0 12px 12px}
+.deck-shot-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:1.5rem 0}
+.deck-shot-frame{width:min(100%,280px);border-radius:24px;overflow:hidden;border:2px solid rgba(255,255,255,.12);box-shadow:0 20px 50px rgba(0,0,0,.35)}
+
 </style>
 
   <link rel="stylesheet" href="css/capricorn-core.css">
@@ -1095,53 +1102,7 @@ body {
     <div class="phone reveal-scale delay-2">
       <div class="phone-notch"></div>
       <div class="phone-screen">
-        <div class="phone-scroll">
-          <div class="m-greet">Good morning ☀️</div>
-          <div class="m-pill">4/7 today's tasks done</div>
-          <div class="m-sos">
-            <span class="m-sos-ic">🆘</span>
-            <div>
-              <div class="m-sos-t">Emergency SOS</div>
-              <div class="m-sos-s">Tap when cravings hit</div>
-            </div>
-          </div>
-          <div class="m-sec">Today's Routines</div>
-          <div class="m-group">
-            <div class="m-ghead"><span>💊 Medicines</span><span class="m-gprog">2/3</span></div>
-            <div class="m-row">
-              <div class="m-box on">✓</div>
-              <div><div class="m-lbl">Bupropion</div><div class="m-sub">8:00 AM · 150mg</div></div>
-            </div>
-            <div class="m-row">
-              <div class="m-box on">✓</div>
-              <div><div class="m-lbl">Omega-3</div><div class="m-sub">8:00 AM · with food</div></div>
-            </div>
-            <div class="m-row">
-              <div class="m-box"></div>
-              <div><div class="m-lbl">Melatonin</div><div class="m-sub">10:00 PM</div></div>
-              <span class="m-badge">Due soon</span>
-            </div>
-          </div>
-          <div class="m-group">
-            <div class="m-ghead"><span>✨ Skincare AM</span><span class="m-gprog">1/2</span></div>
-            <div class="m-row">
-              <div class="m-box on">✓</div>
-              <div><div class="m-lbl">Gentle cleanser</div></div>
-            </div>
-            <div class="m-row">
-              <div class="m-box"></div>
-              <div><div class="m-lbl">SPF 50</div></div>
-            </div>
-          </div>
-          <div class="m-sec">Habit Progress</div>
-          <div class="m-group">
-            <div class="m-row">
-              <div style="font-size:1.2rem">🚬</div>
-              <div><div class="m-lbl">No smoking</div><div class="m-sub">Day 14 · 12 day streak</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
+        <div class="phone-scroll"><img class="deck-shot" src="https://shamikhahmed.github.io/assets/screenshots/steadycap-2.png" alt="SteadyCap daily dashboard" width="280" height="606" loading="lazy" decoding="async"></div>
       <div class="phone-nav">
         <div class="pnav on"><span class="pnav-ic">☀️</span>Today</div>
         <div class="pnav"><span class="pnav-ic">🧬</span>Recovery</div>
@@ -1274,26 +1235,7 @@ body {
       <div class="phone reveal-right delay-3" style="width:260px;height:520px;">
         <div class="phone-notch"></div>
         <div class="phone-screen">
-          <div class="phone-scroll">
-            <div class="m-greet" style="font-size:1.1rem">Recovery 🧬</div>
-            <div class="m-pill">Day 3 · No smoking</div>
-            <div style="padding:12px 14px;text-align:center;">
-              <div style="font-size:2.5rem;font-weight:800;color:var(--orange);line-height:1">72<span style="font-size:1rem;color:var(--text3)">h</span></div>
-              <div style="font-size:9px;color:var(--text3);font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-top:4px">Since quit</div>
-            </div>
-            <div class="m-sec">Next milestone</div>
-            <div class="m-group">
-              <div style="font-size:11px;font-weight:700;margin-bottom:4px">Bronchial tubes relax</div>
-              <div style="font-size:9px;color:var(--text2);line-height:1.5">Breathing becomes noticeably easier. Cilia begin recovering.</div>
-              <div style="margin-top:8px;font-size:8px;color:var(--green);font-weight:600;text-transform:uppercase">~6 hours away</div>
-            </div>
-            <div class="m-sec">Body systems</div>
-            <div class="m-group">
-              <div class="sys-row"><span class="sys-ic">🫁</span><span class="sys-lbl">Lungs</span><div class="sys-bar"><div class="sys-fill" style="width:45%;background:var(--teal)"></div></div><span class="sys-pct">45%</span></div>
-              <div class="sys-row"><span class="sys-ic">🧠</span><span class="sys-lbl">Brain</span><div class="sys-bar"><div class="sys-fill" style="width:38%;background:var(--orange)"></div></div><span class="sys-pct">38%</span></div>
-            </div>
-          </div>
-        </div>
+          <div class="phone-scroll"><img class="deck-shot" src="https://shamikhahmed.github.io/assets/screenshots/steadycap-3.png" alt="SteadyCap today overview" width="280" height="606" loading="lazy" decoding="async"></div>
         <div class="phone-nav">
           <div class="pnav"><span class="pnav-ic">☀️</span>Today</div>
           <div class="pnav on"><span class="pnav-ic">🧬</span>Recovery</div>
@@ -1331,17 +1273,7 @@ body {
       <div class="phone reveal-right delay-3" style="width:260px;height:520px;">
         <div class="phone-notch"></div>
         <div class="phone-screen" style="background:linear-gradient(180deg,var(--bg) 0%,rgba(255,59,48,.06) 100%);">
-          <div class="phone-scroll" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 16px;text-align:center;min-height:100%;">
-            <div style="font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin-bottom:12px">Phase 2 · Ground</div>
-            <div style="font-size:1.1rem;font-weight:800;margin-bottom:16px;line-height:1.3">5-4-3-2-1<br>Grounding</div>
-            <div style="text-align:left;width:100%;font-size:11px;color:var(--text2);line-height:2;">
-              <div>👁 <strong style="color:var(--text)">5</strong> things you can see</div>
-              <div>✋ <strong style="color:var(--text)">4</strong> things you can touch</div>
-              <div>👂 <strong style="color:var(--text)">3</strong> things you can hear</div>
-              <div>👃 <strong style="color:var(--text)">2</strong> things you can smell</div>
-              <div>👅 <strong style="color:var(--text)">1</strong> thing you can taste</div>
-            </div>
-            <div style="margin-top:20px;width:100%;padding:12px;background:rgba(78,205,196,.1);border:1px solid rgba(78,205,196,.25);border-radius:var(--r-sm);font-size:10px;color:var(--teal);font-weight:600;">This craving will pass in ~7 minutes</div>
+          <div class="phone-scroll" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 16px;text-align:center;min-height:100%;"><img class="deck-shot" src="https://shamikhahmed.github.io/assets/screenshots/steadycap-4.png" alt="SteadyCap recovery habits" width="280" height="606" loading="lazy" decoding="async"></div>
           </div>
         </div>
         <div class="phone-nav">
