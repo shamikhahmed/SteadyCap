@@ -177,8 +177,7 @@ h2{font-size:clamp(26px,4vw,48px);font-weight:700;letter-spacing:-.025em;line-he
   <script src="js/vendor/gsap.min.js"></script>
   <script src="js/vendor/ScrollTrigger.min.js"></script>
   <script src="js/capricorn-scene.js"></script>
-  <script src="js/capricorn-deck.js"></script>
-</head>
+  </head>
 <body>
 <div class="cap-scroll-progress" aria-hidden="true"></div>
 <canvas id="particles"></canvas>
@@ -186,7 +185,7 @@ h2{font-size:clamp(26px,4vw,48px);font-weight:700;letter-spacing:-.025em;line-he
 <div id="counter">01 / 21</div>
 <div id="dots"></div>
 <button id="fsBtn" onclick="toggleFS()">⛶ Fullscreen</button>
-<div id="deck">
+<div id="deck" data-cap-deck="pro">
 
 
 <!-- 1 Title -->
@@ -1582,5 +1581,10 @@ addEventListener('resize',resize);resize();draw();})();
 go(0);
 })();
 </script>
+
+  <script src="js/vendor/gsap.min.js"></script>
+  <script src="js/vendor/ScrollTrigger.min.js"></script>
+  <script src="js/capricorn-scene.js"></script>
+  <script src="js/capricorn-deck-pro.js"></script>
 </body>
 </html>
