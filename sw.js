@@ -1,5 +1,5 @@
 'use strict';
-const CACHE = 'steadycap-v38';
+const CACHE = 'steadycap-v39';
 const ASSETS = [
   './css/capricorn-core.css',
   './',
@@ -38,6 +38,17 @@ const ASSETS = [
   './pitch.html',
   './assets/icons/icon-192.png',
   './assets/icons/icon-512.png',
+  './js/capricorn-motion.js',
+  './js/capricorn-scene.js',
+  './js/capricorn-premium-nav.js',
+  './js/capricorn-cinematic.js',
+  './js/capricorn-deck.js',
+  './js/capricorn-deck-pro.js',
+  './js/capricorn-pitch.js',
+  './js/vendor/gsap.min.js',
+  './js/vendor/ScrollTrigger.min.js',
+  './privacy.html',
+  './changelog.html',
 ];
 
 self.addEventListener('install', e => {
