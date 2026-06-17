@@ -963,8 +963,14 @@ body {
   #s1-gradient, #s4-nebula, #s3-bg, #s16-gradient { display: block; }
 }
 </style>
-</head>
+
+  <link rel="stylesheet" href="css/capricorn-core.css">
+  <script src="js/vendor/gsap.min.js"></script>
+  <script src="js/vendor/ScrollTrigger.min.js"></script>
+  <script src="js/capricorn-scene.js"></script>
+  </head>
 <body>
+<div class="cap-scroll-progress" aria-hidden="true"></div>
 
 <!-- Navigation dots -->
 <div id="nav-dots"></div>
@@ -1867,5 +1873,10 @@ setTimeout(() => {
   document.querySelectorAll('#s1 .reveal, #s1 .reveal-left, #s1 .reveal-right, #s1 .reveal-scale').forEach(el => el.classList.add('visible'));
 }, 100);
 </script>
+
+  <script src="js/vendor/gsap.min.js"></script>
+  <script src="js/vendor/ScrollTrigger.min.js"></script>
+  <script src="js/capricorn-scene.js"></script>
+  <script src="js/capricorn-pitch.js"></script>
 </body>
 </html>

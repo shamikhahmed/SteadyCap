@@ -88,8 +88,12 @@
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       if (window.CapPremiumNav) CapPremiumNav.init();
-      if (window.CapricornScene) CapricornScene.init({ canvas: '#cap-scene' });
+      if (window.CapCinematic) CapCinematic.init({ canvas: '#cap-scene' });
     });
   </script>
+
+  <script src="js/vendor/gsap.min.js"></script>
+  <script src="js/vendor/ScrollTrigger.min.js"></script>
+  <script src="js/capricorn-cinematic.js"></script>
 </body>
 </html>
