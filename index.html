@@ -38,6 +38,8 @@
 </head>
 <body>
   <div class="cap-ambient" aria-hidden="true"></div>
+  <canvas id="cap-scene" class="cap-scene-canvas cap-scene-canvas--subtle" aria-hidden="true"></canvas>
+  <div class="cap-scroll-progress" aria-hidden="true"></div>
   <div id="app">
     <div id="screens">
       <div id="screen-onboarding" class="screen"></div>
@@ -80,10 +82,13 @@
   <script src="./js/modules/profile.js"></script>
   <script src="./js/modules/journal.js"></script>
   <script src="./js/app.js"></script>
+  <script src="./js/capricorn-motion.js"></script>
+  <script src="./js/capricorn-scene.js"></script>
   <script src="./js/capricorn-premium-nav.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       if (window.CapPremiumNav) CapPremiumNav.init();
+      if (window.CapricornScene) CapricornScene.init({ canvas: '#cap-scene' });
     });
   </script>
 </body>
