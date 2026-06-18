@@ -36,8 +36,9 @@ const Navigation = (() => {
   function renderNav() {
     const nav = document.getElementById('nav');
     if (!nav) return;
+    const activeTab = current === 'journal' ? 'dashboard' : current;
     nav.innerHTML = TABS.map(t => `
-      <button class="nav-tab${t.id === current ? ' active' : ''}${t.sos ? ' nav-sos' : ''}" data-tab="${t.id}" onclick="Navigation.go('${t.id}')">
+      <button class="nav-tab${t.id === activeTab ? ' active' : ''}${t.sos ? ' nav-sos' : ''}" data-tab="${t.id}" onclick="Navigation.go('${t.id}')">
         <span class="nav-icon">${t.icon}</span>
         <span class="nav-label">${t.label}</span>
       </button>
