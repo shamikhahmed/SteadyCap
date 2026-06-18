@@ -89,10 +89,11 @@ const Recovery = (() => {
     }
 
     const selectorHtml = habits.length > 1 ? `
-      <div style="display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:0 20px 16px">
+      <div class="cap-tab-bar" role="tablist" aria-label="Recovery habits" style="padding-left:20px;padding-right:20px">
         ${habits.map(h => {
           const hc = State.habitConfig(h.type, h.isCustom, h);
-          return `<button type="button" onclick="Recovery.selectHabit('${h.id}')" style="flex-shrink:0;padding:6px 14px;border-radius:99px;border:1px solid ${h.id===currentHabitId?'var(--orange)':'var(--border)'};background:${h.id===currentHabitId?'rgba(255,107,53,0.1)':'transparent'};color:${h.id===currentHabitId?'var(--orange)':'var(--text3)'};font-size:0.78rem;font-weight:600;cursor:pointer;touch-action:manipulation">${hc.icon||''} ${hc.name||h.type}</button>`;
+          const active = h.id === currentHabitId;
+          return `<button type="button" class="cap-tab${active ? ' on' : ''}" role="tab" aria-selected="${active}" onclick="Recovery.selectHabit('${h.id}')">${hc.icon||''} ${hc.name||h.type}</button>`;
         }).join('')}
       </div>` : '';
 
