@@ -43,6 +43,19 @@ const Navigation = (() => {
         <span class="nav-label">${t.label}</span>
       </button>
     `).join('');
+
+    const sidebar = document.getElementById('cap-nav-sidebar');
+    if (sidebar) {
+      sidebar.innerHTML = `
+        <div class="cap-sidebar-brand">SteadyCap</div>
+        ${TABS.map(t => `
+          <button type="button" class="cap-side-btn${t.id === activeTab ? ' on' : ''}${t.sos ? ' nav-sos' : ''}" data-tab="${t.id}" onclick="Navigation.go('${t.id}')">
+            <span>${t.sos ? '🆘' : '●'}</span>
+            <span>${t.label}</span>
+          </button>
+        `).join('')}
+      `;
+    }
   }
 
   function go(screenId, p) {

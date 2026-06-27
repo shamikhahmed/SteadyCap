@@ -72,13 +72,13 @@ const Dashboard = (() => {
           : `${item.cat}_${item.slot}_${item.id}`;
         const logKey = item.kind === 'medicine' ? key : key;
         const checked = item.done;
-        return `<div class="check-row card-press${checked ? ' done' : ''}${item.overdue && !checked ? ' overdue' : ''}" onclick="Dashboard._toggle('${item.kind}','${logKey}')">
-          <div class="check-box${checked ? ' checked' : ''}">${checked ? '✓' : ''}</div>
+        return `<button type="button" class="check-row card-press${checked ? ' done' : ''}${item.overdue && !checked ? ' overdue' : ''}" onclick="Dashboard._toggle('${item.kind}','${logKey}')" aria-pressed="${checked}" aria-label="${item.label}${checked ? ', done' : ''}">
+          <div class="check-box${checked ? ' checked' : ''}" aria-hidden="true">${checked ? '✓' : ''}</div>
           <div class="check-info">
             <div class="check-label">${item.label}</div>
             <div class="check-sub">${item.sub}${item.overdue && !checked ? ' · missed' : ''}</div>
           </div>
-        </div>`;
+        </button>`;
       }).join('');
       return `<div class="check-group">
         <div class="check-group-head">

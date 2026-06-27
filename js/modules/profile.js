@@ -221,7 +221,7 @@ const Profile = (() => {
 
       <div class="section-header"><span class="section-title">Try demo</span></div>
       <div style="padding:0 20px 12px">
-        <p class="t-caption t-dim" style="margin-bottom:10px;line-height:1.5">Sample data loads in a separate session via <strong>?demo=1</strong> — your real recovery profile is never overwritten from Settings.</p>
+        <p class="t-caption t-dim" style="margin-bottom:10px;line-height:1.5">Sample data loads in an <strong>isolated demo vault</strong> via <strong>?demo=1</strong> — your real recovery profile is never overwritten.</p>
       </div>
 
       <div style="padding:0 20px;margin-bottom:8px">
@@ -289,6 +289,7 @@ const Profile = (() => {
 
   function loadDemoData(opts) {
     const silent = opts && opts.silent;
+    if (!State.isDemoMode()) State.useDemoStorage(true);
     if (!silent) _snapshotBeforeDestructive();
     if (!silent && !confirm('Load demo recovery profile? Replaces current data with anonymized sample habits, journal entries, and craving log.')) return;
     const day = 86400000;

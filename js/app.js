@@ -3,11 +3,18 @@ const App = (() => {
   function init() {
     const demo = new URLSearchParams(location.search).get('demo') === '1';
     if (demo && window.Profile && Profile.loadDemoData) {
+      State.useDemoStorage(true);
+      sessionStorage.setItem('steadycap_demo_session', '1');
       Profile.loadDemoData({ silent: true });
+      if (typeof CapDemo !== 'undefined') {
+        CapDemo.markActive();
+        CapDemo.showBanner('steadycap', '<strong>Demo mode</strong> — Alex recovery profile in isolated storage.');
+      }
       launch();
       Navigation.go('dashboard');
       return;
     }
+    State.useDemoStorage(sessionStorage.getItem('steadycap_demo_session') === '1');
     if (State.get('onboardingComplete')) {
       launch();
     } else {

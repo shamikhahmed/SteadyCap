@@ -144,20 +144,60 @@ input, select, textarea {
    ============================================================ */
 
 @media (min-width: 900px) {
-  html { background: #030508; }
+  html.cap-desktop-bg { background: #030508; }
+
+  .cap-desktop-shell {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    min-height: 100dvh;
+    box-shadow: 0 0 80px rgba(0, 0, 0, 0.45);
+  }
+
+  #app.cap-desktop-main {
+    max-width: none;
+    width: 100%;
+    margin: 0;
+    box-shadow: none;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .screen {
+    position: relative;
+    inset: auto;
+    padding-bottom: 24px;
+  }
+
+  #nav { display: none !important; }
+  .screen { padding-bottom: 24px; }
 }
 
-#app {
-  height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  max-width: 430px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  box-shadow: 0 0 60px rgba(0,0,0,.4);
+@media (max-width: 899px) {
+  #app {
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    max-width: 430px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    box-shadow: 0 0 60px rgba(0,0,0,.4);
+  }
+}
+
+@media (min-width: 900px) {
+  #app {
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+  }
 }
 
 #screens {
@@ -1138,13 +1178,13 @@ input, select, textarea {
 .reader-overlay {
   position: fixed;
   inset: 0;
-  z-index: 100;
+  z-index: 200;
   background: var(--bg);
   transform: translateX(100%);
   transition: transform 0.32s cubic-bezier(0.4,0,0.2,1);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  padding-bottom: env(safe-area-inset-bottom);
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 16px);
 }
 
 .reader-overlay.open {
@@ -1420,6 +1460,21 @@ input, select, textarea {
   gap: 12px;
   padding: 10px 0;
   border-bottom: 1px solid var(--border);
+  width: 100%;
+  background: none;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+button.check-row:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+  border-radius: var(--r-sm);
 }
 
 .check-row:last-child { border-bottom: none; }

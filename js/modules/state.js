@@ -1,6 +1,9 @@
 'use strict';
 const State = (() => {
-  const KEY = StorageMigrate.local('steadycap_v2', ['dos_v2']);
+  const REAL_KEY = StorageMigrate.local('steadycap_v2', ['dos_v2']);
+  const DEMO_KEY = 'steadycap_demo_v2';
+  let KEY = REAL_KEY;
+  let _demoMode = false;
   const DEFAULT = {
     user: { name: '', currency: 'USD', goals: [], triggers: [], spiritualMode: false, hairTreatment: 'none' },
     habits: [],
@@ -233,8 +236,20 @@ const State = (() => {
   }
 
   function journalKey() {
-    return StorageMigrate.local('steadycap_journal_v1', ['dos_journal_v1']);
+    return _demoMode
+      ? 'steadycap_demo_journal_v1'
+      : StorageMigrate.local('steadycap_journal_v1', ['dos_journal_v1']);
   }
+
+  function useDemoStorage(on) {
+    _demoMode = !!on;
+    KEY = on ? DEMO_KEY : REAL_KEY;
+    data = null;
+    load();
+    return _demoMode;
+  }
+
+  function isDemoMode() { return _demoMode; }
 
   function exportJSON() {
     let journal = [];
@@ -277,7 +292,7 @@ const State = (() => {
     get, set, update, save, reset, todayKey, getDailyLog, toggleDailyItem, getAllHabits, habitConfig,
     addHabit, addCustomHabit, updateHabit, removeCustomHabit, logRelapse, logCraving,
     addMedicine, updateMedicine, removeMedicine, addRoutineStep, updateRoutineStep, removeRoutineStep,
-    exportJSON, importJSON, longestStreak,
+    exportJSON, importJSON, longestStreak, useDemoStorage, isDemoMode,
   };
 })();
 window.State = State;
