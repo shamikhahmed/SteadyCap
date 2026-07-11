@@ -54,14 +54,14 @@ const Emergency = (() => {
       <div class="emergency-screen">
         <div class="sos-header" style="padding:calc(env(safe-area-inset-top,20px)+16px) 20px 16px">
           <div style="font-size:0.7rem;font-weight:800;letter-spacing:0.2em;color:var(--text3)">SOS</div>
-          <button onclick="Emergency._skipAll()" style="font-size:0.8rem;color:var(--text3);background:none;border:none;cursor:pointer">Skip all</button>
+          <button type="button" onclick="Emergency._skipAll()" style="font-size:0.8rem;color:var(--text3);background:none;border:none;cursor:pointer">Skip all</button>
         </div>
         <div class="sos-phase-dots">${dots}</div>
         <div class="sos-content">${content}</div>
         <div class="sos-footer">
           ${phase < 4 ? `<div style="display:flex;gap:10px">
-            <button class="btn btn-ghost" style="flex:1" onclick="Emergency._skip()">Skip →</button>
-            ${phase > 0 ? `<button class="btn btn-ghost" style="padding:14px" onclick="Emergency._back()">←</button>` : ''}
+            <button type="button" class="btn btn-ghost" style="flex:1" onclick="Emergency._skip()">Skip →</button>
+            ${phase > 0 ? `<button type="button" class="btn btn-ghost" style="padding:14px" onclick="Emergency._back()">←</button>` : ''}
           </div>` : ''}
         </div>
       </div>
@@ -200,8 +200,8 @@ const Emergency = (() => {
         <div style="font-size:1.2rem;font-weight:700;color:var(--text);margin-bottom:12px">${action.label}</div>
         <div style="font-size:0.85rem;color:var(--text2);line-height:1.6;margin-bottom:20px">${action.desc}</div>
         ${action.duration ? `<div id="action-timer" style="font-size:2rem;font-weight:800;color:var(--teal)">${action.duration}s</div>` : ''}
-        <button class="btn btn-ghost" style="margin-top:16px" onclick="Emergency._shuffleAction()">Try another action</button>
-        <button class="btn btn-teal" style="margin-top:10px;border-radius:var(--r);padding:14px 20px;width:100%" onclick="Emergency._nextPhase()">Done → Complete</button>
+        <button type="button" class="btn btn-ghost" style="margin-top:16px" onclick="Emergency._shuffleAction()">Try another action</button>
+        <button type="button" class="btn btn-teal" style="margin-top:10px;border-radius:var(--r);padding:14px 20px;width:100%" onclick="Emergency._nextPhase()">Done → Complete</button>
       </div>
     `;
   }
@@ -229,7 +229,7 @@ const Emergency = (() => {
         <div style="font-size:1.8rem;font-weight:800;color:var(--green);letter-spacing:-0.02em;margin-bottom:8px">Craving Survived</div>
         <div style="font-size:0.9rem;color:var(--text2);margin-bottom:24px">You proved it doesn't control you.</div>
         <div style="font-size:0.8rem;color:var(--text3)">Total cravings survived: <strong style="color:var(--green)">${cravings}</strong></div>
-        <button class="btn btn-primary" style="margin-top:28px" onclick="Navigation.go('dashboard')">Return Home</button>
+        <button type="button" class="btn btn-primary" style="margin-top:28px" onclick="Navigation.go('dashboard')">Return Home</button>
       </div>
     `;
   }

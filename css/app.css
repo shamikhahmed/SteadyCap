@@ -233,6 +233,8 @@ input, select, textarea {
   display: flex;
   padding-bottom: env(safe-area-inset-bottom);
   flex-shrink: 0;
+  position: relative;
+  z-index: 300;
 }
 
 /* ============================================================
@@ -1178,13 +1180,14 @@ input, select, textarea {
 .reader-overlay {
   position: fixed;
   inset: 0;
+  bottom: calc(64px + env(safe-area-inset-bottom));
   z-index: 200;
   background: var(--bg);
   transform: translateX(100%);
   transition: transform 0.32s cubic-bezier(0.4,0,0.2,1);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 16px);
+  padding-bottom: 16px;
 }
 
 .reader-overlay.open {

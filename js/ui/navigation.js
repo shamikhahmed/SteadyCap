@@ -38,7 +38,7 @@ const Navigation = (() => {
     if (!nav) return;
     const activeTab = current === 'journal' ? 'dashboard' : current;
     nav.innerHTML = TABS.map(t => `
-      <button class="nav-tab${t.id === activeTab ? ' active' : ''}${t.sos ? ' nav-sos' : ''}" data-tab="${t.id}" onclick="Navigation.go('${t.id}')">
+      <button type="button" class="nav-tab${t.id === activeTab ? ' active' : ''}${t.sos ? ' nav-sos' : ''}" data-tab="${t.id}" onclick="Navigation.go('${t.id}')">
         <span class="nav-icon">${t.icon}</span>
         <span class="nav-label">${t.label}</span>
       </button>
@@ -63,6 +63,7 @@ const Navigation = (() => {
     const sameScreen = screenId === current;
     const preserveScroll = sameScreen && !!(p && p.preserveScroll);
     current = screenId;
+    document.title = (screenId.charAt(0).toUpperCase() + screenId.slice(1).replace(/-/g, ' ')) + ' — SteadyCap';
 
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     const screen = document.getElementById('screen-' + screenId);

@@ -42,7 +42,7 @@ const Profile = (() => {
           ${fin.hasCost?`<div><div class="t-label">Saved</div><div style="font-size:1.3rem;font-weight:800;color:var(--green)">${sym}${fin.savedTotal.toFixed(2)}</div></div>`:''}
           <div><div class="t-label">Body Score</div><div style="font-size:1.3rem;font-weight:800;color:var(--teal)">${bodyScore}%</div></div>
         </div>
-        <button class="btn btn-ghost" style="font-size:0.78rem;padding:10px 16px;width:100%" onclick="Profile._editHabit('${h.id}',${h.isCustom})">Edit Habit Config</button>
+        <button type="button" class="btn btn-ghost" style="font-size:0.78rem;padding:10px 16px;width:100%" onclick="Profile._editHabit('${h.id}',${h.isCustom})">Edit Habit Config</button>
       </div>`;
     }).join('');
 
@@ -56,8 +56,8 @@ const Profile = (() => {
         </div>
         <div class="t-caption">${m.dose || '—'} · ${m.schedule === 'as_needed' ? 'As needed' : (m.times || []).join(', ')}</div>
         <div style="display:flex;gap:8px;margin-top:10px">
-          <button class="btn btn-ghost" style="flex:1;font-size:0.75rem;padding:8px" onclick="Profile._editMed('${m.id}')">Edit</button>
-          <button class="btn btn-ghost" style="font-size:0.75rem;padding:8px;color:var(--red)" onclick="Profile._removeMed('${m.id}')">Remove</button>
+          <button type="button" class="btn btn-ghost" style="flex:1;font-size:0.75rem;padding:8px" onclick="Profile._editMed('${m.id}')">Edit</button>
+          <button type="button" class="btn btn-ghost" style="font-size:0.75rem;padding:8px;color:var(--red)" onclick="Profile._removeMed('${m.id}')">Remove</button>
         </div>
       </div>
     `).join('') || '<div class="t-caption t-dim" style="padding:0 20px 8px">No medicines added yet.</div>';
@@ -72,7 +72,7 @@ const Profile = (() => {
           ${steps.map(s => `
             <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border)">
               <span style="flex:1;font-size:0.85rem;color:var(--text2)">${s.label}</span>
-              <button onclick="Profile._removeRoutine('${cat}','${slot}','${s.id}')" style="background:none;border:none;color:var(--text3);cursor:pointer;font-size:0.9rem">✕</button>
+              <button type="button" onclick="Profile._removeRoutine('${cat}','${slot}','${s.id}')" style="background:none;border:none;color:var(--text3);cursor:pointer;font-size:0.9rem">✕</button>
             </div>
           `).join('')}
         </div>`;
@@ -82,7 +82,7 @@ const Profile = (() => {
         ${slotHtml('am', 'AM')}
         ${slotHtml('pm', 'PM')}
         ${slotHtml('weekly', 'Weekly')}
-        <button class="btn btn-ghost" style="width:100%;font-size:0.78rem;margin-top:4px" onclick="Profile._addRoutine('${cat}')">+ Add step</button>
+        <button type="button" class="btn btn-ghost" style="width:100%;font-size:0.78rem;margin-top:4px" onclick="Profile._addRoutine('${cat}')">+ Add step</button>
       </div>`;
     };
 
@@ -116,14 +116,14 @@ const Profile = (() => {
 
       <div class="section-header"><span class="section-title">Add Habit</span></div>
       <div style="padding:0 20px 12px;display:flex;gap:8px">
-        <button class="btn btn-ghost" style="flex:1;text-align:center" onclick="Profile._addHabit()">+ Built-in</button>
-        <button class="btn btn-ghost" style="flex:1;text-align:center" onclick="Profile._addCustomHabit()">+ Custom</button>
+        <button type="button" class="btn btn-ghost" style="flex:1;text-align:center" onclick="Profile._addHabit()">+ Built-in</button>
+        <button type="button" class="btn btn-ghost" style="flex:1;text-align:center" onclick="Profile._addCustomHabit()">+ Custom</button>
       </div>
 
       <div class="section-header"><span class="section-title">Medicines</span></div>
       <div style="padding:0 20px 8px">${medsHtml}</div>
       <div style="padding:0 20px 16px">
-        <button class="btn btn-ghost" style="width:100%;text-align:center" onclick="Profile._addMed()">+ Add medicine</button>
+        <button type="button" class="btn btn-ghost" style="width:100%;text-align:center" onclick="Profile._addMed()">+ Add medicine</button>
       </div>
 
       <div class="section-header"><span class="section-title">Daily Routines</span></div>
@@ -216,7 +216,7 @@ const Profile = (() => {
       <div class="section-header"><span class="section-title">Clinician Summary</span></div>
       <div style="padding:0 20px 12px">
         <p class="t-caption t-dim" style="margin-bottom:10px;line-height:1.5">Generate a printable summary of habits, milestones, and recovery score — no raw journal text included.</p>
-        <button class="btn btn-ghost" style="width:100%" onclick="Profile._exportClinicianSummary()">🖨 Export Clinician Summary</button>
+        <button type="button" class="btn btn-ghost" style="width:100%" onclick="Profile._exportClinicianSummary()">🖨 Export Clinician Summary</button>
       </div>
 
       <div class="section-header"><span class="section-title">Try demo</span></div>
@@ -225,7 +225,7 @@ const Profile = (() => {
       </div>
 
       <div style="padding:0 20px;margin-bottom:8px">
-        <button class="btn btn-ghost" style="width:100%;text-align:center;margin-bottom:8px" onclick="Profile._exportData()">Export Data (JSON)</button>
+        <button type="button" class="btn btn-ghost" style="width:100%;text-align:center;margin-bottom:8px" onclick="Profile._exportData()">Export Data (JSON)</button>
         <label class="btn btn-ghost" style="width:100%;text-align:center;display:block;cursor:pointer">
           Import Data
           <input type="file" accept=".json" style="display:none" onchange="Profile._importData(event)">
@@ -236,7 +236,7 @@ const Profile = (() => {
         <div class="t-caption t-dim" style="text-align:center;margin-bottom:12px">SteadyCap v2.0.0 · Local-only · Not a medical device</div>
       </div>
       <div style="padding:0 20px 20px">
-        <button class="btn btn-danger" onclick="Profile._reset()">Reset All Data</button>
+        <button type="button" class="btn btn-danger" onclick="Profile._reset()">Reset All Data</button>
       </div>
       <div style="height:8px"></div>
 
@@ -399,7 +399,7 @@ const Profile = (() => {
         <div style="background:var(--bg3);border-radius:var(--r-lg) var(--r-lg) 0 0;padding:24px 20px calc(20px + env(safe-area-inset-bottom));width:100%;max-height:80vh;overflow-y:auto">
           <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
             <div class="t-heading">${hCfg.icon} ${hCfg.name}</div>
-            <button onclick="Profile._closeModal()" style="background:none;border:none;color:var(--text3);font-size:1.2rem;cursor:pointer">✕</button>
+            <button type="button" onclick="Profile._closeModal()" style="background:none;border:none;color:var(--text3);font-size:1.2rem;cursor:pointer">✕</button>
           </div>
           <div class="ob-field">
             <div class="ob-label">Quit date</div>
@@ -409,7 +409,7 @@ const Profile = (() => {
             if(f.type==='select') return `<div class="ob-field"><div class="ob-label">${f.label}</div><select class="ob-select" id="edit_${f.id}" name="${f.id}">${(f.options||[]).map(o=>`<option value="${o}" ${cfg[f.id]===o?'selected':''}>${o}</option>`).join('')}</select></div>`;
             return `<div class="ob-field"><div class="ob-label">${f.label}</div><input class="ob-input" type="${f.type==='text'?'text':'number'}" id="edit_${f.id}" name="${f.id}" value="${cfg[f.id]||''}" placeholder="${f.placeholder||''}"></div>`;
           }).join('')}
-          <button class="btn btn-primary" onclick="Profile._saveEdit('${id}')">Save Changes</button>
+          <button type="button" class="btn btn-primary" onclick="Profile._saveEdit('${id}')">Save Changes</button>
         </div>
       </div>
     `;
@@ -484,7 +484,7 @@ const Profile = (() => {
             if(f.type==='select') return `<div class="ob-field"><div class="ob-label">${f.label}</div><select class="ob-select" id="add_${f.id}">${(f.options||[]).map(o=>`<option value="${o}">${o}</option>`).join('')}</select></div>`;
             return `<div class="ob-field"><div class="ob-label">${f.label}</div><input class="ob-input" type="${f.type==='text'?'text':'number'}" id="add_${f.id}" placeholder="${f.placeholder||''}"></div>`;
           }).join('')}
-          <button class="btn btn-primary" onclick="Profile._confirmAddHabit('${type}')">Add Habit</button>
+          <button type="button" class="btn btn-primary" onclick="Profile._confirmAddHabit('${type}')">Add Habit</button>
         </div>
       </div>
     `;
@@ -549,7 +549,7 @@ const Profile = (() => {
             </select>
           </div>
           <div class="ob-field" id="med-times-wrap"><div class="ob-label">Times (comma-separated)</div><input class="ob-input" id="med-times" placeholder="08:00, 20:00" value="08:00, 20:00"></div>
-          <button class="btn btn-primary" onclick="Profile._saveMed()">Save Medicine</button>
+          <button type="button" class="btn btn-primary" onclick="Profile._saveMed()">Save Medicine</button>
         </div>
       </div>`;
   }
@@ -612,7 +612,7 @@ const Profile = (() => {
               <option value="weekly">Weekly</option>
             </select>
           </div>
-          <button class="btn btn-primary" onclick="Profile._saveRoutine('${cat}')">Add Step</button>
+          <button type="button" class="btn btn-primary" onclick="Profile._saveRoutine('${cat}')">Add Step</button>
         </div>
       </div>`;
   }
@@ -646,7 +646,7 @@ const Profile = (() => {
             <input type="hidden" id="custom-icon" value="✨">
           </div>
           <div class="ob-field"><div class="ob-label">Quit date</div><input class="ob-input" type="datetime-local" id="custom-quit" value="${DateTimeLocal.nowInputValue()}"></div>
-          <button class="btn btn-primary" onclick="Profile._saveCustomHabit()">Add Custom Habit</button>
+          <button type="button" class="btn btn-primary" onclick="Profile._saveCustomHabit()">Add Custom Habit</button>
         </div>
       </div>`;
   }
@@ -681,8 +681,8 @@ const Profile = (() => {
           <div class="t-heading" style="margin-bottom:16px">${habit.icon} ${habit.name}</div>
           <div class="ob-field"><div class="ob-label">Name</div><input class="ob-input" id="edit-custom-name" value="${habit.name}"></div>
           <div class="ob-field"><div class="ob-label">Quit date</div><input class="ob-input" type="datetime-local" id="edit-custom-quit" value="${DateTimeLocal.toInputValue(habit.quitTime)}"></div>
-          <button class="btn btn-primary" onclick="Profile._saveCustomEdit('${id}')">Save</button>
-          <button class="btn btn-danger" style="margin-top:8px" onclick="Profile._removeCustom('${id}')">Remove Habit</button>
+          <button type="button" class="btn btn-primary" onclick="Profile._saveCustomEdit('${id}')">Save</button>
+          <button type="button" class="btn btn-danger" style="margin-top:8px" onclick="Profile._removeCustom('${id}')">Remove Habit</button>
         </div>
       </div>`;
   }

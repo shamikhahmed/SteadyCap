@@ -34,7 +34,7 @@ const Dashboard = (() => {
   }
 
   function buildSOS() {
-    return `<button class="sos-tap card-press" onclick="Navigation.go('emergency')">
+    return `<button type="button" class="sos-tap card-press" onclick="Navigation.go('emergency')">
       <span class="sos-tap-icon">🆘</span>
       <div class="sos-tap-text">
         <div class="sos-tap-title">SOS — One Tap</div>
@@ -52,7 +52,7 @@ const Dashboard = (() => {
         <div style="font-size:36px;margin-bottom:10px">🌅</div>
         <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px">No routines yet</div>
         <div style="font-size:13px;color:var(--text2);line-height:1.5;margin-bottom:14px">Daily routines anchor your recovery. Medicine reminders, skincare, hair care — small acts of self-care add up.</div>
-        <button class="btn btn-ghost" style="font-size:0.85rem;padding:10px 20px" onclick="Navigation.go('profile')">Set up my routines →</button>
+        <button type="button" class="btn btn-ghost" style="font-size:0.85rem;padding:10px 20px" onclick="Navigation.go('profile')">Set up my routines →</button>
       </div>`;
     }
 
@@ -144,7 +144,7 @@ const Dashboard = (() => {
         <div style="font-size:36px;margin-bottom:10px">🧡</div>
         <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px">Your recovery starts here</div>
         <div style="font-size:13px;color:var(--text2);line-height:1.5;margin-bottom:14px">Every hour clean is progress. Add your first habit and SteadyCap will track your milestones, predict hard moments, and celebrate every win.</div>
-        <button class="btn btn-primary" style="font-size:0.9rem;padding:12px 24px" onclick="Navigation.go('profile');setTimeout(function(){Profile._addHabit()},200)">Add your first habit →</button>
+        <button type="button" class="btn btn-primary" style="font-size:0.9rem;padding:12px 24px" onclick="Navigation.go('profile');setTimeout(function(){Profile._addHabit()},200)">Add your first habit →</button>
       </div>`;
     }
     const totalDays = habits.reduce((s, h) => s + RecoveryEngine.daysClean(h.quitTime), 0);
@@ -182,7 +182,7 @@ const Dashboard = (() => {
         </div>
       </div>
       <div class="habit-minis">${cards}</div>
-      ${habits.length > 4 ? `<button class="btn btn-ghost" style="width:100%;margin-top:8px;font-size:0.78rem" onclick="Navigation.go('recovery',{habitId:Recovery.getSelectedHabitId()})">View all habits →</button>` : ''}
+      ${habits.length > 4 ? `<button type="button" class="btn btn-ghost" style="width:100%;margin-top:8px;font-size:0.78rem" onclick="Navigation.go('recovery',{habitId:Recovery.getSelectedHabitId()})">View all habits →</button>` : ''}
     `;
   }
 
@@ -229,17 +229,17 @@ const Dashboard = (() => {
       <div class="section-header">
         <span class="section-title">Daily check-in</span>
         ${Journal.getStreak() > 0 ? `<span class="today-progress-pill">${Journal.getStreak()}d streak</span>` : ''}
-        <button class="section-link" onclick="Navigation.go('journal')">History</button>
+        <button type="button" class="section-link" onclick="Navigation.go('journal')">History</button>
       </div>
       <div id="daily-checkin-wrap" style="padding:0 20px 8px"></div>
 
       <div class="section-header"><span class="section-title">Today&apos;s Routines</span>
-        <button class="section-link" onclick="Navigation.go('profile')">Edit</button>
+        <button type="button" class="section-link" onclick="Navigation.go('profile')">Edit</button>
       </div>
       <div class="today-checklist">${buildChecklist()}</div>
 
       <div class="section-header"><span class="section-title">Habit Progress</span>
-        <button class="section-link" onclick="Navigation.go('recovery',{habitId:Recovery.getSelectedHabitId()})">Details</button>
+        <button type="button" class="section-link" onclick="Navigation.go('recovery',{habitId:Recovery.getSelectedHabitId()})">Details</button>
       </div>
       <div style="padding:0 20px 8px">${buildSmartInsights(habits)}${buildHabitProgress(habits)}</div>
 

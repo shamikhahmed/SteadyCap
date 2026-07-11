@@ -46,7 +46,7 @@ const Onboarding = (() => {
           <span style="font-size:13px;color:var(--text2,#ccc)">5-phase SOS when you need it most — works offline</span>
         </div>
       </div>
-      <button class="btn btn-primary" onclick="Onboarding._goToStep1()" style="width:100%;max-width:320px;padding:16px;font-size:16px;font-weight:700;border-radius:16px">I'm ready to start →</button>
+      <button type="button" class="btn btn-primary" onclick="Onboarding._goToStep1()" style="width:100%;max-width:320px;padding:16px;font-size:16px;font-weight:700;border-radius:16px">I'm ready to start →</button>
       <p style="font-size:12px;color:var(--text3,#666);margin-top:14px">Takes about 90 seconds</p>
     </div>`;
   }
@@ -67,7 +67,7 @@ const Onboarding = (() => {
         `).join('')}
       </div>
       <div class="ob-footer">
-        <button class="btn btn-primary" onclick="Onboarding._nextStep1()" id="ob-btn1" ${selectedHabits.length === 0 ? 'style="opacity:0.4"' : ''}>Continue →</button>
+        <button type="button" class="btn btn-primary" onclick="Onboarding._nextStep1()" id="ob-btn1" ${selectedHabits.length === 0 ? 'style="opacity:0.4"' : ''}>Continue →</button>
       </div>
     </div>`;
   }
@@ -122,8 +122,8 @@ const Onboarding = (() => {
       <div class="ob-sub">When did you last use each habit?</div>
       ${sections}
       <div class="ob-footer">
-        <button class="btn btn-primary" onclick="Onboarding._nextStep2()">Continue →</button>
-        <button class="btn btn-ghost" style="text-align:center;padding:10px" onclick="Onboarding._back()">← Back</button>
+        <button type="button" class="btn btn-primary" onclick="Onboarding._nextStep2()">Continue →</button>
+        <button type="button" class="btn btn-ghost" style="text-align:center;padding:10px" onclick="Onboarding._back()">← Back</button>
       </div>
     </div>`;
   }
@@ -152,8 +152,8 @@ const Onboarding = (() => {
         <textarea class="ob-input" id="ob-goals" rows="3" placeholder="One reason per line — e.g. My family, My health, Save money" style="resize:vertical;min-height:72px"></textarea>
       </div>
       <div class="ob-footer">
-        <button class="btn btn-primary" onclick="Onboarding._finish()">Start Recovery →</button>
-        <button class="btn btn-ghost" style="text-align:center;padding:10px" onclick="Onboarding._back()">← Back</button>
+        <button type="button" class="btn btn-primary" onclick="Onboarding._finish()">Start Recovery →</button>
+        <button type="button" class="btn btn-ghost" style="text-align:center;padding:10px" onclick="Onboarding._back()">← Back</button>
       </div>
     </div>`;
   }

@@ -30,7 +30,7 @@ const Recovery = (() => {
         <div style="font-size:36px;margin-bottom:10px">🧡</div>
         <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:8px">No habits yet</div>
         <div style="font-size:13px;color:var(--text2);line-height:1.5;margin-bottom:16px">Add a habit in Profile to start tracking recovery milestones.</div>
-        <button class="btn btn-primary" onclick="Navigation.go('profile');setTimeout(function(){Profile._addHabit()},200)" style="max-width:240px;margin:0 auto">Add habit in Profile →</button></div>`;
+        <button type="button" class="btn btn-primary" onclick="Navigation.go('profile');setTimeout(function(){Profile._addHabit()},200)" style="max-width:240px;margin:0 auto">Add habit in Profile →</button></div>`;
       return;
     }
 
@@ -235,7 +235,7 @@ const Recovery = (() => {
       </div>
 
       <div style="padding:20px">
-        <button class="btn btn-danger" onclick="Recovery._confirmRelapse('${habit.id}',${!!habit.isCustom})">Log Relapse</button>
+        <button type="button" class="btn btn-danger" onclick="Recovery._confirmRelapse('${habit.id}',${!!habit.isCustom})">Log Relapse</button>
       </div>
       <div style="height:8px"></div>
     `;

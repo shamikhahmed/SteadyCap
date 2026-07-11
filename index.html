@@ -8,7 +8,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="SteadyCap">
-  <meta name="description" content="Personal Recovery Operating System">
+  <meta name="description" content="SteadyCap is a private recovery OS — habits, medicines, trigger forecast, 5-phase SOS. Offline-first, by Capricorn Systems.">
   <meta name="format-detection" content="telephone=no">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="author" content="Capricorn Systems">
@@ -19,11 +19,12 @@
   <link rel="manifest" href="./manifest.json">
   <link rel="apple-touch-icon" href="./assets/icons/icon-192.png">
   <link rel="icon" type="image/png" sizes="192x192" href="./assets/icons/icon-192.png">
+  <link rel="preload" href="./css/app.css" as="style">
   <link rel="stylesheet" href="css/capricorn-core.css">
 <style>:root{--cap-accent:#c9652b}</style>
 <link rel="stylesheet" href="./css/app.css">
   <link rel="stylesheet" href="./css/identity.css">
-  <title>SteadyCap</title>
+  <title>SteadyCap — Recovery is a system. Not a streak. · Capricorn Systems</title>
 <link rel="canonical" href="https://shamikhahmed.github.io/SteadyCap/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Capricorn Systems">
@@ -96,5 +97,53 @@
       if (window.CapricornMotion) CapricornMotion.init();
     });
   </script>
+
+<!-- PRO UPGRADE MODAL -->
+<div id="proUpgradeModal" style="display:none;position:fixed;inset:0;z-index:9800;background:rgba(0,0,0,0.78);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);align-items:center;justify-content:center;padding:24px" role="dialog" aria-modal="true" aria-label="SteadyCap Pro">
+  <div style="background:rgba(26,17,14,0.98);border:1px solid rgba(201,101,43,0.35);border-radius:24px;max-width:400px;width:100%;padding:36px 32px;box-shadow:0 40px 80px rgba(0,0,0,0.7)">
+    <p style="font-size:11px;font-weight:700;letter-spacing:0.1em;color:#c9652b;margin-bottom:8px">STEADYCAP PRO</p>
+    <h2 style="font-size:1.6rem;font-weight:800;color:#fff;margin-bottom:4px;letter-spacing:-0.02em">Full recovery support.</h2>
+    <p style="font-size:14px;color:rgba(255,255,255,0.5);margin-bottom:28px">Your journal and habits stay on your device either way. Pro unlocks trigger forecasting, full SOS, and medicine scheduling.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px">
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);border-radius:14px;padding:20px">
+        <p style="font-size:12px;font-weight:700;color:rgba(255,255,255,0.5);margin-bottom:12px">FREE</p>
+        <p style="font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:16px">$0</p>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;font-size:13px;color:rgba(255,255,255,0.5)">
+          <li>✓ 3 habit trackers</li>
+          <li>✓ Basic journal</li>
+          <li>✓ Milestone streaks</li>
+          <li>✓ Offline PWA</li>
+        </ul>
+      </div>
+      <div style="background:rgba(201,101,43,0.10);border:2px solid rgba(201,101,43,0.4);border-radius:14px;padding:20px;position:relative">
+        <span style="position:absolute;top:-10px;left:16px;background:#c9652b;color:#fff;font-size:10px;font-weight:800;padding:3px 10px;border-radius:20px;letter-spacing:0.06em">PRO</span>
+        <p style="font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:2px">$2.99<span style="font-size:13px;font-weight:400;color:rgba(255,255,255,0.5)">/mo</span></p>
+        <p style="font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:12px">or $24.99/yr</p>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;font-size:13px;color:rgba(255,255,255,0.5)">
+          <li>✓ Unlimited habits & meds</li>
+          <li>✓ Trigger forecast</li>
+          <li>✓ 5-phase SOS flow</li>
+          <li>✓ Medicine scheduler</li>
+          <li>✓ Risk window alerts</li>
+          <li>✓ Recovery analytics</li>
+        </ul>
+      </div>
+    </div>
+    <button type="button" onclick="document.getElementById('proUpgradeModal').style.display='none'" style="width:100%;padding:14px;background:rgba(201,101,43,0.15);border:1px solid rgba(201,101,43,0.3);color:#c9652b;border-radius:14px;font-size:14px;font-weight:700;cursor:pointer;margin-bottom:10px">Join Pro waitlist — coming soon →</button>
+    <button type="button" onclick="document.getElementById('proUpgradeModal').style.display='none'" style="width:100%;padding:10px;background:none;border:none;color:rgba(255,255,255,0.4);font-size:13px;cursor:pointer">Continue with Free</button>
+  </div>
+</div>
+<script>
+(function () {
+  window.openProUpgrade = function () {
+    var m = document.getElementById('proUpgradeModal');
+    if (m) m.style.display = 'flex';
+  };
+  var modal = document.getElementById('proUpgradeModal');
+  if (modal) modal.addEventListener('click', function (e) {
+    if (e.target === modal) modal.style.display = 'none';
+  });
+})();
+</script>
 </body>
 </html>

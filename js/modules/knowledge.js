@@ -31,7 +31,7 @@ const Knowledge = (() => {
           oninput="Knowledge._search(this.value)" autocomplete="off" autocorrect="off">
       </div>
       <div class="cat-scroll">
-        ${categories.map(c => `<button class="cat-chip${c===activeCategory?' active':''}" onclick="Knowledge._setCategory('${c}')">${c}</button>`).join('')}
+        ${categories.map(c => `<button type="button" class="cat-chip${c===activeCategory?' active':''}" onclick="Knowledge._setCategory('${c}')">${c}</button>`).join('')}
       </div>
       <div id="kb-articles">${buildArticleList(db)}</div>
       <div id="reader-overlay" class="reader-overlay"></div>
@@ -88,8 +88,8 @@ const Knowledge = (() => {
     overlay.innerHTML = `
       <div class="reader-header">
         <div style="display:flex;align-items:center;justify-content:space-between">
-          <button onclick="Knowledge._closeArticle()" style="background:none;border:none;color:var(--teal);font-size:0.9rem;font-weight:600;cursor:pointer">← Back</button>
-          <button onclick="Knowledge._toggleBookmark('${article.id}')" style="background:none;border:none;font-size:1.2rem;cursor:pointer" id="reader-bookmark">${bookmarks.includes(id)?'🔖':'🏷️'}</button>
+          <button type="button" onclick="Knowledge._closeArticle()" style="background:none;border:none;color:var(--teal);font-size:0.9rem;font-weight:600;cursor:pointer">← Back</button>
+          <button type="button" onclick="Knowledge._toggleBookmark('${article.id}')" style="background:none;border:none;font-size:1.2rem;cursor:pointer" id="reader-bookmark">${bookmarks.includes(id)?'🔖':'🏷️'}</button>
         </div>
         <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--teal);margin-top:10px">${article.category}</div>
         <div style="font-size:1.2rem;font-weight:800;color:var(--text);margin-top:4px;line-height:1.3">${article.title}</div>
