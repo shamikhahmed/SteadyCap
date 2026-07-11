@@ -7,7 +7,10 @@
     "cap:init": "npx cap add ios 2>/dev/null || true && npx cap sync ios",
     "cap:sync": "npx cap sync ios",
     "cap:ios": "npx cap open ios",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "verify": "playwright test",
+    "gallery": "CAPTURE_GALLERY=1 playwright test tests/gallery.spec.js",
+    "gallery:view": "python3 -m http.server 8768"
   },
   "devDependencies": {
     "@playwright/test": "^1.52.0",

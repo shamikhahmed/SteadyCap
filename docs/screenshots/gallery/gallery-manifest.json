@@ -1,0 +1,91 @@
+{
+  "app": "SteadyCap",
+  "version": "2.2.0",
+  "generated": "2026-07-11T16:57:43.281Z",
+  "shots": [
+    {
+      "file": "desktop-01-onboarding.png",
+      "label": "Onboarding",
+      "route": "Navigation.go('onboarding')",
+      "viewport": "desktop"
+    },
+    {
+      "file": "desktop-02-dashboard.png",
+      "label": "Dashboard",
+      "route": "Navigation.go('dashboard')",
+      "viewport": "desktop"
+    },
+    {
+      "file": "desktop-03-recovery.png",
+      "label": "Recovery",
+      "route": "Navigation.go('recovery')",
+      "viewport": "desktop"
+    },
+    {
+      "file": "desktop-04-emergency.png",
+      "label": "Emergency",
+      "route": "Navigation.go('emergency')",
+      "viewport": "desktop"
+    },
+    {
+      "file": "desktop-05-knowledge.png",
+      "label": "Knowledge",
+      "route": "Navigation.go('knowledge')",
+      "viewport": "desktop"
+    },
+    {
+      "file": "desktop-06-journal.png",
+      "label": "Journal",
+      "route": "Navigation.go('journal')",
+      "viewport": "desktop"
+    },
+    {
+      "file": "desktop-07-profile.png",
+      "label": "Profile",
+      "route": "Navigation.go('profile')",
+      "viewport": "desktop"
+    },
+    {
+      "file": "mobile-01-onboarding.png",
+      "label": "Onboarding",
+      "route": "Navigation.go('onboarding')",
+      "viewport": "mobile"
+    },
+    {
+      "file": "mobile-02-dashboard.png",
+      "label": "Dashboard",
+      "route": "Navigation.go('dashboard')",
+      "viewport": "mobile"
+    },
+    {
+      "file": "mobile-03-recovery.png",
+      "label": "Recovery",
+      "route": "Navigation.go('recovery')",
+      "viewport": "mobile"
+    },
+    {
+      "file": "mobile-04-emergency.png",
+      "label": "Emergency",
+      "route": "Navigation.go('emergency')",
+      "viewport": "mobile"
+    },
+    {
+      "file": "mobile-05-knowledge.png",
+      "label": "Knowledge",
+      "route": "Navigation.go('knowledge')",
+      "viewport": "mobile"
+    },
+    {
+      "file": "mobile-06-journal.png",
+      "label": "Journal",
+      "route": "Navigation.go('journal')",
+      "viewport": "mobile"
+    },
+    {
+      "file": "mobile-07-profile.png",
+      "label": "Profile",
+      "route": "Navigation.go('profile')",
+      "viewport": "mobile"
+    }
+  ]
+}

@@ -9,10 +9,10 @@ Current shipped state. See `CHANGELOG.md` for how we got here.
 | Cap Standard item | Status |
 |---|---|
 | Docs pack | ✅ |
-| Screen gallery | ❌ |
+| Screen gallery | ✅ |
 | Version discipline | ✅ |
-| QA / e2e | 🟡 |
-| CI gate | ❌ |
+| QA / e2e | ✅ |
+| CI gate | ✅ |
 | PWA polish | ✅ |
 | Demo mode | ✅ |
 

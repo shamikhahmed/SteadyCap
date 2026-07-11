@@ -85,3 +85,16 @@ Vanilla JS PWA · orange accent `#FF6B35` · offline-first · localStorage
 ---
 
 Built by Shamikh Ahmed.
+
+## Screen gallery
+
+```bash
+npm run gallery        # regenerate docs/screenshots/gallery/ (14 shots)
+npm run gallery:view   # then open http://127.0.0.1:8768/screen-gallery.html
+```
+
+## Verify
+
+```bash
+npm run verify   # full Playwright suite incl. SOS flow — CI runs this on every push
+```

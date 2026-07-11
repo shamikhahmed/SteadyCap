@@ -4,7 +4,7 @@ const {
   resize,
   assertCapSharedMobile,
   assertCapSharedDesktop,
-} = require('../../capricorn-tooling/shared/testing/viewport-helpers');
+} = require('./helpers/viewport-helpers');
 
 test.describe('SteadyCap viewport contract', () => {
   test.beforeEach(async ({ page }) => {

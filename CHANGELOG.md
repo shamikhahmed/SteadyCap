@@ -1,5 +1,13 @@
 # Changelog — SteadyCap
 
+## 2.3.0 (2026-07-11)
+- Cap Standard rollout: 14-shot screen gallery (7 screens x mobile/desktop, `npm run gallery`) + browsable `screen-gallery.html`.
+- SOS flow e2e (safety-critical): walks all five phases + Skip-all exit, zero page errors.
+- CI: SteadyCap CI workflow runs full Playwright suite on every push; viewport-helpers vendored into tests/.
+- `verify` / `gallery` / `gallery:view` npm scripts per Cap Standard contract.
+- SW cache steadycap-v42.
+
+
 ## 2.1.1 (2026-06-15)
 - Restore pre–Capricorn identity home-screen icons (192/512/1024); service worker cache bump.
 
