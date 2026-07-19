@@ -1,3 +1,11 @@
+## [2.3.2] — 2026-07-19
+
+### Pitch
+- Premium Capricorn QR (`assets/qr-steadycap.png`) — H ECC, Capricorn Systems center mark, gold quiet frame on CTA
+
+### Ops
+- SW `steadycap-v44`
+
 # Changelog — SteadyCap
 
 ## 2.3.1 (2026-07-19)

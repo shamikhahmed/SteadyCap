@@ -7,7 +7,7 @@
 Personal recovery OS — habits, medicines, SOS/emergency, knowledge.
 
 ## Facts
-**Version:** 2.3.1
+**Version:** 2.3.2
 **Live:** https://shamikhahmed.github.io/SteadyCap/
 **Repo:** https://github.com/shamikhahmed/SteadyCap
 **Stack:** Vanilla JS PWA. Desktop-adaptive sidebar shell. Playwright viewport QA.
@@ -34,7 +34,7 @@ npm run gallery:view   # then open /screen-gallery.html
 | Version discipline | ✅ |
 | QA / e2e | ✅ (SOS release blocker) |
 | CI gate | ✅ |
-| PWA polish | ✅ (brand lock v2.3.1) |
+| PWA polish | ✅ (brand lock v2.3.2) |
 | Demo mode | ✅ |
 
 Gaps are tracked as tasks in `ROADMAP.md`.
