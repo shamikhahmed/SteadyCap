@@ -1,5 +1,5 @@
 'use strict';
-const CACHE = 'steadycap-v44';
+const CACHE = 'steadycap-v45';
 const ASSETS = [
   './css/capricorn-core.css',
   './',
@@ -56,6 +56,7 @@ const ASSETS = [
   './js/vendor/ScrollTrigger.min.js',
   './privacy.html',
   './changelog.html',
+  './assets/qr-steadycap.png',
 ];
 
 self.addEventListener('install', e => {

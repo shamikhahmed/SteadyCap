@@ -1,3 +1,9 @@
+## [2.3.3] — 2026-07-19
+
+### QA
+- Capricorn QR precached in SW; Playwright 9 passed
+- SW `steadycap-v45`
+
 ## [2.3.2] — 2026-07-19
 
 ### Pitch
