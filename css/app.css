@@ -757,6 +757,8 @@ input, select, textarea {
   font-size: 1.4rem;
   flex-shrink: 0;
   margin-top: 2px;
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+  line-height: 1;
 }
 
 .insight-text {
@@ -1637,7 +1639,20 @@ button.check-row:focus-visible {
   background: rgba(255, 107, 53, 0.15);
   border-color: var(--orange);
 }
-.mood-emoji { font-size: 1.25rem; line-height: 1; }
+.mood-emoji,
+.nudge-icon,
+.sos-tap-icon,
+.habit-mini-icon,
+.milestone-icon,
+.habit-chip-icon,
+.feed-icon,
+.habit-icon,
+.system-icon,
+.kb-icon {
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+  line-height: 1;
+}
+.mood-emoji { font-size: 1.25rem; }
 .mood-label {
   font-size: 0.58rem;
   font-weight: 600;

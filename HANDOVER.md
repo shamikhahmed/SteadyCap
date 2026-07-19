@@ -1,13 +1,13 @@
 # SteadyCap — Handover
 
 > Read this + `ROADMAP.md` + `~/Capricorn-Brain/01 Projects/SteadyCap.md` before working here.
-> Last updated: 2026-07-11 · Fleet-wide standard: `capricorn-tooling/shared/CAP-STANDARD.md`
+> Last updated: 2026-07-19 · Fleet-wide standard: `capricorn-tooling/shared/CAP-STANDARD.md`
 
 ## What this is
 Personal recovery OS — habits, medicines, SOS/emergency, knowledge.
 
 ## Facts
-**Version:** 2.2.0
+**Version:** 2.3.1
 **Live:** https://shamikhahmed.github.io/SteadyCap/
 **Repo:** https://github.com/shamikhahmed/SteadyCap
 **Stack:** Vanilla JS PWA. Desktop-adaptive sidebar shell. Playwright viewport QA.
@@ -15,8 +15,10 @@ Personal recovery OS — habits, medicines, SOS/emergency, knowledge.
 
 ## Run & verify
 ```bash
-python3 -m http.server 8000
-npm run test:e2e
+python3 -m http.server 8768
+npm run verify
+npm run gallery
+npm run gallery:view   # then open /screen-gallery.html
 ```
 
 ## Architecture
@@ -24,15 +26,15 @@ npm run test:e2e
 - `js/ui/navigation.js` — shell nav
 - `js/cap-demo-mode.js` — demo data
 
-## Cap Standard status (2026-07-11)
+## Cap Standard status (2026-07-19)
 | Cap Standard item | Status |
 |---|---|
 | Docs pack | ✅ |
-| Screen gallery | ❌ |
+| Screen gallery | ✅ |
 | Version discipline | ✅ |
-| QA / e2e | 🟡 |
-| CI gate | ❌ |
-| PWA polish | ✅ |
+| QA / e2e | ✅ (SOS release blocker) |
+| CI gate | ✅ |
+| PWA polish | ✅ (brand lock v2.3.1) |
 | Demo mode | ✅ |
 
 Gaps are tracked as tasks in `ROADMAP.md`.

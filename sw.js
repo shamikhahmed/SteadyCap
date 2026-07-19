@@ -1,5 +1,5 @@
 'use strict';
-const CACHE = 'steadycap-v42';
+const CACHE = 'steadycap-v43';
 const ASSETS = [
   './css/capricorn-core.css',
   './',
@@ -36,8 +36,15 @@ const ASSETS = [
   './landing.html',
   './presentation.html',
   './pitch.html',
+  './assets/icons/favicon.svg',
+  './assets/icons/icon.svg',
+  './assets/icons/mark.svg',
+  './assets/icons/apple-touch-icon-180.png',
   './assets/icons/icon-192.png',
   './assets/icons/icon-512.png',
+  './assets/icons/icon-1024.png',
+  './assets/icons/icon-maskable-192.png',
+  './assets/icons/icon-maskable-512.png',
   './js/capricorn-motion.js',
   './js/capricorn-scene.js',
   './js/capricorn-premium-nav.js',

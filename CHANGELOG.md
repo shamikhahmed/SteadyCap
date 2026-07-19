@@ -1,5 +1,11 @@
 # Changelog — SteadyCap
 
+## 2.3.1 (2026-07-19)
+- Cap Family Mega-Wave: Capricorn OS brand lock — wired favicon, apple-touch-icon-180, and separate any/maskable PWA icons in `manifest.json` + `index.html`.
+- Apple polish: theme-color aligned to shell background; emoji tiles use Apple Color Emoji stack; safe-area insets unchanged (already solid).
+- SW cache bump (`steadycap-v43`); SW register query `?v=43`.
+- FEATURES.md (S/W/L/R) at root; gallery + SOS e2e remain release gates.
+
 ## 2.3.0 (2026-07-11)
 - Cap Standard rollout: 14-shot screen gallery (7 screens x mobile/desktop, `npm run gallery`) + browsable `screen-gallery.html`.
 - SOS flow e2e (safety-critical): walks all five phases + Skip-all exit, zero page errors.
