@@ -144,6 +144,13 @@ const Profile = (() => {
       <div class="section-header"><span class="section-title">Settings</span></div>
       <div style="padding:0 20px">
         <div class="card" style="margin-bottom:10px">
+          <div class="ob-field" style="margin-bottom:12px">
+            <div class="ob-label">Appearance</div>
+            <div class="theme-seg" role="group" aria-label="Theme">
+              <button type="button" class="${document.documentElement.getAttribute('data-theme')==='light' ? 'on' : ''}" onclick="Profile._setTheme('light')">Light</button>
+              <button type="button" class="${document.documentElement.getAttribute('data-theme')!=='light' ? 'on' : ''}" onclick="Profile._setTheme('dark')">Dark</button>
+            </div>
+          </div>
           <div class="ob-field">
             <div class="ob-label">Name</div>
             <input class="ob-input" type="text" id="p-name" placeholder="Your name" value="${user.name||''}" oninput="Profile._saveName(this.value)">
@@ -507,6 +514,15 @@ const Profile = (() => {
     render();
   }
 
+  function _setTheme(mode) {
+    const theme = mode === 'light' ? 'light' : 'dark';
+    try { localStorage.setItem('steadycap-theme', theme); } catch (e) {}
+    document.documentElement.setAttribute('data-theme', theme);
+    const meta = document.getElementById('themeColorMeta') || document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute('content', theme === 'light' ? '#F4F0EA' : '#1A1412');
+    render();
+  }
+
   function _toggleSpiritual() {
     const user = State.get('user') || {};
     State.set('user', { ...user, spiritualMode: !user.spiritualMode });
@@ -767,7 +783,7 @@ const Profile = (() => {
   return {
     render, loadDemoData, _saveName, _saveCurrency, _saveGoals, _exportData, _importData, _reset, _loadDemo,
     _editHabit, _saveEdit, _closeModal, _addHabit, _startAddHabit, _confirmAddHabit,
-    _toggleSpiritual, _setHairTreatment, _toggleNotifications,
+    _toggleSpiritual, _setHairTreatment, _toggleNotifications, _setTheme,
     _addMed, _saveMed, _editMed, _removeMed, _toggleMed,
     _addRoutine, _saveRoutine, _removeRoutine,
     _addCustomHabit, _pickIcon, _saveCustomHabit, _editCustomHabit, _saveCustomEdit, _removeCustom,

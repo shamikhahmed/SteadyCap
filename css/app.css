@@ -1,35 +1,73 @@
 /* ============================================================
-   DisciplineOS v2 — Premium Design System
+   SteadyCap — Clinical chart / calm medical tray
+   Light + dark only
    ============================================================ */
 
-/* Variables */
-:root {
-  --bg: #1B120F;
-  --bg2: #231712;
-  --bg3: #2B1D17;
-  --bg4: #33231B;
+/* Variables — dark clinical tray (default) */
+:root,
+html[data-theme="dark"] {
+  --bg: #1A1412;
+  --bg2: #221A17;
+  --bg3: #2A211C;
+  --bg4: #322924;
   --glass: rgba(255,247,238,0.06);
   --glass2: rgba(255,244,231,0.1);
   --glass3: rgba(255,247,238,0.15);
-  --border: rgba(255,201,166,0.24);
-  --border2: rgba(255,201,166,0.35);
-  --text: #FFF6EF;
-  --text2: #DCC6B8;
-  --text3: #B08E7A;
+  --border: rgba(255,201,166,0.22);
+  --border2: rgba(255,201,166,0.32);
+  --text: #F8F1EA;
+  --text2: #D4C2B4;
+  --text3: #A89282;
   --orange: #C9652B;
-  --teal: #2F8E88;
-  --green: #06D6A0;
-  --red: #FF3B30;
-  --blue: #0A84FF;
-  --gold: #FFD60A;
-  --purple: #BF5AF2;
-  --r: 22px;
-  --r-sm: 14px;
-  --r-lg: 30px;
-  --shadow-soft: 0 14px 36px rgba(25,13,9,0.28);
-  --shadow-card: 0 12px 28px rgba(20,10,7,0.28);
+  --teal: #3A8F88;
+  --green: #3D9B7A;
+  --red: #C45B4E;
+  --blue: #4A7A9B;
+  --gold: #C4A35A;
+  --purple: #8B6F8E;
+  --r: 18px;
+  --r-sm: 12px;
+  --r-lg: 24px;
+  --shadow-soft: 0 10px 28px rgba(20,12,8,0.28);
+  --shadow-card: inset 0 1px 0 rgba(255,243,232,0.06), 0 8px 22px rgba(16,8,4,0.22);
   --font: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
   --font-display: 'Fraunces', 'Source Sans 3', serif;
+  --body-grad:
+    radial-gradient(90% 90% at 12% 14%, rgba(201,101,43,0.16) 0%, rgba(201,101,43,0) 62%),
+    radial-gradient(78% 72% at 88% 18%, rgba(58,143,136,0.14) 0%, rgba(58,143,136,0) 58%),
+    linear-gradient(160deg, #171210 0%, #1F1814 52%, #261E19 100%);
+  --nav-bg: linear-gradient(180deg, rgba(42,33,28,0.92), rgba(34,26,23,0.98));
+  --theme-color: #1A1412;
+}
+
+/* Light — paper chart / medical tray */
+html[data-theme="light"] {
+  --bg: #F4F0EA;
+  --bg2: #EBE5DC;
+  --bg3: #E2DACF;
+  --bg4: #D8CFC2;
+  --glass: rgba(255,255,255,0.72);
+  --glass2: rgba(255,255,255,0.88);
+  --glass3: rgba(255,255,255,0.95);
+  --border: rgba(90,70,55,0.14);
+  --border2: rgba(90,70,55,0.22);
+  --text: #2A221C;
+  --text2: #5A4E44;
+  --text3: #8A7A6C;
+  --orange: #B85A28;
+  --teal: #2F7A74;
+  --green: #2F7A5C;
+  --red: #A8483C;
+  --blue: #3A6A88;
+  --gold: #A08040;
+  --purple: #6E5A72;
+  --shadow-soft: 0 8px 24px rgba(60,40,25,0.08);
+  --shadow-card: inset 0 1px 0 rgba(255,255,255,0.9), 0 4px 16px rgba(60,40,25,0.06);
+  --body-grad:
+    radial-gradient(80% 70% at 10% 0%, rgba(201,101,43,0.06) 0%, transparent 55%),
+    linear-gradient(180deg, #F7F3ED 0%, #F0EBE3 48%, #EBE5DC 100%);
+  --nav-bg: linear-gradient(180deg, rgba(255,252,248,0.94), rgba(244,240,234,0.98));
+  --theme-color: #F4F0EA;
 }
 
 /* Base Reset */
@@ -45,10 +83,7 @@ html {
 }
 
 body {
-  background:
-    radial-gradient(90% 90% at 12% 14%, rgba(201,101,43,0.23) 0%, rgba(201,101,43,0) 62%),
-    radial-gradient(78% 72% at 88% 18%, rgba(47,142,136,0.22) 0%, rgba(47,142,136,0) 58%),
-    linear-gradient(160deg, #1A110E 0%, #241813 52%, #2C1E17 100%);
+  background: var(--body-grad);
   color: var(--text);
   font-family: var(--font);
   -webkit-font-smoothing: antialiased;
@@ -57,6 +92,7 @@ body {
   height: 100dvh;
   user-select: none;
   -webkit-user-select: none;
+  transition: background 0.35s ease, color 0.25s ease;
 }
 
 body::before {
@@ -65,9 +101,19 @@ body::before {
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  background:
-    radial-gradient(60% 55% at 20% 80%, rgba(255,215,187,0.08) 0%, rgba(255,215,187,0) 70%),
-    radial-gradient(55% 45% at 80% 78%, rgba(88,181,174,0.09) 0%, rgba(88,181,174,0) 72%);
+  background-image:
+    linear-gradient(rgba(201,101,43,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,101,43,0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0.5;
+}
+
+html[data-theme="light"] body::before {
+  background-image:
+    linear-gradient(rgba(90,70,55,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(90,70,55,0.05) 1px, transparent 1px);
+  background-size: 22px 22px;
+  opacity: 0.65;
 }
 
 input, select, textarea {
@@ -225,16 +271,20 @@ input, select, textarea {
 
 #nav {
   height: calc(64px + env(safe-area-inset-bottom));
-  background: linear-gradient(180deg, rgba(43,29,23,0.7), rgba(35,23,18,0.96));
+  background: var(--nav-bg);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border-top: 1px solid var(--border);
-  box-shadow: 0 -10px 24px rgba(25,13,9,0.26), inset 0 1px 0 rgba(255,243,232,0.08);
+  box-shadow: 0 -8px 20px rgba(25,13,9,0.18), inset 0 1px 0 rgba(255,243,232,0.06);
   display: flex;
   padding-bottom: env(safe-area-inset-bottom);
   flex-shrink: 0;
   position: relative;
   z-index: 300;
+}
+
+html[data-theme="light"] #nav {
+  box-shadow: 0 -4px 16px rgba(60,40,25,0.06), inset 0 1px 0 rgba(255,255,255,0.8);
 }
 
 /* ============================================================
@@ -247,6 +297,11 @@ input, select, textarea {
   border-radius: var(--r);
   padding: 20px;
   box-shadow: var(--shadow-card);
+}
+
+html[data-theme="light"] .card {
+  background: rgba(255,255,255,0.82);
+  border-color: rgba(90,70,55,0.12);
 }
 
 .card-sm {
@@ -863,29 +918,31 @@ input, select, textarea {
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  border: 3px solid rgba(47,142,136,0.24);
+  border: 2.5px solid color-mix(in srgb, var(--teal) 28%, transparent);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.7s ease;
+  transition: transform 0.7s ease, border-color 0.7s ease, opacity 0.7s ease;
   margin: 0 auto;
+  box-shadow: none;
+  opacity: 0.85;
 }
 
 .breath-ring.inhale {
   border-color: var(--teal);
-  box-shadow: 0 0 34px rgba(47,142,136,0.28), 0 0 70px rgba(47,142,136,0.12);
-  transform: scale(1.14);
+  opacity: 1;
+  transform: scale(1.1);
 }
 
 .breath-ring.hold {
   border-color: var(--orange);
-  box-shadow: 0 0 34px rgba(201,101,43,0.26);
-  transform: scale(1.08);
+  opacity: 0.95;
+  transform: scale(1.05);
 }
 
 .breath-ring.exhale {
-  border-color: rgba(47,142,136,0.3);
-  box-shadow: none;
+  border-color: color-mix(in srgb, var(--teal) 35%, transparent);
+  opacity: 0.75;
   transform: scale(0.94);
 }
 
@@ -1678,4 +1735,128 @@ button.check-row:focus-visible {
 body[data-cap-app="1"] #nav {
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
+}
+
+/* ============================================================
+   Clinical chart splash
+   ============================================================ */
+.steady-splash {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  background: var(--body-grad, #1A1412);
+  transition: opacity 0.45s ease, visibility 0.45s ease;
+}
+.steady-splash.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.steady-splash__chart {
+  width: min(72vw, 220px);
+  aspect-ratio: 3 / 4;
+  position: relative;
+  border-radius: 4px 10px 10px 4px;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--bg2) 90%, var(--orange)) 0%, var(--bg3) 100%);
+  border: 1px solid var(--border2);
+  box-shadow: var(--shadow-soft), inset 0 0 0 1px rgba(255,255,255,0.04);
+  overflow: hidden;
+  animation: steadyChartIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.steady-splash__chart::before {
+  content: '';
+  position: absolute;
+  inset: 12% 10% 14% 14%;
+  border: 1px solid color-mix(in srgb, var(--orange) 35%, transparent);
+  border-radius: 2px;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--teal) 18%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--teal) 12%, transparent) 1px, transparent 1px);
+  background-size: 10px 10px;
+}
+.steady-splash__chart::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8%;
+  bottom: 8%;
+  width: 6px;
+  background: linear-gradient(180deg, var(--orange), color-mix(in srgb, var(--orange) 40%, var(--bg3)));
+  border-radius: 0 2px 2px 0;
+}
+.steady-splash__clip {
+  position: absolute;
+  top: 10%;
+  right: 8%;
+  width: 18px;
+  height: 28px;
+  border-radius: 2px;
+  background: color-mix(in srgb, var(--gold) 70%, var(--bg2));
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  animation: steadyClipPulse 1.6s ease-in-out infinite;
+}
+.steady-splash__title {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin: 0;
+  animation: steadyFadeUp 0.7s 0.25s both;
+}
+.steady-splash__tag {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text3);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  animation: steadyFadeUp 0.7s 0.4s both;
+}
+@keyframes steadyChartIn {
+  from { opacity: 0; transform: translateY(12px) scale(0.96); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes steadyFadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes steadyClipPulse {
+  0%, 100% { opacity: 0.85; }
+  50% { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .steady-splash__chart,
+  .steady-splash__title,
+  .steady-splash__tag,
+  .steady-splash__clip { animation: none; }
+}
+
+.theme-seg {
+  display: flex;
+  gap: 6px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 4px;
+}
+.theme-seg button {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: var(--text3);
+  font: 600 0.75rem/1 var(--font);
+  padding: 8px 10px;
+  border-radius: 9px;
+  cursor: pointer;
+}
+.theme-seg button.on {
+  background: var(--glass3);
+  color: var(--text);
+  box-shadow: var(--shadow-card);
 }

@@ -1,3 +1,11 @@
+## [2.4.0] — 2026-07-20
+
+### Beauty — clinical chart / medical tray
+- Splash: chart clipboard open beat (light + dark)
+- Dual theme tokens (paper chart light / calm tray dark); You → Appearance toggle
+- Desaturated neon semantics; SOS breath ring opacity pulse (no glow bloom)
+- Tray card chrome + subtle chart grid; SW `steadycap-v46`
+
 ## [2.3.3] — 2026-07-19
 
 ### QA

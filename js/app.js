@@ -1,6 +1,14 @@
 'use strict';
 const App = (() => {
+  function hideSplash() {
+    const splash = document.getElementById('splash');
+    if (!splash || splash.classList.contains('hide')) return;
+    splash.classList.add('hide');
+    setTimeout(() => splash.remove(), 500);
+  }
+
   function init() {
+    setTimeout(hideSplash, 1400);
     const demo = new URLSearchParams(location.search).get('demo') === '1';
     if (demo && window.Profile && Profile.loadDemoData) {
       State.useDemoStorage(true);
@@ -23,7 +31,7 @@ const App = (() => {
 
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js?v=45').catch(() => {});
+        navigator.serviceWorker.register('./sw.js?v=46').catch(() => {});
       });
     }
 

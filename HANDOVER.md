@@ -7,7 +7,7 @@
 Personal recovery OS — habits, medicines, SOS/emergency, knowledge.
 
 ## Facts
-**Version:** 2.3.3
+**Version:** 2.4.0
 **Live:** https://shamikhahmed.github.io/SteadyCap/
 **Repo:** https://github.com/shamikhahmed/SteadyCap
 **Stack:** Vanilla JS PWA. Desktop-adaptive sidebar shell. Playwright viewport QA.
