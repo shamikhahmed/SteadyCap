@@ -1,9 +1,174 @@
-/* DisciplineOS — identity overlay (base clinic chrome in app.css) */
+/* SteadyCap — ER triage identity overlay */
 
-.t-hero, .t-display, .t-title, h1, h2, .section-title, .habit-summary-val {
-  font-family: var(--font-display, 'Fraunces', Georgia, serif);
+.t-hero, .t-display, .t-title, h1, h2, .section-title {
+  font-family: var(--font-display, 'Source Sans 3', sans-serif);
+  font-weight: 700;
+}
+
+.habit-summary-val,
+.score-val,
+.countdown,
+.day-num,
+.money-amount,
+.stat-val,
+#action-timer,
+.check-sub {
+  font-family: var(--font-mono, 'IBM Plex Mono', monospace);
+  font-variant-numeric: tabular-nums;
 }
 
 .breath-ring {
   transition-duration: 0.7s;
+}
+
+/* ── Today ER triage tray ── */
+.today-tray__header {
+  padding: 16px 20px 8px;
+}
+.tray-pill-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+.tray-pill-slot {
+  width: 36px;
+  height: 48px;
+  border-radius: 18px;
+  border: 2px solid var(--border, #A3C4C7);
+  background: var(--surface2, rgba(0,168,181,0.08));
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 6px;
+  position: relative;
+}
+.tray-pill-slot::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  width: 18px;
+  height: 10px;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--teal, #00A8B5) 35%, transparent);
+  opacity: 0.5;
+}
+.tray-pill-slot.is-filled {
+  border-color: var(--teal, #00A8B5);
+  background: color-mix(in srgb, var(--teal, #00A8B5) 18%, transparent);
+}
+.tray-pill-slot.is-filled::before {
+  opacity: 1;
+  background: var(--teal, #00A8B5);
+}
+.tray-pill-slot.is-due {
+  border-color: var(--danger, #D62246);
+}
+.tray-pill-slot__cap {
+  font-family: var(--font-mono, monospace);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text3);
+}
+.tray-pill-slot.is-filled .tray-pill-slot__cap {
+  color: var(--teal, #00A8B5);
+}
+.tray-pill-meta {
+  font-size: 11px;
+  color: var(--text3);
+  margin-top: 6px;
+  font-family: var(--font-mono, monospace);
+}
+.tray-forecast {
+  margin: 0 0 14px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 2px solid var(--border);
+  background: var(--surface, #fff);
+}
+.tray-forecast__label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text3);
+}
+.tray-forecast__level {
+  font-size: 16px;
+  font-weight: 800;
+  margin-top: 4px;
+  color: var(--text);
+}
+.tray-forecast--high {
+  border-color: color-mix(in srgb, var(--danger, #D62246) 50%, var(--border));
+  background: color-mix(in srgb, var(--danger, #D62246) 8%, transparent);
+}
+.tray-forecast--medium {
+  border-color: color-mix(in srgb, var(--warning, #FF9F1C) 50%, var(--border));
+}
+.tray-forecast--low {
+  border-color: color-mix(in srgb, var(--teal, #00A8B5) 40%, var(--border));
+}
+.tray-forecast__note {
+  font-size: 12px;
+  color: var(--text2);
+  line-height: 1.45;
+  margin-top: 6px;
+}
+
+.today-tray__layout {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.today-tray__col--schedule .section-header,
+.today-tray__col--center .section-header,
+.today-tray__col--side .section-header {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.today-tray__col--side {
+  padding: 0 20px;
+}
+.today-tray__col--center {
+  padding: 0 20px;
+}
+
+@media (min-width: 900px) {
+  .today-tray__layout {
+    display: grid;
+    grid-template-columns: minmax(260px, 1fr) minmax(280px, 1.1fr) minmax(240px, 0.9fr);
+    gap: 16px;
+    padding: 0 16px 16px;
+    align-items: start;
+  }
+  .today-tray__col {
+    background: var(--surface, #fff);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 0 16px;
+    min-height: 200px;
+  }
+  .today-tray__col--side {
+    padding: 12px 14px 16px;
+    position: sticky;
+    top: 12px;
+  }
+  .today-tray__col--center {
+    padding: 12px 14px 16px;
+  }
+  .today-tray__col .section-header {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+  .today-tray__header {
+    max-width: 100%;
+  }
+  /* Chart-paper grid on desktop tray */
+  .today-tray {
+    background-image:
+      linear-gradient(rgba(0,168,181,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,168,181,0.04) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
 }

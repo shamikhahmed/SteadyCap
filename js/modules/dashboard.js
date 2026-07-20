@@ -213,48 +213,100 @@ const Dashboard = (() => {
     const user = State.get('user') || {};
     const missed = Notifications.getMissedNudges();
     const insight = RecoveryEngine.todayInsight();
-    const checklistDone = Notifications.getDueItems().filter(i => i.done).length;
-    const checklistTotal = Notifications.getDueItems().filter(i => !i.asNeeded).length;
+    const dueItems = Notifications.getDueItems();
+    const checklistDone = dueItems.filter(i => i.done).length;
+    const checklistTotal = dueItems.filter(i => !i.asNeeded).length;
+    const medSlots = dueItems.filter(i => i.kind === 'medicine');
+    const medDone = medSlots.filter(i => i.done).length;
+
+    const traySlots = medSlots.length
+      ? `<div class="tray-pill-row" aria-label="Medicine slots">${medSlots.slice(0, 6).map((m, i) =>
+          `<div class="tray-pill-slot${m.done ? ' is-filled' : ''}${m.overdue && !m.done ? ' is-due' : ''}" style="--slot-i:${i}" title="${m.label}">
+            <span class="tray-pill-slot__cap">${m.done ? '✓' : (i + 1)}</span>
+          </div>`).join('')}</div>
+        <div class="tray-pill-meta">${medDone}/${medSlots.length} med slots</div>`
+      : `<div class="tray-pill-row tray-pill-row--empty"><div class="tray-pill-slot"></div><div class="tray-pill-slot"></div><div class="tray-pill-slot"></div></div>
+        <div class="tray-pill-meta">Add medicines in Profile</div>`;
+
+    let forecastHtml = '';
+    try {
+      if (window.TriggerEngine && typeof TriggerEngine.currentRiskLevel === 'function') {
+        const journalEntries = (window.Journal && Journal.getEntries) ? Journal.getEntries() : [];
+        const primary = habits[0] || null;
+        const risk = TriggerEngine.currentRiskLevel(
+          State.get('cravingLog') || [],
+          habits,
+          journalEntries
+        );
+        const level = (risk && risk.level) || 'low';
+        const label = (risk && risk.label) || (level === 'low' ? 'Steady window' : level);
+        let note = 'Rules-based · on-device';
+        const card = TriggerEngine.forecastCard(
+          State.get('cravingLog') || [],
+          habits,
+          primary,
+          journalEntries
+        );
+        if (card && card.withdrawalWarning) note = card.withdrawalWarning;
+        else if (risk && risk.analysis && risk.analysis.insights && risk.analysis.insights[0]) {
+          note = risk.analysis.insights[0].message || note;
+        }
+        forecastHtml = `<div class="tray-forecast tray-forecast--${level}">
+            <div class="tray-forecast__label">Craving forecast</div>
+            <div class="tray-forecast__level">${label}</div>
+            <div class="tray-forecast__note">${note}</div>
+          </div>`;
+      }
+    } catch (e) { /* optional */ }
 
     screen.innerHTML = `
-      <div class="today-header">
-        <div class="t-caption">${formatDate()}</div>
-        <div class="t-display t-display--compact">${greeting()}${user.name ? ', ' + user.name.split(' ')[0] : ''}</div>
-        ${checklistTotal > 0 ? `<div class="today-progress-pill">${checklistDone}/${checklistTotal} today&apos;s tasks done</div>` : ''}
-      </div>
+      <div class="today-tray">
+        <div class="today-tray__header">
+          <div class="t-caption">${formatDate()}</div>
+          <div class="t-display t-display--compact">${greeting()}${user.name ? ', ' + user.name.split(' ')[0] : ''}</div>
+          ${checklistTotal > 0 ? `<div class="today-progress-pill">${checklistDone}/${checklistTotal} showing up today</div>` : ''}
+          ${traySlots}
+        </div>
 
-      ${buildNudgeBanner(missed)}
-      ${buildSOS()}
+        <div class="today-tray__layout">
+          <div class="today-tray__col today-tray__col--schedule">
+            ${buildNudgeBanner(missed)}
+            ${buildSOS()}
+            <div class="section-header"><span class="section-title">Today&apos;s Routines</span>
+              <button type="button" class="section-link" onclick="Navigation.go('profile')">Edit</button>
+            </div>
+            <div class="today-checklist">${buildChecklist()}</div>
+          </div>
 
-      <div class="section-header">
-        <span class="section-title">Daily check-in</span>
-        ${Journal.getStreak() > 0 ? `<span class="today-progress-pill">${Journal.getStreak()}d streak</span>` : ''}
-        <button type="button" class="section-link" onclick="Navigation.go('journal')">History</button>
-      </div>
-      <div id="daily-checkin-wrap" style="padding:0 20px 8px"></div>
+          <div class="today-tray__col today-tray__col--center">
+            <div class="section-header">
+              <span class="section-title">Daily check-in</span>
+              ${Journal.getStreak() > 0 ? `<span class="today-progress-pill">${Journal.getStreak()}d showing up</span>` : ''}
+              <button type="button" class="section-link" onclick="Navigation.go('journal')">History</button>
+            </div>
+            <div id="daily-checkin-wrap" style="padding:0 0 8px"></div>
+            ${insight ? `
+              <div class="insight-card" style="margin:12px 0 8px">
+                <div class="insight-mark" aria-hidden="true">Note</div>
+                <div>
+                  <div class="insight-text">${insight.text}</div>
+                  <div style="font-size:0.65rem;color:var(--text3);margin-top:6px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em">— ${insight.source}</div>
+                </div>
+              </div>
+            ` : ''}
+          </div>
 
-      <div class="section-header"><span class="section-title">Today&apos;s Routines</span>
-        <button type="button" class="section-link" onclick="Navigation.go('profile')">Edit</button>
-      </div>
-      <div class="today-checklist">${buildChecklist()}</div>
-
-      <div class="section-header"><span class="section-title">Habit Progress</span>
-        <button type="button" class="section-link" onclick="Navigation.go('recovery',{habitId:Recovery.getSelectedHabitId()})">Details</button>
-      </div>
-      <div style="padding:0 20px 8px">${buildSmartInsights(habits)}${buildHabitProgress(habits)}</div>
-
-      ${buildHourlyMilestone(habits)}
-
-      ${insight ? `
-        <div class="insight-card" style="margin:12px 20px 20px">
-          <div class="insight-mark" aria-hidden="true">Note</div>
-          <div>
-            <div class="insight-text">${insight.text}</div>
-            <div style="font-size:0.65rem;color:var(--text3);margin-top:6px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em">— ${insight.source}</div>
+          <div class="today-tray__col today-tray__col--side">
+            ${forecastHtml}
+            <div class="section-header"><span class="section-title">Habit Progress</span>
+              <button type="button" class="section-link" onclick="Navigation.go('recovery',{habitId:Recovery.getSelectedHabitId()})">Details</button>
+            </div>
+            <div>${buildSmartInsights(habits)}${buildHabitProgress(habits)}</div>
+            ${buildHourlyMilestone(habits)}
           </div>
         </div>
-      ` : ''}
-      <div style="height:16px"></div>
+        <div style="height:16px"></div>
+      </div>
     `;
 
     if (window.Journal) Journal.renderInline(document.getElementById('daily-checkin-wrap'));

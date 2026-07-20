@@ -1,3 +1,13 @@
+## [2.4.3] — 2026-07-20
+- Today remint: ER triage tray — pill slots, 3-col desktop (schedule / check-in / forecast+habits), no streak-guilt copy. SW `steadycap-v49`.
+
+## [2.4.2] — 2026-07-20
+
+### Identity remint — ER triage tray
+- Splash: clipboard tray + pill slots + teal pulse (not chart/passport)
+- Tokens: hospital teal accent (`#00A8B5` light / `#00D4E6` dark); SOS red `#D62246` unchanged takeover
+- Fonts: Source Sans 3 + IBM Plex Mono for doses; SW `steadycap-v48`
+
 ## [2.4.1] — 2026-07-20
 
 ### Polish
