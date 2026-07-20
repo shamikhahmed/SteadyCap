@@ -28,21 +28,21 @@ const Onboarding = (() => {
 
   function buildWelcome() {
     return `<div class="ob-screen" style="text-align:center;padding:0 28px;justify-content:center;min-height:100dvh;display:flex;flex-direction:column;align-items:center;gap:0">
-      <div style="font-size:72px;line-height:1;margin-bottom:20px;filter:drop-shadow(0 4px 24px rgba(255,150,80,0.35))">🧡</div>
+      <div class="ob-welcome-mark" aria-hidden="true">SC</div>
       <div class="ob-logo" style="font-size:26px;margin-bottom:12px">SteadyCap</div>
       <div class="ob-title" style="font-size:28px;font-weight:900;letter-spacing:-0.03em;margin-bottom:14px;line-height:1.2">Recovery is a system.<br>Not a streak.</div>
       <div class="ob-sub" style="font-size:16px;line-height:1.6;max-width:300px;margin-bottom:36px">This app tracks your progress — no judgment, no streaks lost forever. Every day counts. Even the hard ones.</div>
       <div style="display:flex;flex-direction:column;gap:10px;width:100%;max-width:320px;margin-bottom:24px">
         <div style="display:flex;align-items:center;gap:12px;background:rgba(255,150,80,0.08);border:1px solid rgba(255,150,80,0.2);border-radius:14px;padding:14px 16px">
-          <span style="font-size:20px">🔒</span>
+          <span class="ob-feat-tag">Private</span>
           <span style="font-size:13px;color:var(--text2,#ccc)">Private by default — your data never leaves this device</span>
         </div>
         <div style="display:flex;align-items:center;gap:12px;background:rgba(255,150,80,0.08);border:1px solid rgba(255,150,80,0.2);border-radius:14px;padding:14px 16px">
-          <span style="font-size:20px">🧠</span>
+          <span class="ob-feat-tag">Forecast</span>
           <span style="font-size:13px;color:var(--text2,#ccc)">Craving forecasts that actually predict hard moments</span>
         </div>
         <div style="display:flex;align-items:center;gap:12px;background:rgba(255,150,80,0.08);border:1px solid rgba(255,150,80,0.2);border-radius:14px;padding:14px 16px">
-          <span style="font-size:20px">🆘</span>
+          <span class="ob-feat-tag">SOS</span>
           <span style="font-size:13px;color:var(--text2,#ccc)">5-phase SOS when you need it most — works offline</span>
         </div>
       </div>

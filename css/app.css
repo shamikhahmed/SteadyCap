@@ -816,6 +816,20 @@ html[data-theme="light"] .card {
   line-height: 1;
 }
 
+.insight-mark {
+  flex-shrink: 0;
+  margin-top: 2px;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text3);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 8px;
+  line-height: 1;
+}
+
 .insight-text {
   font-size: 0.82rem;
   color: var(--text2);
@@ -1457,6 +1471,71 @@ html[data-theme="light"] .card {
 }
 
 .sos-tap-icon { font-size: 1.8rem; flex-shrink: 0; }
+.sos-tap-icon--badge {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--red);
+  background: rgba(255, 59, 48, 0.14);
+  border: 1px solid rgba(255, 59, 48, 0.35);
+  border-radius: 8px;
+  padding: 10px 9px;
+  line-height: 1;
+  font-family: var(--font);
+}
+.nudge-icon--text {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blue);
+  background: rgba(10, 132, 255, 0.12);
+  border: 1px solid rgba(10, 132, 255, 0.28);
+  border-radius: 8px;
+  padding: 8px 7px;
+  line-height: 1;
+  font-family: var(--font);
+}
+.today-empty-mark {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text3);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px 12px;
+  margin-bottom: 12px;
+}
+.ob-welcome-mark {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  color: var(--orange);
+  background: rgba(255, 150, 80, 0.12);
+  border: 1px solid rgba(255, 150, 80, 0.28);
+  margin-bottom: 18px;
+}
+.ob-feat-tag {
+  flex-shrink: 0;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--orange);
+  background: rgba(255, 150, 80, 0.12);
+  border: 1px solid rgba(255, 150, 80, 0.25);
+  border-radius: 8px;
+  padding: 6px 8px;
+  min-width: 4.5rem;
+  text-align: center;
+}
 .sos-tap-title { font-size: 1.05rem; font-weight: 800; color: var(--red); }
 .sos-tap-sub { font-size: 0.75rem; color: var(--text2); margin-top: 2px; }
 

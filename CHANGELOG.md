@@ -1,3 +1,8 @@
+## [2.4.1] — 2026-07-20
+
+### Polish
+- Dashboard SOS / empty states / onboarding: text labels over emoji dominance; SW `steadycap-v47`
+
 ## [2.4.0] — 2026-07-20
 
 ### Beauty — clinical chart / medical tray

@@ -31,7 +31,7 @@ const App = (() => {
 
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js?v=46').catch(() => {});
+        navigator.serviceWorker.register('./sw.js?v=47').catch(() => {});
       });
     }
 

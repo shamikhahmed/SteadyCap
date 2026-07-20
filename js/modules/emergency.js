@@ -143,7 +143,7 @@ const Emergency = (() => {
         ${goals.length ? goals.map(g => `<div style="background:rgba(255,107,53,0.08);border:1px solid rgba(255,107,53,0.2);border-radius:var(--r);padding:14px 20px;margin-bottom:10px;font-size:0.9rem;font-weight:600;color:var(--text)">${g}</div>`).join('') :
           `<div style="font-size:1rem;color:var(--text2);margin-bottom:20px;line-height:1.6">What matters to you<br>more than this craving?</div>`}
         ${insight ? `<div class="card" style="margin-top:16px;text-align:left">
-          <span style="font-size:1.2rem">${insight.emoji}</span>
+          <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text3)">Today&apos;s note</div>
           <div style="font-size:0.82rem;color:var(--text2);margin-top:8px;line-height:1.6">${insight.text}</div>
         </div>` : ''}
       </div>

@@ -25,7 +25,7 @@ const Dashboard = (() => {
     const names = missed.slice(0, 2).map(m => m.label).join(', ');
     const extra = missed.length > 2 ? ` +${missed.length - 2} more` : '';
     return `<div class="nudge-banner card-press" onclick="Dashboard.render()">
-      <span class="nudge-icon">🔔</span>
+      <span class="nudge-icon nudge-icon--text" aria-hidden="true">Due</span>
       <div>
         <div class="nudge-title">Gentle reminder</div>
         <div class="nudge-body">You missed ${names}${extra}. No pressure — tap to check off when ready.</div>
@@ -35,9 +35,9 @@ const Dashboard = (() => {
 
   function buildSOS() {
     return `<button type="button" class="sos-tap card-press" onclick="Navigation.go('emergency')">
-      <span class="sos-tap-icon">🆘</span>
+      <span class="sos-tap-icon sos-tap-icon--badge" aria-hidden="true">SOS</span>
       <div class="sos-tap-text">
-        <div class="sos-tap-title">SOS — One Tap</div>
+        <div class="sos-tap-title">One-tap help</div>
         <div class="sos-tap-sub">Craving protocol · breathe · act · survive</div>
       </div>
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
@@ -49,7 +49,7 @@ const Dashboard = (() => {
     const period = Notifications.getPeriod();
     if (!items.length) {
       return `<div class="today-empty" style="text-align:center;padding:20px 16px">
-        <div style="font-size:36px;margin-bottom:10px">🌅</div>
+        <div class="today-empty-mark">Routines</div>
         <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px">No routines yet</div>
         <div style="font-size:13px;color:var(--text2);line-height:1.5;margin-bottom:14px">Daily routines anchor your recovery. Medicine reminders, skincare, hair care — small acts of self-care add up.</div>
         <button type="button" class="btn btn-ghost" style="font-size:0.85rem;padding:10px 20px" onclick="Navigation.go('profile')">Set up my routines →</button>
@@ -141,7 +141,7 @@ const Dashboard = (() => {
   function buildHabitProgress(habits) {
     if (!habits.length) {
       return `<div class="today-empty" style="text-align:center;padding:20px 16px">
-        <div style="font-size:36px;margin-bottom:10px">🧡</div>
+        <div class="today-empty-mark">Start</div>
         <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px">Your recovery starts here</div>
         <div style="font-size:13px;color:var(--text2);line-height:1.5;margin-bottom:14px">Every hour clean is progress. Add your first habit and SteadyCap will track your milestones, predict hard moments, and celebrate every win.</div>
         <button type="button" class="btn btn-primary" style="font-size:0.9rem;padding:12px 24px" onclick="Navigation.go('profile');setTimeout(function(){Profile._addHabit()},200)">Add your first habit →</button>
@@ -247,7 +247,7 @@ const Dashboard = (() => {
 
       ${insight ? `
         <div class="insight-card" style="margin:12px 20px 20px">
-          <div class="insight-emoji">${insight.emoji}</div>
+          <div class="insight-mark" aria-hidden="true">Note</div>
           <div>
             <div class="insight-text">${insight.text}</div>
             <div style="font-size:0.65rem;color:var(--text3);margin-top:6px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em">— ${insight.source}</div>
