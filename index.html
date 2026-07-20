@@ -28,8 +28,8 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
   <link rel="manifest" href="./manifest.json">
   <link rel="icon" type="image/svg+xml" href="./assets/icons/favicon.svg">
   <link rel="apple-touch-icon" href="./assets/icons/apple-touch-icon-180.png" sizes="180x180">
@@ -39,7 +39,7 @@
   <link rel="icon" type="image/png" sizes="512x512" href="./assets/icons/icon-512.png">
   <link rel="preload" href="./css/app.css" as="style">
   <link rel="stylesheet" href="css/capricorn-core.css">
-<style>:root{--cap-accent:#c9652b}</style>
+<style>:root{--cap-accent:#00A8B5}</style>
 <link rel="stylesheet" href="./css/app.css">
   <link rel="stylesheet" href="./css/identity.css">
   <title>SteadyCap — Recovery is a system. Not a streak. · Capricorn Systems</title>
@@ -58,9 +58,16 @@
 <body data-cap-app="1">
   <a href="#app" class="cap-skip-link">Skip to content</a>
   <div id="splash" class="steady-splash" role="status" aria-live="polite" aria-label="SteadyCap loading">
-    <div class="steady-splash__chart" aria-hidden="true"><span class="steady-splash__clip"></span></div>
+    <div class="steady-splash__tray" aria-hidden="true">
+      <span class="steady-splash__pulse"></span>
+      <div class="steady-splash__slots">
+        <span class="steady-splash__slot"></span>
+        <span class="steady-splash__slot"></span>
+        <span class="steady-splash__slot steady-splash__slot--filled"></span>
+      </div>
+    </div>
     <h1 class="steady-splash__title">SteadyCap</h1>
-    <p class="steady-splash__tag">Recovery chart · private</p>
+    <p class="steady-splash__tag">Triage tray · private</p>
   </div>
   <div class="cap-ambient" aria-hidden="true"></div>
   <canvas id="cap-scene" class="cap-scene-canvas cap-scene-canvas--subtle" aria-hidden="true"></canvas>
@@ -123,8 +130,8 @@
 
 <!-- PRO UPGRADE MODAL -->
 <div id="proUpgradeModal" style="display:none;position:fixed;inset:0;z-index:9800;background:rgba(0,0,0,0.78);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);align-items:center;justify-content:center;padding:24px" role="dialog" aria-modal="true" aria-label="SteadyCap Pro">
-  <div style="background:rgba(26,17,14,0.98);border:1px solid rgba(201,101,43,0.35);border-radius:24px;max-width:400px;width:100%;padding:36px 32px;box-shadow:0 40px 80px rgba(0,0,0,0.7)">
-    <p style="font-size:11px;font-weight:700;letter-spacing:0.1em;color:#c9652b;margin-bottom:8px">STEADYCAP PRO</p>
+  <div style="background:rgba(26,17,14,0.98);border:1px solid rgba(0,168,181,0.35);border-radius:24px;max-width:400px;width:100%;padding:36px 32px;box-shadow:0 40px 80px rgba(0,0,0,0.7)">
+    <p style="font-size:11px;font-weight:700;letter-spacing:0.1em;color:#00A8B5;margin-bottom:8px">STEADYCAP PRO</p>
     <h2 style="font-size:1.6rem;font-weight:800;color:#fff;margin-bottom:4px;letter-spacing:-0.02em">Full recovery support.</h2>
     <p style="font-size:14px;color:rgba(255,255,255,0.5);margin-bottom:28px">Your journal and habits stay on your device either way. Pro unlocks trigger forecasting, full SOS, and medicine scheduling.</p>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px">
@@ -138,8 +145,8 @@
           <li>✓ Offline PWA</li>
         </ul>
       </div>
-      <div style="background:rgba(201,101,43,0.10);border:2px solid rgba(201,101,43,0.4);border-radius:14px;padding:20px;position:relative">
-        <span style="position:absolute;top:-10px;left:16px;background:#c9652b;color:#fff;font-size:10px;font-weight:800;padding:3px 10px;border-radius:20px;letter-spacing:0.06em">PRO</span>
+      <div style="background:rgba(0,168,181,0.10);border:2px solid rgba(0,168,181,0.4);border-radius:14px;padding:20px;position:relative">
+        <span style="position:absolute;top:-10px;left:16px;background:#00A8B5;color:#fff;font-size:10px;font-weight:800;padding:3px 10px;border-radius:20px;letter-spacing:0.06em">PRO</span>
         <p style="font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:2px">$2.99<span style="font-size:13px;font-weight:400;color:rgba(255,255,255,0.5)">/mo</span></p>
         <p style="font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:12px">or $24.99/yr</p>
         <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;font-size:13px;color:rgba(255,255,255,0.5)">
@@ -152,7 +159,7 @@
         </ul>
       </div>
     </div>
-    <button type="button" onclick="document.getElementById('proUpgradeModal').style.display='none'" style="width:100%;padding:14px;background:rgba(201,101,43,0.15);border:1px solid rgba(201,101,43,0.3);color:#c9652b;border-radius:14px;font-size:14px;font-weight:700;cursor:pointer;margin-bottom:10px">Join Pro waitlist — coming soon →</button>
+    <button type="button" onclick="document.getElementById('proUpgradeModal').style.display='none'" style="width:100%;padding:14px;background:rgba(0,168,181,0.15);border:1px solid rgba(0,168,181,0.3);color:#00A8B5;border-radius:14px;font-size:14px;font-weight:700;cursor:pointer;margin-bottom:10px">Join Pro waitlist — coming soon →</button>
     <button type="button" onclick="document.getElementById('proUpgradeModal').style.display='none'" style="width:100%;padding:10px;background:none;border:none;color:rgba(255,255,255,0.4);font-size:13px;cursor:pointer">Continue with Free</button>
   </div>
 </div>
