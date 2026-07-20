@@ -18,7 +18,7 @@ html[data-theme="dark"] {
   --text: #F8F1EA;
   --text2: #D4C2B4;
   --text3: #A89282;
-  --orange: #C9652B;
+  --orange: #00A8B5;
   --teal: #3A8F88;
   --green: #3D9B7A;
   --red: #C45B4E;
@@ -54,7 +54,7 @@ html[data-theme="light"] {
   --text: #2A221C;
   --text2: #5A4E44;
   --text3: #8A7A6C;
-  --orange: #B85A28;
+  --orange: #00D4E6;
   --teal: #2F7A74;
   --green: #2F7A5C;
   --red: #A8483C;
