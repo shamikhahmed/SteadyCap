@@ -1,3 +1,7 @@
+## [2.5.1] — 2026-09-15
+
+- Precache app-lock + dialogs in service worker (`steadycap-v51`)
+
 ## [2.5.0] — 2026-09-15
 
 - STDY-P1: Today = demo banner → Due now (Taken/Skip) → check-in → journal; SOS tab only; no streak counters; CapConfirm dialogs; §4.2 disclaimers; optional app lock (G-10); SVG mood icons; solid tab bar; type floor; remove premium-nav from shell

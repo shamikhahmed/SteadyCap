@@ -1,5 +1,5 @@
 'use strict';
-const CACHE = 'steadycap-v50';
+const CACHE = 'steadycap-v51';
 const ASSETS = [
   './css/capricorn-core.css',
   './',
@@ -34,6 +34,9 @@ const ASSETS = [
   './js/modules/knowledge.js',
   './js/modules/profile.js',
   './js/modules/journal.js',
+  './js/vendor/local-lock.js',
+  './js/ui/dialogs.js',
+  './js/modules/app-lock.js',
   './landing.html',
   './presentation.html',
   './pitch.html',

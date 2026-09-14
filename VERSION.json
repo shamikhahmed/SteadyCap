@@ -1,7 +1,7 @@
 {
   "app": "SteadyCap",
-  "version": "2.5.0",
-  "swCache": "steadycap-v50",
+  "version": "2.5.1",
+  "swCache": "steadycap-v51",
   "updated": "2026-09-15",
-  "notes": "Tier1 Today SOS tab only, Taken/Skip, app lock, dialogs, disclaimers"
+  "notes": "SW precache local-lock/dialogs/app-lock"
 }

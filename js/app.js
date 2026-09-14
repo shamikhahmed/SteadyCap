@@ -30,7 +30,7 @@ const App = (() => {
 
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js?v=50').catch(() => {});
+        navigator.serviceWorker.register('./sw.js?v=51').catch(() => {});
       });
     }
 
