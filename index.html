@@ -8,7 +8,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="SteadyCap">
-  <meta name="description" content="SteadyCap is a private recovery OS — habits, medicines, trigger forecast, 5-phase SOS. Offline-first, by Capricorn Systems.">
+  <meta name="description" content="SteadyCap is a private recovery companion — habits, medicines, trigger forecast, 5-phase SOS. Offline-first, by Capricorn Systems.">
   <meta name="format-detection" content="telephone=no">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="author" content="Capricorn Systems">
@@ -47,12 +47,12 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Capricorn Systems">
 <meta property="og:title" content="SteadyCap — Recovery OS">
-<meta property="og:description" content="Recovery OS — routines, medicines, habits, and SOS support. Offline-first, by Capricorn Systems.">
+<meta property="og:description" content="Recovery companion — routines, medicines, habits, and SOS support. Offline-first, by Capricorn Systems.">
 <meta property="og:url" content="https://shamikhahmed.github.io/SteadyCap/">
 <meta property="og:image" content="https://shamikhahmed.github.io/assets/screenshots/steadycap.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="SteadyCap — Recovery OS">
-<meta name="twitter:description" content="Recovery OS — routines, medicines, habits, and SOS support. Offline-first, by Capricorn Systems.">
+<meta name="twitter:description" content="Recovery companion — routines, medicines, habits, and SOS support. Offline-first, by Capricorn Systems.">
 <meta name="twitter:image" content="https://shamikhahmed.github.io/assets/screenshots/steadycap.png">
 </head>
 <body data-cap-app="1">
@@ -116,14 +116,15 @@
   <script src="./js/modules/knowledge.js"></script>
   <script src="./js/modules/profile.js"></script>
   <script src="./js/modules/journal.js"></script>
-  <script src="./js/app.js"></script>
+  <script src="./js/vendor/local-lock.js"></script>
+<script src="./js/ui/dialogs.js"></script>
+<script src="./js/modules/app-lock.js"></script>
+<script src="./js/app.js"></script>
   <script src="./js/capricorn-motion.js"></script>
   <script src="js/cap-demo-mode.js"></script>
   <script src="js/cap-desktop-nav.js"></script>
-<script src="./js/capricorn-premium-nav.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-      if (window.CapPremiumNav) CapPremiumNav.init();
       if (window.CapricornMotion) CapricornMotion.init();
     });
   </script>
@@ -141,7 +142,7 @@
         <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;font-size:13px;color:rgba(255,255,255,0.5)">
           <li>✓ 3 habit trackers</li>
           <li>✓ Basic journal</li>
-          <li>✓ Milestone streaks</li>
+          <li>✓ Milestones</li>
           <li>✓ Offline PWA</li>
         </ul>
       </div>

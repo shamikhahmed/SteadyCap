@@ -50,7 +50,7 @@ const Navigation = (() => {
         <div class="cap-sidebar-brand">SteadyCap</div>
         ${TABS.map(t => `
           <button type="button" class="cap-side-btn${t.id === activeTab ? ' on' : ''}${t.sos ? ' nav-sos' : ''}" data-tab="${t.id}" onclick="Navigation.go('${t.id}')">
-            <span>${t.sos ? '🆘' : '●'}</span>
+            <span class="nav-icon">${t.icon}</span>
             <span>${t.label}</span>
           </button>
         `).join('')}

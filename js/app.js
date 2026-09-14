@@ -16,7 +16,6 @@ const App = (() => {
       Profile.loadDemoData({ silent: true });
       if (typeof CapDemo !== 'undefined') {
         CapDemo.markActive();
-        CapDemo.showBanner('steadycap', '<strong>Demo mode</strong> — Alex recovery profile in isolated storage.');
       }
       launch();
       Navigation.go('dashboard');
@@ -31,7 +30,7 @@ const App = (() => {
 
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js?v=49').catch(() => {});
+        navigator.serviceWorker.register('./sw.js?v=50').catch(() => {});
       });
     }
 
@@ -44,6 +43,7 @@ const App = (() => {
   }
 
   function launch() {
+    if (window.AppLock) AppLock.boot();
     document.getElementById('nav').style.display = '';
     document.getElementById('screen-onboarding').classList.remove('active');
     Navigation.init();

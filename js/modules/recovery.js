@@ -246,11 +246,12 @@ const Recovery = (() => {
   }
 
   function _confirmRelapse(id, isCustom) {
-    if (confirm('Log a relapse? This will reset your clean time for this habit.')) {
-      State.logRelapse(id, isCustom);
-      if (window.App) App.showToast('Relapse logged. Your streak resets now. Keep going.', 'info');
-      render(id);
-    }
+    CapConfirm({ title: 'Log a relapse?', body: 'This resets clean time for this habit. Keep going when you are ready.', confirmLabel: 'Log relapse', destructive: true }).then((ok) => {
+      if (!ok) return;
+        State.logRelapse(id, isCustom);
+        if (window.App) App.showToast('Relapse logged. Clean time resets. Keep going.', 'info');
+        render(id);
+    });
   }
 
   return { render, selectHabit, getSelectedHabitId, _confirmRelapse };
