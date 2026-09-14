@@ -3,10 +3,10 @@ const Journal = (() => {
   const STORAGE_KEY = StorageMigrate.local('steadycap_journal_v1', ['dos_journal_v1']);
 
   const MOODS = [
-    { id: 'strong', emoji: '💪', label: 'Strong' },
-    { id: 'ok', emoji: '😐', label: 'Okay' },
-    { id: 'hard', emoji: '😔', label: 'Hard' },
-    { id: 'relapsed', emoji: '🔁', label: 'Slipped' },
+    { id: 'strong', label: 'Strong', svg: '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 11v8"/><path d="M11 9v10"/><path d="M15 13v6"/><path d="M19 10v9"/><path d="M4 15c2-4 4-6 8-6s6 2 8 6"/></svg>' },
+    { id: 'ok', label: 'Okay', svg: '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 14h8"/><circle cx="9" cy="10" r="1" fill="currentColor"/><circle cx="15" cy="10" r="1" fill="currentColor"/></svg>' },
+    { id: 'hard', label: 'Hard', svg: '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 15s1.5-2 4-2 4 2 4 2"/><circle cx="9" cy="10" r="1" fill="currentColor"/><circle cx="15" cy="10" r="1" fill="currentColor"/></svg>' },
+    { id: 'relapsed', label: 'Slipped', svg: '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><polyline points="3 4 3 10 9 10"/></svg>' },
   ];
 
   const TRIGGERS = ['Stress', 'Boredom', 'Loneliness', 'Night', 'Anxiety', 'Social', 'Work', 'Habit'];
@@ -95,23 +95,21 @@ const Journal = (() => {
 
   function buildCheckInHtml(compact) {
     const todayEntry = getTodayEntry();
-    const journalStreak = getStreak();
     const triggerBlock = compact ? '' : `
         <div class="t-label t-dim" style="margin:14px 0 8px;">Triggers today (optional)</div>
         <div class="journal-triggers" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;">
           ${TRIGGERS.map(t => {
             const on = (todayEntry?.triggers || []).includes(t);
-            return `<button type="button" class="trigger-chip${on ? ' on' : ''}" data-trigger="${t}" style="padding:6px 10px;border-radius:99px;border:1px solid ${on ? 'var(--orange)' : 'var(--border)'};background:${on ? 'rgba(255,107,53,0.12)' : 'var(--glass2)'};color:${on ? 'var(--orange)' : 'var(--text3)'};font-size:0.68rem;font-weight:600;cursor:pointer;">${t}</button>`;
+            return `<button type="button" class="trigger-chip${on ? ' on' : ''}" data-trigger="${t}" style="padding:6px 10px;border-radius:99px;border:1px solid ${on ? 'var(--orange)' : 'var(--border)'};background:${on ? 'rgba(255,107,53,0.12)' : 'var(--glass2)'};color:${on ? 'var(--orange)' : 'var(--text3)'};font-size:12px;font-weight:600;cursor:pointer;">${t}</button>`;
           }).join('')}
         </div>`;
 
     return `
-      ${journalStreak > 0 ? `<div class="check-in-streak">${journalStreak}-day check-in streak</div>` : ''}
       <div class="check-in-card">
         <div class="check-in-moods">
           ${MOODS.map(m => `
             <button type="button" class="mood-btn ${todayEntry?.mood === m.id ? 'selected' : ''}" data-mood="${m.id}" aria-label="${m.label}">
-              <span class="mood-emoji">${m.emoji}</span>
+              <span class="mood-icon">${m.svg}</span>
               <span class="mood-label">${m.label}</span>
             </button>
           `).join('')}

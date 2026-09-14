@@ -239,8 +239,15 @@ const Profile = (() => {
         </label>
       </div>
 
+      <div class="section-header"><span class="section-title">App lock</span></div>
+      <div style="padding:0 20px 12px">
+        <p class="t-caption t-dim" style="margin-bottom:10px;line-height:1.5">Optional passcode for medicines, cravings, and journal. If you forget your passcode, protected data can't be recovered — export a backup first.</p>
+        <button type="button" class="btn btn-ghost" style="width:100%;margin-bottom:8px" onclick="Profile._toggleAppLock()">${(window.AppLock && AppLock.isEnabled()) ? 'Turn off app lock' : 'Turn on app lock'}</button>
+        ${(window.AppLock && AppLock.isEnabled() && AppLock.isUnlocked()) ? '<button type="button" class="btn btn-ghost" style="width:100%" onclick="AppLock.lockSession()">Lock now</button>' : ''}
+      </div>
+
       <div style="padding:0 20px 8px">
-        <div class="t-caption t-dim" style="text-align:center;margin-bottom:12px">SteadyCap v2.0.0 · Local-only · Not a medical device</div>
+        <div class="t-caption t-dim" style="text-align:center;margin-bottom:12px;line-height:1.5">SteadyCap · Local-only<br>SteadyCap helps you keep track of routines and cravings. It isn't medical advice. Follow your doctor's or pharmacist's instructions for any medicine.</div>
       </div>
       <div style="padding:0 20px 20px">
         <button type="button" class="btn btn-danger" onclick="Profile._reset()">Reset All Data</button>
@@ -294,11 +301,11 @@ const Profile = (() => {
     try { localStorage.setItem('steadycap_pin_backup', State.exportJSON()); } catch (e) {}
   }
 
-  function loadDemoData(opts) {
+  async function loadDemoData(opts) {
     const silent = opts && opts.silent;
     if (!State.isDemoMode()) State.useDemoStorage(true);
     if (!silent) _snapshotBeforeDestructive();
-    if (!silent && !confirm('Load demo recovery profile? Replaces current data with anonymized sample habits, journal entries, and craving log.')) return;
+    if (!silent && !(await CapConfirm({ title: 'Load demo profile?', body: 'Replaces current data with anonymized sample habits, journal entries, and craving log.', confirmLabel: 'Load demo' }))) return;
     const day = 86400000;
     const now = Date.now();
     const smokingQuit = new Date(now - 90 * day).toISOString();
@@ -378,10 +385,10 @@ const Profile = (() => {
     loadDemoData();
   }
 
-  function _reset() {
-    if (!confirm('Reset ALL data? Export a backup first if you need to recover later.')) return;
+  async function _reset() {
+    if (!(await CapConfirm({ title: 'Reset all data?', body: 'Export a backup first if you need to recover later.', confirmLabel: 'Continue', destructive: true }))) return;
     _snapshotBeforeDestructive();
-    if (!confirm('Final confirmation — reset everything on this device?')) return;
+    if (!(await CapConfirm({ title: 'Final confirmation', body: 'Reset everything on this device?', confirmLabel: 'Reset', destructive: true }))) return;
     State.reset();
     App.showToast('Data reset', 'info');
     State.set('onboardingComplete', false);
@@ -565,6 +572,7 @@ const Profile = (() => {
             </select>
           </div>
           <div class="ob-field" id="med-times-wrap"><div class="ob-label">Times (comma-separated)</div><input class="ob-input" id="med-times" placeholder="08:00, 20:00" value="08:00, 20:00"></div>
+          <p class="t-caption t-dim" style="margin:8px 0 12px;line-height:1.45">SteadyCap helps you keep track of routines and cravings. It isn't medical advice. Follow your doctor's or pharmacist's instructions for any medicine.</p>
           <button type="button" class="btn btn-primary" onclick="Profile._saveMed()">Save Medicine</button>
         </div>
       </div>`;
@@ -603,8 +611,10 @@ const Profile = (() => {
     }, 50);
   }
 
-  function _removeMed(id) {
-    if (confirm('Remove this medicine?')) { State.removeMedicine(id); render(); }
+  async function _removeMed(id) {
+    if (await CapConfirm({ title: 'Remove medicine?', body: 'This removes it from your list on this device.', confirmLabel: 'Remove', destructive: true })) {
+      State.removeMedicine(id); render();
+    }
   }
 
   function _toggleMed(id) {
@@ -643,8 +653,8 @@ const Profile = (() => {
     render();
   }
 
-  function _removeRoutine(cat, slot, id) {
-    if (confirm('Remove this step?')) { State.removeRoutineStep(cat, slot, id); render(); }
+  async function _removeRoutine(cat, slot, id) {
+    if (await CapConfirm({ title: 'Remove this step?', confirmLabel: 'Remove', destructive: true })) { State.removeRoutineStep(cat, slot, id); render(); }
   }
 
   function _addCustomHabit() {
@@ -772,19 +782,26 @@ const Profile = (() => {
     w.document.close();
   }
 
-  function _removeCustom(id) {
-    if (confirm('Remove this custom habit?')) {
+  async function _removeCustom(id) {
+    if (await CapConfirm({ title: 'Remove this habit?', confirmLabel: 'Remove', destructive: true })) {
       State.removeCustomHabit(id);
       _closeModal();
       render();
     }
   }
 
+  async function _toggleAppLock() {
+    if (!window.AppLock) return;
+    if (AppLock.isEnabled()) await AppLock.disable();
+    else await AppLock.enable();
+    render();
+  }
+
   return {
     render, loadDemoData, _saveName, _saveCurrency, _saveGoals, _exportData, _importData, _reset, _loadDemo,
     _editHabit, _saveEdit, _closeModal, _addHabit, _startAddHabit, _confirmAddHabit,
     _toggleSpiritual, _setHairTreatment, _toggleNotifications, _setTheme,
-    _addMed, _saveMed, _editMed, _removeMed, _toggleMed,
+    _addMed, _saveMed, _editMed, _removeMed, _toggleMed, _toggleAppLock,
     _addRoutine, _saveRoutine, _removeRoutine,
     _addCustomHabit, _pickIcon, _saveCustomHabit, _editCustomHabit, _saveCustomEdit, _removeCustom,
     _exportClinicianSummary,

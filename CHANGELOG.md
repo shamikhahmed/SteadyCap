@@ -1,3 +1,8 @@
+## [2.5.0] — 2026-09-15
+
+- STDY-P1: Today = demo banner → Due now (Taken/Skip) → check-in → journal; SOS tab only; no streak counters; CapConfirm dialogs; §4.2 disclaimers; optional app lock (G-10); SVG mood icons; solid tab bar; type floor; remove premium-nav from shell
+- SW `steadycap-v50`
+
 ## [2.4.3] — 2026-07-20
 - Today remint: ER triage tray — pill slots, 3-col desktop (schedule / check-in / forecast+habits), no streak-guilt copy. SW `steadycap-v49`.
 

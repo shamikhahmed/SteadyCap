@@ -18,13 +18,15 @@ test.describe('SteadyCap smoke', () => {
     await expect(page.locator('link[rel="manifest"]')).toHaveCount(1);
   });
 
-  test('demo mode shows linked recovery insight on dashboard', async ({ page }) => {
+  test('demo mode Today shows Due now with Taken/Skip', async ({ page }) => {
     await page.goto('/?demo=1');
     await page.waitForLoadState('domcontentloaded');
     await page.waitForFunction(() => typeof window.Navigation !== 'undefined');
     await page.waitForTimeout(800);
     await expect(page.locator('#screen-dashboard.active')).toBeVisible({ timeout: 10000 });
-    await expect(page.getByText('Linked recovery', { exact: true }).first()).toBeVisible({ timeout: 10000 });
+    await expect(page.getByText('Due now', { exact: true }).first()).toBeVisible({ timeout: 10000 });
+    await expect(page.locator('.sos-tap')).toHaveCount(0);
+    await expect(page.locator('.nav-tab[data-tab="emergency"]')).toHaveCount(1);
   });
 
   test('daily check-in widget on Today tab', async ({ page }) => {
