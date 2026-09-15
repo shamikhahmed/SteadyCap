@@ -2,8 +2,8 @@
   "app": "SteadyCap",
   "version": "2.5.4",
   "swCache": "steadycap-v54",
-  "generatedAt": "2026-09-15T11:54:42.440Z",
-  "status": "FAIL",
+  "generatedAt": "2026-09-15T11:57:06.618Z",
+  "status": "PASS",
   "pass": [
     {
       "id": "version:field",
@@ -35,7 +35,7 @@
     },
     {
       "id": "records:APP-REPORT-size",
-      "detail": "1316 bytes (need ≥1024)"
+      "detail": "1309 bytes (need ≥1024)"
     },
     {
       "id": "suppressions",
@@ -47,7 +47,11 @@
     },
     {
       "id": "ci:main",
-      "detail": "Merge branch 'finish/tier1-wire': C-10 npm run tier1 → success https://github.com/shamikhahmed/SteadyCap/actions/runs/34958803489"
+      "detail": "Merge finish/steadycap-tier1-killlist — Tier 1 kill-list 2.5.4 → success https://github.com/shamikhahmed/SteadyCap/actions/runs/34965968126"
+    },
+    {
+      "id": "tag",
+      "detail": "found v2.5.4"
     },
     {
       "id": "matrix:spec",
@@ -94,12 +98,7 @@
       "detail": "27 sinks; SINKS.md ok"
     }
   ],
-  "fail": [
-    {
-      "id": "tag",
-      "detail": "missing tag v2.5.4 (have: v2.3.1, v2.5.0, v2.5.1, v2.5.2, v2.5.3)"
-    }
-  ],
+  "fail": [],
   "warn": [
     {
       "id": "matrix:shots",

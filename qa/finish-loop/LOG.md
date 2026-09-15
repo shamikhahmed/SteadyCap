@@ -1,3 +1,9 @@
+### 2026-09-15 SteadyCap 2.5.4 TIER1 PASS
+- CI green: https://github.com/shamikhahmed/SteadyCap/actions/runs/34965968126
+- `npm run tier1` → PASS (23 pass, 0 fail, 1 warn matrix:shots)
+- VO ⛔ BLOCKED-EXTERNAL — fleet Tier 1 not claimed
+- Closing SteadyCap → TravelCap (§14 #8)
+
 ### 2026-09-15 SteadyCap 2.5.4 kill-list / TIER1 drive
 - SCBrand palette · pro modal CSS · dialogs comment · premium-nav #fab false positive
 - SINKS.md · finish-matrix.spec.mjs · finish-loop records
