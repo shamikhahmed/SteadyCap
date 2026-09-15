@@ -1,3 +1,8 @@
+## 2.5.3 — 2026-09-15
+- C-16: Self-host Source Sans 3 + IBM Plex Mono (Inter on pitch); remove Google Fonts + CSP font CDN entries.
+- C-20: Set `window.__APP_READY__` after splash dismiss.
+- SW `steadycap-v53`.
+
 ## [2.5.2] — 2026-09-15
 
 - C-17 / P-STDY-1: remove streak language from product UI — `{habit}: {duration} so far`, "shortest stretch so far"; onboarding "Recovery is a system, not a count." (`steadycap-v52`)

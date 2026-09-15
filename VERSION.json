@@ -1,7 +1,7 @@
 {
   "app": "SteadyCap",
-  "version": "2.5.2",
-  "swCache": "steadycap-v52",
+  "version": "2.5.3",
+  "swCache": "steadycap-v53",
   "updated": "2026-09-15",
-  "notes": "C-17 P-STDY-1 streak language removed from product UI"
+  "notes": "C-16 self-host fonts + C-20 __APP_READY__"
 }
