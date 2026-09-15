@@ -2,9 +2,15 @@
 const App = (() => {
   function hideSplash() {
     const splash = document.getElementById('splash');
-    if (!splash || splash.classList.contains('hide')) return;
+    if (!splash || splash.classList.contains('hide')) {
+      try { window.__APP_READY__ = true; document.documentElement.dataset.appReady = 'true'; } catch (_) {}
+      return;
+    }
     splash.classList.add('hide');
-    setTimeout(() => splash.remove(), 500);
+    setTimeout(() => {
+      splash.remove();
+      try { window.__APP_READY__ = true; document.documentElement.dataset.appReady = 'true'; } catch (_) {}
+    }, 500);
   }
 
   function init() {
@@ -30,7 +36,7 @@ const App = (() => {
 
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js?v=52').catch(() => {});
+        navigator.serviceWorker.register('./sw.js?v=53').catch(() => {});
       });
     }
 
