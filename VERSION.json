@@ -1,7 +1,7 @@
 {
   "app": "SteadyCap",
-  "version": "2.5.1",
-  "swCache": "steadycap-v51",
+  "version": "2.5.2",
+  "swCache": "steadycap-v52",
   "updated": "2026-09-15",
-  "notes": "SW precache local-lock/dialogs/app-lock"
+  "notes": "C-17 P-STDY-1 streak language removed from product UI"
 }

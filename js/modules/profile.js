@@ -107,7 +107,7 @@ const Profile = (() => {
         </div>
         <div class="stat-cell">
           <div class="stat-val" style="color:var(--gold)">${longest}</div>
-          <div class="stat-label">Longest Streak</div>
+          <div class="stat-label">Longest stretch</div>
         </div>
       </div>
 
@@ -766,7 +766,7 @@ const Profile = (() => {
 <p class="sub">${user.name || 'Patient'} · Generated ${new Date().toLocaleDateString()} · SteadyCap (local data only)</p>
 <div>
   <div class="metric"><span>Recovery Score</span><strong>${score != null ? score + '/100' : '—'}</strong></div>
-  <div class="metric"><span>Longest Streak</span><strong>${longest} days</strong></div>
+  <div class="metric"><span>Longest stretch</span><strong>${longest} days</strong></div>
   <div class="metric"><span>Cravings Survived</span><strong>${cravingsSurvived}</strong></div>
 </div>
 <h2>Habits & Milestones</h2>

@@ -1,3 +1,7 @@
+## [2.5.2] — 2026-09-15
+
+- C-17 / P-STDY-1: remove streak language from product UI — `{habit}: {duration} so far`, "shortest stretch so far"; onboarding "Recovery is a system, not a count." (`steadycap-v52`)
+
 ## [2.5.1] — 2026-09-15
 
 - Precache app-lock + dialogs in service worker (`steadycap-v51`)

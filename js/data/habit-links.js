@@ -9,7 +9,7 @@ window.HABIT_CLUSTERS = {
     types: ['smoking', 'vape', 'nicotine_pouches', 'shisha'],
     sharedSystems: ['cardiovascular', 'heart', 'blood_pressure', 'co_levels', 'circulation', 'dopamine', 'sensory'],
     rule: 'min_recovery',
-    message: 'Nicotine from another source is still active — heart, circulation, and receptor recovery follow your shortest nicotine-free streak.',
+    message: 'Nicotine from another source is still active — heart, circulation, and receptor recovery follow your shortest nicotine-free stretch.',
   },
   inhaled: {
     label: 'Inhaled damage',

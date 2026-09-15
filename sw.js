@@ -1,5 +1,5 @@
 'use strict';
-const CACHE = 'steadycap-v51';
+const CACHE = 'steadycap-v52';
 const ASSETS = [
   './css/capricorn-core.css',
   './',

@@ -226,7 +226,7 @@ const LinkedRecoveryEngine = (() => {
       effectiveHrs,
       soloStage,
       delayed,
-      note: notes[0] || (delayed ? `Your ${habitName(viewingHabit)} streak is ${RecoveryEngine.formatDuration(hrs)}, but dopamine stage reflects linked recovery at ${RecoveryEngine.formatDuration(effectiveHrs)}.` : null),
+      note: notes[0] || (delayed ? `${habitName(viewingHabit)}: ${RecoveryEngine.formatDuration(hrs)} so far, but dopamine stage reflects linked recovery at ${RecoveryEngine.formatDuration(effectiveHrs)}.` : null),
     };
   }
 
@@ -303,7 +303,7 @@ const LinkedRecoveryEngine = (() => {
         insights.push({
           icon: '🎯',
           title: 'Recovery bottleneck',
-          body: `${bottlenecks[0].name} is your shortest streak — whole-body healing won't fully accelerate until it catches up.`,
+          body: `${bottlenecks[0].name} is your shortest stretch so far — whole-body healing won't fully accelerate until it catches up.`,
           priority: 1,
         });
       }

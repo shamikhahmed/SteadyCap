@@ -6,7 +6,7 @@ const RECOVERY_PROGRAMS = {
     weeks: [
       { week: 1, label: 'Survive the first 72 hours', tips: ['Track every craving — they peak at 3–5 minutes', 'Replace the hand-to-mouth habit with gum or tea', 'Avoid alcohol and coffee triggers this week', 'Tell one person you quit — accountability helps'] },
       { week: 2, label: 'Rebuild your routine', tips: ['Walk after meals instead of smoking', 'Deep-clean spaces that smell like smoke', 'Notice improved taste and smell — write it down', 'Reward yourself with saved cigarette money'] },
-      { week: 3, label: 'Strengthen new identity', tips: ['Plan social situations with an exit strategy', 'Practice saying "I don\'t smoke" not "I\'m trying"', 'Add 10 minutes of cardio daily', 'Review your longest craving-free streak'] },
+      { week: 3, label: 'Strengthen new identity', tips: ['Plan social situations with an exit strategy', 'Practice saying "I don\'t smoke" not "I\'m trying"', 'Add 10 minutes of cardio daily', 'Review your longest craving-free stretch so far'] },
       { week: 4, label: 'Lock in the habit', tips: ['Calculate total money saved — celebrate it', 'Identify your top 3 triggers and plan responses', 'Help someone else start their quit journey', 'Set a 60-day milestone goal'] },
     ],
   },
@@ -96,7 +96,7 @@ const RECOVERY_PROGRAMS = {
     weeks: [
       { week: 1, label: 'Establish control', tips: ['Set a clear daily structure — idle time is risky', 'Cold showers or exercise when urges hit', 'Remove triggers from your environment', 'Track urges without acting — build the muscle'] },
       { week: 2, label: 'Redirect energy', tips: ['Channel energy into a physical goal', 'Avoid screens in bed completely', 'Journal what emotions precede urges', 'Sleep and eat well — basics matter'] },
-      { week: 3, label: 'Strengthen willpower', tips: ['Practice meditation 5 minutes daily', 'Socialize more — isolation fuels relapse', 'Review your longest streak so far', 'Replace habit loop with a positive ritual'] },
+      { week: 3, label: 'Strengthen willpower', tips: ['Practice meditation 5 minutes daily', 'Socialize more — isolation fuels relapse', 'Review your longest stretch so far', 'Replace habit loop with a positive ritual'] },
       { week: 4, label: 'Sustainable discipline', tips: ['Define your ongoing boundaries clearly', 'Plan for high-risk situations in advance', 'Celebrate self-control wins this month', 'Set a 90-day milestone'] },
     ],
   },
