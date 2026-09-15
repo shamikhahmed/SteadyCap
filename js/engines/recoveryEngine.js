@@ -9,11 +9,11 @@ const RecoveryEngine = (() => {
   }
 
   function recoveryPhase(hours) {
-    if (hours < 72) return { name: 'Withdrawal', color: '#FF3B30', description: 'Your body is clearing the substance. Cravings are most intense now. This is temporary.' };
-    if (hours < 336) return { name: 'Adjustment', color: '#FF6B35', description: 'Physical withdrawal easing. Your brain is starting to recalibrate its reward system.' };
-    if (hours < 1344) return { name: 'Recalibration', color: '#FFD60A', description: 'Dopamine receptors recovering sensitivity. Everyday rewards becoming meaningful again.' };
-    if (hours < 4320) return { name: 'Stabilisation', color: '#4ECDC4', description: 'Neural pathways rewiring. Cravings less frequent and less intense. Momentum building.' };
-    return { name: 'Optimisation', color: '#06D6A0', description: 'You have done the hard work. Your recovery is self-sustaining. This is your new baseline.' };
+    if (hours < 72) return { name: 'Withdrawal', color: SCBrand.h_ff3b30, description: 'Your body is clearing the substance. Cravings are most intense now. This is temporary.' };
+    if (hours < 336) return { name: 'Adjustment', color: SCBrand.h_ff6b35, description: 'Physical withdrawal easing. Your brain is starting to recalibrate its reward system.' };
+    if (hours < 1344) return { name: 'Recalibration', color: SCBrand.h_ffd60a, description: 'Dopamine receptors recovering sensitivity. Everyday rewards becoming meaningful again.' };
+    if (hours < 4320) return { name: 'Stabilisation', color: SCBrand.h_4ecdc4, description: 'Neural pathways rewiring. Cravings less frequent and less intense. Momentum building.' };
+    return { name: 'Optimisation', color: SCBrand.h_06d6a0, description: 'You have done the hard work. Your recovery is self-sustaining. This is your new baseline.' };
   }
 
   function getTimeline(habitType) {

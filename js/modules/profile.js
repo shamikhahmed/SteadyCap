@@ -526,7 +526,7 @@ const Profile = (() => {
     try { localStorage.setItem('steadycap-theme', theme); } catch (e) {}
     document.documentElement.setAttribute('data-theme', theme);
     const meta = document.getElementById('themeColorMeta') || document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute('content', theme === 'light' ? '#F4F0EA' : '#1A1412');
+    if (meta) meta.setAttribute('content', theme === 'light' ? SCBrand.h_f4f0ea : SCBrand.h_1a1412); // theme-color
     render();
   }
 
@@ -753,11 +753,11 @@ const Profile = (() => {
     const html = `<!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><title>SteadyCap Clinician Summary</title>
 <style>
-  body{font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;color:#111;max-width:720px;margin:32px auto;padding:0 24px;line-height:1.5}
-  h1{font-size:22px;margin-bottom:4px} .sub{color:#555;font-size:13px;margin-bottom:24px}
+  body{font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif;color:${SCBrand.h_111};max-width:720px;margin:32px auto;padding:0 24px;line-height:1.5}
+  h1{font-size:22px;margin-bottom:4px} .sub{color:${SCBrand.h_555};font-size:13px;margin-bottom:24px}
   table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px}
   th,td{border:1px solid #ddd;padding:8px 10px;text-align:left}
-  th{background:#f5f5f5;font-weight:600}
+  th{background:${SCBrand.h_f5f5f5};font-weight:600}
   .metric{display:inline-block;margin-right:24px;margin-bottom:8px}
   .metric strong{display:block;font-size:20px}
   @media print{body{margin:16px}}
@@ -772,7 +772,7 @@ const Profile = (() => {
 <h2>Habits & Milestones</h2>
 <table><thead><tr><th>Habit</th><th>Days Clean</th><th>Relapses</th><th>Saved</th><th>Current Milestone</th></tr></thead>
 <tbody>${habitRows || '<tr><td colspan="5">No habits tracked</td></tr>'}</tbody></table>
-<p style="font-size:11px;color:#888;margin-top:32px">Anonymized export — journal entries and SOS content excluded. For clinical use only with patient consent.</p>
+<p style="font-size:11px;color:${SCBrand.h_888};margin-top:32px">Anonymized export — journal entries and SOS content excluded. For clinical use only with patient consent.</p>
 <script>window.onload=function(){window.print();}</script>
 </body></html>`;
 

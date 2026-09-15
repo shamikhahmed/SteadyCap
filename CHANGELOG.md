@@ -1,3 +1,7 @@
+## 2.5.4 — 2026-09-15
+- Tier 1 kill-list: `js/brand/colors.js` (SCBrand), pro modal CSS, dialogs comment (no native-dialog false positive).
+- SW `steadycap-v54`.
+
 ## 2.5.3 — 2026-09-15
 - C-16: Self-host Source Sans 3 + IBM Plex Mono (Inter on pitch); remove Google Fonts + CSP font CDN entries.
 - C-20: Set `window.__APP_READY__` after splash dismiss.

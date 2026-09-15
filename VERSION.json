@@ -1,7 +1,7 @@
 {
   "app": "SteadyCap",
-  "version": "2.5.3",
-  "swCache": "steadycap-v53",
+  "version": "2.5.4",
+  "swCache": "steadycap-v54",
   "updated": "2026-09-15",
-  "notes": "C-16 self-host fonts + C-20 __APP_READY__"
+  "notes": "Tier1 kill-list: SCBrand palette, pro modal CSS, dialogs comment"
 }

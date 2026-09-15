@@ -1,5 +1,5 @@
 'use strict';
-/* Accessible dialogs — replaces window.alert / confirm / prompt (STDY-P1-05). */
+/* Accessible dialogs — replaces native alert/confirm/prompt calls (STDY-P1-05). */
 (function () {
   function ensureStyles() {
     if (document.getElementById('sc-dialog-css')) return;
@@ -8,12 +8,12 @@
     style.textContent = `
 .sc-dialog-backdrop{position:fixed;inset:0;background:rgba(10,10,12,.48);z-index:9000;display:flex;align-items:flex-end;justify-content:center;padding:max(12px,env(safe-area-inset-bottom))}
 @media(min-width:560px){.sc-dialog-backdrop{align-items:center}}
-.sc-dialog{width:min(100%,420px);background:var(--bg3,#16161a);color:var(--text,#f5f5f5);border:1px solid var(--border,rgba(255,255,255,.12));border-radius:16px 16px 12px 12px;padding:18px 16px 14px;box-shadow:0 18px 48px rgba(0,0,0,.35)}
+.sc-dialog{width:min(100%,420px);background:var(--bg3);color:var(--text);border:1px solid var(--border,rgba(255,255,255,.12));border-radius:16px 16px 12px 12px;padding:18px 16px 14px;box-shadow:0 18px 48px rgba(0,0,0,.35)}
 .sc-dialog h2{margin:0 0 8px;font:600 1.125rem/1.25 var(--font,system-ui);color:var(--text)}
 .sc-dialog p{margin:0;font-size:.9375rem;line-height:1.45;color:var(--text2)}
 .sc-dialog__actions{display:flex;gap:8px;justify-content:flex-end;margin-top:16px;flex-wrap:wrap}
 .sc-dialog__actions .btn{min-height:44px;padding:0 14px}
-.sc-dialog input{width:100%;margin-top:12px;min-height:44px;border-radius:10px;border:1px solid var(--border);background:var(--bg2,#1c1c1e);color:var(--text);padding:0 12px;font-size:1rem;box-sizing:border-box}
+.sc-dialog input{width:100%;margin-top:12px;min-height:44px;border-radius:10px;border:1px solid var(--border);background:var(--bg2);color:var(--text);padding:0 12px;font-size:1rem;box-sizing:border-box}
 `;
     document.head.appendChild(style);
   }
@@ -72,7 +72,7 @@
       const confirm = document.createElement('button');
       confirm.type = 'button';
       confirm.className = 'btn btn-primary';
-      if (destructive) confirm.style.color = 'var(--danger, #ff453a)';
+      if (destructive) confirm.style.color = 'var(--danger)';
       confirm.textContent = confirmLabel || 'OK';
       confirm.addEventListener('click', () => close(input ? inputEl.value : true));
       actions.appendChild(confirm);
