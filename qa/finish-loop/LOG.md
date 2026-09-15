@@ -14,3 +14,7 @@
 ## Prior
 - C-16 fonts + C-20 APP_READY (2.5.3)
 - C-17 streak language (2.5.2 / v52)
+
+### 2026-09-15 SteadyCap gallery regen
+- `npm run gallery` PASS (2 tests)
+- Regenerated screenshots + screen gallery artifacts
