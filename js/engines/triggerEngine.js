@@ -136,8 +136,8 @@ const TriggerEngine = (() => {
     if (!analysis && !mood?.moodRiskBoost) return { level: 'unknown', label: null };
     const risk = (analysis?.riskNow || 0) + (mood?.moodRiskBoost || 0);
     const merged = analysis ? { ...analysis, insights: [...(analysis.insights || []), ...(mood?.insights || [])] } : { insights: mood?.insights || [] };
-    if (risk > 0.25) return { level: 'high', label: 'High Risk Window', color: '#FF3B30', analysis: merged };
-    if (risk > 0.12) return { level: 'medium', label: 'Moderate Risk', color: '#FFD60A', analysis: merged };
+    if (risk > 0.25) return { level: 'high', label: 'High Risk Window', color: SCBrand.h_ff3b30, analysis: merged };
+    if (risk > 0.12) return { level: 'medium', label: 'Moderate Risk', color: SCBrand.h_ffd60a, analysis: merged };
     return { level: 'low', label: null, analysis: merged };
   }
 

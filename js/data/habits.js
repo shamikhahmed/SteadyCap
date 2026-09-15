@@ -1,7 +1,7 @@
 'use strict';
 const HABITS_CONFIG = {
   smoking: {
-    name: 'Smoking', icon: '🚬', color: '#FF6B35',
+    name: 'Smoking', icon: '🚬', color: SCBrand.h_ff6b35,
     configFields: [
       { id: 'cigarettesPerDay', label: 'Cigarettes per day', type: 'number', placeholder: '10' },
       { id: 'yearsSmoked', label: 'Years smoking', type: 'number', placeholder: '5' },
@@ -11,7 +11,7 @@ const HABITS_CONFIG = {
     computeCostPerDay: (cfg) => (cfg.cigarettesPerDay / (cfg.cigarettesPerPack || 20)) * (cfg.costPerPack || 0),
   },
   vape: {
-    name: 'Vaping', icon: '💨', color: '#4ECDC4',
+    name: 'Vaping', icon: '💨', color: SCBrand.h_4ecdc4,
     configFields: [
       { id: 'deviceType', label: 'Device type', type: 'select', options: ['Pod System','Box Mod','Disposable','Pen Vape','Other'] },
       { id: 'deviceBrand', label: 'Device / brand (optional)', type: 'text', placeholder: 'e.g. Vuse, Juul, Smok, Voopoo', optional: true },
@@ -26,7 +26,7 @@ const HABITS_CONFIG = {
     computeCostPerDay: (cfg) => ((cfg.podsPerWeek || 0) * (cfg.costPerPod || 0)) / 7,
   },
   nicotine_pouches: {
-    name: 'Nicotine Pouches', icon: '🟦', color: '#BF5AF2',
+    name: 'Nicotine Pouches', icon: '🟦', color: SCBrand.h_bf5af2,
     configFields: [
       { id: 'brand', label: 'Brand (optional)', type: 'text', placeholder: 'Zyn, On!, Velo...', optional: true },
       { id: 'strengthMg', label: 'Strength (mg)', type: 'number', placeholder: '6' },
@@ -37,7 +37,7 @@ const HABITS_CONFIG = {
     computeCostPerDay: (cfg) => (cfg.pouchesPerDay / (cfg.pouchesPerTin || 20)) * (cfg.costPerTin || 0),
   },
   shisha: {
-    name: 'Shisha / Hookah', icon: '🪔', color: '#FFD60A',
+    name: 'Shisha / Hookah', icon: '🪔', color: SCBrand.h_ffd60a,
     configFields: [
       { id: 'sessionsPerWeek', label: 'Sessions per week', type: 'number', placeholder: '3' },
       { id: 'sessionDuration', label: 'Average session duration (mins)', type: 'number', placeholder: '60' },
@@ -46,7 +46,7 @@ const HABITS_CONFIG = {
     computeCostPerDay: (cfg) => ((cfg.sessionsPerWeek || 0) * (cfg.costPerSession || 0)) / 7,
   },
   weed: {
-    name: 'Weed / Cannabis', icon: '🌿', color: '#06D6A0',
+    name: 'Weed / Cannabis', icon: '🌿', color: SCBrand.h_06d6a0,
     configFields: [
       { id: 'gramsPerDay', label: 'Grams per day', type: 'number', placeholder: '1' },
       { id: 'costPerGram', label: 'Cost per gram', type: 'number', placeholder: '10' },
@@ -55,7 +55,7 @@ const HABITS_CONFIG = {
     computeCostPerDay: (cfg) => (cfg.gramsPerDay || 0) * (cfg.costPerGram || 0),
   },
   porn: {
-    name: 'Porn', icon: '🔒', color: '#FF3B30',
+    name: 'Porn', icon: '🔒', color: SCBrand.h_ff3b30,
     configFields: [
       { id: 'frequencyPerWeek', label: 'Sessions per week', type: 'number', placeholder: '7' },
       { id: 'avgDuration', label: 'Average duration (mins)', type: 'number', placeholder: '30' },
@@ -64,7 +64,7 @@ const HABITS_CONFIG = {
     computeCostPerDay: () => 0,
   },
   social_media: {
-    name: 'Social Media', icon: '📱', color: '#0A84FF',
+    name: 'Social Media', icon: '📱', color: SCBrand.h_0a84ff,
     configFields: [
       { id: 'hoursPerDay', label: 'Hours per day', type: 'number', placeholder: '4' },
       { id: 'primaryApp', label: 'Primary app', type: 'select', options: ['TikTok','Instagram','Twitter/X','YouTube','Snapchat','Reddit','Mixed'] },
@@ -72,7 +72,7 @@ const HABITS_CONFIG = {
     computeCostPerDay: () => 0,
   },
   gaming: {
-    name: 'Gaming', icon: '🎮', color: '#BF5AF2',
+    name: 'Gaming', icon: '🎮', color: SCBrand.h_bf5af2,
     configFields: [
       { id: 'hoursPerDay', label: 'Hours per day (beyond healthy amount)', type: 'number', placeholder: '4' },
       { id: 'platform', label: 'Primary platform', type: 'select', options: ['PC','PlayStation','Xbox','Mobile','Mixed'] },
@@ -80,7 +80,7 @@ const HABITS_CONFIG = {
     computeCostPerDay: () => 0,
   },
   sugar: {
-    name: 'Junk Food / Sugar', icon: '🍔', color: '#FFD60A',
+    name: 'Junk Food / Sugar', icon: '🍔', color: SCBrand.h_ffd60a,
     configFields: [
       { id: 'spendPerDay', label: 'Daily spend on junk food', type: 'number', placeholder: '10' },
       { id: 'mainIssue', label: 'Primary issue', type: 'select', options: ['Sugar cravings','Fast food','Binge eating','Snacking','Sugary drinks'] },
@@ -88,7 +88,7 @@ const HABITS_CONFIG = {
     computeCostPerDay: (cfg) => cfg.spendPerDay || 0,
   },
   alcohol: {
-    name: 'Alcohol', icon: '🍺', color: '#FF9500',
+    name: 'Alcohol', icon: '🍺', color: SCBrand.h_ff9500,
     configFields: [
       { id: 'drinksPerWeek', label: 'Drinks per week', type: 'number', placeholder: '14' },
       { id: 'avgCostPerDrink', label: 'Average cost per drink', type: 'number', placeholder: '8.00' },
@@ -97,7 +97,7 @@ const HABITS_CONFIG = {
     computeCostPerDay: (cfg) => ((cfg.drinksPerWeek || 0) * (cfg.avgCostPerDrink || 0)) / 7,
   },
   masturbation: {
-    name: 'Masturbation', icon: '🚫', color: '#FF2D55',
+    name: 'Masturbation', icon: '🚫', color: SCBrand.h_ff2d55,
     configFields: [
       { id: 'frequencyPerWeek', label: 'Sessions per week', type: 'number', placeholder: '7' },
       { id: 'primaryTrigger', label: 'Primary trigger', type: 'select', options: ['Boredom','Stress','Loneliness','Night time','Anxiety','Habit'] },
@@ -105,7 +105,7 @@ const HABITS_CONFIG = {
     computeCostPerDay: () => 0,
   },
   caffeine: {
-    name: 'Excess Caffeine', icon: '☕', color: '#FF6B35',
+    name: 'Excess Caffeine', icon: '☕', color: SCBrand.h_ff6b35,
     configFields: [
       { id: 'cupsPerDay', label: 'Cups of coffee per day', type: 'number', placeholder: '5' },
       { id: 'energyDrinksPerDay', label: 'Energy drinks per day', type: 'number', placeholder: '0' },

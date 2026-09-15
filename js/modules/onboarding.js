@@ -35,19 +35,19 @@ const Onboarding = (() => {
       <div style="display:flex;flex-direction:column;gap:10px;width:100%;max-width:320px;margin-bottom:24px">
         <div style="display:flex;align-items:center;gap:12px;background:rgba(255,150,80,0.08);border:1px solid rgba(255,150,80,0.2);border-radius:14px;padding:14px 16px">
           <span class="ob-feat-tag">Private</span>
-          <span style="font-size:13px;color:var(--text2,#ccc)">Private by default — your data never leaves this device</span>
+          <span style="font-size:13px;color:var(--text2)">Private by default — your data never leaves this device</span>
         </div>
         <div style="display:flex;align-items:center;gap:12px;background:rgba(255,150,80,0.08);border:1px solid rgba(255,150,80,0.2);border-radius:14px;padding:14px 16px">
           <span class="ob-feat-tag">Forecast</span>
-          <span style="font-size:13px;color:var(--text2,#ccc)">Craving forecasts that actually predict hard moments</span>
+          <span style="font-size:13px;color:var(--text2)">Craving forecasts that actually predict hard moments</span>
         </div>
         <div style="display:flex;align-items:center;gap:12px;background:rgba(255,150,80,0.08);border:1px solid rgba(255,150,80,0.2);border-radius:14px;padding:14px 16px">
           <span class="ob-feat-tag">SOS</span>
-          <span style="font-size:13px;color:var(--text2,#ccc)">5-phase SOS when you need it most — works offline</span>
+          <span style="font-size:13px;color:var(--text2)">5-phase SOS when you need it most — works offline</span>
         </div>
       </div>
       <button type="button" class="btn btn-primary" onclick="Onboarding._goToStep1()" style="width:100%;max-width:320px;padding:16px;font-size:16px;font-weight:700;border-radius:16px">I'm ready to start →</button>
-      <p style="font-size:12px;color:var(--text3,#666);margin-top:14px">Takes about 90 seconds</p>
+      <p style="font-size:12px;color:var(--text3);margin-top:14px">Takes about 90 seconds</p>
     </div>`;
   }
 

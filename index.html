@@ -22,7 +22,7 @@
       }
       document.documentElement.setAttribute('data-theme', t);
       var meta = document.querySelector('meta[name="theme-color"]');
-      if (meta) meta.setAttribute('content', t === 'light' ? '#F4F0EA' : '#1A1412');
+      if (meta) meta.setAttribute('content', t === 'light' ? '#F4F0EA' : '#1A1412'); // theme-color boot
     } catch (e) {}
   })();
   </script>
@@ -38,7 +38,6 @@
   <link rel="preload" href="./css/app.css" as="style">
   <link rel="stylesheet" href="css/fonts-local.css">
   <link rel="stylesheet" href="css/capricorn-core.css">
-<style>:root{--cap-accent:#00A8B5}</style>
 <link rel="stylesheet" href="./css/app.css">
   <link rel="stylesheet" href="./css/identity.css">
   <title>SteadyCap — Recovery is a system. Not a streak. · Capricorn Systems</title>
@@ -89,6 +88,7 @@
 
   <div id="toast-wrap" role="status" aria-live="polite" aria-atomic="true"></div>
 
+  <script src="./js/brand/colors.js"></script>
   <script src="./js/lib/datetime.js"></script>
   <script src="./js/lib/storage-migrate.js"></script>
   <script src="./js/data/habits.js"></script>
@@ -129,27 +129,27 @@
   </script>
 
 <!-- PRO UPGRADE MODAL -->
-<div id="proUpgradeModal" style="display:none;position:fixed;inset:0;z-index:9800;background:rgba(0,0,0,0.78);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);align-items:center;justify-content:center;padding:24px" role="dialog" aria-modal="true" aria-label="SteadyCap Pro">
-  <div style="background:rgba(26,17,14,0.98);border:1px solid rgba(0,168,181,0.35);border-radius:24px;max-width:400px;width:100%;padding:36px 32px;box-shadow:0 40px 80px rgba(0,0,0,0.7)">
-    <p style="font-size:11px;font-weight:700;letter-spacing:0.1em;color:#00A8B5;margin-bottom:8px">STEADYCAP PRO</p>
-    <h2 style="font-size:1.6rem;font-weight:800;color:#fff;margin-bottom:4px;letter-spacing:-0.02em">Full recovery support.</h2>
-    <p style="font-size:14px;color:rgba(255,255,255,0.5);margin-bottom:28px">Your journal and habits stay on your device either way. Pro unlocks trigger forecasting, full SOS, and medicine scheduling.</p>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px">
-      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.10);border-radius:14px;padding:20px">
-        <p style="font-size:12px;font-weight:700;color:rgba(255,255,255,0.5);margin-bottom:12px">FREE</p>
-        <p style="font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:16px">$0</p>
-        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;font-size:13px;color:rgba(255,255,255,0.5)">
+<div id="proUpgradeModal" role="dialog" aria-modal="true" aria-label="SteadyCap Pro">
+  <div class="pro-card">
+    <p class="pro-kicker">STEADYCAP PRO</p>
+    <h2 class="pro-title">Full recovery support.</h2>
+    <p class="pro-lead">Your journal and habits stay on your device either way. Pro unlocks trigger forecasting, full SOS, and medicine scheduling.</p>
+    <div class="pro-grid">
+      <div class="pro-col">
+        <p class="pro-col-label">FREE</p>
+        <p class="pro-price">$0</p>
+        <ul class="pro-list">
           <li>✓ 3 habit trackers</li>
           <li>✓ Basic journal</li>
           <li>✓ Milestones</li>
           <li>✓ Offline PWA</li>
         </ul>
       </div>
-      <div style="background:rgba(0,168,181,0.10);border:2px solid rgba(0,168,181,0.4);border-radius:14px;padding:20px;position:relative">
-        <span style="position:absolute;top:-10px;left:16px;background:#00A8B5;color:#fff;font-size:10px;font-weight:800;padding:3px 10px;border-radius:20px;letter-spacing:0.06em">PRO</span>
-        <p style="font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:2px">$2.99<span style="font-size:13px;font-weight:400;color:rgba(255,255,255,0.5)">/mo</span></p>
-        <p style="font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:12px">or $24.99/yr</p>
-        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;font-size:13px;color:rgba(255,255,255,0.5)">
+      <div class="pro-col-pro">
+        <span class="pro-badge">PRO</span>
+        <p class="pro-price pro-price-sm">$2.99<span class="pro-price-period">/mo</span></p>
+        <p class="pro-sub">or $24.99/yr</p>
+        <ul class="pro-list">
           <li>✓ Unlimited habits & meds</li>
           <li>✓ Trigger forecast</li>
           <li>✓ 5-phase SOS flow</li>
@@ -159,8 +159,8 @@
         </ul>
       </div>
     </div>
-    <button type="button" onclick="document.getElementById('proUpgradeModal').style.display='none'" style="width:100%;padding:14px;background:rgba(0,168,181,0.15);border:1px solid rgba(0,168,181,0.3);color:#00A8B5;border-radius:14px;font-size:14px;font-weight:700;cursor:pointer;margin-bottom:10px">Join Pro waitlist — coming soon →</button>
-    <button type="button" onclick="document.getElementById('proUpgradeModal').style.display='none'" style="width:100%;padding:10px;background:none;border:none;color:rgba(255,255,255,0.4);font-size:13px;cursor:pointer">Continue with Free</button>
+    <button type="button" class="pro-waitlist" onclick="document.getElementById('proUpgradeModal').style.display='none'">Join Pro waitlist — coming soon →</button>
+    <button type="button" class="pro-dismiss" onclick="document.getElementById('proUpgradeModal').style.display='none'">Continue with Free</button>
   </div>
 </div>
 <script>
