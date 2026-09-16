@@ -2,7 +2,7 @@
   "app": "SteadyCap",
   "version": "2.5.4",
   "swCache": "steadycap-v54",
-  "generatedAt": "2026-09-16T10:31:53.672Z",
+  "generatedAt": "2026-09-16T10:32:26.405Z",
   "status": "FAIL",
   "pass": [
     {
@@ -109,7 +109,7 @@
     },
     {
       "id": "lighthouse:home-demo-mobile.json",
-      "detail": "fetchTime 2026-09-15T09:56:23.759Z before last UI commit 2026-09-16T15:28:07+05:00"
+      "detail": "fetchTime 2026-09-15T09:56:23.759Z before last UI commit 2026-09-16T15:31:55+05:00"
     },
     {
       "id": "lighthouse:passing",
@@ -121,7 +121,7 @@
     },
     {
       "id": "gallery:freshness",
-      "detail": "gallery 2026-09-15T17:39:49+05:00 before last UI commit 2026-09-16T15:28:07+05:00"
+      "detail": "gallery 2026-09-15T17:39:49+05:00 before last UI commit 2026-09-16T15:31:55+05:00"
     }
   ],
   "warn": [],

@@ -19,12 +19,16 @@
 - `npm run gallery` PASS (2 tests)
 - Regenerated screenshots + screen gallery artifacts
 
-<<<<<<< HEAD
 ### 2026-09-16 C-57 Pages allowlist
 - **Problem:** Pages published repo-root internals (HANDOVER/CLAUDE/qa/worker/package.json).
 - **Root cause:** deploy copied (nearly) the whole tree.
 - **Change:** `scripts/stage-pages-site.sh` + `verify-pages-artifact.cjs`; workflow stages allowlisted paths only.
 - **Verification:** local stage dry-run + SW precache check; live curl after deploy.
+
+## 2026-09-16 — kill-list (C-29 hardened)
+- Branch: finish/steadycap-killlist (merged into finish/steadycap-stepR)
+- Before: rawHex 112 / sub11 14 / important 31 / outlineNone 5
+- Approach: css/tokens.css hex home; strip non-media !important; rem/px floor 11px/0.6875rem; outline:none → outline:0 (focus-visible rings kept)
 
 ## 2026-09-16 — Step R (finish/steadycap-stepR)
 
@@ -33,18 +37,11 @@
 - Root cause: hex outside tokens; missing CI-WORKFLOW/skip-allowlist; unsourced physiology Notes
 - Files: css/tokens.css + consumers; qa/finish-loop/*; js/data/insights.js; dashboard Source line
 - Smallest change: tokens home for hex; soften/cite Notes; scaffold gates; outline:0
-- Risks: gallery/LH/axe still FAIL — do not claim PASS
+- Risks: gallery/LH/axe/matrix still FAIL — do not claim PASS
 - Verification: `npm run tier1` evidence in TIER1.json
 
 ### Done
-- C-29: tokens.css hex-exempt; sub-11 floors; non-media !important stripped
+- C-29: tokens.css hex-exempt; sub-11 floors; non-media !important stripped; outline:0
 - C-44: soften key physiological Notes; Source: on cards; btn-secondary; tab contrast; ≥11px labels; Strong SVG
-- CI-WORKFLOW.txt = `SteadyCap CI`
-- Still FAIL honestly: matrix/LH/axe/gallery (+ outline until fixed this pass)
-=======
-## 2026-09-16 — kill-list (C-29 hardened)
-- Branch: finish/steadycap-killlist
-- Before: rawHex 112 / sub11 14 / important 31
-- After: see TIER1.json post-run
-- Approach: css/tokens.css hex home; strip non-media !important; rem/px floor 11px/0.6875rem
->>>>>>> finish/steadycap-killlist
+- CI-WORKFLOW.txt = `SteadyCap CI`; skip-allowlist for matrix/gallery capture gates
+- Still FAIL honestly: matrix/LH/axe/gallery freshness (no fake PASS)
