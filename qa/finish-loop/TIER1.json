@@ -2,8 +2,8 @@
   "app": "SteadyCap",
   "version": "2.5.4",
   "swCache": "steadycap-v54",
-  "generatedAt": "2026-09-15T11:57:06.618Z",
-  "status": "PASS",
+  "generatedAt": "2026-09-16T10:12:56.179Z",
+  "status": "FAIL",
   "pass": [
     {
       "id": "version:field",
@@ -43,11 +43,11 @@
     },
     {
       "id": "app-ready",
-      "detail": "window.__APP_READY__ referenced"
+      "detail": "window.__APP_READY__ assigned in product code"
     },
     {
       "id": "ci:main",
-      "detail": "Merge finish/steadycap-tier1-killlist — Tier 1 kill-list 2.5.4 → success https://github.com/shamikhahmed/SteadyCap/actions/runs/34965968126"
+      "detail": "SteadyCap CI @ d964ebe → success https://github.com/shamikhahmed/SteadyCap/actions/runs/35079768477"
     },
     {
       "id": "tag",
@@ -58,8 +58,12 @@
       "detail": "tests/finish-matrix.spec.mjs"
     },
     {
-      "id": "lighthouse:files",
-      "detail": "1 JSON"
+      "id": "gallery:freshness",
+      "detail": "docs/screenshots/gallery/gallery-manifest.json @ 2026-09-15T17:39:49+05:00"
+    },
+    {
+      "id": "live:VERSION.json",
+      "detail": "https://shamikhahmed.github.io/SteadyCap/VERSION.json → 200"
     },
     {
       "id": "sinks:SINKS.md",
@@ -82,10 +86,6 @@
       "detail": "0"
     },
     {
-      "id": "kill:outline-none",
-      "detail": "0"
-    },
-    {
       "id": "kill:console.log",
       "detail": "0"
     },
@@ -98,19 +98,39 @@
       "detail": "27 sinks; SINKS.md ok"
     }
   ],
-  "fail": [],
-  "warn": [
+  "fail": [
     {
-      "id": "matrix:shots",
-      "detail": "qa/finish-loop/shots missing (run matrix)"
+      "id": "test-skip",
+      "detail": "2 hits (allowlist: none)\ntests/finish-matrix.spec.mjs:14: test.skip(!RUN, 'Set FINISH_MATRIX=1');\ntests/gallery.spec.js:35: test.skip(!process.env.CAPTURE_GALLERY, 'Gallery capture runs via `npm run gallery` (CAPTURE_GALLERY=1)');"
+    },
+    {
+      "id": "matrix:results",
+      "detail": "missing qa/finish-loop/matrix-results.json (CI must set FINISH_MATRIX=1)"
+    },
+    {
+      "id": "lighthouse:home-demo-mobile.json",
+      "detail": "fetchTime 2026-09-15T09:56:23.759Z before last UI commit 2026-09-15T17:37:44+05:00"
+    },
+    {
+      "id": "lighthouse:passing",
+      "detail": "0/1 files meet thresholds"
+    },
+    {
+      "id": "axe:dir",
+      "detail": "missing qa/finish-loop/axe/ (JSON per route×theme)"
+    },
+    {
+      "id": "kill:outline-none",
+      "detail": "5"
     }
   ],
+  "warn": [],
   "killList": {
     "rawHex": 0,
     "sub11": 0,
     "important": 0,
     "nativeDialog": 0,
-    "outlineNone": 0,
+    "outlineNone": 5,
     "consoleLog": 0,
     "googleFonts": 0,
     "innerHTML": 27

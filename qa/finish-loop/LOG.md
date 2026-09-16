@@ -18,3 +18,9 @@
 ### 2026-09-15 SteadyCap gallery regen
 - `npm run gallery` PASS (2 tests)
 - Regenerated screenshots + screen gallery artifacts
+
+## 2026-09-16 — kill-list (C-29 hardened)
+- Branch: finish/steadycap-killlist
+- Before: rawHex 112 / sub11 14 / important 31
+- After: see TIER1.json post-run
+- Approach: css/tokens.css hex home; strip non-media !important; rem/px floor 11px/0.6875rem
