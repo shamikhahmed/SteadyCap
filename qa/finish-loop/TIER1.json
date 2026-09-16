@@ -2,8 +2,8 @@
   "app": "SteadyCap",
   "version": "2.5.4",
   "swCache": "steadycap-v54",
-  "generatedAt": "2026-09-15T11:57:06.618Z",
-  "status": "PASS",
+  "generatedAt": "2026-09-16T10:31:53.672Z",
+  "status": "FAIL",
   "pass": [
     {
       "id": "version:field",
@@ -42,12 +42,16 @@
       "detail": "none"
     },
     {
+      "id": "test-skip",
+      "detail": "none"
+    },
+    {
       "id": "app-ready",
-      "detail": "window.__APP_READY__ referenced"
+      "detail": "window.__APP_READY__ assigned in product code"
     },
     {
       "id": "ci:main",
-      "detail": "Merge finish/steadycap-tier1-killlist — Tier 1 kill-list 2.5.4 → success https://github.com/shamikhahmed/SteadyCap/actions/runs/34965968126"
+      "detail": "SteadyCap CI @ 62227f2 → success https://github.com/shamikhahmed/SteadyCap/actions/runs/35084739082"
     },
     {
       "id": "tag",
@@ -58,8 +62,8 @@
       "detail": "tests/finish-matrix.spec.mjs"
     },
     {
-      "id": "lighthouse:files",
-      "detail": "1 JSON"
+      "id": "live:VERSION.json",
+      "detail": "https://shamikhahmed.github.io/SteadyCap/VERSION.json → 200"
     },
     {
       "id": "sinks:SINKS.md",
@@ -98,13 +102,29 @@
       "detail": "27 sinks; SINKS.md ok"
     }
   ],
-  "fail": [],
-  "warn": [
+  "fail": [
     {
-      "id": "matrix:shots",
-      "detail": "qa/finish-loop/shots missing (run matrix)"
+      "id": "matrix:results",
+      "detail": "missing qa/finish-loop/matrix-results.json (CI must set FINISH_MATRIX=1)"
+    },
+    {
+      "id": "lighthouse:home-demo-mobile.json",
+      "detail": "fetchTime 2026-09-15T09:56:23.759Z before last UI commit 2026-09-16T15:28:07+05:00"
+    },
+    {
+      "id": "lighthouse:passing",
+      "detail": "0/1 files meet thresholds"
+    },
+    {
+      "id": "axe:dir",
+      "detail": "missing qa/finish-loop/axe/ (JSON per route×theme)"
+    },
+    {
+      "id": "gallery:freshness",
+      "detail": "gallery 2026-09-15T17:39:49+05:00 before last UI commit 2026-09-16T15:28:07+05:00"
     }
   ],
+  "warn": [],
   "killList": {
     "rawHex": 0,
     "sub11": 0,

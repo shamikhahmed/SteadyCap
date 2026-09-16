@@ -289,6 +289,18 @@ html[data-theme="light"] .card {
   transform: scale(0.98);
 }
 
+.btn-secondary {
+  background: var(--glass2);
+  color: var(--text);
+  border: 1px solid var(--border2);
+  padding: 16px 28px;
+  font-size: 0.95rem;
+  border-radius: var(--r);
+  width: 100%;
+  min-height: 48px;
+}
+.btn-secondary:active { opacity: 0.85; transform: scale(0.98); }
+
 .btn-ghost {
   background: rgba(255,247,238,0.03);
   color: var(--text2);
@@ -335,7 +347,7 @@ html[data-theme="light"] .card {
   padding: 10px 0;
   background: none;
   border: none;
-  color: rgba(220,198,184,0.7);
+  color: var(--text2); /* C-44 inactive tabs */
   cursor: pointer;
   touch-action: manipulation;
   transition: color 0.2s ease, transform 0.2s ease;
@@ -1034,7 +1046,7 @@ html[data-theme="light"] .card {
   color: var(--text);
   font-size: 0.95rem;
   font-family: var(--font);
-  outline: none;
+  outline: 0;
   transition: border-color 0.2s ease;
   -webkit-appearance: none;
 }
@@ -1052,7 +1064,7 @@ html[data-theme="light"] .card {
   color: var(--text);
   font-size: 0.95rem;
   font-family: var(--font);
-  outline: none;
+  outline: 0;
   transition: border-color 0.2s ease;
   -webkit-appearance: none;
   appearance: none;
@@ -1089,7 +1101,7 @@ html[data-theme="light"] .card {
   color: var(--text);
   font-size: 0.9rem;
   font-family: var(--font);
-  outline: none;
+  outline: 0;
   -webkit-appearance: none;
 }
 
@@ -1726,9 +1738,9 @@ button.check-row:focus-visible {
 }
 .mood-emoji { font-size: 1.25rem; }
 .mood-label {
-  font-size: 0.6875rem;
+  font-size: 0.6875rem; /* ≥11px C-44 */
   font-weight: 600;
-  color: var(--text3);
+  color: var(--text2);
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
@@ -1740,7 +1752,7 @@ button.check-row:focus-visible {
   color: var(--text);
   font: 0.88rem/1.5 var(--font);
   resize: none;
-  outline: none;
+  outline: 0;
   padding: 8px 0;
   box-sizing: border-box;
 }

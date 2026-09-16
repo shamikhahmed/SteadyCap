@@ -1,0 +1,12 @@
+{
+  "entries": [
+    {
+      "pattern": "tests/finish-matrix.spec.mjs",
+      "reason": "Finish matrix gated behind FINISH_MATRIX=1 — intentional skip when unset (C-32)"
+    },
+    {
+      "pattern": "tests/gallery.spec.js",
+      "reason": "Gallery capture gated behind CAPTURE_GALLERY=1 — intentional skip when unset (C-32)"
+    }
+  ]
+}
