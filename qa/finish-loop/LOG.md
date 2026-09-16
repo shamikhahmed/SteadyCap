@@ -24,3 +24,7 @@
 - **Root cause:** deploy copied (nearly) the whole tree.
 - **Change:** allowlisted stage script + SW verify; workflow stages public paths only.
 - **Verification:** local stage dry-run; live curl after deploy.
+
+## 2026-09-16 — C-44 finish/steadycap-r3
+- Soften unsourced physiological claims; Source: on Note cards
+- btn-secondary Open journal; tab contrast; check-in ≥11px; Strong SVG; SW v55
