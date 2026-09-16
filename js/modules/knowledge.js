@@ -91,9 +91,9 @@ const Knowledge = (() => {
           <button type="button" onclick="Knowledge._closeArticle()" style="background:none;border:none;color:var(--teal);font-size:0.9rem;font-weight:600;cursor:pointer">← Back</button>
           <button type="button" onclick="Knowledge._toggleBookmark('${article.id}')" style="background:none;border:none;font-size:1.2rem;cursor:pointer" id="reader-bookmark">${bookmarks.includes(id)?'🔖':'🏷️'}</button>
         </div>
-        <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--teal);margin-top:10px">${article.category}</div>
+        <div style="font-size: 0.6875rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--teal);margin-top:10px">${article.category}</div>
         <div style="font-size:1.2rem;font-weight:800;color:var(--text);margin-top:4px;line-height:1.3">${article.title}</div>
-        <div style="font-size:0.65rem;color:var(--green);font-weight:600;margin-top:6px">${article.evidence}</div>
+        <div style="font-size: 0.6875rem;color:var(--green);font-weight:600;margin-top:6px">${article.evidence}</div>
       </div>
       <div class="reader-content">${article.content}</div>
     `;

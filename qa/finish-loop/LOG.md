@@ -20,7 +20,23 @@
 - Regenerated screenshots + screen gallery artifacts
 
 ### 2026-09-16 C-57 Pages allowlist
-- **Problem:** Pages published repo-root internals.
+- **Problem:** Pages published repo-root internals (HANDOVER/CLAUDE/qa/worker/package.json).
 - **Root cause:** deploy copied (nearly) the whole tree.
-- **Change:** allowlisted stage script + SW verify; workflow stages public paths only.
-- **Verification:** local stage dry-run; live curl after deploy.
+- **Change:** `scripts/stage-pages-site.sh` + `verify-pages-artifact.cjs`; workflow stages allowlisted paths only.
+- **Verification:** local stage dry-run + SW precache check; live curl after deploy.
+
+## 2026-09-16 — Step R (finish/steadycap-stepR)
+
+### Mini-plan
+- Problem: hardened tier1 FAIL (gates + kill-list + C-44 honest copy)
+- Root cause: hex outside tokens; missing CI-WORKFLOW/skip-allowlist; unsourced physiology Notes
+- Files: css/tokens.css + consumers; qa/finish-loop/*; js/data/insights.js; dashboard Source line
+- Smallest change: tokens home for hex; soften/cite Notes; scaffold gates; outline:0
+- Risks: gallery/LH/axe still FAIL — do not claim PASS
+- Verification: `npm run tier1` evidence in TIER1.json
+
+### Done
+- C-29: tokens.css hex-exempt; sub-11 floors; non-media !important stripped
+- C-44: soften key physiological Notes; Source: on cards; btn-secondary; tab contrast; ≥11px labels; Strong SVG
+- CI-WORKFLOW.txt = `SteadyCap CI`
+- Still FAIL honestly: matrix/LH/axe/gallery (+ outline until fixed this pass)

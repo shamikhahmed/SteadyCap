@@ -111,7 +111,7 @@ const Dashboard = (() => {
             <div class="insight-mark" aria-hidden="true">Note</div>
             <div>
               <div class="insight-text">${insight.text}</div>
-              <div style="font-size:12px;color:var(--text3);margin-top:6px;font-weight:600">${insight.source || ''}</div>
+              ${insight.source ? `<div class="insight-source">Source: ${insight.source}</div>` : ''}
             </div>
           </div>
         ` : ''}

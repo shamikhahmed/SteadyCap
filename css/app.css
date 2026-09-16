@@ -1,76 +1,4 @@
-/* ============================================================
-   SteadyCap — ER triage tray / hospital teal
-   Light + dark only
-   ============================================================ */
-
-/* Variables — dark clinical tray (default) */
-:root,
-html[data-theme="dark"] {
-  --bg: #1A1412;
-  --bg2: #221A17;
-  --bg3: #2A211C;
-  --bg4: #322924;
-  --glass: rgba(255,247,238,0.06);
-  --glass2: rgba(255,244,231,0.1);
-  --glass3: rgba(255,247,238,0.15);
-  --border: rgba(255,201,166,0.22);
-  --border2: rgba(255,201,166,0.32);
-  --text: #F8F1EA;
-  --text2: #D4C2B4;
-  --text3: #A89282;
-  --orange: #00D4E6;
-  --teal: #00D4E6;
-  --green: #3D9B7A;
-  --red: #D62246;
-  --blue: #4A7A9B;
-  --gold: #C4A35A;
-  --purple: #8B6F8E;
-  --r: 18px;
-  --r-sm: 12px;
-  --r-lg: 24px;
-  --shadow-soft: 0 10px 28px rgba(20,12,8,0.28);
-  --shadow-card: inset 0 1px 0 rgba(255,243,232,0.06), 0 8px 22px rgba(16,8,4,0.22);
-  --font: 'Source Sans 3', 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
-  --font-display: 'Source Sans 3', 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'IBM Plex Mono', 'SF Mono', Menlo, Consolas, monospace;
-  --body-grad:
-    radial-gradient(90% 90% at 12% 14%, rgba(0,212,230,0.14) 0%, rgba(0,212,230,0) 62%),
-    radial-gradient(78% 72% at 88% 18%, rgba(0,168,181,0.12) 0%, rgba(0,168,181,0) 58%),
-    linear-gradient(160deg, #141818 0%, #1A1E1E 52%, #1E2222 100%);
-  --nav-bg: linear-gradient(180deg, rgba(42,33,28,0.92), rgba(34,26,23,0.98));
-  --theme-color: #1A1412;
-  --cap-accent: #00A8B5;
-}
-
-/* Light — paper chart / medical tray */
-html[data-theme="light"] {
-  --bg: #F4F0EA;
-  --bg2: #EBE5DC;
-  --bg3: #E2DACF;
-  --bg4: #D8CFC2;
-  --glass: rgba(255,255,255,0.72);
-  --glass2: rgba(255,255,255,0.88);
-  --glass3: rgba(255,255,255,0.95);
-  --border: rgba(90,70,55,0.14);
-  --border2: rgba(90,70,55,0.22);
-  --text: #2A221C;
-  --text2: #5A4E44;
-  --text3: #8A7A6C;
-  --orange: #00A8B5;
-  --teal: #00A8B5;
-  --green: #2F7A5C;
-  --red: #D62246;
-  --blue: #3A6A88;
-  --gold: #A08040;
-  --purple: #6E5A72;
-  --shadow-soft: 0 8px 24px rgba(60,40,25,0.08);
-  --shadow-card: inset 0 1px 0 rgba(255,255,255,0.9), 0 4px 16px rgba(60,40,25,0.06);
-  --body-grad:
-    radial-gradient(80% 70% at 10% 0%, rgba(0,168,181,0.08) 0%, transparent 55%),
-    linear-gradient(180deg, #F7F3ED 0%, #F0EBE3 48%, #EBE5DC 100%);
-  --nav-bg: linear-gradient(180deg, rgba(255,252,248,0.94), rgba(244,240,234,0.98));
-  --theme-color: #F4F0EA;
-}
+/* Theme tokens → css/tokens.css */
 
 /* Base Reset */
 *, *::before, *::after {
@@ -192,7 +120,7 @@ input, select, textarea {
    ============================================================ */
 
 @media (min-width: 900px) {
-  html.cap-desktop-bg { background: #030508; }
+  html.cap-desktop-bg { background: var(--sc-hex-030508); }
 
   .cap-desktop-shell {
     width: 100%;
@@ -217,7 +145,7 @@ input, select, textarea {
     padding-bottom: 24px;
   }
 
-  #nav { display: none !important; }
+  #nav { display: none; }
   .screen { padding-bottom: 24px; }
 }
 
@@ -273,7 +201,7 @@ input, select, textarea {
 
 #nav {
   height: calc(64px + env(safe-area-inset-bottom));
-  background: var(--bg3, #1A1412);
+  background: var(--bg3);
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   border-top: 1px solid var(--border);
@@ -347,8 +275,8 @@ html[data-theme="light"] .card {
 }
 
 .btn-primary {
-  background: linear-gradient(145deg, #00C4D4, #00A8B5);
-  color: #F0FEFF;
+  background: linear-gradient(145deg, var(--teal), var(--teal));
+  color: var(--sc-hex-f0feff);
   padding: 16px 28px;
   font-size: 0.95rem;
   border-radius: var(--r);
@@ -556,7 +484,7 @@ html[data-theme="light"] .card {
 }
 
 .ring-cell-name {
-  font-size: 0.6rem;
+  font-size: 0.6875rem;
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -836,6 +764,12 @@ html[data-theme="light"] .card {
   font-size: 0.82rem;
   color: var(--text2);
   line-height: 1.6;
+}
+.insight-source {
+  font-size: 12px;
+  color: var(--text2);
+  margin-top: 6px;
+  font-weight: 600;
 }
 
 /* ============================================================
@@ -1726,7 +1660,7 @@ button.check-row:focus-visible {
 }
 
 @media (min-width: 769px) and (hover: hover) and (pointer: fine) {
-  .screen { padding-bottom: 24px !important; }
+  .screen { padding-bottom: 24px; }
   #nav { height: 64px; padding-bottom: 0; }
   .score-ring-wrap { padding-top: 32px; }
   .sos-footer { padding-bottom: 20px; }
@@ -1792,7 +1726,7 @@ button.check-row:focus-visible {
 }
 .mood-emoji { font-size: 1.25rem; }
 .mood-label {
-  font-size: 0.58rem;
+  font-size: 0.6875rem;
   font-weight: 600;
   color: var(--text3);
   text-transform: uppercase;
@@ -1814,8 +1748,8 @@ button.check-row:focus-visible {
 
 /* Fast app shell — solid nav, no blur compositing */
 body[data-cap-app="1"] #nav {
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 /* ============================================================
@@ -1830,7 +1764,7 @@ body[data-cap-app="1"] #nav {
   align-items: center;
   justify-content: center;
   gap: 18px;
-  background: var(--body-grad, #1A1412);
+  background: var(--body-grad);
   transition: opacity 0.45s ease, visibility 0.45s ease;
 }
 .steady-splash.hide {
@@ -1979,10 +1913,10 @@ body[data-cap-app="1"] #nav {
 .applock-status{min-height:1.2em;font-size:13px;color:var(--red);margin-top:8px}
 .mood-icon{display:flex;align-items:center;justify-content:center;color:var(--text2)}
 .mood-btn.selected .mood-icon{color:var(--orange)}
-.nav-sos .nav-icon{color:var(--red,#ff453a)}
+.nav-sos .nav-icon{color:var(--red)}
 .nav-sos .nav-label{color:var(--text2)}
 .nav-sos.active .nav-label{color:var(--text)}
-html[data-theme="light"] #nav{background:#FFF8F2}
+html[data-theme="light"] #nav{background:var(--sc-hex-fff8f2)}
 
 /* Pro upgrade modal (moved off index.html inline hex) */
 #proUpgradeModal{
