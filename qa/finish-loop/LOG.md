@@ -18,3 +18,9 @@
 ### 2026-09-15 SteadyCap gallery regen
 - `npm run gallery` PASS (2 tests)
 - Regenerated screenshots + screen gallery artifacts
+
+### 2026-09-16 C-57 Pages allowlist
+- **Problem:** Pages published repo-root internals.
+- **Root cause:** deploy copied (nearly) the whole tree.
+- **Change:** allowlisted stage script + SW verify; workflow stages public paths only.
+- **Verification:** local stage dry-run; live curl after deploy.

@@ -23,28 +23,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
-      - name: Stage site excluding internals
-        run: |
-          mkdir -p _site
-          rsync -a \
-            --exclude '.git' \
-            --exclude '.github' \
-            --exclude '.claude' \
-            --exclude '.cursor' \
-            --exclude '.venv' \
-            --exclude 'node_modules' \
-            --exclude 'test-results' \
-            --exclude 'playwright-report' \
-            --exclude 'tests' \
-            --exclude 'qa' \
-            --exclude '_site' \
-            --exclude 'playwright.config.js' \
-            --exclude 'package.json' \
-            --exclude 'package-lock.json' \
-            ./ _site/
+      - name: Stage allowlisted site (C-57)
+        env:
+          ALLOW_PATHS: >-
+            index.html landing.html pitch.html presentation.html privacy.html changelog.html screen-gallery.html sw.js manifest.json VERSION.json css js assets
+          FORBIDDEN_EXTRA: docs
+        run: bash scripts/stage-pages-site.sh _site
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
       - id: deployment
         uses: actions/deploy-pages@v4
-
