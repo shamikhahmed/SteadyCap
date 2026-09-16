@@ -1,3 +1,5 @@
+import fs from 'node:fs';
+import path from 'node:path';
 /** Vendored from capricorn-tooling/shared/testing/finish-matrix.mjs — keep in sync. */
 /**
  * Cap Fleet finish-matrix helpers (FLT-07 / §6.2).
@@ -96,4 +98,55 @@ export async function applyFinishTheme(page, theme) {
       /* ignore */
     }
   }, theme);
+}
+
+/**
+ * Write qa/finish-loop/matrix-results.json for the tier1 runner (C-31).
+ * Call from finish-matrix afterAll. shotCount must equal routes × viewports × themes.
+ * Release commits that claim Tier 1 must include the latest matrix-results.json in-repo.
+ */
+export function writeMatrixResults({
+  root = process.cwd(),
+  routes,
+  viewports,
+  themes = FINISH_THEMES,
+  failures = [],
+  shotCount,
+} = {}) {
+  const routeList = Array.isArray(routes) ? routes : [routes || 'home'];
+  const vpList = Array.isArray(viewports) ? viewports : matrixViewports().map((v) => v.name);
+  const themeList = Array.isArray(themes) ? themes : FINISH_THEMES;
+  const expected = routeList.length * vpList.length * themeList.length;
+  const shots =
+    typeof shotCount === 'number'
+      ? shotCount
+      : countPngs(path.join(root, 'qa', 'finish-loop', 'shots'));
+  const generatedAt = new Date().toISOString();
+  const outDir = path.join(root, 'qa', 'finish-loop');
+  fs.mkdirSync(outDir, { recursive: true });
+  const payload = {
+    failures,
+    shotCount: shots,
+    expectedShots: expected,
+    generatedAt,
+    routes: routeList,
+    viewports: vpList,
+    themes: themeList,
+  };
+  fs.writeFileSync(path.join(outDir, 'matrix-results.json'), JSON.stringify(payload, null, 2) + '\n');
+  return payload;
+}
+
+function countPngs(dir) {
+  if (!fs.existsSync(dir)) return 0;
+  let n = 0;
+  const walk = (d) => {
+    for (const ent of fs.readdirSync(d, { withFileTypes: true })) {
+      const p = path.join(d, ent.name);
+      if (ent.isDirectory()) walk(p);
+      else if (/\.png$/i.test(ent.name)) n += 1;
+    }
+  };
+  walk(dir);
+  return n;
 }

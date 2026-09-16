@@ -11,7 +11,8 @@
     "verify": "playwright test",
     "gallery": "CAPTURE_GALLERY=1 playwright test tests/gallery.spec.js",
     "gallery:view": "python3 -m http.server 8768",
-    "tier1": "node ../capricorn-tooling/shared/testing/tier1.mjs"
+    "tier1": "node ../capricorn-tooling/shared/testing/tier1.mjs",
+    "test:matrix": "FINISH_MATRIX=1 playwright test tests/finish-matrix.spec.mjs --workers=1"
   },
   "devDependencies": {
     "@playwright/test": "^1.52.0",
