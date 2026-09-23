@@ -2,7 +2,7 @@
   "app": "SteadyCap",
   "version": "2.5.5",
   "swCache": "steadycap-v55",
-  "generatedAt": "2026-09-23T05:38:32.688Z",
+  "generatedAt": "2026-09-23T05:38:52.280Z",
   "status": "FAIL",
   "pass": [
     {
@@ -70,6 +70,10 @@
       "detail": "2026-09-23T05:35:25.104Z"
     },
     {
+      "id": "gallery:freshness",
+      "detail": "docs/screenshots/gallery/gallery-manifest.json @ 2026-09-23T10:38:48+05:00"
+    },
+    {
       "id": "live:VERSION.json",
       "detail": "https://shamikhahmed.github.io/SteadyCap/VERSION.json → 200"
     },
@@ -126,10 +130,6 @@
     {
       "id": "axe:serious-critical",
       "detail": "home-demo-light.json: 1 serious/critical (color-contrast)"
-    },
-    {
-      "id": "gallery:freshness",
-      "detail": "gallery 2026-09-23T10:33:29+05:00 before last UI commit 2026-09-23T10:33:43+05:00"
     }
   ],
   "warn": [],
