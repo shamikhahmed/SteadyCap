@@ -49,3 +49,8 @@
 ## 2026-09-23 — gallery + nav harden
 - `Navigation.go` wraps screen renderers so Recovery throw cannot break gallery.
 - Gallery mobile+desktop re-captured; VERSION 2.5.5 / sw steadycap-v55.
+
+## 2026-09-23 — matrix/axe/LH
+- matrix: 6/6, 0 failures
+- axe: home-demo light+dark JSON
+- LH mobile live: P87 A100 BP96 — below perf≥90 (not claiming lighthouse:passing)
