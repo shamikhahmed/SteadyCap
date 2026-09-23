@@ -1,7 +1,7 @@
 {
   "app": "SteadyCap",
-  "version": "2.5.4",
-  "swCache": "steadycap-v54",
-  "updated": "2026-09-15",
-  "notes": "Tier1 kill-list: SCBrand palette, pro modal CSS, dialogs comment"
+  "version": "2.5.5",
+  "swCache": "steadycap-v55",
+  "updated": "2026-09-23",
+  "notes": "Navigation.go: screen renderers cannot throw (gallery recovery)"
 }

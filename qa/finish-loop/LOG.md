@@ -45,3 +45,7 @@
 - C-44: soften key physiological Notes; Source: on cards; btn-secondary; tab contrast; ≥11px labels; Strong SVG
 - CI-WORKFLOW.txt = `SteadyCap CI`; skip-allowlist for matrix/gallery capture gates
 - Still FAIL honestly: matrix/LH/axe/gallery freshness (no fake PASS)
+
+## 2026-09-23 — gallery + nav harden
+- `Navigation.go` wraps screen renderers so Recovery throw cannot break gallery.
+- Gallery mobile+desktop re-captured; VERSION 2.5.5 / sw steadycap-v55.

@@ -76,18 +76,26 @@ const Navigation = (() => {
 
     renderNav();
 
+    // Screen renderers must not break tab navigation (gallery / cold demo).
+    const run = (fn) => {
+      try {
+        fn();
+      } catch (_) {
+        /* keep shell usable; screen may show empty until next successful render */
+      }
+    };
     if (screenId === 'emergency') {
-      if (window.Emergency) Emergency.render();
+      if (window.Emergency) run(() => Emergency.render());
     } else if (screenId === 'dashboard') {
-      if (window.Dashboard) Dashboard.render();
+      if (window.Dashboard) run(() => Dashboard.render());
     } else if (screenId === 'recovery') {
-      if (window.Recovery) Recovery.render(params.habitId);
+      if (window.Recovery) run(() => Recovery.render(params.habitId));
     } else if (screenId === 'knowledge') {
-      if (window.Knowledge) Knowledge.render();
+      if (window.Knowledge) run(() => Knowledge.render());
     } else if (screenId === 'journal') {
-      if (window.Journal) Journal.render();
+      if (window.Journal) run(() => Journal.render());
     } else if (screenId === 'profile') {
-      if (window.Profile) Profile.render();
+      if (window.Profile) run(() => Profile.render());
     }
 
     if (screenId !== 'onboarding') {
