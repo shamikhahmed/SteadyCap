@@ -42,8 +42,12 @@ for (const viewport of ['mobile', 'desktop']) {
     test(`capture ${SCREENS.length} ${viewport} screens`, async ({ page }) => {
       test.setTimeout(120_000);
       await page.goto('/?demo=1');
-      await page.waitForFunction(() => typeof window.Navigation !== 'undefined');
-      await page.waitForTimeout(600);
+      await page.waitForFunction(
+        () =>
+          typeof window.Navigation !== 'undefined' &&
+          (window.__APP_READY__ === true || document.documentElement.dataset.appReady === 'true'),
+      );
+      await page.waitForTimeout(1000);
 
       const shots = [];
       for (const [i, id] of SCREENS.entries()) {
