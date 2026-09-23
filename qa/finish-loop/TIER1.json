@@ -2,7 +2,7 @@
   "app": "SteadyCap",
   "version": "2.5.5",
   "swCache": "steadycap-v55",
-  "generatedAt": "2026-09-23T05:40:43.276Z",
+  "generatedAt": "2026-09-23T05:43:13.922Z",
   "status": "FAIL",
   "pass": [
     {
@@ -52,6 +52,10 @@
     {
       "id": "ci:main",
       "detail": "SteadyCap CI @ 3914c4b → success https://github.com/shamikhahmed/SteadyCap/actions/runs/35086943639"
+    },
+    {
+      "id": "tag",
+      "detail": "found v2.5.5"
     },
     {
       "id": "matrix:spec",
@@ -115,10 +119,6 @@
     }
   ],
   "fail": [
-    {
-      "id": "tag",
-      "detail": "missing tag v2.5.5 (have: v2.5.0, v2.5.1, v2.5.2, v2.5.3, v2.5.4)"
-    },
     {
       "id": "lighthouse:home-demo-mobile.json",
       "detail": "perf 87 a11y 100 bp 96 LCP 2003.7745 TBT 399 CLS 0.001046712059250612"

@@ -60,3 +60,6 @@
 - Merged origin/main (FINISH_MATRIX CI + writeMatrixResults).
 - Gallery regen (APP_READY wait); axe JSON home×themes; matrix 6/6; real LH mobile vs live Pages.
 - Honest Tier1 remaining fails recorded in TIER1.json — no fleet Tier 1 claim.
+
+## 2026-09-23 — tag v2.5.5
+- Annotated tag pushed for VERSION 2.5.5 (clears tier1 tag gate).
