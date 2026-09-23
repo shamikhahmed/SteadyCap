@@ -1,17 +1,17 @@
 {
   "app": "SteadyCap",
-  "version": "2.5.4",
-  "swCache": "steadycap-v54",
-  "generatedAt": "2026-09-16T10:34:40.397Z",
+  "version": "2.5.5",
+  "swCache": "steadycap-v55",
+  "generatedAt": "2026-09-23T05:38:32.688Z",
   "status": "FAIL",
   "pass": [
     {
       "id": "version:field",
-      "detail": "2.5.4"
+      "detail": "2.5.5"
     },
     {
       "id": "version:sw-cache-match",
-      "detail": "sw.js contains steadycap-v54"
+      "detail": "sw.js contains steadycap-v55"
     },
     {
       "id": "records:BASELINE.md",
@@ -51,15 +51,23 @@
     },
     {
       "id": "ci:main",
-      "detail": "SteadyCap CI @ 62227f2 → success https://github.com/shamikhahmed/SteadyCap/actions/runs/35084739082"
-    },
-    {
-      "id": "tag",
-      "detail": "found v2.5.4"
+      "detail": "SteadyCap CI @ 3914c4b → success https://github.com/shamikhahmed/SteadyCap/actions/runs/35086943639"
     },
     {
       "id": "matrix:spec",
       "detail": "tests/finish-matrix.spec.mjs"
+    },
+    {
+      "id": "matrix:failures",
+      "detail": "0"
+    },
+    {
+      "id": "matrix:shot-count",
+      "detail": "6 shots (need routes×viewports×themes = 6)"
+    },
+    {
+      "id": "matrix:freshness",
+      "detail": "2026-09-23T05:35:25.104Z"
     },
     {
       "id": "live:VERSION.json",
@@ -104,24 +112,24 @@
   ],
   "fail": [
     {
-      "id": "matrix:results",
-      "detail": "missing qa/finish-loop/matrix-results.json (CI must set FINISH_MATRIX=1)"
+      "id": "tag",
+      "detail": "missing tag v2.5.5 (have: v2.5.0, v2.5.1, v2.5.2, v2.5.3, v2.5.4)"
     },
     {
       "id": "lighthouse:home-demo-mobile.json",
-      "detail": "fetchTime 2026-09-15T09:56:23.759Z before last UI commit 2026-09-16T15:31:55+05:00"
+      "detail": "perf 87 a11y 100 bp 96 LCP 2003.7745 TBT 399 CLS 0.001046712059250612"
     },
     {
       "id": "lighthouse:passing",
       "detail": "0/1 files meet thresholds"
     },
     {
-      "id": "axe:dir",
-      "detail": "missing qa/finish-loop/axe/ (JSON per route×theme)"
+      "id": "axe:serious-critical",
+      "detail": "home-demo-light.json: 1 serious/critical (color-contrast)"
     },
     {
       "id": "gallery:freshness",
-      "detail": "gallery 2026-09-15T17:39:49+05:00 before last UI commit 2026-09-16T15:31:55+05:00"
+      "detail": "gallery 2026-09-23T10:33:29+05:00 before last UI commit 2026-09-23T10:33:43+05:00"
     }
   ],
   "warn": [],

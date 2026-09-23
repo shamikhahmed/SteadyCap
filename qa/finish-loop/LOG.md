@@ -54,3 +54,9 @@
 - matrix: 6/6, 0 failures
 - axe: home-demo light+dark JSON
 - LH mobile live: P87 A100 BP96 — below perf≥90 (not claiming lighthouse:passing)
+
+## 2026-09-23 — Step R evidence (finish/steadycap-stepR)
+
+- Merged origin/main (FINISH_MATRIX CI + writeMatrixResults).
+- Gallery regen (APP_READY wait); axe JSON home×themes; matrix 6/6; real LH mobile vs live Pages.
+- Honest Tier1 remaining fails recorded in TIER1.json — no fleet Tier 1 claim.
