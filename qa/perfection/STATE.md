@@ -11,7 +11,7 @@ Updated: 2026-10-14T11:28:00Z · Builder: Builder-SteadyCap
 **2.5.6** · SW `steadycap-v56` · register `?v=56` (G-8)
 
 ## Last commits
-- Tip after docs: (this commit)
+- ` c9c4796 ` docs hand-off
 -  docs(qa): tip SHA on STATE
 -  fix(steadycap): Wave B STD-V3-1..4
 
