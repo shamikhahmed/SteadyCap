@@ -1,3 +1,9 @@
+## 2.6.0 — 2026-10-14
+- Perfection Loop v3 Phase I (next minor). STD-V3-1..4 Auditor ✅ VERIFIED.
+- Mood chip labels `max(11px, 0.75rem)` + 44px targets; Open journal `btn-open-journal` ≥48px.
+- Demo-seed + skip-reseed + splash 220ms from wip (MODULE_CHAIN deferred — SOS stays eager); G-9 fonts; light teal AA; G-3 og title; insights.js apostrophe fix; G-10 local-lock + G-6 fixture.
+- G-8: VERSION **2.6.0** / SW `steadycap-v60` / register `?v=60` / CHANGELOG aligned. SOS content unchanged.
+
 ## 2.5.6 — 2026-10-14
 - Perfection v3 (STD-V3-1/2): mood chip labels `max(11px, 0.75rem)` + 44px mood targets; Open journal `btn-open-journal` ≥48px.
 - STD-V3-3: port `demo-seed.js` + skip-reseed + splash timing from `wip/steadycap-2026-09` (MODULE_CHAIN deferred — SOS must stay eager); keep self-hosted fonts (G-9); light-theme teal AA; G-3 og title no longer says "OS"; fix insights.js apostrophe pageerror.
