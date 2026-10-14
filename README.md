@@ -1,8 +1,8 @@
 # SteadyCap
 
-**Version:** 2.3.3
+**Version:** 2.6.0
 
-**Personal Recovery Operating System — by Capricorn Systems.** Habits, daily routines, medicines, recovery timelines, emergency SOS, journal, and trigger intelligence.
+**Personal recovery companion — by Capricorn Systems.** Habits, daily routines, medicines, recovery timelines, emergency SOS, journal, and trigger intelligence.
 
 🔗 **Live:** https://shamikhahmed.github.io/SteadyCap/  
 📁 **Repo:** https://github.com/shamikhahmed/SteadyCap

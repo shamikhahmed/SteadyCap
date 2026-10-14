@@ -1,17 +1,17 @@
 {
   "app": "SteadyCap",
-  "version": "2.5.5",
-  "swCache": "steadycap-v55",
-  "generatedAt": "2026-09-23T05:43:13.922Z",
+  "version": "2.6.0",
+  "swCache": "steadycap-v60",
+  "generatedAt": "2026-10-14T12:24:41.701Z",
   "status": "FAIL",
   "pass": [
     {
       "id": "version:field",
-      "detail": "2.5.5"
+      "detail": "2.6.0"
     },
     {
       "id": "version:sw-cache-match",
-      "detail": "sw.js contains steadycap-v55"
+      "detail": "sw.js contains steadycap-v60"
     },
     {
       "id": "records:BASELINE.md",
@@ -51,11 +51,11 @@
     },
     {
       "id": "ci:main",
-      "detail": "SteadyCap CI @ 3914c4b → success https://github.com/shamikhahmed/SteadyCap/actions/runs/35086943639"
+      "detail": "SteadyCap CI @ be15984 → success https://github.com/shamikhahmed/SteadyCap/actions/runs/38559515663"
     },
     {
       "id": "tag",
-      "detail": "found v2.5.5"
+      "detail": "found v2.6.0"
     },
     {
       "id": "matrix:spec",
@@ -70,20 +70,20 @@
       "detail": "6 shots (need routes×viewports×themes = 6)"
     },
     {
-      "id": "matrix:freshness",
-      "detail": "2026-09-23T05:35:25.104Z"
-    },
-    {
-      "id": "gallery:freshness",
-      "detail": "docs/screenshots/gallery/gallery-manifest.json @ 2026-09-23T10:38:48+05:00"
-    },
-    {
       "id": "live:VERSION.json",
       "detail": "https://shamikhahmed.github.io/SteadyCap/VERSION.json → 200"
     },
     {
       "id": "sinks:SINKS.md",
       "detail": "present"
+    },
+    {
+      "id": "g16:device-qa",
+      "detail": "qa/perfection/device/device-qa.json: 0 hard / tap / text / page / hub-console (7 runs)"
+    },
+    {
+      "id": "g18:docs-truth",
+      "detail": "versions aligned (2.6.0); 33 docs scanned; sw.js ↔ steadycap-v60"
     },
     {
       "id": "kill:raw-hex",
@@ -120,8 +120,12 @@
   ],
   "fail": [
     {
+      "id": "matrix:freshness",
+      "detail": "matrix 2026-09-23T05:35:25.104Z before last UI commit 2026-10-14T16:48:05+05:00"
+    },
+    {
       "id": "lighthouse:home-demo-mobile.json",
-      "detail": "perf 87 a11y 100 bp 96 LCP 2003.7745 TBT 399 CLS 0.001046712059250612"
+      "detail": "fetchTime 2026-09-23T05:35:14.246Z before last UI commit 2026-10-14T16:48:05+05:00"
     },
     {
       "id": "lighthouse:passing",
@@ -130,9 +134,26 @@
     {
       "id": "axe:serious-critical",
       "detail": "home-demo-light.json: 1 serious/critical (color-contrast)"
+    },
+    {
+      "id": "gallery:freshness",
+      "detail": "gallery 2026-09-23T10:38:48+05:00 before last UI commit 2026-10-14T16:48:05+05:00"
+    },
+    {
+      "id": "g17:gallery-v3",
+      "detail": "FAIL via check-completeness.mjs: Manifest version 2.5.5 !== app VERSION.json 2.6.0; Manifest capturedAt 2026-09-23T05:38:48.431Z is older than VERSION.json updated 2026-10-14; Inventory entry missing from gallery: Name: SteadyCap · clinical warmth (default); Inventory entry missing from gallery: Stack: static JS PWA · own Pages · demo `?demo=1` (default); Inventory entry missing from gallery: Safety: SOS centre tab (never weaken crisis content); Missing light/ipad for inventory: dashboard (Today); Missing dark/iphone for inventory: dashboard (Today); Missing dark/ipad for inventory: dashboard (Today)"
     }
   ],
-  "warn": [],
+  "warn": [
+    {
+      "id": "g15:architecture",
+      "detail": "map not present (docs/architecture or architecture/) — soft until per-app map lands; tooling pilots use npm run architecture:check"
+    },
+    {
+      "id": "g19:minisite-lh",
+      "detail": "N/A — mini-site not present (https://shamikhahmed.github.io/apps/SteadyCap/ → 404)"
+    }
+  ],
   "killList": {
     "rawHex": 0,
     "sub11": 0,
