@@ -1,15 +1,18 @@
-# SteadyCap — Perfection v3 MATRIX (thin)
-Today `?demo=1` × {light default via app} × devices from device-qa.
+# SteadyCap — Perfection Loop v3 · MATRIX
+Updated: 2026-10-14 · Wave B P1 baseline
 
-| Cell | Baseline | Post-fix |
+Legend: ✅ evidence path · ⏳ pending gallery Phase G · N/A reason
+
+## Today `?demo=1` (device-qa hard gates)
+| Device × engine | light (default) | Evidence |
 |---|---|---|
-| webkit iphone-se | ✅ `qa/perfection/baseline/` | ✅ `qa/perfection/device/` |
-| webkit iphone | ✅ | ✅ |
-| webkit ipad-portrait | ✅ | ✅ |
-| webkit ipad-landscape | ✅ | ✅ |
-| webkit macbook | ✅ | ✅ |
-| chromium macbook | ✅ | ✅ |
-| chromium android | ✅ | ✅ |
+| iPhone SE WebKit | ✅ | `baseline/device-qa.json` · tiny0 small0 |
+| iPhone WebKit | ✅ | same |
+| iPad portrait WebKit | ✅ | same |
+| iPad landscape WebKit | ✅ | same |
+| MacBook WebKit | ✅ | same |
+| MacBook Chromium | ✅ | same |
+| Android Chromium | ✅ | same |
 
-Hard failures / text<11 / tap<32: **0** on Today demo (Builder). Auditor re-runs to VERIFIED.
-SOS / Recovery / Journal / Profile: covered by Playwright smoke+sos+app-lock; gallery Phase G later.
+## Remaining inventory × themes × devices
+⏳ Phase C/G — SOS phases, Recovery, Learn, You, Journal, dark mode cells (gallery capture).
