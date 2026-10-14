@@ -137,8 +137,8 @@ window.HABIT_CROSS_EFFECTS = {
     vape: { systems: { lungs: 0.5, airways: 0.45 }, note: 'Nicotine vape adds airway irritation alongside cannabis.' },
     alcohol: { systems: { sleep: 0.6, liver: 0.45, cognition: 0.4 }, note: 'Alcohol + cannabis disrupt REM sleep and slow cognitive rebound.' },
     caffeine: { systems: { sleep: 0.5, anxiety: 0.45 }, note: 'Caffeine masks cannabis hangover but prevents deep sleep recovery.' },
-    gaming: { systems: { motivation: 0.4, dopamine: 0.35 }, note: 'Gaming provides substitute dopamine hits that slow cannabis motivation recovery.' },
-    porn: { systems: { dopamine: 0.45, focus: 0.35 }, note: 'Porn and weed both desensitise reward pathways — quitting one partially only.' },
+    gaming: { systems: { motivation: 0.4, dopamine: 0.35 }, note: 'Many people find gaming can substitute for other rewards — motivation often recovers faster when both ease together.' },
+    porn: { systems: { dopamine: 0.45, focus: 0.35 }, note: 'Many people find quitting one high-stimulus habit only partially helps if another continues.' },
   },
   porn: {
     masturbation: { systems: { dopamine: 0.7, focus: 0.55, confidence: 0.4 }, note: 'Masturbation often pairs with porn — reward circuits stay hijacked until both stop.' },

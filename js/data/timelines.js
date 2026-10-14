@@ -81,7 +81,7 @@ const RECOVERY_TIMELINES = {
   social_media: [
     { hours: 24, title: 'Urge Watching', body: 'The impulse to check your phone is visible now you\'re not acting on it. This awareness is power.', system: 'Cognitive', level: 'reported', icon: '👁️' },
     { hours: 72, title: 'Attention Extending', body: 'By day 3, the ability to hold focus for longer stretches begins to return.', system: 'Cognitive', level: 'reported', icon: '🎯' },
-    { hours: 168, title: 'Sleep Improving', body: 'Removing blue light and dopamine hits before bed dramatically improves sleep depth.', system: 'Sleep', level: 'scientific', icon: '🌙' },
+    { hours: 168, title: 'Sleep Improving', body: 'Many people find that reducing late-night screens and high-stimulus habits helps sleep feel deeper within a week or so.', system: 'Sleep', level: 'practical', icon: '🌙' },
     { hours: 336, title: 'Boredom Tolerance Up', body: 'The capacity to sit with boredom — essential for creativity — returning after 2 weeks.', system: 'Cognitive', level: 'reported', icon: '🧘' },
     { hours: 720, title: 'Mood Baseline', body: 'Social media correlates with depression and anxiety. One month off resets the baseline.', system: 'Mental Health', level: 'scientific', icon: '🌤️' },
     { hours: 2160, title: 'Deep Work Returns', body: 'Three months of reduced scrolling restores the capacity for sustained concentration.', system: 'Cognitive', level: 'reported', icon: '🔥' },

@@ -37,7 +37,7 @@ const Profile = (() => {
           <div class="t-heading">${hCfg.name||h.type}</div>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px">
-          <div><div class="t-label">Days Clean</div><div style="font-size:1.3rem;font-weight:800;color:var(--text)">${days}</div></div>
+          <div><div class="t-label">Days free</div><div style="font-size:1.3rem;font-weight:800;color:var(--text)">${days}</div></div>
           <div><div class="t-label">Relapses</div><div style="font-size:1.3rem;font-weight:800;color:var(--text)">${relapses}</div></div>
           ${fin.hasCost?`<div><div class="t-label">Saved</div><div style="font-size:1.3rem;font-weight:800;color:var(--green)">${sym}${fin.savedTotal.toFixed(2)}</div></div>`:''}
           <div><div class="t-label">Body Score</div><div style="font-size:1.3rem;font-weight:800;color:var(--teal)">${bodyScore}%</div></div>
@@ -770,7 +770,7 @@ const Profile = (() => {
   <div class="metric"><span>Cravings Survived</span><strong>${cravingsSurvived}</strong></div>
 </div>
 <h2>Habits & Milestones</h2>
-<table><thead><tr><th>Habit</th><th>Days Clean</th><th>Relapses</th><th>Saved</th><th>Current Milestone</th></tr></thead>
+<table><thead><tr><th>Habit</th><th>Days free</th><th>Relapses</th><th>Saved</th><th>Current Milestone</th></tr></thead>
 <tbody>${habitRows || '<tr><td colspan="5">No habits tracked</td></tr>'}</tbody></table>
 <p style="font-size:11px;color:${SCBrand.h_888};margin-top:32px">Anonymized export — journal entries and SOS content excluded. For clinical use only with patient consent.</p>
 <script>window.onload=function(){window.print();}</script>

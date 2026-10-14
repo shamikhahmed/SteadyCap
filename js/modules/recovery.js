@@ -115,7 +115,7 @@ const Recovery = (() => {
           <div style="font-size:0.75rem;color:var(--text3);margin-top:2px">${RecoveryEngine.formatDuration(m.hours)} ${partial ? '— partial recovery' : reached ? '— reached' : ''}${isHourly ? ' · hourly' : ''}</div>
           ${partial && linkSt?.note ? `<div style="font-size:0.72rem;color:var(--gold);margin-top:4px;line-height:1.4">${linkSt.note}</div>` : ''}
           ${reached || isCurrent ? `<div style="font-size:0.78rem;color:var(--text2);margin-top:6px;line-height:1.5">${m.body}</div>` : ''}
-          <div style="font-size:0.65rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;margin-top:4px;color:${m.level === 'scientific' ? 'var(--green)' : 'var(--gold)'}">${m.level}</div>
+          <div style="font-size: 0.6875rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;margin-top:4px;color:${m.level === 'scientific' ? 'var(--green)' : 'var(--gold)'}">${m.level}</div>
         </div>
       </div>`;
     }).join('');
@@ -124,7 +124,7 @@ const Recovery = (() => {
       const col = s.capped ? 'var(--gold)' : s.pct > 70 ? 'var(--green)' : s.pct > 40 ? 'var(--teal)' : 'var(--orange)';
       return `<div class="system-row" title="${s.capped && s.capReason ? s.capReason.replace(/"/g, '&quot;') : ''}">
         <span class="system-icon">${s.icon}</span>
-        <span class="system-label">${s.label}${s.capped ? ' <span style="color:var(--gold);font-size:0.65rem">⚠ linked</span>' : ''}</span>
+        <span class="system-label">${s.label}${s.capped ? ' <span style="color:var(--gold);font-size: 0.6875rem">⚠ linked</span>' : ''}</span>
         <div class="system-bar"><div class="system-fill" style="width:${s.pct}%;background:${col}"></div></div>
         <span class="system-pct" style="color:${col}">${s.pct}%</span>
       </div>`;
@@ -152,7 +152,7 @@ const Recovery = (() => {
           <div style="font-size:1.4rem;font-weight:800;color:var(--teal);margin-bottom:4px">${wholeBody.score}%</div>
           <div class="t-caption">Tracking ${wholeBody.habitCount} linked habits${wholeBody.nicotineFreeHours != null ? ` · nicotine-free: ${RecoveryEngine.formatDuration(wholeBody.nicotineFreeHours)}` : ''}${wholeBody.sleepRecoveryHours != null ? ` · sleep recovery: ${RecoveryEngine.formatDuration(wholeBody.sleepRecoveryHours)}` : ''}</div>
           ${wholeBody.weakestSystems?.length ? `<div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--border)">
-            <div style="font-size:0.68rem;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px">Slowest healing systems</div>
+            <div style="font-size: 0.6875rem;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px">Slowest healing systems</div>
             ${wholeBody.weakestSystems.map(s => `<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
               <span>${s.icon}</span><span style="font-size:0.78rem;color:var(--text2);flex:1">${s.label}</span>
               <span style="font-size:0.78rem;font-weight:700;color:var(--gold)">${s.pct}%</span>
@@ -210,7 +210,7 @@ const Recovery = (() => {
           <div style="font-size:0.72rem;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px">${program.title}</div>
           <div style="font-size:0.9rem;font-weight:700;color:var(--text);margin-bottom:8px">${weekData.label}</div>
           ${weekData.tips.map(t => `<div style="font-size:0.78rem;color:var(--text2);margin-bottom:6px;line-height:1.5">· ${t}</div>`).join('')}
-          <div style="margin-top:10px;font-size:0.68rem;color:var(--text3)">Day ${Math.min(days, 30)} of 30 · advances weekly</div>
+          <div style="margin-top:10px;font-size: 0.6875rem;color:var(--text3)">Day ${Math.min(days, 30)} of 30 · advances weekly</div>
         </div>
       </div>` : ''}
 

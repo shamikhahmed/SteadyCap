@@ -1,0 +1,197 @@
+/* SteadyCap design tokens — C-29 hex-exempt (tokens.css). */
+
+/* —— App theme (from app.css) —— */
+/* ============================================================
+   SteadyCap — ER triage tray / hospital teal
+   Light + dark only
+   ============================================================ */
+
+/* Variables — dark clinical tray (default) */
+:root,
+html[data-theme="dark"] {
+  --bg: #1A1412;
+  --bg2: #221A17;
+  --bg3: #2A211C;
+  --bg4: #322924;
+  --glass: rgba(255,247,238,0.06);
+  --glass2: rgba(255,244,231,0.1);
+  --glass3: rgba(255,247,238,0.15);
+  --border: rgba(255,201,166,0.22);
+  --border2: rgba(255,201,166,0.32);
+  --text: #F8F1EA;
+  --text2: #D4C2B4;
+  --text3: #A89282;
+  --orange: #00D4E6;
+  --teal: #00D4E6;
+  --green: #3D9B7A;
+  --red: #D62246;
+  --blue: #4A7A9B;
+  --gold: #C4A35A;
+  --purple: #8B6F8E;
+  --r: 18px;
+  --r-sm: 12px;
+  --r-lg: 24px;
+  --shadow-soft: 0 10px 28px rgba(20,12,8,0.28);
+  --shadow-card: inset 0 1px 0 rgba(255,243,232,0.06), 0 8px 22px rgba(16,8,4,0.22);
+  --font: 'Source Sans 3', 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+  --font-display: 'Source Sans 3', 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'SF Mono', Menlo, Consolas, monospace;
+  --body-grad:
+    radial-gradient(90% 90% at 12% 14%, rgba(0,212,230,0.14) 0%, rgba(0,212,230,0) 62%),
+    radial-gradient(78% 72% at 88% 18%, rgba(0,168,181,0.12) 0%, rgba(0,168,181,0) 58%),
+    linear-gradient(160deg, #141818 0%, #1A1E1E 52%, #1E2222 100%);
+  --nav-bg: linear-gradient(180deg, rgba(42,33,28,0.92), rgba(34,26,23,0.98));
+  --theme-color: #1A1412;
+  --cap-accent: #00A8B5;
+}
+
+/* Light — paper chart / medical tray */
+html[data-theme="light"] {
+  --bg: #F4F0EA;
+  --bg2: #EBE5DC;
+  --bg3: #E2DACF;
+  --bg4: #D8CFC2;
+  --glass: rgba(255,255,255,0.72);
+  --glass2: rgba(255,255,255,0.88);
+  --glass3: rgba(255,255,255,0.95);
+  --border: rgba(90,70,55,0.14);
+  --border2: rgba(90,70,55,0.22);
+  --text: #2A221C;
+  --text2: #5A4E44;
+  --text3: #8A7A6C;
+  --orange: #00A8B5;
+  --teal: #00A8B5;
+  --green: #2F7A5C;
+  --red: #D62246;
+  --blue: #3A6A88;
+  --gold: #A08040;
+  --purple: #6E5A72;
+  --shadow-soft: 0 8px 24px rgba(60,40,25,0.08);
+  --shadow-card: inset 0 1px 0 rgba(255,255,255,0.9), 0 4px 16px rgba(60,40,25,0.06);
+  --body-grad:
+    radial-gradient(80% 70% at 10% 0%, rgba(0,168,181,0.08) 0%, transparent 55%),
+    linear-gradient(180deg, #F7F3ED 0%, #F0EBE3 48%, #EBE5DC 100%);
+  --nav-bg: linear-gradient(180deg, rgba(255,252,248,0.94), rgba(244,240,234,0.98));
+  --theme-color: #F4F0EA;
+}
+
+/* —— Cap foundation color tokens (from capricorn-core) —— */
+:root {
+  /* ── Brand core ── */
+  --cap-gold: #c9a227;
+  --cap-gold-soft: rgba(201, 162, 39, 0.35);
+  --cap-accent: var(--cap-gold);          /* apps override this */
+  --cap-accent-contrast: #0a0e17;         /* text color on accent */
+
+  /* ── Surfaces (dark — default) ── */
+  --cap-bg: #0a0e17;
+  --cap-bg-2: #111827;
+  --cap-surface: rgba(244, 240, 232, 0.04);
+  --cap-surface-2: rgba(244, 240, 232, 0.07);
+  --cap-border: rgba(244, 240, 232, 0.10);
+  --cap-border-strong: rgba(244, 240, 232, 0.18);
+
+  /* ── Text ── */
+  --cap-text: #f4f0e8;
+  --cap-text-dim: #9ca3af;
+  --cap-text-faint: #6b7280;
+
+  /* ── Semantic ── */
+  --cap-success: #34d399;
+  --cap-warning: #fbbf24;
+  --cap-danger: #f87171;
+  --cap-info: #60a5fa;
+
+  /* ── Type scale (fluid, 320 → 2560) ── */
+  --cap-font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --cap-font-display: 'Bricolage Grotesque', system-ui, sans-serif;
+  --cap-font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --cap-text-xs: clamp(0.6875rem, 0.65rem + 0.15vw, 0.75rem);
+  --cap-text-sm: clamp(0.8125rem, 0.78rem + 0.2vw, 0.875rem);
+  --cap-text-md: clamp(0.9375rem, 0.9rem + 0.25vw, 1.0625rem);
+  --cap-text-lg: clamp(1.125rem, 1.05rem + 0.4vw, 1.3125rem);
+  --cap-text-xl: clamp(1.4rem, 1.25rem + 0.8vw, 1.875rem);
+  --cap-text-2xl: clamp(1.8rem, 1.5rem + 1.6vw, 2.8rem);
+  --cap-text-3xl: clamp(2.4rem, 1.9rem + 2.8vw, 4.2rem);
+
+  /* ── Spacing scale (4px base) ── */
+  --cap-space-1: 4px;
+  --cap-space-2: 8px;
+  --cap-space-3: 12px;
+  --cap-space-4: 16px;
+  --cap-space-5: 24px;
+  --cap-space-6: 32px;
+  --cap-space-7: 48px;
+  --cap-space-8: 64px;
+  --cap-space-9: 96px;
+  --cap-space-section: clamp(64px, 10vw, 120px);
+
+  /* ── Radii ── */
+  --cap-radius-sm: 8px;
+  --cap-radius-md: 12px;
+  --cap-radius-lg: 18px;
+  --cap-radius-xl: 28px;
+  --cap-radius-pill: 999px;
+
+  /* ── Elevation (shadow + border pairing) ── */
+  --cap-shadow-1: 0 1px 2px rgba(0, 0, 0, 0.25);
+  --cap-shadow-2: 0 4px 16px rgba(0, 0, 0, 0.30);
+  --cap-shadow-3: 0 12px 40px rgba(0, 0, 0, 0.40);
+  --cap-shadow-glow: 0 0 0 1px var(--cap-border), 0 8px 32px rgba(0, 0, 0, 0.35);
+  --cap-shadow-accent: 0 8px 28px color-mix(in srgb, var(--cap-accent) 28%, transparent);
+
+  /* ── Glass ── */
+  --cap-glass-bg: rgba(16, 20, 32, 0.72);
+  --cap-glass-blur: blur(20px) saturate(150%);
+  --cap-glass-border: rgba(244, 240, 232, 0.12);
+
+  /* ── Layout ── */
+  --cap-max: 1120px;
+  --cap-max-wide: 1440px;
+  --cap-gutter: clamp(16px, 4vw, 32px);
+  --cap-safe-t: env(safe-area-inset-top, 0px);
+  --cap-safe-b: env(safe-area-inset-bottom, 0px);
+  --cap-touch-target: 44px;
+
+  /* ── Motion ── */
+  --cap-ease: cubic-bezier(0.22, 1, 0.36, 1);        /* signature out-quint */
+  --cap-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --cap-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --cap-dur-fast: 150ms;
+  --cap-dur-base: 280ms;
+  --cap-dur-slow: 600ms;
+  --cap-dur-reveal: 800ms;
+
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: light) {
+  [data-cap-theme="auto"] {
+    --cap-bg: #faf8f4;
+    --cap-bg-2: #f0ede6;
+    --cap-surface: rgba(10, 14, 23, 0.04);
+    --cap-surface-2: rgba(10, 14, 23, 0.07);
+    --cap-border: rgba(10, 14, 23, 0.10);
+    --cap-border-strong: rgba(10, 14, 23, 0.20);
+    --cap-text: #131722;
+    --cap-text-dim: #4b5563;
+    --cap-text-faint: #9ca3af;
+    --cap-glass-bg: rgba(250, 248, 244, 0.78);
+    --cap-glass-border: rgba(10, 14, 23, 0.10);
+    color-scheme: light;
+  }
+}
+
+:root {
+  --cap-desktop-bg: #0a0a0f;
+  --cap-sidebar-w: 248px;
+  --cap-sidebar-w-wide: 272px;
+}
+
+:root {
+  /* migrated leftover hex */
+  --sc-hex-030508: #030508;
+  --sc-hex-f0feff: #F0FEFF;
+  --sc-hex-fff8f2: #FFF8F2;
+  --sc-hex-0af: #0af;
+}

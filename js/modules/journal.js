@@ -3,7 +3,7 @@ const Journal = (() => {
   const STORAGE_KEY = StorageMigrate.local('steadycap_journal_v1', ['dos_journal_v1']);
 
   const MOODS = [
-    { id: 'strong', label: 'Strong', svg: '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 11v8"/><path d="M11 9v10"/><path d="M15 13v6"/><path d="M19 10v9"/><path d="M4 15c2-4 4-6 8-6s6 2 8 6"/></svg>' },
+    { id: 'strong', label: 'Strong', svg: '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 14a4 4 0 0 1 4-4h1"/><path d="M14 10h1a4 4 0 0 1 4 4"/><path d="M9 10V7a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v3"/><path d="M6 14v3a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3v-3"/><path d="M10 7V5"/><path d="M14 7V5"/></svg>' },
     { id: 'ok', label: 'Okay', svg: '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 14h8"/><circle cx="9" cy="10" r="1" fill="currentColor"/><circle cx="15" cy="10" r="1" fill="currentColor"/></svg>' },
     { id: 'hard', label: 'Hard', svg: '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 15s1.5-2 4-2 4 2 4 2"/><circle cx="9" cy="10" r="1" fill="currentColor"/><circle cx="15" cy="10" r="1" fill="currentColor"/></svg>' },
     { id: 'relapsed', label: 'Slipped', svg: '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><polyline points="3 4 3 10 9 10"/></svg>' },
