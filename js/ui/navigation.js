@@ -10,6 +10,7 @@ const Navigation = (() => {
 
   let current = 'dashboard';
   let params = {};
+  let _navSeq = 0;
 
   const TAB_KEY = 'steadycap_tab';
   const LEGACY_TAB_KEY = 'dos_tab';
@@ -58,25 +59,7 @@ const Navigation = (() => {
     }
   }
 
-  function go(screenId, p) {
-    if (p !== undefined) params = p || {};
-    const sameScreen = screenId === current;
-    const preserveScroll = sameScreen && !!(p && p.preserveScroll);
-    current = screenId;
-    document.title = (screenId.charAt(0).toUpperCase() + screenId.slice(1).replace(/-/g, ' ')) + ' — SteadyCap';
-
-    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-    const screen = document.getElementById('screen-' + screenId);
-    if (screen) {
-      const scrollY = preserveScroll ? screen.scrollTop : 0;
-      screen.classList.add('active');
-      if (preserveScroll) screen.scrollTop = scrollY;
-      else screen.scrollTop = 0;
-    }
-
-    renderNav();
-
-    // Screen renderers must not break tab navigation (gallery / cold demo).
+  function renderScreen(screenId) {
     const run = (fn) => {
       try {
         fn();
@@ -97,10 +80,57 @@ const Navigation = (() => {
     } else if (screenId === 'profile') {
       if (window.Profile) run(() => Profile.render());
     }
+  }
+
+  function ensureChain(screenId) {
+    if (!window.MODULE_CHAIN || !MODULE_CHAIN[screenId]) return Promise.resolve();
+    if (
+      (screenId === 'recovery' && window.Recovery) ||
+      (screenId === 'emergency' && window.Emergency) ||
+      (screenId === 'knowledge' && window.Knowledge) ||
+      (screenId === 'profile' && window.Profile)
+    ) {
+      return Promise.resolve();
+    }
+    try {
+      if (window.loadModuleChainSync) {
+        loadModuleChainSync(screenId);
+        return Promise.resolve();
+      }
+    } catch (_) {
+      /* fall through to async */
+    }
+    return window.loadModuleChain ? loadModuleChain(screenId) : Promise.resolve();
+  }
+
+  function go(screenId, p) {
+    if (p !== undefined) params = p || {};
+    const sameScreen = screenId === current;
+    const preserveScroll = sameScreen && !!(p && p.preserveScroll);
+    const navSeq = ++_navSeq;
+    current = screenId;
+    document.title = (screenId.charAt(0).toUpperCase() + screenId.slice(1).replace(/-/g, ' ')) + ' — SteadyCap';
+
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    const screen = document.getElementById('screen-' + screenId);
+    if (screen) {
+      const scrollY = preserveScroll ? screen.scrollTop : 0;
+      screen.classList.add('active');
+      if (preserveScroll) screen.scrollTop = scrollY;
+      else screen.scrollTop = 0;
+    }
+
+    renderNav();
+
+    const after = ensureChain(screenId).then(() => {
+      if (navSeq !== _navSeq) return;
+      renderScreen(screenId);
+    });
 
     if (screenId !== 'onboarding') {
       storeTab(screenId);
     }
+    return after;
   }
 
   function init() {

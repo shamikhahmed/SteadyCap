@@ -36,7 +36,6 @@
   <link rel="icon" type="image/png" sizes="192x192" href="./assets/icons/icon-192.png">
   <link rel="icon" type="image/png" sizes="512x512" href="./assets/icons/icon-512.png">
   <link rel="preload" href="./css/app.css" as="style">
-  <link rel="stylesheet" href="css/fonts-local.css">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/capricorn-core.css">
 <link rel="stylesheet" href="./css/app.css">
@@ -69,7 +68,6 @@
     <p class="steady-splash__tag">Triage tray · private</p>
   </div>
   <div class="cap-ambient" aria-hidden="true"></div>
-  <canvas id="cap-scene" class="cap-scene-canvas cap-scene-canvas--subtle" aria-hidden="true"></canvas>
   <div class="cap-scroll-progress" aria-hidden="true"></div>
   <div class="cap-desktop-shell">
     <nav id="cap-nav-sidebar" aria-label="Module navigation"></nav>
@@ -89,43 +87,34 @@
 
   <div id="toast-wrap" role="status" aria-live="polite" aria-atomic="true"></div>
 
+  <!-- Eager: Today shell. Route DBs/modules load via MODULE_CHAIN (TBT). -->
   <script src="./js/brand/colors.js"></script>
   <script src="./js/lib/datetime.js"></script>
   <script src="./js/lib/storage-migrate.js"></script>
   <script src="./js/data/habits.js"></script>
-  <script src="./js/data/timelines.js"></script>
-  <script src="./js/data/timelines-hourly.js"></script>
   <script src="./js/data/insights.js"></script>
-  <script src="./js/data/knowledge.js"></script>
-  <script src="./js/data/habit-links.js"></script>
-  <script src="./js/data/programs.js"></script>
   <script src="./js/engines/recoveryEngine.js"></script>
-  <script src="./js/engines/bodyEngine.js"></script>
-  <script src="./js/engines/linkedRecoveryEngine.js"></script>
-  <script src="./js/engines/dopamineEngine.js"></script>
-  <script src="./js/engines/financeEngine.js"></script>
-  <script src="./js/engines/triggerEngine.js"></script>
-  <script src="./js/ui/charts.js"></script>
   <script src="./js/ui/navigation.js"></script>
   <script src="./js/modules/state.js"></script>
+  <script src="./js/modules/demo-seed.js"></script>
   <script src="./js/modules/notifications.js"></script>
   <script src="./js/modules/onboarding.js"></script>
   <script src="./js/modules/dashboard.js"></script>
-  <script src="./js/modules/recovery.js"></script>
-  <script src="./js/modules/emergency.js"></script>
-  <script src="./js/modules/knowledge.js"></script>
-  <script src="./js/modules/profile.js"></script>
   <script src="./js/modules/journal.js"></script>
   <script src="./js/vendor/local-lock.js"></script>
 <script src="./js/ui/dialogs.js"></script>
 <script src="./js/modules/app-lock.js"></script>
-<script src="./js/app.js"></script>
-  <script src="./js/capricorn-motion.js"></script>
   <script src="js/cap-demo-mode.js"></script>
-  <script src="js/cap-desktop-nav.js"></script>
+<script src="./js/app.js"></script>
+  <script src="js/cap-desktop-nav.js" defer></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      if (window.CapricornMotion) CapricornMotion.init();
+    window.addEventListener('load', function () {
+      var s = document.createElement('script');
+      s.src = './js/capricorn-motion.js';
+      s.onload = function () {
+        if (window.CapricornMotion) CapricornMotion.init();
+      };
+      document.head.appendChild(s);
     });
   </script>
 

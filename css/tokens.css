@@ -33,9 +33,10 @@ html[data-theme="dark"] {
   --r-lg: 24px;
   --shadow-soft: 0 10px 28px rgba(20,12,8,0.28);
   --shadow-card: inset 0 1px 0 rgba(255,243,232,0.06), 0 8px 22px rgba(16,8,4,0.22);
-  --font: 'Source Sans 3', 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
-  --font-display: 'Source Sans 3', 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'IBM Plex Mono', 'SF Mono', Menlo, Consolas, monospace;
+  /* System fonts on critical path — web fonts blocked mobile TBT/LCP (ScentCap pattern). */
+  --font: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+  --font-display: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
   --body-grad:
     radial-gradient(90% 90% at 12% 14%, rgba(0,212,230,0.14) 0%, rgba(0,212,230,0) 62%),
     radial-gradient(78% 72% at 88% 18%, rgba(0,168,181,0.12) 0%, rgba(0,168,181,0) 58%),
@@ -59,8 +60,9 @@ html[data-theme="light"] {
   --text: #2A221C;
   --text2: #5A4E44;
   --text3: #8A7A6C;
-  --orange: #00A8B5;
-  --teal: #00A8B5;
+  /* Darker teal for WCAG AA on paper bg (nav labels 11px bold need ≥4.5:1). */
+  --orange: #0B6E78;
+  --teal: #0B6E78;
   --green: #2F7A5C;
   --red: #D62246;
   --blue: #3A6A88;

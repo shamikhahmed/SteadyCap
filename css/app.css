@@ -1777,7 +1777,7 @@ body[data-cap-app="1"] #nav {
   justify-content: center;
   gap: 18px;
   background: var(--body-grad);
-  transition: opacity 0.45s ease, visibility 0.45s ease;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
 }
 .steady-splash.hide {
   opacity: 0;
