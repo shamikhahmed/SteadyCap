@@ -11,9 +11,8 @@ Updated: 2026-10-14T11:28:00Z · Builder: Builder-SteadyCap
 **2.5.6** · SW `steadycap-v56` · register `?v=56` (G-8)
 
 ## Last commits
-- Tip: `ba70bb7` (pushed `origin/perfection/steadycap-v3`)
-- `c9c4796` docs ITEMS/MATRIX/INVENTORY + baseline JSON
-- `3b6e681` fix STD-V3-1..4 mood/journal, wip seed, G-10
+- Tip: `ad1bf71` (pushed `origin/perfection/steadycap-v3`)
+- Fixes: `3b6e681` · docs: `c9c4796`…`ba70bb7`
 
 ## What's done
 - Phase A: branch + baseline device-qa → `qa/perfection/baseline/` (**7/7 hard-clean**, tap<32=0, text<11=0, pageErr=0).
