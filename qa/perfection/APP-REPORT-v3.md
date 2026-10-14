@@ -12,7 +12,7 @@
 |---|---|---|
 | Playwright sos/smoke/app-lock | PASS 9/9 | Auditor @ `645d6c7` |
 | device-qa Auditor | PASS 7/7 | `qa/perfection/auditor-independent/` hard=0 tap=0 text=0 pageErr=0 |
-| device-qa **live** v2.6.0 | _(post-deploy)_ | `qa/perfection/live-v2.6.0/` |
+| device-qa **live** v2.6.0 | PASS 7/7 | `qa/perfection/live-v2.6.0/` — hard=0 tap=0 text=0 pageErr=0 hubConsole=0 |
 | SW / G-8 | PASS | `steadycap-v60` + `sw.js?v=60` · VERSION.json = 2.6.0 |
 | SOS safety | PASS | MODULE_CHAIN deferred; 5-phase SOS eager; content unchanged |
 | Gallery / MATRIX | OPEN | STD-V3-5 |

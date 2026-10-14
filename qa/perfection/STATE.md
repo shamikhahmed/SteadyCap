@@ -19,4 +19,5 @@ Updated: 2026-10-14T11:47:00Z · Builder: Builder-SteadyCap
 - STD-V3-6 Lighthouse §7.11
 
 ## Live
-https://shamikhahmed.github.io/SteadyCap/ · VERSION.json must read 2.6.0 after Pages deploy
+https://shamikhahmed.github.io/SteadyCap/ · VERSION **2.6.0** / `steadycap-v60` confirmed · live device-qa **7/7** (`qa/perfection/live-v2.6.0/`)  
+Merge `c6c8f23` · release `dde311a` · tag `v2.6.0`
