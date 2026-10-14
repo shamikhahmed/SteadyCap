@@ -11,7 +11,7 @@ Updated: 2026-10-14T11:28:00Z · Builder: Builder-SteadyCap
 **2.5.6** · SW `steadycap-v56` · register `?v=56` (G-8)
 
 ## Last commits
-- Tip: `ad1bf71` (pushed `origin/perfection/steadycap-v3`)
+- Tip: `090db78` (pushed `origin/perfection/steadycap-v3`)
 - Fixes: `3b6e681` · docs: `c9c4796`…`ba70bb7`
 
 ## What's done
