@@ -24,9 +24,12 @@ const VIEWPORTS = {
 };
 
 const SCREENS = [
-  { nav: 'dashboard', group: 'Today', screen: 'Today', caption: 'Due now, routines, and daily check-in (demo).' },
-  { nav: 'journal', group: 'Check-in', screen: 'Check-in', caption: 'Mood check-in and journal history.' },
-  { nav: 'emergency', group: 'SOS', screen: 'SOS', caption: 'Crisis SOS flow — centre tab, never weakened.' },
+  { nav: 'dashboard', group: 'Today', screen: 'Today', caption: 'Due now, routines and today’s check-in.' },
+  { nav: 'recovery', group: 'Recovery', screen: 'Recovery', caption: 'Quit timelines and milestones — no streak pressure.' },
+  { nav: 'emergency', group: 'SOS', screen: 'SOS', caption: 'SOS: five calm steps, one tap from anywhere.' },
+  { nav: 'journal', group: 'Journal', screen: 'Journal', caption: 'Check-ins and journal, private to this device.' },
+  { nav: 'knowledge', group: 'Learn', screen: 'Knowledge', caption: 'Short, practical reads for hard moments.' },
+  { nav: 'profile', group: 'You', screen: 'Profile', caption: 'Routines, medicines and settings.' },
 ];
 
 function slug(s) {
@@ -130,7 +133,12 @@ async function main() {
         await setTheme(page, theme);
 
         for (const scr of SCREENS) {
-          await goNav(page, scr.nav);
+          try {
+            await goNav(page, scr.nav);
+          } catch (err) {
+            process.stdout.write(`skip ${theme}/${device} ${scr.nav || scr.path}: unreachable — skipped\n`);
+            continue;
+          }
           await setTheme(page, theme);
           const rel = shotPath(theme, device, scr.group, scr.screen);
           const webpPath = join(GALLERY_DIR, rel);
