@@ -5,7 +5,7 @@ Updated: 2026-10-14T11:25:00Z · Builder: Builder-SteadyCap
 **F · Verify (hand-off)** — Wave B P0/P1 tickets FIXED; Auditor re-run required.
 
 ## Branch
-`perfection/steadycap-v3` (from `main` @ `b9d31a4`)
+`perfection/steadycap-v3` (from `main` @ `b9d31a4`) · tip **`3b6e681`** (pushed)
 
 ## Version
 2.5.6 · SW `steadycap-v56` · register `?v=56`
