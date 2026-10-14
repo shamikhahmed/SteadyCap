@@ -100,9 +100,9 @@ const State = (() => {
 
   function habitConfig(type, isCustom, customData) {
     if (isCustom && customData) {
-      return { name: customData.name, icon: customData.icon || '✨', color: customData.color || SCBrand.h_ff6b35 };
+      return { name: customData.name, icon: customData.icon || '✨', color: customData.color || window.SCBrand.h_ff6b35 };
     }
-    return (window.HABITS_CONFIG || {})[type] || { name: type, icon: '✨', color: SCBrand.h_ff6b35 };
+    return (window.HABITS_CONFIG || {})[type] || { name: type, icon: '✨', color: window.SCBrand.h_ff6b35 };
   }
 
   function addHabit(habitData) {
@@ -126,7 +126,7 @@ const State = (() => {
       id: 'c' + Date.now().toString(),
       name: habitData.name,
       icon: habitData.icon || '✨',
-      color: habitData.color || SCBrand.h_ff6b35,
+      color: habitData.color || window.SCBrand.h_ff6b35,
       type: 'custom',
       quitTime: habitData.quitTime || new Date().toISOString(),
       relapses: [],

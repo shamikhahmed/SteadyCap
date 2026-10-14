@@ -52,7 +52,7 @@ const DAILY_INSIGHTS = [
   { text: 'Many people notice mood and energy shift when they eat more steadily — food is one factor among many.', emoji: '🦠', source: 'Microbiome research' },
   { text: 'The average vape user inhales 200+ puffs daily — equivalent nicotine delivery to a pack of cigarettes.', emoji: '💨', source: 'Vaping research' },
   { text: 'Many people find a short outdoor walk lowers craving intensity when an urge hits — it is a tool, not a cure.', emoji: '🚶', source: 'Exercise science' },
-  { text: 'Many people find that protecting sleep makes the next day's cravings easier to handle.', emoji: '🌙', source: 'Neuroscience' },
+  { text: 'Many people find that protecting sleep makes the next day\'s cravings easier to handle.', emoji: '🌙', source: 'Neuroscience' },
   { text: 'Many people succeed more often when they replace a habit with a different action at the same trigger — willpower alone is harder.', emoji: '🔄', source: 'Habit research' },
   { text: 'Many people find connection with others is one of the strongest supports for staying free — isolation often makes recovery harder.', emoji: '👥', source: 'Addiction research' },
   { text: 'Cannabis potency has increased 3x since the 1990s. Today\'s weed has stronger withdrawal effects than older research suggested.', emoji: '🌿', source: 'NIDA' },

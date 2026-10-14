@@ -103,7 +103,7 @@ const Dashboard = (() => {
         <div class="section-header" style="margin-top:4px"><span class="section-title">Journal</span></div>
         <div class="card today-journal-prompt">
           <div style="font-size:14px;color:var(--text2);line-height:1.5;margin-bottom:10px">One private line about today stays on this device.</div>
-          <button type="button" class="btn btn-secondary" style="width:100%" onclick="Navigation.go('journal')">Open journal</button>
+          <button type="button" class="btn btn-secondary btn-open-journal" onclick="Navigation.go('journal')">Open journal</button>
         </div>
 
         ${insight ? `

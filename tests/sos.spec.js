@@ -8,8 +8,7 @@ test.describe('SteadyCap SOS flow', () => {
     page.on('pageerror', (e) => errors.push(e.message));
 
     await page.goto('/?demo=1');
-    await page.waitForFunction(() => typeof window.Navigation !== 'undefined');
-    await page.waitForTimeout(500);
+    await page.waitForFunction(() => window.__APP_READY__ === true && typeof window.Navigation?.go === 'function', null, { timeout: 20000 });
 
     await page.evaluate(() => window.Navigation.go('emergency'));
     await expect(page.locator('.sos-header')).toBeVisible({ timeout: 10_000 });
@@ -35,7 +34,7 @@ test.describe('SteadyCap SOS flow', () => {
     page.on('pageerror', (e) => errors.push(e.message));
 
     await page.goto('/?demo=1');
-    await page.waitForFunction(() => typeof window.Navigation !== 'undefined');
+    await page.waitForFunction(() => window.__APP_READY__ === true && typeof window.Navigation?.go === 'function', null, { timeout: 20000 });
     await page.evaluate(() => window.Navigation.go('emergency'));
     await expect(page.locator('.sos-header')).toBeVisible({ timeout: 10_000 });
     await page.locator('.sos-header button', { hasText: 'Skip all' }).click();

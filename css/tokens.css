@@ -59,8 +59,9 @@ html[data-theme="light"] {
   --text: #2A221C;
   --text2: #5A4E44;
   --text3: #8A7A6C;
-  --orange: #00A8B5;
-  --teal: #00A8B5;
+  /* Darker teal for WCAG AA on paper bg (nav labels 11px bold need ≥4.5:1). */
+  --orange: #0B6E78;
+  --teal: #0B6E78;
   --green: #2F7A5C;
   --red: #D62246;
   --blue: #3A6A88;
