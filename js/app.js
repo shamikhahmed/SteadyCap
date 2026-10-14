@@ -3,28 +3,53 @@ const App = (() => {
   function hideSplash() {
     const splash = document.getElementById('splash');
     if (!splash || splash.classList.contains('hide')) {
-      try { window.__APP_READY__ = true; document.documentElement.dataset.appReady = 'true'; } catch (_) {}
+      try {
+        window.__APP_READY__ = true;
+        document.documentElement.dataset.appReady = 'true';
+      } catch (_) {}
       return;
     }
     splash.classList.add('hide');
     setTimeout(() => {
       splash.remove();
-      try { window.__APP_READY__ = true; document.documentElement.dataset.appReady = 'true'; } catch (_) {}
-    }, 500);
+      try {
+        window.__APP_READY__ = true;
+        document.documentElement.dataset.appReady = 'true';
+      } catch (_) {}
+    }, 220);
   }
 
   function init() {
-    setTimeout(hideSplash, 1400);
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js?v=60').catch(() => {});
+      });
+    }
+
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden && State.get('onboardingComplete')) {
+        const tab =
+          window.Navigation && Navigation.readStoredTab
+            ? Navigation.readStoredTab()
+            : sessionStorage.getItem('steadycap_tab') || sessionStorage.getItem('dos_tab') || 'dashboard';
+        if (tab === 'dashboard' && window.Dashboard) Dashboard.render();
+      }
+    });
+
     const demo = new URLSearchParams(location.search).get('demo') === '1';
-    if (demo && window.Profile && Profile.loadDemoData) {
+    if (demo && window.SteadyDemo && SteadyDemo.seed) {
       State.useDemoStorage(true);
       sessionStorage.setItem('steadycap_demo_session', '1');
-      Profile.loadDemoData({ silent: true });
+      /* false: reuse existing demo vault — avoids heavy reseed on every ?demo=1 (LH TBT). */
+      SteadyDemo.seed({ force: false });
       if (typeof CapDemo !== 'undefined') {
         CapDemo.markActive();
       }
       launch();
       Navigation.go('dashboard');
+      requestAnimationFrame(function () {
+        requestAnimationFrame(hideSplash);
+      });
       return;
     }
     State.useDemoStorage(sessionStorage.getItem('steadycap_demo_session') === '1');
@@ -33,18 +58,8 @@ const App = (() => {
     } else {
       Onboarding.render();
     }
-
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js?v=54').catch(() => {});
-      });
-    }
-
-    document.addEventListener('visibilitychange', () => {
-      if (!document.hidden && State.get('onboardingComplete')) {
-        const tab = (window.Navigation && Navigation.readStoredTab) ? Navigation.readStoredTab() : (sessionStorage.getItem('steadycap_tab') || sessionStorage.getItem('dos_tab') || 'dashboard');
-        if (tab === 'dashboard' && window.Dashboard) Dashboard.render();
-      }
+    requestAnimationFrame(function () {
+      requestAnimationFrame(hideSplash);
     });
   }
 

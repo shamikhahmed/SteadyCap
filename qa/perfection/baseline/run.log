@@ -1,0 +1,10 @@
+ok   SteadyCap   webkit   iphone-se       
+ok   SteadyCap   webkit   iphone          
+ok   SteadyCap   webkit   ipad-portrait   
+ok   SteadyCap   webkit   ipad-landscape  
+ok   SteadyCap   webkit   macbook         
+ok   SteadyCap   chromium macbook         
+ok   SteadyCap   chromium android         
+
+7/7 without hard failures → SteadyCap/qa/perfection/baseline
+summary: hard=0 tap<32=0 text<11=0 pageErr=0 hubConsole=0

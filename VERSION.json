@@ -1,7 +1,7 @@
 {
   "app": "SteadyCap",
-  "version": "2.5.5",
-  "swCache": "steadycap-v55",
-  "updated": "2026-09-23",
-  "notes": "Navigation.go: screen renderers cannot throw (gallery recovery)"
+  "version": "2.6.0",
+  "swCache": "steadycap-v60",
+  "updated": "2026-10-14",
+  "notes": "Perfection v3 Phase I: STD-V3-1..4 VERIFIED; mood/journal targets; demo-seed; G-10; SOS eager"
 }

@@ -1,0 +1,30 @@
+{
+  "medicines": [
+    {
+      "id": "fx-med-1",
+      "name": "Nicotine patch",
+      "dose": "21mg",
+      "schedule": "fixed",
+      "times": ["08:00"],
+      "enabled": true
+    }
+  ],
+  "cravingLog": [
+    {
+      "id": "fx-c0",
+      "at": "2026-10-13T19:30:00.000Z",
+      "intensity": 4,
+      "survived": true,
+      "trigger": "Stress"
+    }
+  ],
+  "journal": [
+    {
+      "date": "2026-10-13",
+      "text": "Fixture entry before lock migration.",
+      "mood": "ok",
+      "triggers": ["Stress"],
+      "ts": 1760371200000
+    }
+  ]
+}
