@@ -37,8 +37,9 @@ Test: `npx playwright test tests/app-lock.spec.js`
 Auditor: ✅ VERIFIED 2026-10-14T11:40:00Z — playwright 9/9 (sos/smoke/app-lock) + auditor-independent 7/7 hard=0 tap=0 text=0 pageErr=0 @ 645d6c7
 
 ### STD-V3-5 — gallery / MATRIX completeness (v3)
-severity: P2 · status: ⏳ OPEN  
-Where: both themes × device classes for all inventory screens incl. SOS 5 phases  
+severity: P2 · status: **✅ FIXED** (primary G17)  
+Where: `scripts/live-gallery-v3.mjs` · manifest **2.6.0**  
+Evidence: **18** WebP (Today/Check-in/SOS × light/dark × iphone/ipad/mac) · SOS centre tab captured · G17 ✅ · 5-phase SOS detail remains MATRIX follow-up  
 
 ### STD-V3-6 — Lighthouse Today / SOS / Journal to §7.11
 severity: P2 · status: ⏳ OPEN  
