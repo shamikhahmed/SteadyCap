@@ -72,7 +72,7 @@ const Profile = (() => {
           ${steps.map(s => `
             <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border)">
               <span style="flex:1;font-size:0.85rem;color:var(--text2)">${s.label}</span>
-              <button type="button" onclick="Profile._removeRoutine('${cat}','${slot}','${s.id}')" style="background:none;border:none;color:var(--text3);cursor:pointer;font-size:0.9rem">✕</button>
+              <button type="button" onclick="Profile._removeRoutine('${cat}','${slot}','${s.id}')" style="background:none;border:none;color:var(--text3);cursor:pointer;font-size:0.9rem;min-width:44px;min-height:44px" aria-label="Remove ${s.label}">✕</button>
             </div>
           `).join('')}
         </div>`;
@@ -345,10 +345,10 @@ const Profile = (() => {
     modal.style.display = 'block';
     modal.innerHTML = `
       <div style="position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.8);display:flex;align-items:flex-end" onclick="if(event.target===this)Profile._closeModal()">
-        <div style="background:var(--bg3);border-radius:var(--r-lg) var(--r-lg) 0 0;padding:24px 20px calc(20px + env(safe-area-inset-bottom));width:100%;max-height:80vh;overflow-y:auto">
+        <div role="dialog" aria-modal="true" aria-label="Edit ${hCfg.name}" style="background:var(--bg3);border-radius:var(--r-lg) var(--r-lg) 0 0;padding:24px 20px calc(20px + env(safe-area-inset-bottom));width:100%;max-height:80vh;overflow-y:auto">
           <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
-            <div class="t-heading">${hCfg.icon} ${hCfg.name}</div>
-            <button type="button" onclick="Profile._closeModal()" style="background:none;border:none;color:var(--text3);font-size:1.2rem;cursor:pointer">✕</button>
+            <div class="t-heading" id="profile-edit-title">${hCfg.icon} ${hCfg.name}</div>
+            <button type="button" onclick="Profile._closeModal()" style="background:none;border:none;color:var(--text3);font-size:1.2rem;cursor:pointer;min-width:44px;min-height:44px" aria-label="Close">✕</button>
           </div>
           <div class="ob-field">
             <div class="ob-label">Quit date</div>

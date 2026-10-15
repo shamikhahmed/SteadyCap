@@ -61,7 +61,7 @@ const Emergency = (() => {
         <div class="sos-footer">
           ${phase < 4 ? `<div style="display:flex;gap:10px">
             <button type="button" class="btn btn-ghost" style="flex:1" onclick="Emergency._skip()">Skip →</button>
-            ${phase > 0 ? `<button type="button" class="btn btn-ghost" style="padding:14px" onclick="Emergency._back()">←</button>` : ''}
+            ${phase > 0 ? `<button type="button" class="btn btn-ghost" style="padding:14px" onclick="Emergency._back()" aria-label="Back">←</button>` : ''}
           </div>` : ''}
         </div>
       </div>
