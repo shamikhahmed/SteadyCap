@@ -1,7 +1,7 @@
 {
   "app": "SteadyCap",
-  "version": "2.6.2",
-  "swCache": "steadycap-v62",
+  "version": "2.6.3",
+  "swCache": "steadycap-v63",
   "updated": "2026-10-16",
-  "notes": "V5 §3: async non-critical CSS; defer secondary engines for desktop perf"
+  "notes": "V5 §3b: restore blocking CSS (CLS); idle-load secondary engines/screens; reserve splash height"
 }

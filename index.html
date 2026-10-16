@@ -37,13 +37,15 @@
   <link rel="icon" type="image/png" sizes="512x512" href="./assets/icons/icon-512.png">
   <link rel="stylesheet" href="css/fonts-local.css">
   <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/capricorn-core.css">
   <link rel="stylesheet" href="./css/app.css">
-  <link rel="stylesheet" href="css/capricorn-core.css" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="./css/identity.css" media="print" onload="this.media='all'">
-  <noscript>
-    <link rel="stylesheet" href="css/capricorn-core.css">
-    <link rel="stylesheet" href="./css/identity.css">
-  </noscript>
+  <link rel="stylesheet" href="./css/identity.css">
+  <style>
+    /* Reserve splash + screen chrome before JS (CLS) */
+    #splash.steady-splash { min-height: 100dvh; }
+    #screens { min-height: 70dvh; }
+    #screen-dashboard.screen { min-height: 60dvh; }
+  </style>
   <title>SteadyCap — Recovery is a system. Not a streak. · Capricorn Systems</title>
 <link rel="canonical" href="https://shamikhahmed.github.io/SteadyCap/">
 <meta property="og:type" content="website">
@@ -97,40 +99,58 @@
   <script src="./js/lib/storage-migrate.js"></script>
   <script src="./js/data/habits.js"></script>
   <script src="./js/data/timelines.js"></script>
-  <script src="./js/data/timelines-hourly.js"></script>
   <script src="./js/data/insights.js"></script>
-  <script src="./js/data/knowledge.js"></script>
   <script src="./js/data/habit-links.js"></script>
-  <script src="./js/data/programs.js"></script>
   <script src="./js/engines/recoveryEngine.js"></script>
   <script src="./js/engines/bodyEngine.js"></script>
-  <script src="./js/engines/linkedRecoveryEngine.js"></script>
-  <!-- Secondary engines after first paint (desktop perf lift v5 §3). -->
-  <script defer src="./js/engines/dopamineEngine.js"></script>
-  <script defer src="./js/engines/financeEngine.js"></script>
-  <script defer src="./js/engines/triggerEngine.js"></script>
-  <script src="./js/ui/charts.js"></script>
   <script src="./js/ui/navigation.js"></script>
   <script src="./js/modules/state.js"></script>
   <script src="./js/modules/demo-seed.js"></script>
-  <script src="./js/modules/notifications.js"></script>
   <script src="./js/modules/onboarding.js"></script>
   <script src="./js/modules/dashboard.js"></script>
-  <script src="./js/modules/recovery.js"></script>
-  <script src="./js/modules/emergency.js"></script>
-  <script src="./js/modules/knowledge.js"></script>
-  <script src="./js/modules/profile.js"></script>
-  <script src="./js/modules/journal.js"></script>
   <script src="./js/vendor/local-lock.js"></script>
   <script src="./js/ui/dialogs.js"></script>
   <script src="./js/modules/app-lock.js"></script>
   <script src="./js/app.js"></script>
   <script src="js/cap-demo-mode.js"></script>
   <script src="js/cap-desktop-nav.js"></script>
+  <!-- Heavy data / secondary screens after Home paints (v5 §3b TBT). -->
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      if (window.CapricornMotion) CapricornMotion.init();
-    });
+  (function () {
+    var files = [
+      './js/data/timelines-hourly.js',
+      './js/data/knowledge.js',
+      './js/data/programs.js',
+      './js/engines/linkedRecoveryEngine.js',
+      './js/engines/dopamineEngine.js',
+      './js/engines/financeEngine.js',
+      './js/engines/triggerEngine.js',
+      './js/ui/charts.js',
+      './js/modules/notifications.js',
+      './js/modules/recovery.js',
+      './js/modules/emergency.js',
+      './js/modules/knowledge.js',
+      './js/modules/profile.js',
+      './js/modules/journal.js'
+    ];
+    function loadNext(i) {
+      if (i >= files.length) {
+        if (window.CapricornMotion) try { CapricornMotion.init(); } catch (e) {}
+        return;
+      }
+      var s = document.createElement('script');
+      s.src = files[i];
+      s.onload = function () { loadNext(i + 1); };
+      s.onerror = function () { loadNext(i + 1); };
+      document.head.appendChild(s);
+    }
+    function kick() {
+      if ('requestIdleCallback' in window) requestIdleCallback(function () { loadNext(0); }, { timeout: 2000 });
+      else setTimeout(function () { loadNext(0); }, 600);
+    }
+    if (document.readyState === 'complete') kick();
+    else window.addEventListener('load', kick);
+  })();
   </script>
   <script src="./js/capricorn-motion.js"></script>
 

@@ -1,3 +1,7 @@
+## 2.6.3 — 2026-10-16
+- V5 §3b: restore blocking CSS (async sheets caused CLS); idle-load secondary data/engines/screens; reserve splash/screen min-heights
+- SW `steadycap-v63`
+
 ## 2.6.2 — 2026-10-16
 - V5 §3 Performance: async-load capricorn-core/identity CSS; defer dopamine/finance/trigger engines
 - SW `steadycap-v62`
