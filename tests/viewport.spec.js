@@ -23,4 +23,23 @@ test.describe('SteadyCap viewport contract', () => {
     await resize(page, 'desktop');
     await assertCapSharedDesktop(page, expect);
   });
+
+  test('375px — no content clipped behind bottom nav on primary tabs', async ({ page }) => {
+    await resize(page, 'mobile');
+    for (const tab of ['dashboard', 'recovery', 'emergency', 'knowledge', 'profile']) {
+      await page.evaluate((t) => window.Navigation.go(t), tab);
+      await page.waitForTimeout(400);
+      const ok = await page.evaluate(() => {
+        const screen = document.querySelector('.screen.active');
+        const nav = document.getElementById('nav');
+        if (!screen || !nav) return false;
+        const scroller = screen.scrollHeight > screen.clientHeight ? screen : document.documentElement;
+        scroller.scrollTop = scroller.scrollHeight;
+        const last = screen.lastElementChild?.lastElementChild || screen.lastElementChild;
+        if (!last) return true;
+        return last.getBoundingClientRect().bottom <= nav.getBoundingClientRect().top + 1;
+      });
+      expect(ok, `tab ${tab}: last element clear of bottom nav`).toBe(true);
+    }
+  });
 });
