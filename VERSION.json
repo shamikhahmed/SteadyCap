@@ -1,7 +1,7 @@
 {
   "app": "SteadyCap",
-  "version": "2.6.1",
-  "swCache": "steadycap-v61",
+  "version": "2.6.2",
+  "swCache": "steadycap-v62",
   "updated": "2026-10-16",
-  "notes": "Perfection v3 Phase I: STD-V3-1..4 VERIFIED; mood/journal targets; demo-seed; G-10; SOS eager"
+  "notes": "V5 §3: async non-critical CSS; defer secondary engines for desktop perf"
 }

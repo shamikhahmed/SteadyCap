@@ -35,12 +35,15 @@
   <link rel="apple-touch-icon" sizes="512x512" href="./assets/icons/icon-512.png">
   <link rel="icon" type="image/png" sizes="192x192" href="./assets/icons/icon-192.png">
   <link rel="icon" type="image/png" sizes="512x512" href="./assets/icons/icon-512.png">
-  <link rel="preload" href="./css/app.css" as="style">
   <link rel="stylesheet" href="css/fonts-local.css">
   <link rel="stylesheet" href="css/tokens.css">
-  <link rel="stylesheet" href="css/capricorn-core.css">
-<link rel="stylesheet" href="./css/app.css">
-  <link rel="stylesheet" href="./css/identity.css">
+  <link rel="stylesheet" href="./css/app.css">
+  <link rel="stylesheet" href="css/capricorn-core.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="./css/identity.css" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="css/capricorn-core.css">
+    <link rel="stylesheet" href="./css/identity.css">
+  </noscript>
   <title>SteadyCap — Recovery is a system. Not a streak. · Capricorn Systems</title>
 <link rel="canonical" href="https://shamikhahmed.github.io/SteadyCap/">
 <meta property="og:type" content="website">
@@ -102,9 +105,10 @@
   <script src="./js/engines/recoveryEngine.js"></script>
   <script src="./js/engines/bodyEngine.js"></script>
   <script src="./js/engines/linkedRecoveryEngine.js"></script>
-  <script src="./js/engines/dopamineEngine.js"></script>
-  <script src="./js/engines/financeEngine.js"></script>
-  <script src="./js/engines/triggerEngine.js"></script>
+  <!-- Secondary engines after first paint (desktop perf lift v5 §3). -->
+  <script defer src="./js/engines/dopamineEngine.js"></script>
+  <script defer src="./js/engines/financeEngine.js"></script>
+  <script defer src="./js/engines/triggerEngine.js"></script>
   <script src="./js/ui/charts.js"></script>
   <script src="./js/ui/navigation.js"></script>
   <script src="./js/modules/state.js"></script>

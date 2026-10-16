@@ -1,3 +1,7 @@
+## 2.6.2 — 2026-10-16
+- V5 §3 Performance: async-load capricorn-core/identity CSS; defer dopamine/finance/trigger engines
+- SW `steadycap-v62`
+
 ## 2.6.1 — 2026-10-16
 
 V5-4 cascade restore (specificity, no `!important`): `@media (min-width:769px) and (hover:hover) and (pointer:fine)` `.screen` / `#screen-onboarding` `padding-bottom: 24px` (was 0 on onboarding).
