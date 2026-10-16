@@ -36,7 +36,8 @@ const Dashboard = (() => {
   }
 
   function buildDueNow() {
-    const items = (Notifications.getDueItems() || []).filter((i) => !i.asNeeded || !i.done);
+    const dueFn = window.Notifications && Notifications.getDueItems;
+    const items = ((dueFn ? dueFn() : []) || []).filter((i) => !i.asNeeded || !i.done);
     const open = items.filter((i) => !i.done);
     const list = open.length ? open : items.slice(0, 6);
 

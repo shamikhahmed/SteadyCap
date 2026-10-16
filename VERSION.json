@@ -1,7 +1,7 @@
 {
   "app": "SteadyCap",
-  "version": "2.6.3",
-  "swCache": "steadycap-v63",
+  "version": "2.6.4",
+  "swCache": "steadycap-v64",
   "updated": "2026-10-16",
-  "notes": "V5 §3b: restore blocking CSS (CLS); idle-load secondary engines/screens; reserve splash height"
+  "notes": "V5 §3b: notifications+journal on cold path for Due now; idle secondary screens"
 }

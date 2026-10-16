@@ -108,6 +108,9 @@
   <script src="./js/modules/demo-seed.js"></script>
   <script src="./js/modules/onboarding.js"></script>
   <script src="./js/modules/dashboard.js"></script>
+  <!-- Due now + check-in on Today need these before first Dashboard.render (v5 §3b). -->
+  <script src="./js/modules/notifications.js"></script>
+  <script src="./js/modules/journal.js"></script>
   <script src="./js/vendor/local-lock.js"></script>
   <script src="./js/ui/dialogs.js"></script>
   <script src="./js/modules/app-lock.js"></script>
@@ -126,12 +129,10 @@
       './js/engines/financeEngine.js',
       './js/engines/triggerEngine.js',
       './js/ui/charts.js',
-      './js/modules/notifications.js',
       './js/modules/recovery.js',
       './js/modules/emergency.js',
       './js/modules/knowledge.js',
-      './js/modules/profile.js',
-      './js/modules/journal.js'
+      './js/modules/profile.js'
     ];
     function loadNext(i) {
       if (i >= files.length) {

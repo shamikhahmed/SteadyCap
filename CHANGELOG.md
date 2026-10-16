@@ -1,3 +1,7 @@
+## 2.6.4 — 2026-10-16
+- V5 §3b: keep `notifications.js` + `journal.js` on cold path (Due now / Daily check-in); idle-load other secondary modules
+- SW `steadycap-v64`
+
 ## 2.6.3 — 2026-10-16
 - V5 §3b: restore blocking CSS (async sheets caused CLS); idle-load secondary data/engines/screens; reserve splash/screen min-heights
 - SW `steadycap-v63`
