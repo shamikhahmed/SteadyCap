@@ -1,6 +1,6 @@
 # SteadyCap
 
-**Version:** 2.6.0
+**Version:** 2.6.1
 
 **Personal recovery companion — by Capricorn Systems.** Habits, daily routines, medicines, recovery timelines, emergency SOS, journal, and trigger intelligence.
 

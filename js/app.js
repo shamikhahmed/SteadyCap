@@ -22,7 +22,7 @@ const App = (() => {
   function init() {
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js?v=60').catch(() => {});
+        navigator.serviceWorker.register('./sw.js?v=61').catch(() => {});
       });
     }
 

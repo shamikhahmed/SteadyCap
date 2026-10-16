@@ -1,3 +1,7 @@
+## 2.6.1 — 2026-10-16
+
+V5-4 cascade restore (specificity, no `!important`): `@media (min-width:769px) and (hover:hover) and (pointer:fine)` `.screen` / `#screen-onboarding` `padding-bottom: 24px` (was 0 on onboarding).
+
 ## 2.6.0 — 2026-10-14
 - Perfection Loop v3 Phase I (next minor). STD-V3-1..4 Auditor ✅ VERIFIED.
 - Mood chip labels `max(11px, 0.75rem)` + 44px targets; Open journal `btn-open-journal` ≥48px.

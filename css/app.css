@@ -146,7 +146,11 @@ input, select, textarea {
   }
 
   #nav { display: none; }
-  .screen { padding-bottom: 24px; }
+  .screen,
+  #screen-onboarding.screen,
+  #screen-onboarding {
+    padding-bottom: 24px;
+  }
 }
 
 @media (max-width: 899px) {
@@ -1672,7 +1676,12 @@ button.check-row:focus-visible {
 }
 
 @media (min-width: 769px) and (hover: hover) and (pointer: fine) {
-  .screen { padding-bottom: 24px; }
+  /* Beat #screen-onboarding { padding-bottom: 0 } without !important */
+  .screen,
+  #screen-onboarding.screen,
+  #screen-onboarding {
+    padding-bottom: 24px;
+  }
   #nav { height: 64px; padding-bottom: 0; }
   .score-ring-wrap { padding-top: 32px; }
   .sos-footer { padding-bottom: 20px; }

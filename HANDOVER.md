@@ -7,7 +7,7 @@
 Personal recovery companion — habits, medicines, SOS/emergency, knowledge. (Never “…OS” in user-facing copy — G-3.)
 
 ## Facts
-**Version:** 2.6.0
+**Version:** 2.6.1
 **Live:** https://shamikhahmed.github.io/SteadyCap/
 **Repo:** https://github.com/shamikhahmed/SteadyCap
 **Stack:** Vanilla JS PWA. Desktop-adaptive sidebar shell. Playwright viewport QA.
