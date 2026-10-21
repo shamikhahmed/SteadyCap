@@ -1,0 +1,34 @@
+{
+  "id": "steadycap-priya",
+  "name": "Priya Sharma",
+  "age": 47,
+  "city": "Toronto, Canada",
+  "role": "Daughter caring for her father",
+  "tech": "medium",
+  "accessibility": "standard",
+  "device": "iPhone 15",
+  "goal": "Medicine schedule she can share at visits",
+  "pain_before": [
+    "Scattered notes",
+    "Forgot to log"
+  ],
+  "how_she_uses_it": [
+    "medicine-tracker",
+    "journal-check-ins"
+  ],
+  "numbers": {
+    "before": {
+      "minutes_lost": 15
+    },
+    "after": {
+      "minutes_lost": 2
+    }
+  },
+  "quote": "His pills are in one list now.",
+  "seed": "qa/v7/personas/steadycap-priya.seed.json",
+  "features_used": [
+    "medicine-tracker",
+    "journal-check-ins"
+  ],
+  "fictional": true
+}
