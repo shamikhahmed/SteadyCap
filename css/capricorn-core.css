@@ -1506,6 +1506,8 @@ body[data-cap-app="1"] #view > .screen {
     align-items: center;
     gap: 0.65rem;
     width: 100%;
+    min-height: 44px;
+    box-sizing: border-box;
     padding: 0.55rem 0.75rem;
     margin-bottom: 2px;
     border: none;
