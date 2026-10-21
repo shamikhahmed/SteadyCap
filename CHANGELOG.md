@@ -1,3 +1,9 @@
+## [2.6.6] — 2026-10-21
+
+- HIG v7: iOS tokens / native feel; Dynamic Type & hit targets where applicable
+- Real-people stories live on hub (`/apps/<slug>/` + `/stories/`)
+- Pitch/presentation/README synced to 2.6.6
+
 ## 2.6.4 — 2026-10-16
 - V5 §3b: keep `notifications.js` + `journal.js` on cold path (Due now / Daily check-in); idle-load other secondary modules
 - SW `steadycap-v64`

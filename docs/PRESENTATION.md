@@ -206,3 +206,15 @@ Safari → Share → Add to Home Screen
 📱 shamikhahmed.github.io/SteadyCap → Add to Home Screen
 
 *Built by Shamikh Ahmed · © 2026*
+
+---
+
+## Slide — Real people (illustrative)
+
+Three fictional personas show how people use SteadyCap day to day — before/after numbers, timeline screenshots, and a short silent video with captions.
+
+**Stories:** https://shamikhahmed.github.io/apps/steadycap/  
+**Index:** https://shamikhahmed.github.io/stories/
+
+*Illustrative story. People and data are fictional.*
+
