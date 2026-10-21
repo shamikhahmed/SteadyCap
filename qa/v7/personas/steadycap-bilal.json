@@ -1,0 +1,34 @@
+{
+  "id": "steadycap-bilal",
+  "name": "Bilal Khan",
+  "age": 34,
+  "city": "Karachi, Pakistan",
+  "role": "Pharmacist in recovery",
+  "tech": "medium",
+  "accessibility": "standard",
+  "device": "iPhone 15",
+  "goal": "Daily routine and medicine reminders without guilt",
+  "pain_before": [
+    "Scattered notes",
+    "Forgot to log"
+  ],
+  "how_she_uses_it": [
+    "sos-crisis-flow",
+    "medicine-tracker"
+  ],
+  "numbers": {
+    "before": {
+      "minutes_lost": 15
+    },
+    "after": {
+      "minutes_lost": 2
+    }
+  },
+  "quote": "I log my day. Nobody scores me.",
+  "seed": "qa/v7/personas/steadycap-bilal.seed.json",
+  "features_used": [
+    "sos-crisis-flow",
+    "medicine-tracker"
+  ],
+  "fictional": true
+}
