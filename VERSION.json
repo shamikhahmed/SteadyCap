@@ -1,7 +1,7 @@
 {
   "app": "SteadyCap",
-  "version": "2.6.5",
-  "swCache": "steadycap-v265",
+  "version": "2.6.6",
+  "swCache": "steadycap-v266",
   "updated": "2026-10-21",
-  "notes": "V5 \u00a73b: notifications+journal on cold path for Due now; idle secondary screens \u00b7 v7 HIG ios-tokens scaffold"
+  "notes": "V5 \u00a73b: notifications+journal on cold path for Due now; idle secondary screens \u00b7 v7 HIG ios-tokens scaffold \u00b7 v7 HIG ios-tokens scaffold"
 }
