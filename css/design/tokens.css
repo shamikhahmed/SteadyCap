@@ -18,16 +18,25 @@ html[data-theme="dark"] {
   --separator: rgba(84, 84, 88, 0.6);
   --label: #ffffff;
   --label-2: rgba(235, 235, 245, 0.75);
-  --label-3: rgba(235, 235, 245, 0.6);
+  /* Secondary / caption: ≥4.5:1 on #000 and #1c1c1e (normal text AA). */
+  --label-3: rgba(235, 235, 245, 0.72);
   --label-4: rgba(235, 235, 245, 0.28);
   /* Hospital teal. High contrast on #1c1c1e; black text on teal. */
   --tint: #00d4e6;
+  /* Text/links/selected labels — AA on dark surfaces (fills keep --tint). */
+  --tint-text: #5ce4f0;
   --tint-hover: #5ce4f0;
   --tint-soft: rgba(0, 212, 230, 0.16);
   --on-tint: #000000;
   --success: #30d158;
   --warning: #ff9f0a;
   --danger: #ff453a;
+  /* Status / phase colours used as text (bars may stay brighter via SCBrand). */
+  --signal-red: #ff453a;
+  --signal-orange: #ff9f0a;
+  --signal-gold: #ffd60a;
+  --signal-teal: #5ce4f0;
+  --signal-green: #30d158;
   --glass-material: rgba(28, 28, 30, 0.72);
   --glass-border: rgba(255, 255, 255, 0.08);
   --shadow-1: none;
@@ -48,16 +57,24 @@ html[data-theme="light"] {
   --separator: rgba(60, 60, 67, 0.18);
   --label: #000000;
   --label-2: rgba(60, 60, 67, 0.78);
-  --label-3: rgba(60, 60, 67, 0.64);
+  /* Secondary / caption: ≥4.5:1 on #fff and #f2f2f7 (normal text AA). */
+  --label-3: rgba(60, 60, 67, 0.76);
   --label-4: rgba(60, 60, 67, 0.3);
-  /* Deep teal for light backgrounds (AA on white and grouped bg). */
+  /* Deep teal fills (AA with --on-tint). */
   --tint: #0b6e78;
+  /* Text/links/selected labels — AA on paper (≥5.9:1 on white). */
+  --tint-text: #0b6e78;
   --tint-hover: #095a63;
   --tint-soft: rgba(11, 110, 120, 0.12);
   --on-tint: #ffffff;
-  --success: #248a3d;
+  --success: #0d7a5f;
   --warning: #b25000;
   --danger: #d70015;
+  --signal-red: #d70015;
+  --signal-orange: #b25000;
+  --signal-gold: #8a6200;
+  --signal-teal: #0b6e78;
+  --signal-green: #0d7a5f;
   --glass-material: rgba(249, 249, 251, 0.78);
   --glass-border: rgba(0, 0, 0, 0.08);
   --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.04);
@@ -72,15 +89,17 @@ html[data-theme="light"] {
   :root,
   html[data-theme="dark"] {
     --label-2: rgba(235, 235, 245, 0.9);
-    --label-3: rgba(235, 235, 245, 0.8);
+    --label-3: rgba(235, 235, 245, 0.85);
     --separator: rgba(140, 140, 145, 0.8);
     --tint: #5ce4f0;
+    --tint-text: #7aecf5;
   }
   html[data-theme="light"] {
     --label-2: rgba(60, 60, 67, 0.9);
-    --label-3: rgba(60, 60, 67, 0.82);
+    --label-3: rgba(60, 60, 67, 0.85);
     --separator: rgba(60, 60, 67, 0.4);
     --tint: #095a63;
+    --tint-text: #095a63;
     --tint-hover: #074a52;
   }
 }
@@ -131,8 +150,9 @@ html[data-theme="light"] {
   --text: var(--label);
   --text2: var(--label-2);
   --text3: var(--label-3);
-  --teal: var(--tint);
-  --orange: var(--tint);
+  /* Legacy accent names used as text → AA tint-text; fills still use --tint. */
+  --teal: var(--tint-text);
+  --orange: var(--tint-text);
   --green: var(--success);
   --red: var(--danger);
   --r: var(--r-lg);

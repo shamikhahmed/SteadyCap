@@ -109,7 +109,7 @@ body {
 
 .ui-section-link {
   font-size: var(--t-subhead);
-  color: var(--tint);
+  color: var(--tint-text);
   font-weight: 500;
   min-height: var(--hit);
   display: inline-flex;
@@ -256,7 +256,7 @@ button.ui-row:active {
   justify-content: center;
   width: 28px;
   flex-shrink: 0;
-  color: var(--tint);
+  color: var(--tint-text);
 }
 
 .ui-row--icon {
@@ -314,7 +314,7 @@ button.ui-row {
 
 .ui-btn--secondary {
   background: var(--tint-soft);
-  color: var(--tint);
+  color: var(--tint-text);
 }
 
 .ui-btn--gray {
@@ -324,7 +324,7 @@ button.ui-row {
 
 .ui-btn--plain {
   background: transparent;
-  color: var(--tint);
+  color: var(--tint-text);
   padding: 0 8px;
 }
 
@@ -412,7 +412,7 @@ button.ui-row {
 
 .ui-tag--tint {
   background: var(--tint-soft);
-  color: var(--tint);
+  color: var(--tint-text);
 }
 
 .ui-segmented {

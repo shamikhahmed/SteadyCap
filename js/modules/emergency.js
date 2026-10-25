@@ -53,8 +53,8 @@ const Emergency = (() => {
     screen.innerHTML = `
       <div class="emergency-screen">
         <div class="sos-header" style="padding:calc(env(safe-area-inset-top,20px)+16px) 20px 16px">
-          <div style="font-size:0.7rem;font-weight:800;letter-spacing:0.2em;color:var(--text3)">SOS</div>
-          <button type="button" onclick="Emergency._skipAll()" style="font-size:0.8rem;color:var(--text3);background:none;border:none;cursor:pointer">Skip all</button>
+          <div style="font-size:0.7rem;font-weight:800;letter-spacing:0.2em;color:var(--danger)">SOS</div>
+          <button type="button" onclick="Emergency._skipAll()" style="font-size:0.8rem;color:var(--label-2);background:none;border:none;cursor:pointer;min-height:44px">Skip all</button>
         </div>
         <div class="sos-phase-dots">${dots}</div>
         <div class="sos-content">${content}</div>
@@ -85,7 +85,7 @@ const Emergency = (() => {
           </div>
         </div>
         <div style="font-size:0.8rem;color:var(--text2)">4-7-8 · Cycle ${Math.min(breathCycle+1, TOTAL_CYCLES)} of ${TOTAL_CYCLES}</div>
-        <div style="font-size:0.72rem;color:var(--text3);margin-top:6px">Inhale 4s · Hold 7s · Exhale 8s</div>
+        <div style="font-size:0.72rem;color:var(--label-2);margin-top:6px">Inhale 4s · Hold 7s · Exhale 8s</div>
       </div>
     `;
   }
