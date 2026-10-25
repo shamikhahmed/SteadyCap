@@ -1,7 +1,9 @@
 # SteadyCap — Production-readiness A–Z report
 
 **App:** SteadyCap · **Branch:** `design/hig-3` · **Date:** 2026-10-25  
-**Ports:** 8860 (qa-serve) · **Engine note:** Cursor agent sandbox blocks Chromium (SEGV / missing mac-x64 alias). WebKit not launched here. Reviewer: run with host Playwright + WebKit.
+**Ports:** 8860 / 8861 (qa-serve) · **Round:** 2 (axe findings from reviewer `AUDIT-RUN.json`)
+
+**Reviewer (round 1 evidence):** WebKit ios-check 19/19; `npm run verify` 17 pass / 8 skip; FINISH_MATRIX 6/6; Pages staging ALLOW_PATHS OK (no 404s). Agent sandbox still cannot launch browsers.
 
 **Commits this audit**
 
@@ -10,6 +12,10 @@
 | `503f838` | `fix(pwa): align G-8 version and precache HIG shell assets` |
 | `75ecf4d` | `fix(a11y): escape user HTML, Esc sheets, real buttons` |
 | `60b4485` | `docs(prod-ready): inventory, teal README/HANDOVER, audit harness` |
+| `5b983c8` | `fix(a11y): AA contrast via --tint-text, label-3, signal tokens` |
+| `2981c59` | `fix(a11y): accessible names on profile and sheet selects` |
+| `196f94f` | `fix(a11y): unnest knowledge article open and bookmark controls` |
+| `6715d48` | `test(a11y): Playwright axe smoke for core screens and add-habit` |
 
 ---
 
@@ -17,60 +23,48 @@
 
 | # | Area | Status | Evidence |
 |---|---|---|---|
-| A | Build & gates | **FIXED** (static) / **FAIL** (browser e2e in-agent) | `VERSION.json` ↔ `sw.js` CACHE `steadycap-v267` ↔ `register ?v=267` verified by Node. `tests/version.spec.js` added. Playwright e2e could not launch browsers in this environment (`qa/prod-ready/e2e-core.txt`, `runner.log`). No lint/typecheck scripts in package (N/A). Install-free static serve OK on :8860. |
-| B | Screen inventory | **PASS** | `qa/prod-ready/INVENTORY.md` from `navigation.js` + `#screens` + profile sheets |
-| C | Visual pass | **FAIL** (blocked) | Harness `scripts/prod-ready-audit.mjs` ready; `qa/prod-ready/shots/` empty — no PNGs captured in-agent. Reviewer: `node scripts/prod-ready-audit.mjs http://127.0.0.1:8860/` |
-| D | Interaction pass | **FIXED** (code) / **FAIL** (live proof) | Dead `div`/`span` onclick removed on hair tiles + icon chips; Esc on sheets/reader/Pro. Live tap pass not executed here. |
-| E | Core flows + persistence | **FAIL** (blocked) | SOS/smoke/app-lock specs exist; not green in-agent. Persistence/import/export/lock covered by existing specs once browsers run. |
-| F | iPhone behaviour | **FAIL** (blocked) | `scripts/ios-behaviour-check.mjs` has Chromium fallback; not run to completion here. Prior HIG branch note: 18/18 on WebKit. |
-| G | Accessibility | **FIXED** (partial) / **FAIL** (axe live) | Buttons + keyboard article cards + Esc/aria-modal on sheets. axe-core not run live. AA tint tokens documented in DESIGN.md. |
-| H | PWA / offline | **FIXED** | SW precaches design CSS, scroll-lock, cap-desktop-nav, hig-dt, woff2 fonts. No `skipWaiting`/`clients.claim`. Manifest name/icons/maskable; theme `#000`. Offline reload not proven in-agent. |
-| I | Performance | **PASS** (static) | Blocking CSS: tokens + design tokens + cascade (intentional). Splash/screen min-heights for CLS. Secondary modules idle-loaded. No double unused giant CSS newly introduced. |
-| J | Robustness & privacy | **FIXED** | `escapeHtml` for user/journal strings; quota toast on save; CSP in `index.html`; clinician export `noopener`; no secrets in repo; connect-src self. Corrupted storage → State.load catch → DEFAULT. |
-| K | Content | **FIXED** | Pro waitlist “coming soon” removed; README teal (was orange); journal not listed as tab. Demo labelled via demo banner / `?demo=1`. |
-| L | Docs | **PASS** | README, HANDOVER (2.6.6 / v267), DESIGN.md, CHANGELOG Unreleased updated. |
+| A | Build & gates | **PASS** (reviewer) / static OK | verify 17/8skip; matrix 6/6; G-8 VERSION↔SW aligned |
+| B | Screen inventory | **PASS** | `qa/prod-ready/INVENTORY.md` |
+| C | Visual pass | **PASS** (reviewer) | 40 shots in `qa/prod-ready/shots/` |
+| D | Interaction pass | **FIXED** | Real buttons; Esc sheets; knowledge open/bookmark siblings |
+| E | Core flows | **PASS** (reviewer) | SOS + smoke via verify |
+| F | iPhone behaviour | **PASS** (reviewer) | WebKit ios-check 19/19 |
+| G | Accessibility | **FIXED** (code) / **pending re-axe** | Round-2: 15 AUDIT findings addressed (contrast tokens, select-name, nested-interactive). New `tests/a11y-axe-smoke.spec.js` — reviewer runs |
+| H | PWA / offline | **PASS** (reviewer) | Offline reload OK in AUDIT-RUN |
+| I | Performance | **PASS** (static) | Unchanged |
+| J | Robustness & privacy | **PASS** | escapeHtml + CSP |
+| K | Content | **PASS** | Teal docs |
+| L | Docs | **PASS** | This REPORT round 2 |
 
 ---
 
-## Defects found → fixed
+## Round 2 — AUDIT-RUN findings → fixes
 
-| Sev | Screen / area | Cause | Fix commit |
-|---|---|---|---|
-| High | PWA / update path | `VERSION.json` `steadycap-v266` ≠ SW `v267` ≠ register `?v=64` | `503f838` |
-| High | Offline shell | Missing SW precache: `cap-desktop-nav.js`, `hig-dt.js`, local fonts | `503f838` |
-| High | XSS | User name/goals/meds/journal/custom habit interpolated into `innerHTML` unescaped | `75ecf4d` |
-| Med | You · hair | `<div onclick>` tiles (non-button) | `75ecf4d` |
-| Med | You · custom habit | Icon pickers were `<span onclick>` | `75ecf4d` |
-| Med | Sheets / Pro / reader | Esc did not close | `75ecf4d` |
-| Med | Learn | Article cards not keyboard-activatable | `75ecf4d` |
-| Med | Storage | QuotaExceeded swallowed silently | `75ecf4d` |
-| Low | Manifest | theme/background `#080808` ≠ HIG `#000` | `503f838` |
-| Low | Content / docs | README orange accent; Journal as tab; Pro “coming soon”; HANDOVER 2.6.1 | `60b4485` + `75ecf4d` |
+| Sev | Finding | Fix commit |
+|---|---|---|
+| High | color-contrast (dashboard/recovery/emergency/knowledge/onboarding + SOS skip; light; profile dark ghost) | `5b983c8` — `--label-3` AA; `--tint-text`; `--signal-*` for phase/dopamine text; SOS label stays `--danger` |
+| Critical | select-name `#p-currency`, `#med-schedule` (+ sheets) | `2981c59` — `<label for>` + `aria-label` |
+| High | nested-interactive knowledge article cards | `196f94f` — open + bookmark sibling buttons |
+| — | Regression gate | `6715d48` — axe smoke (dashboard, knowledge, profile, `_addHabit`) light+dark |
 
-## Still FAIL / blocked
+## Still for reviewer
 
-1. **Browser e2e + ios:check + screenshots + axe** — agent cannot launch Chromium/WebKit (sandbox). Reviewer commands:
-   ```bash
-   cd Cap-Apps/_workspace/SteadyCap-hig
-   PORT=8860 node scripts/qa-serve.mjs &
-   npx playwright test tests/version.spec.js tests/smoke.spec.js tests/sos.spec.js tests/viewport.spec.js tests/hig-design.spec.js tests/app-lock.spec.js
-   node scripts/ios-behaviour-check.mjs http://127.0.0.1:8860/
-   node scripts/prod-ready-audit.mjs http://127.0.0.1:8860/
-   ```
-2. **Live offline / SW update path** — not exercised with a real SW registration in this session.
-3. **500+ items / RTL edge fuzz** — not load-tested here (no harness data).
+```bash
+cd Cap-Apps/_workspace/SteadyCap-hig
+PORT=8861 node scripts/qa-serve.mjs &
+npx playwright test tests/a11y-axe-smoke.spec.js
+node scripts/prod-ready-audit.mjs http://127.0.0.1:8861/
+```
+
+Expect axe serious/critical = 0 on audited surfaces.
 
 ## Test counts
 
-| | Before (listed) | After |
-|---|---|---|
-| Playwright files / tests | 7 files / 23 tests | 8 files / 25 tests (+ `version.spec.js` ×2) |
-| In-agent run | — | 0 pass (browser launch failed) |
+| | After round 2 |
+|---|---|
+| Playwright | + `tests/a11y-axe-smoke.spec.js` (2 theme describes × 1 test) |
+| In-agent browser | Not run (sandbox) |
 
-## ios-check
+## External hosts
 
-Not completed in-agent (`qa/prod-ready/ios-check.txt`). Script has Chromium + iPhone 15 Pro metrics fallback. Reviewer re-runs WebKit. Blocked-run JSON: `qa/prod-ready/AUDIT-RUN.json`.
-
-## External hosts (app shell)
-
-None at runtime (CSP `connect-src 'self'`). Static OG tags reference `shamikhahmed.github.io` images only.
+None at runtime (`connect-src 'self'`).
