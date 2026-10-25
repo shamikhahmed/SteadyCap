@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-25T17:22:23.876Z",
-  "base": "http://127.0.0.1:8861",
+  "generatedAt": "2026-10-25T18:32:55.736Z",
+  "base": "http://127.0.0.1:8860",
   "engine": "chromium",
   "webkitNote": null,
   "axeAvailable": true,
@@ -49,8 +49,9 @@
   ],
   "offline": {
     "ok": true,
-    "detail": "SW register: scope=http://127.0.0.1:8861/; offline reload bodyLen=513"
+    "detail": "SW register: scope=http://127.0.0.1:8860/; offline reload bodyLen=513"
   },
+  "httpBad": [],
   "screenAudits": [
     {
       "screenId": "dashboard",
@@ -58,7 +59,7 @@
       "overflow": false,
       "unnamed": 0,
       "deadDivs": 0,
-      "axeSerious": 1
+      "axeSerious": 0
     },
     {
       "screenId": "recovery",
@@ -66,7 +67,7 @@
       "overflow": false,
       "unnamed": 0,
       "deadDivs": 0,
-      "axeSerious": 1
+      "axeSerious": 0
     },
     {
       "screenId": "emergency",
@@ -74,7 +75,7 @@
       "overflow": false,
       "unnamed": 0,
       "deadDivs": 0,
-      "axeSerious": 1
+      "axeSerious": 0
     },
     {
       "screenId": "knowledge",
@@ -82,7 +83,7 @@
       "overflow": false,
       "unnamed": 0,
       "deadDivs": 0,
-      "axeSerious": 2
+      "axeSerious": 0
     },
     {
       "screenId": "profile",
@@ -90,7 +91,7 @@
       "overflow": false,
       "unnamed": 0,
       "deadDivs": 0,
-      "axeSerious": 1
+      "axeSerious": 0
     },
     {
       "screenId": "journal",
@@ -130,7 +131,7 @@
       "overflow": false,
       "unnamed": 0,
       "deadDivs": 0,
-      "axeSerious": 1
+      "axeSerious": 0
     },
     {
       "screenId": "profile",
@@ -138,7 +139,7 @@
       "overflow": false,
       "unnamed": 0,
       "deadDivs": 0,
-      "axeSerious": 2
+      "axeSerious": 0
     },
     {
       "screenId": "journal",
@@ -154,7 +155,7 @@
       "overflow": false,
       "unnamed": 0,
       "deadDivs": 0,
-      "axeSerious": 1
+      "axeSerious": 0
     },
     {
       "screenId": "add-med",
@@ -162,7 +163,7 @@
       "overflow": false,
       "unnamed": 0,
       "deadDivs": 0,
-      "axeSerious": 1
+      "axeSerious": 0
     },
     {
       "screenId": "sos-skip",
@@ -170,7 +171,7 @@
       "overflow": false,
       "unnamed": 0,
       "deadDivs": 0,
-      "axeSerious": 1
+      "axeSerious": 0
     },
     {
       "screenId": "article",
@@ -178,7 +179,7 @@
       "overflow": false,
       "unnamed": 0,
       "deadDivs": 0,
-      "axeSerious": 2
+      "axeSerious": 0
     },
     {
       "screenId": "dashboard",
@@ -258,234 +259,23 @@
       "overflow": false,
       "unnamed": 0,
       "deadDivs": 0,
-      "axeSerious": 1
+      "axeSerious": 0
     }
   ],
-  "findings": [
-    {
-      "severity": "high",
-      "screen": "dashboard:light:390x844",
-      "message": "axe serious: color-contrast — Elements must meet minimum color contrast ratio thresholds",
-      "nodes": [
-        [
-          ".due-row__sub"
-        ],
-        [
-          ".insight-mark"
-        ]
-      ],
-      "at": "2026-10-25T17:21:45.362Z"
-    },
-    {
-      "severity": "high",
-      "screen": "recovery:light:390x844",
-      "message": "axe serious: color-contrast — Elements must meet minimum color contrast ratio thresholds",
-      "nodes": [
-        [
-          "div:nth-child(7) > .card > div:nth-child(1) > span:nth-child(1)"
-        ],
-        [
-          "div:nth-child(7) > .card > div:nth-child(1) > span:nth-child(2)"
-        ],
-        [
-          "div:nth-child(7) > .card > div:nth-child(3)"
-        ]
-      ],
-      "at": "2026-10-25T17:21:46.856Z"
-    },
-    {
-      "severity": "high",
-      "screen": "emergency:light:390x844",
-      "message": "axe serious: color-contrast — Elements must meet minimum color contrast ratio thresholds",
-      "nodes": [
-        [
-          ".sos-header > div"
-        ],
-        [
-          "button[onclick=\"Emergency._skipAll()\"]"
-        ],
-        [
-          ".sos-content > div > div:nth-child(5)"
-        ]
-      ],
-      "at": "2026-10-25T17:21:47.901Z"
-    },
-    {
-      "severity": "high",
-      "screen": "knowledge:light:390x844",
-      "message": "axe serious: color-contrast — Elements must meet minimum color contrast ratio thresholds",
-      "nodes": [
-        [
-          ".cat-chip:nth-child(2)"
-        ],
-        [
-          ".cat-chip:nth-child(3)"
-        ],
-        [
-          ".cat-chip:nth-child(4)"
-        ]
-      ],
-      "at": "2026-10-25T17:21:49.262Z"
-    },
-    {
-      "severity": "high",
-      "screen": "knowledge:light:390x844",
-      "message": "axe serious: nested-interactive — Interactive controls must not be nested",
-      "nodes": [
-        [
-          "div[onclick=\"Knowledge._openArticle('k1')\"]"
-        ],
-        [
-          "div[onclick=\"Knowledge._openArticle('k2')\"]"
-        ],
-        [
-          "div[onclick=\"Knowledge._openArticle('k3')\"]"
-        ]
-      ],
-      "at": "2026-10-25T17:21:49.262Z"
-    },
-    {
-      "severity": "critical",
-      "screen": "profile:light:390x844",
-      "message": "axe critical: select-name — Select element must have an accessible name",
-      "nodes": [
-        [
-          "#p-currency"
-        ]
-      ],
-      "at": "2026-10-25T17:21:50.389Z"
-    },
-    {
-      "severity": "high",
-      "screen": "knowledge:dark:390x844",
-      "message": "axe serious: nested-interactive — Interactive controls must not be nested",
-      "nodes": [
-        [
-          "div[onclick=\"Knowledge._openArticle('k1')\"]"
-        ],
-        [
-          "div[onclick=\"Knowledge._openArticle('k2')\"]"
-        ],
-        [
-          "div[onclick=\"Knowledge._openArticle('k3')\"]"
-        ]
-      ],
-      "at": "2026-10-25T17:21:59.864Z"
-    },
-    {
-      "severity": "high",
-      "screen": "profile:dark:390x844",
-      "message": "axe serious: color-contrast — Elements must meet minimum color contrast ratio thresholds",
-      "nodes": [
-        [
-          "div:nth-child(3) > .btn-ghost.btn:nth-child(2)"
-        ]
-      ],
-      "at": "2026-10-25T17:22:01.019Z"
-    },
-    {
-      "severity": "critical",
-      "screen": "profile:dark:390x844",
-      "message": "axe critical: select-name — Select element must have an accessible name",
-      "nodes": [
-        [
-          "#p-currency"
-        ]
-      ],
-      "at": "2026-10-25T17:22:01.019Z"
-    },
-    {
-      "severity": "critical",
-      "screen": "sheet:_addHabit",
-      "message": "axe critical: select-name — Select element must have an accessible name",
-      "nodes": [
-        [
-          "#p-currency"
-        ]
-      ],
-      "at": "2026-10-25T17:22:05.951Z"
-    },
-    {
-      "severity": "critical",
-      "screen": "sheet:_addMed",
-      "message": "axe critical: select-name — Select element must have an accessible name",
-      "nodes": [
-        [
-          "#p-currency"
-        ],
-        [
-          "#med-schedule"
-        ]
-      ],
-      "at": "2026-10-25T17:22:07.409Z"
-    },
-    {
-      "severity": "high",
-      "screen": "sos:skip-all",
-      "message": "axe serious: color-contrast — Elements must meet minimum color contrast ratio thresholds",
-      "nodes": [
-        [
-          ".sos-header > div"
-        ],
-        [
-          "button[onclick=\"Emergency._skipAll()\"]"
-        ],
-        [
-          ".sos-content > div > div:nth-child(4)"
-        ]
-      ],
-      "at": "2026-10-25T17:22:08.993Z"
-    },
-    {
-      "severity": "high",
-      "screen": "knowledge:article",
-      "message": "axe serious: color-contrast — Elements must meet minimum color contrast ratio thresholds",
-      "nodes": [
-        [
-          ".cat-chip:nth-child(2)"
-        ],
-        [
-          ".cat-chip:nth-child(3)"
-        ],
-        [
-          ".cat-chip:nth-child(4)"
-        ]
-      ],
-      "at": "2026-10-25T17:22:10.685Z"
-    },
-    {
-      "severity": "high",
-      "screen": "knowledge:article",
-      "message": "axe serious: nested-interactive — Interactive controls must not be nested",
-      "nodes": [
-        [
-          "div[onclick=\"Knowledge._openArticle('k1')\"]"
-        ],
-        [
-          "div[onclick=\"Knowledge._openArticle('k2')\"]"
-        ],
-        [
-          "div[onclick=\"Knowledge._openArticle('k3')\"]"
-        ]
-      ],
-      "at": "2026-10-25T17:22:10.685Z"
-    },
-    {
-      "severity": "high",
-      "screen": "onboarding:fresh",
-      "message": "axe serious: color-contrast — Elements must meet minimum color contrast ratio thresholds",
-      "nodes": [
-        [
-          ".ob-screen > p"
-        ]
-      ],
-      "at": "2026-10-25T17:22:23.548Z"
-    }
-  ],
+  "findings": [],
   "counts": {
-    "critical": 4,
-    "high": 11,
+    "critical": 0,
+    "high": 0,
     "medium": 0,
-    "low": 0
+    "low": 0,
+    "axeSeriousCritical": 0,
+    "consoleErrors": 0,
+    "httpBad": 0
+  },
+  "gates": {
+    "axeSeriousCritical": true,
+    "consoleErrors": true,
+    "httpBad": true,
+    "offline": true
   }
 }
