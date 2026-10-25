@@ -1,7 +1,7 @@
 {
   "app": "SteadyCap",
-  "version": "2.6.6",
-  "swCache": "steadycap-v267",
+  "version": "2.7.0",
+  "swCache": "steadycap-v70",
   "updated": "2026-10-25",
-  "notes": "HIG 3 + prod-ready: SW cache aligned with sw.js; register ?v=267; shell deps + fonts precached"
+  "notes": "HIG 3 release: Apple-feel redesign, iPhone scroll/sheets, a11y axe smoke; G-8 SW steadycap-v70 / ?v=70"
 }

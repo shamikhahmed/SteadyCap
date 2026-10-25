@@ -4,13 +4,17 @@ const { readFileSync } = require('fs');
 const { join } = require('path');
 
 test.describe('G-8 version coherence', () => {
-  test('VERSION.json swCache matches sw.js CACHE and register query', () => {
+  test('VERSION.json, package.json, APP_VERSION, SW cache and register query match', () => {
     const root = process.cwd();
     const version = JSON.parse(readFileSync(join(root, 'VERSION.json'), 'utf8'));
+    const pkg = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8'));
     const sw = readFileSync(join(root, 'sw.js'), 'utf8');
     const app = readFileSync(join(root, 'js/app.js'), 'utf8');
     const cache = (sw.match(/const CACHE = '([^']+)'/) || [])[1];
     const reg = (app.match(/sw\.js\?v=([^'"]+)/) || [])[1];
+    const appVer = (app.match(/window\.APP_VERSION\s*=\s*['"]([^'"]+)['"]/) || [])[1];
+    expect(pkg.version).toBe(version.version);
+    expect(appVer).toBe(version.version);
     expect(cache).toBe(version.swCache);
     expect(`steadycap-v${reg}`).toBe(version.swCache);
   });

@@ -7,8 +7,8 @@
 Personal recovery companion — habits, medicines, SOS/emergency, knowledge. (Never “…OS” in user-facing copy — G-3.)
 
 ## Facts
-**Version:** 2.6.6  
-**SW cache:** `steadycap-v267` (register `sw.js?v=267`)  
+**Version:** 2.7.0  
+**SW cache:** `steadycap-v70` (register `sw.js?v=70`)  
 **Live:** https://shamikhahmed.github.io/SteadyCap/  
 **Repo:** https://github.com/shamikhahmed/SteadyCap  
 **Stack:** Vanilla JS PWA. HIG 3 design (`DESIGN.md`, teal accent). Desktop sidebar ≥700px. Playwright QA + `npm run ios:check`.  

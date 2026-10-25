@@ -247,7 +247,7 @@ const Profile = (() => {
       </div>
 
       <div style="padding:0 20px 8px">
-        <div class="t-caption t-dim" style="text-align:center;margin-bottom:12px;line-height:1.5">SteadyCap · Local-only<br>SteadyCap helps you keep track of routines and cravings. It isn't medical advice. Follow your doctor's or pharmacist's instructions for any medicine.</div>
+        <div class="t-caption t-dim" style="text-align:center;margin-bottom:12px;line-height:1.5" data-version="${escapeHtml(window.APP_VERSION || '')}">SteadyCap · v${escapeHtml(window.APP_VERSION || '')} · Local-only<br>SteadyCap helps you keep track of routines and cravings. It isn't medical advice. Follow your doctor's or pharmacist's instructions for any medicine.</div>
       </div>
       <div style="padding:0 20px 20px">
         <button type="button" class="btn btn-danger" onclick="Profile._reset()">Reset All Data</button>
