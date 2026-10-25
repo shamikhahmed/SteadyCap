@@ -1,0 +1,10 @@
+ios-behaviour-check: NOT RUN (environment block)
+WebKit: unavailable / not launched (Cursor sandbox SEGV / LaunchServices blocked)
+Chromium fallback: would SEGV in sandbox (verified smoke: SEGV_ACCERR)
+required_permissions=["all"] rejected — cannot leave sandbox.
+
+Script ready: scripts/ios-behaviour-check.mjs (WebKit → Chromium + devices['iPhone 15 Pro'] without defaultBrowserType)
+
+Re-run:
+  export PLAYWRIGHT_BROWSERS_PATH="$HOME/Library/Caches/ms-playwright"
+  node scripts/ios-behaviour-check.mjs "http://127.0.0.1:8860/?demo=1"

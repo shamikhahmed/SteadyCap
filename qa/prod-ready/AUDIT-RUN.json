@@ -1,0 +1,37 @@
+{
+  "generatedAt": "2026-10-25T09:38:00.000Z",
+  "base": "http://127.0.0.1:8860",
+  "engine": null,
+  "webkitNote": "WebKit not launched — Cursor sandbox blocks browser processes (SEGV / LaunchServices). Chromium also SEGV_ACCERR in sandbox.",
+  "axeAvailable": true,
+  "axeRan": false,
+  "shotCount": 0,
+  "shots": [],
+  "offline": {
+    "ok": false,
+    "detail": "not run — browser blocked"
+  },
+  "screenAudits": [],
+  "blocked": true,
+  "blockReason": "Playwright Chromium SEGV in Cursor sandbox; required_permissions=[\"all\"] rejected repeatedly for this agent (even for `true`). Cannot leave seatbelt. Scripts ready for host re-run.",
+  "findings": [
+    {
+      "severity": "critical",
+      "screen": "audit-harness",
+      "message": "Live browser audit blocked: Chromium SEGV_ACCERR in Cursor sandbox; elevation required_permissions=[\"all\"] rejected. No screenshots, axe, offline, or viewport checks executed.",
+      "source": "environment"
+    }
+  ],
+  "counts": {
+    "critical": 1,
+    "high": 0,
+    "medium": 0,
+    "low": 0
+  },
+  "rerun": {
+    "symlink": "ln -sfn chrome-headless-shell-mac-arm64 \"$HOME/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-x64\"",
+    "e2e": "export PLAYWRIGHT_BROWSERS_PATH=\"$HOME/Library/Caches/ms-playwright\" && npx playwright test tests/smoke.spec.js tests/sos.spec.js tests/viewport.spec.js tests/hig-design.spec.js tests/app-lock.spec.js --reporter=list | tee qa/prod-ready/e2e-core.txt",
+    "ios": "node scripts/ios-behaviour-check.mjs \"http://127.0.0.1:8860/?demo=1\" | tee qa/prod-ready/ios-check.txt",
+    "audit": "node scripts/prod-ready-audit.mjs http://127.0.0.1:8860"
+  }
+}

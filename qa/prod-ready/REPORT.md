@@ -69,7 +69,7 @@
 
 ## ios-check
 
-Not completed in-agent. Script updated with Chromium + iPhone 15 Pro metrics fallback (`engine=` log line). Reviewer re-runs WebKit.
+Not completed in-agent (`qa/prod-ready/ios-check.txt`). Script has Chromium + iPhone 15 Pro metrics fallback. Reviewer re-runs WebKit. Blocked-run JSON: `qa/prod-ready/AUDIT-RUN.json`.
 
 ## External hosts (app shell)
 
