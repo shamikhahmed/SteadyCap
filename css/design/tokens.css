@@ -177,6 +177,12 @@ body {
   overflow-x: clip;
 }
 
+/* Programmatic scrolls (new screen → top, sheet restore) land instantly: smooth scrolling read as auto-scroll on iPhone */
+html,
+body {
+  scroll-behavior: auto !important;
+}
+
 /* Native rubber-band vertically; no accidental horizontal back-swipe bounce. */
 body {
   overscroll-behavior-x: none;

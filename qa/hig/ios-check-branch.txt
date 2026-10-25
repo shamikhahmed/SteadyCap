@@ -8,6 +8,7 @@ PASS  no sideways overflow · knowledge
 PASS  document scrolls (no inner scroller) · knowledge
 PASS  no sideways overflow · profile
 PASS  document scrolls (no inner scroller) · profile
+PASS  programmatic scroll lands instantly
 PASS  tab tap navigates (no reload)
 PASS  new screen opens at top
 PASS  page locked behind sheet
