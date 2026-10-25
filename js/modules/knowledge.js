@@ -47,14 +47,14 @@ const Knowledge = (() => {
     });
     if (!filtered.length) return `<div style="padding:40px 20px;text-align:center;color:var(--text3)">No articles found.</div>`;
     return filtered.map(a => `
-      <div class="article-card" role="button" tabindex="0" onclick="Knowledge._openArticle('${a.id}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();Knowledge._openArticle('${a.id}')}">
-        <div class="a-category">${a.category}</div>
-        <div class="a-title">${a.title}</div>
-        <div class="a-preview">${a.preview}</div>
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:8px">
+      <div class="article-card">
+        <button type="button" class="article-card-open" onclick="Knowledge._openArticle('${a.id}')">
+          <div class="a-category">${a.category}</div>
+          <div class="a-title">${a.title}</div>
+          <div class="a-preview">${a.preview}</div>
           <div class="a-evidence">${a.evidence}</div>
-          <button type="button" aria-label="${bookmarks.includes(a.id) ? 'Remove bookmark' : 'Bookmark'}" aria-pressed="${bookmarks.includes(a.id)}" style="font-size:1rem;cursor:pointer;min-width:44px;min-height:44px;background:none;border:0" onclick="event.stopPropagation();Knowledge._toggleBookmark('${a.id}')">${bookmarks.includes(a.id)?'🔖':'🏷️'}</button>
-        </div>
+        </button>
+        <button type="button" class="article-card-bookmark" aria-label="${bookmarks.includes(a.id) ? 'Remove bookmark' : 'Bookmark'}" aria-pressed="${bookmarks.includes(a.id)}" onclick="Knowledge._toggleBookmark('${a.id}')">${bookmarks.includes(a.id)?'🔖':'🏷️'}</button>
       </div>
     `).join('');
   }
