@@ -23,7 +23,14 @@
 
 ## Commits (this release prep)
 
-See `git log` on `design/hig-3` — release prep commits bump G-8 to 2.7.0, add CHANGELOG/RELEASE, and add `run-checks.sh` / `live-smoke.mjs`.
+| SHA | Message |
+|---|---|
+| `aaf9217` | `chore(release): bump SteadyCap to 2.7.0 (G-8)` |
+| `892b589` | `docs(release): CHANGELOG and RELEASE notes for 2.7.0` |
+| `921a056` | `qa(release): one-command gate and live-smoke for 2.7.0` |
+| `7e949ff` | `docs(release): REPORT with reviewer gate commands` |
+
+Prior a11y/prod-ready work on this branch includes axe smoke `6715d48` (already in `tests/` → covered by `npm run verify` / full Playwright in `run-checks.sh`).
 
 ## Reviewer must run
 
