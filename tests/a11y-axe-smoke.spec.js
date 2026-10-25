@@ -34,7 +34,8 @@ async function go(page, id) {
 }
 
 async function expectNoSeriousCritical(page, label) {
-  const results = await new AxeBuilder({ page }).analyze();
+  // preload:false — axe otherwise fetches @import'ed sheets at document root (/base.css 404s).
+  const results = await new AxeBuilder({ page }).options({ preload: false }).analyze();
   const bad = (results.violations || []).filter(
     (v) => v.impact === 'serious' || v.impact === 'critical',
   );

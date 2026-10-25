@@ -134,7 +134,8 @@ async function auditScreen(page, AxeBuilder, screenId, label) {
   let axeSerious = [];
   if (AxeBuilder) {
     try {
-      const axe = await new AxeBuilder({ page }).analyze();
+      // preload:false — axe otherwise fetches @import'ed sheets at document root (/base.css 404s).
+      const axe = await new AxeBuilder({ page }).options({ preload: false }).analyze();
       axeSerious = (axe.violations || []).filter((v) => v.impact === 'serious' || v.impact === 'critical');
       for (const v of axeSerious) {
         find(v.impact === 'critical' ? 'critical' : 'high', label, `axe ${v.impact}: ${v.id} — ${v.help}`, {
