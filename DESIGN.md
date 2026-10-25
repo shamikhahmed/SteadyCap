@@ -8,9 +8,21 @@ Source of truth:
 | File | Role | Loading |
 |---|---|---|
 | `css/design/tokens.css` | Semantic tokens (light / dark / increased contrast) + legacy bridge | render-blocking, unlayered |
-| `css/design/system.css` | `ui-*` primitives (ScentCap port) | `@layer components` via `css/app.css` |
+| `css/design/system.css` | `ui-*` primitives (ScentCap port) | `@layer components` via `css/cascade.css` |
 | `css/design/steadycap.css` | Reskin of 2.x shell + shared classes (`#nav`, `.nav-tab`, `.card`, `.btn-*`, profile sheets) | `@layer components` |
-| `css/cascade.css` | Declares `@layer legacy, components` only; layered sheets are `<link>`d from `index.html` | render-blocking |
+| `css/cascade.css` | Cascade orchestrator: 2.x CSS (incl. `css/app.css`) demoted with `@import … layer(legacy)`; HIG via `@layer components` | render-blocking |
+
+**Cascade note:** Layers are applied only via `@import url(…) layer(name);` or `@layer name { … }` in CSS. Never `<link layer="…">` — browsers ignore that attribute, so 2.x would load unlayered and beat HIG. Root-relative CSS 404s seen only during axe runs are an audit artifact (axe preloads `@import`ed sheets); harness uses `preload: false`.
+
+### Scroll exceptions (inner overflow allowed)
+
+Documented leaves only — everything else uses document scroll:
+
+| Selector | Why |
+|---|---|
+| `#cap-nav-sidebar` | Sticky desktop sidebar chrome (≥700px) |
+| `.ui-sheet`, sheet hosts under `#profile-modal` | Modal sheet body |
+| `.reader-overlay` | Knowledge article push leaf (own back control) |
 
 ## Principles
 
