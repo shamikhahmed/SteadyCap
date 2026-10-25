@@ -1,4 +1,15 @@
 'use strict';
+/** Escape user/legacy strings before interpolating into innerHTML (XSS). */
+function escapeHtml(str) {
+  return String(str == null ? '' : str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+window.escapeHtml = escapeHtml;
+
 const DateTimeLocal = (() => {
   function toInputValue(dateInput) {
     const d = dateInput instanceof Date ? dateInput : new Date(dateInput);

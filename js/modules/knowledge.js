@@ -47,7 +47,7 @@ const Knowledge = (() => {
     });
     if (!filtered.length) return `<div style="padding:40px 20px;text-align:center;color:var(--text3)">No articles found.</div>`;
     return filtered.map(a => `
-      <div class="article-card" onclick="Knowledge._openArticle('${a.id}')">
+      <div class="article-card" role="button" tabindex="0" onclick="Knowledge._openArticle('${a.id}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();Knowledge._openArticle('${a.id}')}">
         <div class="a-category">${a.category}</div>
         <div class="a-title">${a.title}</div>
         <div class="a-preview">${a.preview}</div>
@@ -98,12 +98,22 @@ const Knowledge = (() => {
       <div class="reader-content">${article.content}</div>
     `;
     requestAnimationFrame(() => overlay.classList.add('open'));
+    window.removeEventListener('keydown', _onReaderKey);
+    window.addEventListener('keydown', _onReaderKey);
+  }
+
+  function _onReaderKey(e) {
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      _closeArticle();
+    }
   }
 
   function _closeArticle() {
     const overlay = document.getElementById('reader-overlay');
     if (!overlay) return;
     overlay.classList.remove('open');
+    window.removeEventListener('keydown', _onReaderKey);
   }
 
   function _toggleBookmark(id) {

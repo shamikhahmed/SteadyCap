@@ -139,7 +139,7 @@ const Onboarding = (() => {
       <div class="ob-sub">A few quick details to personalise your recovery.</div>
       <div class="ob-field">
         <div class="ob-label">Your name <span style="color:var(--text3)">(optional)</span></div>
-        <input class="ob-input" type="text" id="ob-name" placeholder="What should we call you?" value="${name}">
+        <input class="ob-input" type="text" id="ob-name" placeholder="What should we call you?" value="${escapeHtml(name)}">
       </div>
       <div class="ob-field">
         <div class="ob-label">Currency</div>

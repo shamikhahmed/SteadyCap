@@ -183,19 +183,30 @@
         </ul>
       </div>
     </div>
-    <button type="button" class="pro-waitlist" onclick="document.getElementById('proUpgradeModal').style.display='none'">Join Pro waitlist — coming soon →</button>
+    <button type="button" class="pro-waitlist" onclick="document.getElementById('proUpgradeModal').style.display='none'">Join Pro waitlist</button>
     <button type="button" class="pro-dismiss" onclick="document.getElementById('proUpgradeModal').style.display='none'">Continue with Free</button>
   </div>
 </div>
 <script>
 (function () {
+  function closePro() {
+    var m = document.getElementById('proUpgradeModal');
+    if (m) m.style.display = 'none';
+  }
   window.openProUpgrade = function () {
     var m = document.getElementById('proUpgradeModal');
     if (m) m.style.display = 'flex';
   };
   var modal = document.getElementById('proUpgradeModal');
-  if (modal) modal.addEventListener('click', function (e) {
-    if (e.target === modal) modal.style.display = 'none';
+  if (modal) {
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) closePro();
+    });
+  }
+  window.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    var m = document.getElementById('proUpgradeModal');
+    if (m && m.style.display === 'flex') closePro();
   });
 })();
 </script>
