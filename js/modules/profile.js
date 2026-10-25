@@ -57,7 +57,7 @@ const Profile = (() => {
         <div class="t-caption">${escapeHtml(m.dose || '—')} · ${m.schedule === 'as_needed' ? 'As needed' : escapeHtml((m.times || []).join(', '))}</div>
         <div style="display:flex;gap:8px;margin-top:10px">
           <button type="button" class="btn btn-ghost" style="flex:1;font-size:0.75rem;padding:8px" onclick="Profile._editMed('${m.id}')">Edit</button>
-          <button type="button" class="btn btn-ghost" style="font-size:0.75rem;padding:8px;color:var(--red)" onclick="Profile._removeMed('${m.id}')">Remove</button>
+          <button type="button" class="btn btn-danger" style="font-size:0.75rem;padding:8px;min-height:44px" onclick="Profile._removeMed('${m.id}')">Remove</button>
         </div>
       </div>
     `).join('') || '<div class="t-caption t-dim" style="padding:0 20px 8px">No medicines added yet.</div>';

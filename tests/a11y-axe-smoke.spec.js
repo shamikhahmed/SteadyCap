@@ -66,7 +66,8 @@ for (const theme of ['light', 'dark']) {
 
       await page.evaluate(() => Profile._addHabit());
       await page.waitForTimeout(500);
-      await expect(page.locator('#profile-modal')).toBeVisible();
+      // #profile-modal is a zero-size host; sheet content is position:fixed (HIG sheets).
+      await expect(page.locator('#profile-modal .sheet-bar__title')).toBeVisible();
       await expectNoSeriousCritical(page, `sheet:_addHabit:${theme}`);
       await page.evaluate(() => Profile._closeModal && Profile._closeModal());
     });

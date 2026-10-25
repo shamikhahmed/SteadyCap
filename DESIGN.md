@@ -10,7 +10,7 @@ Source of truth:
 | `css/design/tokens.css` | Semantic tokens (light / dark / increased contrast) + legacy bridge | render-blocking, unlayered |
 | `css/design/system.css` | `ui-*` primitives (ScentCap port) | `@layer components` via `css/app.css` |
 | `css/design/steadycap.css` | Reskin of 2.x shell + shared classes (`#nav`, `.nav-tab`, `.card`, `.btn-*`, profile sheets) | `@layer components` |
-| `css/cascade.css` | Cascade orchestrator: 2.x CSS (incl. `css/app.css`) demoted to `@layer legacy` (preloaded) | render-blocking |
+| `css/cascade.css` | Declares `@layer legacy, components` only; layered sheets are `<link>`d from `index.html` | render-blocking |
 
 ## Principles
 

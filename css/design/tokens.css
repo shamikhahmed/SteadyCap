@@ -30,9 +30,10 @@ html[data-theme="dark"] {
   --on-tint: #000000;
   --success: #30d158;
   --warning: #ff9f0a;
-  --danger: #ff453a;
+  /* Text/labels on elevated fills (#323236 ≈ surface+fill); #ff453a was 3.74:1. */
+  --danger: #ff6961;
   /* Status / phase colours used as text (bars may stay brighter via SCBrand). */
-  --signal-red: #ff453a;
+  --signal-red: #ff6961;
   --signal-orange: #ff9f0a;
   --signal-gold: #ffd60a;
   --signal-teal: #5ce4f0;
@@ -155,6 +156,7 @@ html[data-theme="light"] {
   --orange: var(--tint-text);
   --green: var(--success);
   --red: var(--danger);
+  --gold: var(--signal-gold);
   --r: var(--r-lg);
   --shadow-soft: var(--shadow-2);
   --shadow-card: var(--shadow-1);

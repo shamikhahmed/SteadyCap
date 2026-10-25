@@ -1,14 +1,7 @@
 /*
- * SteadyCap — cascade order: legacy 2.x CSS < HIG components (system.css primitives + steadycap.css reskin).
- * Tokens (css/tokens.css palette + css/design/tokens.css) load unlayered, so they always win;
- * legacy screens inherit the HIG palette through the bridge in design/tokens.css. Docs: DESIGN.md.
+ * SteadyCap — cascade order only.
+ * Layered stylesheets are linked from index.html (layer="legacy" / self-@layer components).
+ * Chromium resolves `@import … layer()` URLs against the document base (→ /fonts-local.css 404);
+ * HTML <link> paths stay correct under /css/. Docs: DESIGN.md.
  */
 @layer legacy, components;
-
-@import url("fonts-local.css") layer(legacy);
-@import url("ios-tokens.css") layer(legacy);
-@import url("capricorn-core.css") layer(legacy);
-@import url("app.css") layer(legacy);
-@import url("identity.css") layer(legacy);
-@import url("design/system.css");
-@import url("design/steadycap.css");

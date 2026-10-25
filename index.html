@@ -33,16 +33,18 @@
   <link rel="apple-touch-icon" sizes="512x512" href="./assets/icons/icon-512.png">
   <link rel="icon" type="image/png" sizes="192x192" href="./assets/icons/icon-192.png">
   <link rel="icon" type="image/png" sizes="512x512" href="./assets/icons/icon-512.png">
-  <!-- HIG design: legacy 2.x CSS sits in @layer legacy under the HIG components (css/cascade.css, DESIGN.md).
-       Preloads let the browser fetch the @imported files in parallel. -->
-  <link rel="preload" href="css/capricorn-core.css" as="style">
-  <link rel="preload" href="css/app.css" as="style">
-  <link rel="preload" href="css/ios-tokens.css" as="style">
-  <link rel="preload" href="css/design/system.css" as="style">
-  <link rel="preload" href="css/design/steadycap.css" as="style">
+  <!-- HIG design: legacy 2.x CSS in @layer legacy; HIG components self-@layer (DESIGN.md).
+       Linked (not @import) so Chromium does not resolve layer imports against document root. -->
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/design/tokens.css">
   <link rel="stylesheet" href="css/cascade.css">
+  <link rel="stylesheet" href="css/fonts-local.css" layer="legacy">
+  <link rel="stylesheet" href="css/ios-tokens.css" layer="legacy">
+  <link rel="stylesheet" href="css/capricorn-core.css" layer="legacy">
+  <link rel="stylesheet" href="css/app.css" layer="legacy">
+  <link rel="stylesheet" href="css/identity.css" layer="legacy">
+  <link rel="stylesheet" href="css/design/system.css">
+  <link rel="stylesheet" href="css/design/steadycap.css">
   <style>
     /* Reserve splash + screen chrome before JS (CLS) */
     #splash.steady-splash { min-height: 100dvh; }

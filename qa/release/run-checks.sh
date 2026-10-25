@@ -50,7 +50,11 @@ key_from_log() {
   local hint="$2"
   if [[ -f "$log" ]]; then
     local line
-    line="$(grep -E "$hint" "$log" | tail -1 | tr -d '\r' || true)"
+    # Prefer "N failed" so FAIL rows do not show only "N passed".
+    line="$(grep -E '[0-9]+ failed' "$log" | tail -1 | tr -d '\r' || true)"
+    if [[ -z "$line" ]]; then
+      line="$(grep -E "$hint" "$log" | tail -1 | tr -d '\r' || true)"
+    fi
     if [[ -n "$line" ]]; then
       echo "$line" | head -c 120
       return
