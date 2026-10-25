@@ -1,12 +1,20 @@
-## [Unreleased] — HIG design (ScentCap 3.0 system) + prod-ready audit
+## [2.7.0] — 2026-10-25
 
-- Apple-HIG redesign: `css/design/tokens.css` (semantic light/dark/increased-contrast tokens, teal accent `#00d4e6` / `#0b6e78`, legacy bridge), `css/design/system.css` (`ui-*` primitives), `css/design/steadycap.css` (shell + shared-class reskin); 2.x CSS demoted to `@layer legacy` via `css/cascade.css`
-- Shell: floating glass tab bar, sticky glass sidebar from 700 px, SF type, grid-paper overlay and WebGL scene removed from the app shell
-- Today, Recovery, You, Add habit sheet (grabber + Cancel bar) restyled; mood tiles, segmented theme switch
-- iPhone (Safari + Home Screen PWA): document scrolling (no inner `.screen` scrollers), body pinned under sheets with exact restore, `capricorn-motion` out of the app shell, ≥16px fields, `touch-action`, hover guards; habit chips / switches / bookmark are real buttons
-- SW no longer `skipWaiting`/`clients.claim` · cache `steadycap-v267`
-- `scripts/ios-behaviour-check.mjs` (`npm run ios:check`): origin/main 6 FAIL → 18/18 PASS · gate `tests/hig-design.spec.js`
-- **Prod-ready (2026-10-25):** G-8 align `VERSION.json` ↔ SW ↔ `sw.js?v=267`; precache `cap-desktop-nav.js`, `hig-dt.js`, local woff2 fonts; `escapeHtml` for user/journal strings; Esc closes profile sheets / reader / Pro; hair + custom-icon chips are buttons; article cards keyboardable; quota toast; manifest theme `#000`; README/HANDOVER teal + journal-not-in-tab; inventory `qa/prod-ready/`
+A clearer, calmer app that feels at home on iPhone — and stays readable for everyone.
+
+- Fresh look: soft glass tab bar, clearer Today / Recovery / You screens, and a teal accent that stays easy to read in light and dark mode
+- Smoother on iPhone: the page scrolls naturally, sheets no longer jump your place, and habit chips / switches behave like real buttons
+- Easier to use with VoiceOver and larger text: stronger contrast, named form fields, and keyboard-friendly knowledge articles
+- SOS and crisis help are unchanged and still one tap away from the centre tab
+- Version shown on the You screen; offline install still works after updates
+
+### Under the hood
+
+- HIG design tokens + legacy CSS in `@layer legacy`; floating tab bar; sidebar from 700px; no grid overlay / WebGL shell
+- Document scroll + `ScrollLock` sheet pin/restore; SW no auto `skipWaiting`/`clients.claim`; cache `steadycap-v70` / `sw.js?v=70`
+- A11y: contrast tokens, select names, unnested article controls, Esc closes sheets; Playwright axe smoke on core screens
+- G-8: `VERSION.json` · `package.json` · `window.APP_VERSION` · SW cache aligned at **2.7.0**
+- Release gate: `qa/release/run-checks.sh` + `qa/release/live-smoke.mjs`
 
 ## [2.6.6] — 2026-10-21
 
