@@ -1,4 +1,4 @@
-## [Unreleased] — HIG design (ScentCap 3.0 system)
+## [Unreleased] — HIG design (ScentCap 3.0 system) + prod-ready audit
 
 - Apple-HIG redesign: `css/design/tokens.css` (semantic light/dark/increased-contrast tokens, teal accent `#00d4e6` / `#0b6e78`, legacy bridge), `css/design/system.css` (`ui-*` primitives), `css/design/steadycap.css` (shell + shared-class reskin); 2.x CSS demoted to `@layer legacy` via `css/cascade.css`
 - Shell: floating glass tab bar, sticky glass sidebar from 700 px, SF type, grid-paper overlay and WebGL scene removed from the app shell
@@ -6,6 +6,7 @@
 - iPhone (Safari + Home Screen PWA): document scrolling (no inner `.screen` scrollers), body pinned under sheets with exact restore, `capricorn-motion` out of the app shell, ≥16px fields, `touch-action`, hover guards; habit chips / switches / bookmark are real buttons
 - SW no longer `skipWaiting`/`clients.claim` · cache `steadycap-v267`
 - `scripts/ios-behaviour-check.mjs` (`npm run ios:check`): origin/main 6 FAIL → 18/18 PASS · gate `tests/hig-design.spec.js`
+- **Prod-ready (2026-10-25):** G-8 align `VERSION.json` ↔ SW ↔ `sw.js?v=267`; precache `cap-desktop-nav.js`, `hig-dt.js`, local woff2 fonts; `escapeHtml` for user/journal strings; Esc closes profile sheets / reader / Pro; hair + custom-icon chips are buttons; article cards keyboardable; quota toast; manifest theme `#000`; README/HANDOVER teal + journal-not-in-tab; inventory `qa/prod-ready/`
 
 ## [2.6.6] — 2026-10-21
 

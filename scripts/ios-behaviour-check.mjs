@@ -5,7 +5,7 @@
  * Checks: tab bar + header tappable, no sideways overflow, the document (not an inner box) scrolls,
  * navigation opens at top without reloading, sheets keep the page position, inputs ≥16px, SW doesn't self-activate.
  */
-import { webkit, devices } from '@playwright/test';
+import { webkit, chromium, devices } from '@playwright/test';
 import fs from 'node:fs';
 
 const BASE = process.argv[2] || 'http://127.0.0.1:8768/';
@@ -19,11 +19,28 @@ const step = async (name, fn) => {
   }
 };
 
-const browser = await webkit.launch();
-const ctx = await browser.newContext({ ...devices['iPhone 15 Pro'], serviceWorkers: 'block' });
+/** Prefer WebKit; fall back to Chromium + iPhone 15 Pro metrics (strip defaultBrowserType). */
+async function launchMobile() {
+  const iphone = devices['iPhone 15 Pro'];
+  try {
+    const browser = await webkit.launch();
+    const ctx = await browser.newContext({ ...iphone, serviceWorkers: 'block' });
+    return { browser, ctx, engine: 'webkit' };
+  } catch (e) {
+    const reason = String(e.message || e).split('\n')[0];
+    console.error(`WebKit unavailable (${reason}); falling back to Chromium + iPhone 15 Pro metrics`);
+    const { defaultBrowserType: _omit, ...iphoneNoType } = iphone;
+    const browser = await chromium.launch();
+    const ctx = await browser.newContext({ ...iphoneNoType, serviceWorkers: 'block' });
+    return { browser, ctx, engine: 'chromium' };
+  }
+}
+
+const { browser, ctx, engine } = await launchMobile();
+console.log(`ios-behaviour-check engine=${engine}`);
 const page = await ctx.newPage();
 page.setDefaultTimeout(8000);
-await page.goto(BASE + '?demo=1');
+await page.goto(BASE.includes('?') ? BASE : BASE.replace(/\/?$/, '/') + '?demo=1');
 await page.waitForFunction(() => typeof window.Navigation !== 'undefined' && typeof window.Profile !== 'undefined' && typeof window.Emergency !== 'undefined', { timeout: 45000 });
 await page.evaluate(() => document.getElementById('splash')?.remove());
 await page.waitForTimeout(1200);
