@@ -60,10 +60,10 @@ const Onboarding = (() => {
       <div class="ob-sub">Select all that apply. You can add more later.</div>
       <div class="habit-grid" id="habit-grid">
         ${Object.entries(habits).map(([key, h]) => `
-          <div class="habit-chip${selectedHabits.includes(key) ? ' selected' : ''}" data-habit="${key}" onclick="Onboarding._toggleHabit('${key}')">
-            <span class="habit-chip-icon">${h.icon}</span>
+          <button type="button" class="habit-chip${selectedHabits.includes(key) ? ' selected' : ''}" aria-pressed="${selectedHabits.includes(key)}" data-habit="${key}" onclick="Onboarding._toggleHabit('${key}')">
+            <span class="habit-chip-icon" aria-hidden="true">${h.icon}</span>
             <span class="habit-chip-name">${h.name}</span>
-          </div>
+          </button>
         `).join('')}
       </div>
       <div class="ob-footer">

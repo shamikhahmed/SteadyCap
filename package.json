@@ -14,7 +14,8 @@
     "gallery:view": "python3 -m http.server 8768",
     "tier1": "node ../capricorn-tooling/shared/testing/tier1.mjs",
     "test:matrix": "FINISH_MATRIX=1 playwright test tests/finish-matrix.spec.mjs --workers=1",
-    "axe": "node scripts/capture-axe.mjs"
+    "axe": "node scripts/capture-axe.mjs",
+    "ios:check": "node scripts/ios-behaviour-check.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",

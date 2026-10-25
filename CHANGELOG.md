@@ -1,3 +1,12 @@
+## [Unreleased] — HIG design (ScentCap 3.0 system)
+
+- Apple-HIG redesign: `css/design/tokens.css` (semantic light/dark/increased-contrast tokens, teal accent `#00d4e6` / `#0b6e78`, legacy bridge), `css/design/system.css` (`ui-*` primitives), `css/design/steadycap.css` (shell + shared-class reskin); 2.x CSS demoted to `@layer legacy` via `css/cascade.css`
+- Shell: floating glass tab bar, sticky glass sidebar from 700 px, SF type, grid-paper overlay and WebGL scene removed from the app shell
+- Today, Recovery, You, Add habit sheet (grabber + Cancel bar) restyled; mood tiles, segmented theme switch
+- iPhone (Safari + Home Screen PWA): document scrolling (no inner `.screen` scrollers), body pinned under sheets with exact restore, `capricorn-motion` out of the app shell, ≥16px fields, `touch-action`, hover guards; habit chips / switches / bookmark are real buttons
+- SW no longer `skipWaiting`/`clients.claim` · cache `steadycap-v267`
+- `scripts/ios-behaviour-check.mjs` (`npm run ios:check`): origin/main 6 FAIL → 18/18 PASS · gate `tests/hig-design.spec.js`
+
 ## [2.6.6] — 2026-10-21
 
 - HIG v7: iOS tokens / native feel; Dynamic Type & hit targets where applicable

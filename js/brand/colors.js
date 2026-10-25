@@ -1,6 +1,8 @@
 /* SteadyCap brand palette — Tier 1 brandOk path. Do not inline hex outside this file. */
 'use strict';
 window.SCBrand = {
+  h_000000: '#000000',
+  h_f2f2f7: '#F2F2F7',
   h_00a8b5: '#00A8B5',
   h_06d6a0: '#06D6A0',
   h_0a84ff: '#0A84FF',

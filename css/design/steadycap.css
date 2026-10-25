@@ -1,0 +1,608 @@
+/**
+ * SteadyCap — HIG reskin of the 2.x shell and shared legacy components.
+ * Sits in `@layer components` (above `legacy`), so it wins over 2.x CSS without !important
+ * (except where 2.x renders inline styles: the profile sheets). Docs: DESIGN.md.
+ */
+
+@layer components {
+
+/* ---------- Canvas + document scrolling (iOS) ---------- */
+/* 2.x pinned body (overflow:hidden, 100dvh) and scrolled each absolutely-positioned .screen — iOS showed inner
+   scrollbars, lost rubber-banding and fought the Safari toolbar. The document scrolls now. */
+
+html,
+body {
+  height: auto;
+  min-height: 100%;
+  overflow-y: visible;
+  background: var(--bg);
+  color: var(--label);
+  font-family: var(--font-ui);
+  user-select: auto;
+  -webkit-user-select: auto;
+}
+
+body::before,
+html[data-theme="light"] body::before {
+  display: none;
+}
+
+#app,
+.cap-phone-shell {
+  height: auto;
+  min-height: 100dvh;
+  max-width: none;
+  overflow: visible;
+  background: var(--bg);
+  box-shadow: none;
+  border: 0;
+}
+
+#screens {
+  position: static;
+  overflow: visible;
+  min-height: 0;
+}
+
+.screen,
+.screen.active {
+  position: static;
+  inset: auto;
+  overflow: visible;
+  -webkit-overflow-scrolling: auto;
+  overscroll-behavior: auto;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-bottom: calc(var(--tabbar-h) + 48px + env(safe-area-inset-bottom));
+}
+
+.screen.active {
+  display: block;
+}
+
+/* ---------- Floating glass tab bar (<700px) ---------- */
+
+#nav,
+html[data-theme="light"] #nav,
+body[data-cap-app="1"] #nav {
+  position: fixed;
+  left: 12px;
+  right: 12px;
+  bottom: max(14px, calc(env(safe-area-inset-bottom) + 6px));
+  z-index: 40;
+  height: var(--tabbar-h);
+  padding: 0 6px;
+  display: grid !important;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  align-items: center;
+  border: 0;
+  border-radius: 999px;
+  background: var(--glass-material);
+  -webkit-backdrop-filter: saturate(180%) blur(24px);
+  backdrop-filter: saturate(180%) blur(24px);
+  box-shadow: 0 0 0 0.5px var(--glass-border), 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.nav-tab {
+  height: calc(var(--tabbar-h) - 10px);
+  min-height: 48px;
+  padding: 0 2px;
+  gap: 2px;
+  border-radius: 999px;
+  color: var(--label-2);
+  background: transparent;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  transform: none;
+}
+
+.nav-tab.active {
+  color: var(--tint);
+  background: var(--fill);
+  transform: none;
+}
+
+.nav-tab .nav-icon,
+.nav-tab.active .nav-icon {
+  filter: none;
+  height: 26px;
+  display: flex;
+  align-items: center;
+}
+
+.nav-tab svg {
+  width: 24px;
+  height: 24px;
+  stroke-width: 1.75;
+}
+
+.nav-label {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* SOS keeps its signal colour */
+.nav-sos,
+.nav-sos.active {
+  color: var(--danger);
+}
+
+.nav-sos::before,
+.nav-sos::after {
+  display: none;
+}
+
+/* ---------- Glass sidebar (≥700px; 2.x switched at 900px) ---------- */
+
+@media (min-width: 700px) {
+  .cap-desktop-shell {
+    display: flex;
+    width: 100%;
+    max-width: none;
+    min-height: 100dvh;
+    margin: 0;
+    box-shadow: none;
+  }
+  #cap-nav-sidebar {
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    align-self: flex-start;
+    width: 248px;
+    min-width: 248px;
+    height: 100dvh;
+    overflow-y: auto;
+    padding: max(20px, env(safe-area-inset-top)) 12px 16px;
+    border-right: 0.5px solid var(--separator);
+    background: var(--glass-material);
+    -webkit-backdrop-filter: saturate(180%) blur(24px);
+    backdrop-filter: saturate(180%) blur(24px);
+  }
+  .cap-desktop-main {
+    flex: 1;
+    min-width: 0;
+  }
+  #nav,
+  html[data-theme="light"] #nav,
+  body[data-cap-app="1"] #nav {
+    display: none !important;
+  }
+  .screen,
+  .screen.active {
+    padding: 0 24px 64px;
+  }
+}
+
+.cap-sidebar-brand {
+  padding: 0 12px 16px;
+  font-family: var(--font-ui);
+  font-size: var(--t-title3);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--label);
+}
+
+.cap-side-btn {
+  min-height: var(--hit);
+  padding: 0 12px;
+  gap: 12px;
+  border: 0;
+  border-radius: var(--r-sm);
+  background: transparent;
+  color: var(--label);
+  font-family: var(--font-ui);
+  font-size: var(--t-body);
+  font-weight: 400;
+}
+
+.cap-side-btn svg {
+  width: 20px;
+  height: 20px;
+  color: var(--tint);
+}
+
+.cap-side-btn.on,
+.cap-side-btn.active {
+  background: var(--tint);
+  color: var(--on-tint);
+  font-weight: 600;
+}
+
+.cap-side-btn.on svg,
+.cap-side-btn.active svg {
+  color: var(--on-tint);
+}
+
+.cap-side-btn.nav-sos svg {
+  color: var(--danger);
+}
+
+/* ---------- Type: large titles, sections ---------- */
+
+.t-display,
+.t-display--compact {
+  font-family: var(--font-ui);
+  font-size: var(--t-large);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  color: var(--label);
+}
+
+.t-title,
+.t-heading {
+  font-family: var(--font-ui);
+  letter-spacing: -0.02em;
+}
+
+.t-caption {
+  font-size: var(--t-subhead);
+  color: var(--label-2);
+}
+
+.today-simple__header,
+.today-header,
+.profile-header {
+  padding: 16px var(--gutter) 4px;
+}
+
+.section-header {
+  margin: 28px 0 10px;
+  padding: 0 var(--gutter);
+}
+
+.section-title {
+  font-size: var(--t-title3);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-transform: none;
+  color: var(--label);
+}
+
+.section-link {
+  min-height: var(--hit);
+  padding: 0 4px;
+  color: var(--tint);
+  font-size: var(--t-subhead);
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* ---------- Surfaces ---------- */
+
+.card,
+html[data-theme="light"] .card,
+.check-in-card,
+.stat-cell,
+.due-row,
+.insight-card,
+.profile-item-card {
+  border: 0;
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-1);
+  color: var(--label);
+}
+
+.stat-val {
+  font-family: var(--font-rounded);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.stat-label {
+  font-size: var(--t-caption);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--label-2);
+}
+
+/* Demo banner: one quiet line */
+.today-demo-banner {
+  margin: 8px var(--gutter) 0;
+  padding: 6px 6px 6px 14px;
+  border: 0;
+  border-radius: var(--r-md);
+  background: var(--surface);
+  box-shadow: var(--shadow-1);
+  color: var(--label-2);
+  font-size: var(--t-footnote);
+}
+
+.today-demo-banner__btn {
+  min-height: 34px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: var(--fill);
+  color: var(--tint);
+  border: 0;
+}
+
+/* ---------- Buttons ---------- */
+
+.btn,
+.btn-primary,
+.btn-secondary,
+.btn-ghost,
+.btn-danger {
+  min-height: var(--hit);
+  border-radius: var(--r-md);
+  font-family: var(--font-ui);
+  font-size: var(--t-headline);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  box-shadow: none;
+  text-shadow: none;
+}
+
+.btn-primary {
+  min-height: 50px;
+  background: var(--tint);
+  color: var(--on-tint);
+  border: 0;
+}
+
+.btn-secondary,
+.btn-ghost {
+  background: var(--fill);
+  color: var(--label);
+  border: 0;
+}
+
+.btn-danger {
+  background: transparent;
+  color: var(--danger);
+  border: 0;
+}
+
+.due-btn {
+  min-height: 36px;
+  padding: 0 16px;
+  border-radius: 999px;
+  font-size: var(--t-subhead);
+  position: relative;
+}
+
+.due-btn::after {
+  content: "";
+  position: absolute;
+  inset: -4px 0;
+}
+
+/* Mood picker → segmented-style tiles */
+.mood-btn {
+  border: 0;
+  border-radius: var(--r-md);
+  background: var(--fill);
+  color: var(--label);
+  min-height: 64px;
+}
+
+.mood-btn.selected {
+  background: var(--tint-soft);
+  color: var(--tint);
+  border: 0;
+  box-shadow: inset 0 0 0 1.5px var(--tint);
+}
+
+.mood-label {
+  font-size: var(--t-caption);
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* Habit filter pills, theme switch */
+.cap-tab-bar {
+  padding: 2px var(--gutter) 8px;
+  gap: 8px;
+  background: none;
+  border: 0;
+}
+
+.cap-tab {
+  min-height: 34px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--fill);
+  color: var(--label);
+  font-size: var(--t-subhead);
+  font-weight: 500;
+  box-shadow: none;
+  position: relative;
+}
+
+.cap-tab::after {
+  content: "";
+  position: absolute;
+  inset: -5px 0;
+}
+
+.cap-tab.on,
+.cap-tab.active {
+  background: var(--label);
+  color: var(--bg);
+}
+
+.theme-seg {
+  gap: 2px;
+  padding: 2px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--fill);
+}
+
+.theme-seg button {
+  min-height: 36px;
+  border-radius: 8px;
+  color: var(--label);
+  font: 500 var(--t-subhead) / 1 var(--font-ui);
+}
+
+.theme-seg button.on {
+  background: var(--surface-elevated);
+  color: var(--label);
+  font-weight: 600;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1), 0 0 0 0.5px rgba(0, 0, 0, 0.04);
+}
+
+html[data-theme="dark"] .theme-seg button.on {
+  background: var(--seg-thumb);
+}
+
+/* ---------- Fields ---------- */
+
+.ob-input,
+.ob-select,
+.check-in-input,
+.ob-field input,
+.ob-field select {
+  min-height: var(--hit);
+  border: 0;
+  border-radius: var(--r-sm);
+  background: var(--fill);
+  color: var(--label);
+  font-family: var(--font-ui);
+}
+
+.ob-input:focus,
+.check-in-input:focus {
+  border: 0;
+  box-shadow: 0 0 0 3px var(--tint-soft);
+  outline: none;
+}
+
+.ob-label,
+.t-label {
+  font-size: var(--t-footnote);
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--label-2);
+}
+
+/* ---------- Sheets (profile modals render inline styles) ---------- */
+
+#profile-modal > div {
+  background: var(--scrim) !important;
+}
+
+#profile-modal > div > div {
+  position: relative;
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 26px var(--gutter) max(24px, env(safe-area-inset-bottom)) !important;
+  border-radius: 16px 16px 0 0 !important;
+  background: var(--bg) !important;
+  box-shadow: var(--shadow-3);
+  overscroll-behavior: contain;
+}
+
+#profile-modal > div > div::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  width: 36px;
+  height: 5px;
+  margin-left: -18px;
+  border-radius: 999px;
+  background: var(--label-4);
+}
+
+.sheet-bar {
+  display: grid;
+  grid-template-columns: minmax(72px, 1fr) auto minmax(72px, 1fr);
+  align-items: center;
+  min-height: 48px;
+  margin: 0 -8px 12px;
+}
+
+.sheet-bar__cancel {
+  justify-self: start;
+  min-height: var(--hit);
+  padding: 0 8px;
+  border: 0;
+  background: transparent;
+  color: var(--tint);
+  font: 400 var(--t-body) var(--font-ui);
+}
+
+.sheet-bar__title {
+  font-size: var(--t-headline);
+  font-weight: 600;
+  text-align: center;
+}
+
+.habit-chip {
+  width: 100%;
+  font: inherit;
+  text-align: center;
+  cursor: pointer;
+  border: 0;
+  border-radius: var(--r-md);
+  background: var(--surface);
+  box-shadow: var(--shadow-1);
+  color: var(--label);
+}
+
+.habit-chip-name {
+  font-size: var(--t-footnote);
+  font-weight: 500;
+}
+
+/* ---------- Toasts ---------- */
+
+.toast {
+  border: 0;
+  border-radius: var(--r-md);
+  background: var(--surface-elevated);
+  color: var(--label);
+  box-shadow: var(--shadow-3), 0 0 0 0.5px var(--glass-border);
+}
+
+/* Splash: system type */
+.steady-splash__title {
+  font-family: var(--font-ui);
+  letter-spacing: -0.02em;
+}
+
+/* Hover only where a pointer can hover */
+@media (hover: none) {
+  .btn:hover,
+  .card:hover,
+  .cap-side-btn:hover,
+  .nav-tab:hover,
+  .habit-chip:hover,
+  .mood-btn:hover {
+    transform: none;
+    box-shadow: var(--shadow-1);
+  }
+}
+
+/* Article reader: full-height push view above the floating tab bar (it has its own back control) */
+.reader-overlay {
+  bottom: 0;
+  z-index: 60;
+  background: var(--bg);
+  overscroll-behavior: contain;
+  padding-bottom: max(24px, env(safe-area-inset-bottom));
+}
+
+.reader-overlay:not(.open) {
+  visibility: hidden;
+}
+
+/* SOS flow sized itself to the old screen box — keep it full height now that the document scrolls */
+#screen-emergency > div:first-child {
+  min-height: calc(100dvh - var(--tabbar-h) - 32px - env(safe-area-inset-bottom));
+}
+
+} /* @layer components */

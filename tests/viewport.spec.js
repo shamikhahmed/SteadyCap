@@ -35,7 +35,10 @@ test.describe('SteadyCap viewport contract', () => {
         if (!screen || !nav) return false;
         const scroller = screen.scrollHeight > screen.clientHeight ? screen : document.documentElement;
         scroller.scrollTop = scroller.scrollHeight;
-        const last = screen.lastElementChild?.lastElementChild || screen.lastElementChild;
+        // Fixed overlays (closed article reader) are not page content
+        const kids = [...screen.children].filter((el) => getComputedStyle(el).position !== 'fixed');
+        const lastKid = kids[kids.length - 1];
+        const last = lastKid?.lastElementChild || lastKid;
         if (!last) return true;
         return last.getBoundingClientRect().bottom <= nav.getBoundingClientRect().top + 1;
       });

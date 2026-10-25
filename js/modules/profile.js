@@ -50,9 +50,9 @@ const Profile = (() => {
       <div class="card profile-item-card" style="margin-bottom:8px">
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
           <div><span style="font-size:1.1rem">💊</span> <strong>${m.name}</strong></div>
-          <div onclick="Profile._toggleMed('${m.id}')" style="width:40px;height:24px;background:${m.enabled?'var(--green)':'var(--bg2)'};border-radius:12px;position:relative;cursor:pointer;border:1px solid var(--border)">
-            <div style="position:absolute;top:2px;${m.enabled?'right:2px':'left:2px'};width:18px;height:18px;border-radius:50%;background:white;transition:all 0.2s"></div>
-          </div>
+          <button type="button" role="switch" aria-checked="${!!m.enabled}" aria-label="${m.name} reminders" onclick="Profile._toggleMed('${m.id}')" style="width:40px;height:24px;padding:0;background:${m.enabled?'var(--green)':'var(--bg2)'};border-radius:12px;position:relative;cursor:pointer;border:1px solid var(--border)">
+            <span style="position:absolute;top:2px;${m.enabled?'right:2px':'left:2px'};width:18px;height:18px;border-radius:50%;background:white;transition:all 0.2s"></span>
+          </button>
         </div>
         <div class="t-caption">${m.dose || '—'} · ${m.schedule === 'as_needed' ? 'As needed' : (m.times || []).join(', ')}</div>
         <div style="display:flex;gap:8px;margin-top:10px">
@@ -163,15 +163,15 @@ const Profile = (() => {
           </div>
           <div class="ob-field" style="display:flex;align-items:center;justify-content:space-between">
             <div class="ob-label" style="margin-bottom:0">Push Reminders</div>
-            <div onclick="Profile._toggleNotifications()" style="width:44px;height:26px;background:${notifOn ? 'var(--green)' : 'var(--bg2)'};border-radius:13px;border:1px solid var(--border);position:relative;cursor:pointer;transition:background 0.2s;flex-shrink:0">
-              <div style="position:absolute;top:3px;${notifOn ? 'right:3px' : 'left:3px'};width:18px;height:18px;border-radius:50%;background:white;transition:all 0.2s;"></div>
-            </div>
+            <button type="button" role="switch" aria-checked="${!!notifOn}" aria-label="Push reminders" onclick="Profile._toggleNotifications()" style="width:44px;height:26px;padding:0;background:${notifOn ? 'var(--green)' : 'var(--bg2)'};border-radius:13px;border:1px solid var(--border);position:relative;cursor:pointer;transition:background 0.2s;flex-shrink:0">
+              <span style="position:absolute;top:3px;${notifOn ? 'right:3px' : 'left:3px'};width:18px;height:18px;border-radius:50%;background:white;transition:all 0.2s;"></span>
+            </button>
           </div>
           <div class="ob-field" style="margin-bottom:0;display:flex;align-items:center;justify-content:space-between">
             <div class="ob-label" style="margin-bottom:0">Spiritual Mode</div>
-            <div onclick="Profile._toggleSpiritual()" style="width:44px;height:26px;background:${spiritualMode ? 'var(--orange)' : 'var(--bg2)'};border-radius:13px;border:1px solid var(--border);position:relative;cursor:pointer;transition:background 0.2s;flex-shrink:0">
-              <div style="position:absolute;top:3px;${spiritualMode ? 'right:3px' : 'left:3px'};width:18px;height:18px;border-radius:50%;background:white;transition:all 0.2s;"></div>
-            </div>
+            <button type="button" role="switch" aria-checked="${!!spiritualMode}" aria-label="Spiritual mode" onclick="Profile._toggleSpiritual()" style="width:44px;height:26px;padding:0;background:${spiritualMode ? 'var(--orange)' : 'var(--bg2)'};border-radius:13px;border:1px solid var(--border);position:relative;cursor:pointer;transition:background 0.2s;flex-shrink:0">
+              <span style="position:absolute;top:3px;${spiritualMode ? 'right:3px' : 'left:3px'};width:18px;height:18px;border-radius:50%;background:white;transition:all 0.2s;"></span>
+            </button>
           </div>
         </div>
       </div>
@@ -400,13 +400,13 @@ const Profile = (() => {
     modal.innerHTML = `
       <div style="position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.8);display:flex;align-items:flex-end" onclick="if(event.target===this)Profile._closeModal()">
         <div style="background:var(--bg3);border-radius:var(--r-lg) var(--r-lg) 0 0;padding:24px 20px calc(20px + env(safe-area-inset-bottom));width:100%;max-height:70vh;overflow-y:auto">
-          <div class="t-heading" style="margin-bottom:16px">Add a Habit</div>
+          <div class="sheet-bar"><button type="button" class="sheet-bar__cancel" onclick="Profile._closeModal()">Cancel</button><div class="sheet-bar__title t-heading">Add a Habit</div><span></span></div>
           <div class="habit-grid">
             ${available.map(([k,h])=>`
-              <div class="habit-chip" onclick="Profile._startAddHabit('${k}')">
-                <span class="habit-chip-icon">${h.icon}</span>
+              <button type="button" class="habit-chip" onclick="Profile._startAddHabit('${k}')">
+                <span class="habit-chip-icon" aria-hidden="true">${h.icon}</span>
                 <span class="habit-chip-name">${h.name}</span>
-              </div>
+              </button>
             `).join('')}
           </div>
         </div>
@@ -461,7 +461,7 @@ const Profile = (() => {
     try { localStorage.setItem('steadycap-theme', theme); } catch (e) {}
     document.documentElement.setAttribute('data-theme', theme);
     const meta = document.getElementById('themeColorMeta') || document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute('content', theme === 'light' ? window.SCBrand.h_f4f0ea : window.SCBrand.h_1a1412); // theme-color
+    if (meta) meta.setAttribute('content', theme === 'light' ? window.SCBrand.h_f2f2f7 : window.SCBrand.h_000000); // theme-color = HIG grouped background
     render();
   }
 

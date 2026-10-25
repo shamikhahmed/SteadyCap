@@ -68,10 +68,12 @@ const Navigation = (() => {
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     const screen = document.getElementById('screen-' + screenId);
     if (screen) {
-      const scrollY = preserveScroll ? screen.scrollTop : 0;
       screen.classList.add('active');
-      if (preserveScroll) screen.scrollTop = scrollY;
-      else screen.scrollTop = 0;
+      // 6.0: the document scrolls (no inner .screen scroller); a new screen opens at the top
+      if (!preserveScroll) {
+        if (window.ScrollLock) ScrollLock.scrollTo(0);
+        else window.scrollTo(0, 0);
+      }
     }
 
     renderNav();

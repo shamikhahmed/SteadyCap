@@ -1,0 +1,17 @@
+PASS  tab bar + top bar tappable
+PASS  hit areas (tabs ≥44pt, pills ≥34pt + slop)
+PASS  no sideways overflow · dashboard
+FAIL  document scrolls (no inner scroller) · dashboard  ({"sw":393,"iw":393,"docScroll":false,"inner":"auto"})
+PASS  no sideways overflow · recovery
+FAIL  document scrolls (no inner scroller) · recovery  ({"sw":393,"iw":393,"docScroll":false,"inner":"auto"})
+PASS  no sideways overflow · knowledge
+FAIL  document scrolls (no inner scroller) · knowledge  ({"sw":393,"iw":393,"docScroll":false,"inner":"auto"})
+PASS  no sideways overflow · profile
+FAIL  document scrolls (no inner scroller) · profile  ({"sw":393,"iw":393,"docScroll":false,"inner":"auto"})
+PASS  tab tap navigates (no reload)
+PASS  new screen opens at top
+FAIL  sheet flow  (locator.waitFor: Timeout 8000ms exceeded.)
+PASS  inputs ≥16px (no zoom-on-focus)
+PASS  mood tile tap selects
+PASS  no reload during session
+FAIL  SW: no auto skipWaiting/clients.claim
