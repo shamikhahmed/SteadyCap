@@ -65,11 +65,17 @@ const ASSETS = [
   './js/capricorn-deck.js',
   './js/capricorn-deck-pro.js',
   './js/capricorn-pitch.js',
+  './js/cap-desktop-nav.js',
+  './js/hig-dt.js',
   './js/vendor/gsap.min.js',
   './js/vendor/ScrollTrigger.min.js',
   './privacy.html',
   './changelog.html',
   './assets/qr-steadycap.png',
+  './assets/fonts/source-sans-3.woff2',
+  './assets/fonts/ibm-plex-mono-500.woff2',
+  './assets/fonts/ibm-plex-mono-600.woff2',
+  './assets/fonts/ibm-plex-mono-700.woff2',
 ];
 
 self.addEventListener('install', e => {
