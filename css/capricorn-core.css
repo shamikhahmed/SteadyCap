@@ -1023,9 +1023,10 @@ body.cap-has-scene > #root {
 .tab-pill.on,
 .search-chip.on,
 .perf-tab.active {
+  /* AA: --text on --cap-accent failed (black on deep teal / white on bright teal). */
   background: var(--cap-accent, var(--accent, var(--os-accent)));
   border-color: var(--cap-accent, var(--accent, var(--os-accent)));
-  color: var(--text);
+  color: var(--cap-accent-contrast, var(--on-tint, #fff));
   box-shadow: 0 0 12px color-mix(in srgb, var(--cap-accent, var(--accent)) 35%, transparent);
 }
 

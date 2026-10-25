@@ -115,7 +115,7 @@ const Journal = (() => {
           `).join('')}
         </div>
         ${triggerBlock}
-        <textarea id="journal-input" class="check-in-input" placeholder="One line about today (optional)…" rows="${compact ? 2 : 3}">${todayEntry?.text || ''}</textarea>
+        <textarea id="journal-input" class="check-in-input" placeholder="One line about today (optional)…" rows="${compact ? 2 : 3}">${escapeHtml(todayEntry?.text || '')}</textarea>
         <button type="button" id="journal-save" class="btn btn-primary check-in-save">${todayEntry ? 'Update check-in' : 'Save check-in'}</button>
       </div>`;
   }
@@ -154,7 +154,7 @@ const Journal = (() => {
               <div class="t-caption">${dateStr}</div>
               ${mood ? `<div style="font-size:0.9rem;">${mood.emoji}</div>` : ''}
             </div>
-            <div style="font-size:0.85rem;color:var(--text2);line-height:1.5;">${e.text || '—'}</div>
+            <div style="font-size:0.85rem;color:var(--text2);line-height:1.5;">${escapeHtml(e.text || '—')}</div>
           </div>`;
         }).join('')}
       </div>` : `<div class="today-empty" style="margin:0 20px"><div class="t-caption">No past entries yet.</div></div>`}

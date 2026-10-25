@@ -33,8 +33,8 @@ const Profile = (() => {
       }
       return `<div class="card" style="margin-bottom:10px">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
-          <span style="font-size:1.4rem">${hCfg.icon||'✨'}</span>
-          <div class="t-heading">${hCfg.name||h.type}</div>
+          <span style="font-size:1.4rem">${escapeHtml(hCfg.icon||'✨')}</span>
+          <div class="t-heading">${escapeHtml(hCfg.name||h.type)}</div>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px">
           <div><div class="t-label">Days free</div><div style="font-size:1.3rem;font-weight:800;color:var(--text)">${days}</div></div>
@@ -49,15 +49,15 @@ const Profile = (() => {
     const medsHtml = medicines.map(m => `
       <div class="card profile-item-card" style="margin-bottom:8px">
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
-          <div><span style="font-size:1.1rem">💊</span> <strong>${m.name}</strong></div>
-          <div onclick="Profile._toggleMed('${m.id}')" style="width:40px;height:24px;background:${m.enabled?'var(--green)':'var(--bg2)'};border-radius:12px;position:relative;cursor:pointer;border:1px solid var(--border)">
-            <div style="position:absolute;top:2px;${m.enabled?'right:2px':'left:2px'};width:18px;height:18px;border-radius:50%;background:white;transition:all 0.2s"></div>
-          </div>
+          <div><span style="font-size:1.1rem">💊</span> <strong>${escapeHtml(m.name)}</strong></div>
+          <button type="button" role="switch" aria-checked="${!!m.enabled}" aria-label="${escapeHtml(m.name)} reminders" onclick="Profile._toggleMed('${m.id}')" style="width:40px;height:24px;padding:0;background:${m.enabled?'var(--green)':'var(--bg2)'};border-radius:12px;position:relative;cursor:pointer;border:1px solid var(--border)">
+            <span style="position:absolute;top:2px;${m.enabled?'right:2px':'left:2px'};width:18px;height:18px;border-radius:50%;background:white;transition:all 0.2s"></span>
+          </button>
         </div>
-        <div class="t-caption">${m.dose || '—'} · ${m.schedule === 'as_needed' ? 'As needed' : (m.times || []).join(', ')}</div>
+        <div class="t-caption">${escapeHtml(m.dose || '—')} · ${m.schedule === 'as_needed' ? 'As needed' : escapeHtml((m.times || []).join(', '))}</div>
         <div style="display:flex;gap:8px;margin-top:10px">
           <button type="button" class="btn btn-ghost" style="flex:1;font-size:0.75rem;padding:8px" onclick="Profile._editMed('${m.id}')">Edit</button>
-          <button type="button" class="btn btn-ghost" style="font-size:0.75rem;padding:8px;color:var(--red)" onclick="Profile._removeMed('${m.id}')">Remove</button>
+          <button type="button" class="btn btn-danger" style="font-size:0.75rem;padding:8px;min-height:44px" onclick="Profile._removeMed('${m.id}')">Remove</button>
         </div>
       </div>
     `).join('') || '<div class="t-caption t-dim" style="padding:0 20px 8px">No medicines added yet.</div>';
@@ -71,8 +71,8 @@ const Profile = (() => {
           <div class="t-label" style="margin-bottom:6px">${slotLabel}</div>
           ${steps.map(s => `
             <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border)">
-              <span style="flex:1;font-size:0.85rem;color:var(--text2)">${s.label}</span>
-              <button type="button" onclick="Profile._removeRoutine('${cat}','${slot}','${s.id}')" style="background:none;border:none;color:var(--text3);cursor:pointer;font-size:0.9rem;min-width:44px;min-height:44px" aria-label="Remove ${s.label}">✕</button>
+              <span style="flex:1;font-size:0.85rem;color:var(--text2)">${escapeHtml(s.label)}</span>
+              <button type="button" onclick="Profile._removeRoutine('${cat}','${slot}','${s.id}')" style="background:none;border:none;color:var(--text3);cursor:pointer;font-size:0.9rem;min-width:44px;min-height:44px" aria-label="Remove ${escapeHtml(s.label)}">✕</button>
             </div>
           `).join('')}
         </div>`;
@@ -88,7 +88,7 @@ const Profile = (() => {
 
     screen.innerHTML = `
       <div class="profile-header">
-        <div class="t-display">${user.name ? user.name : 'Your Recovery'}</div>
+        <div class="t-display">${user.name ? escapeHtml(user.name) : 'Your Recovery'}</div>
         <div class="t-caption" style="margin-top:4px">${habits.length} habit${habits.length!==1?'s':''} tracked</div>
       </div>
 
@@ -137,7 +137,7 @@ const Profile = (() => {
         <div class="card" style="margin-bottom:10px">
           <div class="ob-label">Recovery goals — shown in Emergency SOS</div>
           <textarea class="ob-input" id="p-goals" rows="3" placeholder="One per line" style="resize:vertical;margin-top:8px"
-            oninput="Profile._saveGoals(this.value)">${(user.goals||[]).join('\n')}</textarea>
+            oninput="Profile._saveGoals(this.value)">${escapeHtml((user.goals||[]).join('\n'))}</textarea>
         </div>
       </div>
 
@@ -153,25 +153,25 @@ const Profile = (() => {
           </div>
           <div class="ob-field">
             <div class="ob-label">Name</div>
-            <input class="ob-input" type="text" id="p-name" placeholder="Your name" value="${user.name||''}" oninput="Profile._saveName(this.value)">
+            <input class="ob-input" type="text" id="p-name" placeholder="Your name" value="${escapeHtml(user.name||'')}" oninput="Profile._saveName(this.value)">
           </div>
           <div class="ob-field">
-            <div class="ob-label">Currency</div>
-            <select class="ob-select" id="p-currency" onchange="Profile._saveCurrency(this.value)">
+            <label class="ob-label" for="p-currency">Currency</label>
+            <select class="ob-select" id="p-currency" aria-label="Currency" onchange="Profile._saveCurrency(this.value)">
               ${['USD','GBP','AED','PKR','EUR'].map(c=>`<option value="${c}" ${currency===c?'selected':''}>${c}</option>`).join('')}
             </select>
           </div>
           <div class="ob-field" style="display:flex;align-items:center;justify-content:space-between">
             <div class="ob-label" style="margin-bottom:0">Push Reminders</div>
-            <div onclick="Profile._toggleNotifications()" style="width:44px;height:26px;background:${notifOn ? 'var(--green)' : 'var(--bg2)'};border-radius:13px;border:1px solid var(--border);position:relative;cursor:pointer;transition:background 0.2s;flex-shrink:0">
-              <div style="position:absolute;top:3px;${notifOn ? 'right:3px' : 'left:3px'};width:18px;height:18px;border-radius:50%;background:white;transition:all 0.2s;"></div>
-            </div>
+            <button type="button" role="switch" aria-checked="${!!notifOn}" aria-label="Push reminders" onclick="Profile._toggleNotifications()" style="width:44px;height:26px;padding:0;background:${notifOn ? 'var(--green)' : 'var(--bg2)'};border-radius:13px;border:1px solid var(--border);position:relative;cursor:pointer;transition:background 0.2s;flex-shrink:0">
+              <span style="position:absolute;top:3px;${notifOn ? 'right:3px' : 'left:3px'};width:18px;height:18px;border-radius:50%;background:white;transition:all 0.2s;"></span>
+            </button>
           </div>
           <div class="ob-field" style="margin-bottom:0;display:flex;align-items:center;justify-content:space-between">
             <div class="ob-label" style="margin-bottom:0">Spiritual Mode</div>
-            <div onclick="Profile._toggleSpiritual()" style="width:44px;height:26px;background:${spiritualMode ? 'var(--orange)' : 'var(--bg2)'};border-radius:13px;border:1px solid var(--border);position:relative;cursor:pointer;transition:background 0.2s;flex-shrink:0">
-              <div style="position:absolute;top:3px;${spiritualMode ? 'right:3px' : 'left:3px'};width:18px;height:18px;border-radius:50%;background:white;transition:all 0.2s;"></div>
-            </div>
+            <button type="button" role="switch" aria-checked="${!!spiritualMode}" aria-label="Spiritual mode" onclick="Profile._toggleSpiritual()" style="width:44px;height:26px;padding:0;background:${spiritualMode ? 'var(--orange)' : 'var(--bg2)'};border-radius:13px;border:1px solid var(--border);position:relative;cursor:pointer;transition:background 0.2s;flex-shrink:0">
+              <span style="position:absolute;top:3px;${spiritualMode ? 'right:3px' : 'left:3px'};width:18px;height:18px;border-radius:50%;background:white;transition:all 0.2s;"></span>
+            </button>
           </div>
         </div>
       </div>
@@ -212,10 +212,10 @@ const Profile = (() => {
             { id: 'natural', icon: '🌿', label: 'Natural approach' },
             { id: 'transplant', icon: '🏥', label: 'Hair transplant' },
           ].map(t => `
-            <div onclick="Profile._setHairTreatment('${t.id}')" style="padding:12px 8px;background:${hairTreatment===t.id ? 'rgba(255,107,53,0.12)' : 'var(--glass)'};border:1px solid ${hairTreatment===t.id ? 'var(--orange)' : 'var(--border)'};border-radius:var(--r-sm);cursor:pointer;touch-action:manipulation;text-align:center">
-              <div style="font-size:1.2rem;margin-bottom:4px">${t.icon}</div>
+            <button type="button" aria-pressed="${hairTreatment===t.id}" aria-label="${t.label}" onclick="Profile._setHairTreatment('${t.id}')" style="padding:12px 8px;background:${hairTreatment===t.id ? 'rgba(255,107,53,0.12)' : 'var(--glass)'};border:1px solid ${hairTreatment===t.id ? 'var(--orange)' : 'var(--border)'};border-radius:var(--r-sm);cursor:pointer;touch-action:manipulation;text-align:center;min-height:44px;width:100%;color:inherit;font:inherit">
+              <div style="font-size:1.2rem;margin-bottom:4px" aria-hidden="true">${t.icon}</div>
               <div style="font-size:0.7rem;font-weight:600;color:${hairTreatment===t.id ? 'var(--orange)' : 'var(--text2)'}">${t.label}</div>
-            </div>
+            </button>
           `).join('')}
         </div>
       </div>
@@ -247,7 +247,7 @@ const Profile = (() => {
       </div>
 
       <div style="padding:0 20px 8px">
-        <div class="t-caption t-dim" style="text-align:center;margin-bottom:12px;line-height:1.5">SteadyCap · Local-only<br>SteadyCap helps you keep track of routines and cravings. It isn't medical advice. Follow your doctor's or pharmacist's instructions for any medicine.</div>
+        <div class="t-caption t-dim" style="text-align:center;margin-bottom:12px;line-height:1.5" data-version="${escapeHtml(window.APP_VERSION || '')}">SteadyCap · v${escapeHtml(window.APP_VERSION || '')} · Local-only<br>SteadyCap helps you keep track of routines and cravings. It isn't medical advice. Follow your doctor's or pharmacist's instructions for any medicine.</div>
       </div>
       <div style="padding:0 20px 20px">
         <button type="button" class="btn btn-danger" onclick="Profile._reset()">Reset All Data</button>
@@ -343,6 +343,7 @@ const Profile = (() => {
     if (!modal) return;
     const cfg = habit.config || {};
     modal.style.display = 'block';
+    _bindModalEsc();
     modal.innerHTML = `
       <div style="position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.8);display:flex;align-items:flex-end" onclick="if(event.target===this)Profile._closeModal()">
         <div role="dialog" aria-modal="true" aria-label="Edit ${hCfg.name}" style="background:var(--bg3);border-radius:var(--r-lg) var(--r-lg) 0 0;padding:24px 20px calc(20px + env(safe-area-inset-bottom));width:100%;max-height:80vh;overflow-y:auto">
@@ -355,7 +356,7 @@ const Profile = (() => {
             <input class="ob-input" type="datetime-local" id="edit-quit" value="${DateTimeLocal.toInputValue(habit.quitTime)}">
           </div>
           ${hCfg.configFields.filter(f=>f.type!=='hidden').map(f=>{
-            if(f.type==='select') return `<div class="ob-field"><div class="ob-label">${f.label}</div><select class="ob-select" id="edit_${f.id}" name="${f.id}">${(f.options||[]).map(o=>`<option value="${o}" ${cfg[f.id]===o?'selected':''}>${o}</option>`).join('')}</select></div>`;
+            if(f.type==='select') return `<div class="ob-field"><label class="ob-label" for="edit_${f.id}">${f.label}</label><select class="ob-select" id="edit_${f.id}" name="${f.id}" aria-label="${f.label}">${(f.options||[]).map(o=>`<option value="${o}" ${cfg[f.id]===o?'selected':''}>${o}</option>`).join('')}</select></div>`;
             return `<div class="ob-field"><div class="ob-label">${f.label}</div><input class="ob-input" type="${f.type==='text'?'text':'number'}" id="edit_${f.id}" name="${f.id}" value="${cfg[f.id]||''}" placeholder="${f.placeholder||''}"></div>`;
           }).join('')}
           <button type="button" class="btn btn-primary" onclick="Profile._saveEdit('${id}')">Save Changes</button>
@@ -386,7 +387,23 @@ const Profile = (() => {
 
   function _closeModal() {
     const modal = document.getElementById('profile-modal');
-    if (modal) modal.style.display = 'none';
+    if (modal) {
+      modal.style.display = 'none';
+      modal.innerHTML = '';
+    }
+    window.removeEventListener('keydown', _onModalKey);
+  }
+
+  function _onModalKey(e) {
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      _closeModal();
+    }
+  }
+
+  function _bindModalEsc() {
+    window.removeEventListener('keydown', _onModalKey);
+    window.addEventListener('keydown', _onModalKey);
   }
 
   function _addHabit() {
@@ -397,16 +414,17 @@ const Profile = (() => {
     const modal = document.getElementById('profile-modal');
     if (!modal) return;
     modal.style.display = 'block';
+    _bindModalEsc();
     modal.innerHTML = `
       <div style="position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.8);display:flex;align-items:flex-end" onclick="if(event.target===this)Profile._closeModal()">
         <div style="background:var(--bg3);border-radius:var(--r-lg) var(--r-lg) 0 0;padding:24px 20px calc(20px + env(safe-area-inset-bottom));width:100%;max-height:70vh;overflow-y:auto">
-          <div class="t-heading" style="margin-bottom:16px">Add a Habit</div>
+          <div class="sheet-bar"><button type="button" class="sheet-bar__cancel" onclick="Profile._closeModal()">Cancel</button><div class="sheet-bar__title t-heading">Add a Habit</div><span></span></div>
           <div class="habit-grid">
             ${available.map(([k,h])=>`
-              <div class="habit-chip" onclick="Profile._startAddHabit('${k}')">
-                <span class="habit-chip-icon">${h.icon}</span>
+              <button type="button" class="habit-chip" onclick="Profile._startAddHabit('${k}')">
+                <span class="habit-chip-icon" aria-hidden="true">${h.icon}</span>
                 <span class="habit-chip-name">${h.name}</span>
-              </div>
+              </button>
             `).join('')}
           </div>
         </div>
@@ -421,6 +439,7 @@ const Profile = (() => {
     if (!modal) return;
     const now = DateTimeLocal.nowInputValue();
     modal.style.display = 'block';
+    _bindModalEsc();
     modal.innerHTML = `
       <div style="position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.8);display:flex;align-items:flex-end" onclick="if(event.target===this)Profile._closeModal()">
         <div style="background:var(--bg3);border-radius:var(--r-lg) var(--r-lg) 0 0;padding:24px 20px calc(20px + env(safe-area-inset-bottom));width:100%;max-height:80vh;overflow-y:auto">
@@ -430,7 +449,7 @@ const Profile = (() => {
             <input class="ob-input" type="datetime-local" id="add-quit" value="${now}">
           </div>
           ${hCfg.configFields.filter(f=>f.type!=='hidden').map(f=>{
-            if(f.type==='select') return `<div class="ob-field"><div class="ob-label">${f.label}</div><select class="ob-select" id="add_${f.id}">${(f.options||[]).map(o=>`<option value="${o}">${o}</option>`).join('')}</select></div>`;
+            if(f.type==='select') return `<div class="ob-field"><label class="ob-label" for="add_${f.id}">${f.label}</label><select class="ob-select" id="add_${f.id}" aria-label="${f.label}">${(f.options||[]).map(o=>`<option value="${o}">${o}</option>`).join('')}</select></div>`;
             return `<div class="ob-field"><div class="ob-label">${f.label}</div><input class="ob-input" type="${f.type==='text'?'text':'number'}" id="add_${f.id}" placeholder="${f.placeholder||''}"></div>`;
           }).join('')}
           <button type="button" class="btn btn-primary" onclick="Profile._confirmAddHabit('${type}')">Add Habit</button>
@@ -461,7 +480,7 @@ const Profile = (() => {
     try { localStorage.setItem('steadycap-theme', theme); } catch (e) {}
     document.documentElement.setAttribute('data-theme', theme);
     const meta = document.getElementById('themeColorMeta') || document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute('content', theme === 'light' ? window.SCBrand.h_f4f0ea : window.SCBrand.h_1a1412); // theme-color
+    if (meta) meta.setAttribute('content', theme === 'light' ? window.SCBrand.h_f2f2f7 : window.SCBrand.h_000000); // theme-color = HIG grouped background
     render();
   }
 
@@ -494,14 +513,15 @@ const Profile = (() => {
     const modal = document.getElementById('profile-modal');
     if (!modal) return;
     modal.style.display = 'block';
+    _bindModalEsc();
     modal.innerHTML = `
       <div style="position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.8);display:flex;align-items:flex-end" onclick="if(event.target===this)Profile._closeModal()">
         <div style="background:var(--bg3);border-radius:var(--r-lg) var(--r-lg) 0 0;padding:24px 20px calc(20px + env(safe-area-inset-bottom));width:100%;max-height:80vh;overflow-y:auto">
           <div class="t-heading" style="margin-bottom:16px">Add Medicine</div>
           <div class="ob-field"><div class="ob-label">Name</div><input class="ob-input" id="med-name" placeholder="e.g. Finasteride"></div>
           <div class="ob-field"><div class="ob-label">Dose</div><input class="ob-input" id="med-dose" placeholder="e.g. 1mg"></div>
-          <div class="ob-field"><div class="ob-label">Schedule</div>
-            <select class="ob-select" id="med-schedule" onchange="document.getElementById('med-times-wrap').style.display=this.value==='fixed'?'block':'none'">
+          <div class="ob-field"><label class="ob-label" for="med-schedule">Schedule</label>
+            <select class="ob-select" id="med-schedule" aria-label="Schedule" onchange="document.getElementById('med-times-wrap').style.display=this.value==='fixed'?'block':'none'">
               <option value="fixed">Fixed times</option>
               <option value="as_needed">As needed</option>
             </select>
@@ -561,13 +581,14 @@ const Profile = (() => {
     const modal = document.getElementById('profile-modal');
     if (!modal) return;
     modal.style.display = 'block';
+    _bindModalEsc();
     modal.innerHTML = `
       <div style="position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.8);display:flex;align-items:flex-end" onclick="if(event.target===this)Profile._closeModal()">
         <div style="background:var(--bg3);border-radius:var(--r-lg) var(--r-lg) 0 0;padding:24px 20px calc(20px + env(safe-area-inset-bottom));width:100%">
           <div class="t-heading" style="margin-bottom:16px">Add ${cat} step</div>
           <div class="ob-field"><div class="ob-label">Step name</div><input class="ob-input" id="routine-label" placeholder="e.g. Cleanser, Minoxidil"></div>
-          <div class="ob-field"><div class="ob-label">When</div>
-            <select class="ob-select" id="routine-slot">
+          <div class="ob-field"><label class="ob-label" for="routine-slot">When</label>
+            <select class="ob-select" id="routine-slot" aria-label="When">
               <option value="am">AM (morning)</option>
               <option value="pm">PM (evening)</option>
               <option value="weekly">Weekly</option>
@@ -597,13 +618,14 @@ const Profile = (() => {
     if (!modal) return;
     const icons = ['✨', '🎯', '🔥', '💪', '🚫', '📵', '🍕', '🎰', '💳', '🛒'];
     modal.style.display = 'block';
+    _bindModalEsc();
     modal.innerHTML = `
       <div style="position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.8);display:flex;align-items:flex-end" onclick="if(event.target===this)Profile._closeModal()">
         <div style="background:var(--bg3);border-radius:var(--r-lg) var(--r-lg) 0 0;padding:24px 20px calc(20px + env(safe-area-inset-bottom));width:100%">
           <div class="t-heading" style="margin-bottom:16px">Custom Habit</div>
           <div class="ob-field"><div class="ob-label">Habit name</div><input class="ob-input" id="custom-name" placeholder="e.g. Nail biting"></div>
           <div class="ob-field"><div class="ob-label">Icon</div>
-            <div style="display:flex;gap:8px;flex-wrap:wrap">${icons.map(i => `<span onclick="Profile._pickIcon('${i}')" class="habit-chip" style="padding:8px 12px;cursor:pointer" id="icon-${i}">${i}</span>`).join('')}</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">${icons.map(i => `<button type="button" onclick="Profile._pickIcon('${i}')" class="habit-chip" style="padding:8px 12px;cursor:pointer;min-width:44px;min-height:44px" id="icon-${i}" aria-label="Icon ${i}">${i}</button>`).join('')}</div>
             <input type="hidden" id="custom-icon" value="✨">
           </div>
           <div class="ob-field"><div class="ob-label">Quit date</div><input class="ob-input" type="datetime-local" id="custom-quit" value="${DateTimeLocal.nowInputValue()}"></div>
@@ -636,11 +658,12 @@ const Profile = (() => {
     const modal = document.getElementById('profile-modal');
     if (!modal) return;
     modal.style.display = 'block';
+    _bindModalEsc();
     modal.innerHTML = `
       <div style="position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.8);display:flex;align-items:flex-end" onclick="if(event.target===this)Profile._closeModal()">
         <div style="background:var(--bg3);border-radius:var(--r-lg) var(--r-lg) 0 0;padding:24px 20px calc(20px + env(safe-area-inset-bottom));width:100%">
-          <div class="t-heading" style="margin-bottom:16px">${habit.icon} ${habit.name}</div>
-          <div class="ob-field"><div class="ob-label">Name</div><input class="ob-input" id="edit-custom-name" value="${habit.name}"></div>
+          <div class="t-heading" style="margin-bottom:16px">${escapeHtml(habit.icon)} ${escapeHtml(habit.name)}</div>
+          <div class="ob-field"><div class="ob-label">Name</div><input class="ob-input" id="edit-custom-name" value="${escapeHtml(habit.name)}"></div>
           <div class="ob-field"><div class="ob-label">Quit date</div><input class="ob-input" type="datetime-local" id="edit-custom-quit" value="${DateTimeLocal.toInputValue(habit.quitTime)}"></div>
           <button type="button" class="btn btn-primary" onclick="Profile._saveCustomEdit('${id}')">Save</button>
           <button type="button" class="btn btn-danger" style="margin-top:8px" onclick="Profile._removeCustom('${id}')">Remove Habit</button>

@@ -1,0 +1,44 @@
+npm warn Unknown env config "devdir". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+Running 15 tests using 1 worker
+
+(node:97009) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   1 tests/app-lock.spec.js:12:3 › SteadyCap app lock (G-10) › enable → seal → unlock preserves medicines / journal (G-6) (1ms)
+(node:97049) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   2 tests/app-lock.spec.js:87:3 › SteadyCap app lock (G-10) › vendor local-lock matches CapLocalLock API surface (3ms)
+(node:97055) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   3 tests/hig-design.spec.js:39:5 › HIG phone · dark › today, recovery, add, you, sos (dark) (1ms)
+(node:97062) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   4 tests/hig-design.spec.js:39:5 › HIG phone · light › today, recovery, add, you, sos (light) (1ms)
+(node:97063) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   5 tests/hig-design.spec.js:70:3 › HIG iPad · sidebar › sidebar shell + today + recovery (1ms)
+(node:97066) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   6 tests/smoke.spec.js:5:3 › SteadyCap smoke › loads shell without fatal errors (1ms)
+(node:97082) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   7 tests/smoke.spec.js:16:3 › SteadyCap smoke › manifest link present (5ms)
+(node:97107) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   8 tests/smoke.spec.js:21:3 › SteadyCap smoke › demo mode Today shows Due now with Taken/Skip (1ms)
+(node:97139) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   9 tests/smoke.spec.js:32:3 › SteadyCap smoke › daily check-in widget on Today tab (1ms)
+(node:97146) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  10 tests/smoke.spec.js:43:3 › SteadyCap smoke › journal tab removed from bottom nav (3ms)
+
+==== ENVIRONMENT BLOCK ====
+Chromium SEGV in Cursor sandbox (SEGV_ACCERR). required_permissions=['all'] rejected repeatedly for this agent.
+Partial run above: 10 tests shown all fail in ~1ms (browser launch crash). Full suite not completed.
+PASS: 0
+FAIL: ≥10 (incomplete; expected 15 tests across listed files)
+Re-run outside sandbox:
+  export PLAYWRIGHT_BROWSERS_PATH="$HOME/Library/Caches/ms-playwright"
+  ln -sfn chrome-headless-shell-mac-arm64 "$HOME/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-x64"
+  npx playwright test tests/smoke.spec.js tests/sos.spec.js tests/viewport.spec.js tests/hig-design.spec.js tests/app-lock.spec.js --reporter=list

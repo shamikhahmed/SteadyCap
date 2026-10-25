@@ -9,11 +9,12 @@ const RecoveryEngine = (() => {
   }
 
   function recoveryPhase(hours) {
-    if (hours < 72) return { name: 'Withdrawal', color: window.SCBrand.h_ff3b30, description: 'Your body is clearing the substance. Cravings are most intense now. This is temporary.' };
-    if (hours < 336) return { name: 'Adjustment', color: window.SCBrand.h_ff6b35, description: 'Physical withdrawal easing. Your brain is starting to recalibrate its reward system.' };
-    if (hours < 1344) return { name: 'Recalibration', color: window.SCBrand.h_ffd60a, description: 'Dopamine receptors recovering sensitivity. Everyday rewards becoming meaningful again.' };
-    if (hours < 4320) return { name: 'Stabilisation', color: window.SCBrand.h_4ecdc4, description: 'Neural pathways rewiring. Cravings less frequent and less intense. Momentum building.' };
-    return { name: 'Optimisation', color: window.SCBrand.h_06d6a0, description: 'You have done the hard work. Your recovery is self-sustaining. This is your new baseline.' };
+    /* colour = theme AA signal tokens (text + dots); not bright SCBrand fills. */
+    if (hours < 72) return { name: 'Withdrawal', color: 'var(--signal-red)', description: 'Your body is clearing the substance. Cravings are most intense now. This is temporary.' };
+    if (hours < 336) return { name: 'Adjustment', color: 'var(--signal-orange)', description: 'Physical withdrawal easing. Your brain is starting to recalibrate its reward system.' };
+    if (hours < 1344) return { name: 'Recalibration', color: 'var(--signal-gold)', description: 'Dopamine receptors recovering sensitivity. Everyday rewards becoming meaningful again.' };
+    if (hours < 4320) return { name: 'Stabilisation', color: 'var(--signal-teal)', description: 'Neural pathways rewiring. Cravings less frequent and less intense. Momentum building.' };
+    return { name: 'Optimisation', color: 'var(--signal-green)', description: 'You have done the hard work. Your recovery is self-sustaining. This is your new baseline.' };
   }
 
   function getTimeline(habitType) {

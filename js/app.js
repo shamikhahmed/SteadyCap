@@ -1,4 +1,5 @@
 'use strict';
+window.APP_VERSION = '2.7.0';
 const App = (() => {
   function hideSplash() {
     const splash = document.getElementById('splash');
@@ -22,7 +23,7 @@ const App = (() => {
   function init() {
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js?v=64').catch(() => {});
+        navigator.serviceWorker.register('./sw.js?v=70').catch(() => {});
       });
     }
 

@@ -1,3 +1,21 @@
+## [2.7.0] — 2026-10-25
+
+A clearer, calmer app that feels at home on iPhone — and stays readable for everyone.
+
+- Fresh look: soft glass tab bar, clearer Today / Recovery / You screens, and a teal accent that stays easy to read in light and dark mode
+- Smoother on iPhone: the page scrolls naturally, sheets no longer jump your place, and habit chips / switches behave like real buttons
+- Easier to use with VoiceOver and larger text: stronger contrast, named form fields, and keyboard-friendly knowledge articles
+- SOS and crisis help are unchanged and still one tap away from the centre tab
+- Version shown on the You screen; offline install still works after updates
+
+### Under the hood
+
+- HIG design tokens + legacy CSS in `@layer legacy`; floating tab bar; sidebar from 700px; no grid overlay / WebGL shell
+- Document scroll + `ScrollLock` sheet pin/restore; SW no auto `skipWaiting`/`clients.claim`; cache `steadycap-v70` / `sw.js?v=70`
+- A11y: contrast tokens, select names, unnested article controls, Esc closes sheets; Playwright axe smoke on core screens
+- G-8: `VERSION.json` · `package.json` · `window.APP_VERSION` · SW cache aligned at **2.7.0**
+- Release gate: `qa/release/run-checks.sh` + `qa/release/live-smoke.mjs`
+
 ## [2.6.6] — 2026-10-21
 
 - HIG v7: iOS tokens / native feel; Dynamic Type & hit targets where applicable

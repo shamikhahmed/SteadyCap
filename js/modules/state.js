@@ -41,7 +41,14 @@ const State = (() => {
   }
 
   function save() {
-    try { localStorage.setItem(KEY, JSON.stringify(data)); } catch (e) {}
+    try {
+      localStorage.setItem(KEY, JSON.stringify(data));
+    } catch (e) {
+      const quota = e && (e.name === 'QuotaExceededError' || e.code === 22);
+      if (quota && window.App && App.showToast) {
+        App.showToast('Storage full — export a backup, then free space', 'error');
+      }
+    }
   }
 
   function get(key) {

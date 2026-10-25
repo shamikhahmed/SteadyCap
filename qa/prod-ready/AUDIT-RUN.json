@@ -1,0 +1,281 @@
+{
+  "generatedAt": "2026-10-25T18:32:55.736Z",
+  "base": "http://127.0.0.1:8860",
+  "engine": "chromium",
+  "webkitNote": null,
+  "axeAvailable": true,
+  "shotCount": 40,
+  "shots": [
+    "01-dashboard-light-375x812.png",
+    "02-emergency-light-375x812.png",
+    "03-knowledge-light-375x812.png",
+    "04-dashboard-light-390x844.png",
+    "05-recovery-light-390x844.png",
+    "06-emergency-light-390x844.png",
+    "07-knowledge-light-390x844.png",
+    "08-profile-light-390x844.png",
+    "09-journal-light-390x844.png",
+    "10-dashboard-light-430x932.png",
+    "11-emergency-light-430x932.png",
+    "12-knowledge-light-430x932.png",
+    "13-dashboard-dark-375x812.png",
+    "14-emergency-dark-375x812.png",
+    "15-knowledge-dark-375x812.png",
+    "16-dashboard-dark-390x844.png",
+    "17-recovery-dark-390x844.png",
+    "18-emergency-dark-390x844.png",
+    "19-knowledge-dark-390x844.png",
+    "20-profile-dark-390x844.png",
+    "21-journal-dark-390x844.png",
+    "22-dashboard-dark-430x932.png",
+    "23-emergency-dark-430x932.png",
+    "24-knowledge-dark-430x932.png",
+    "25-sheet-addHabit-light-390.png",
+    "26-sheet-addMed-light-390.png",
+    "27-sos-start-light-390.png",
+    "28-sos-after-skipAll-light-390.png",
+    "29-article-open-light-390.png",
+    "30-dashboard-light-744x1133.png",
+    "31-emergency-light-744x1133.png",
+    "32-profile-light-744x1133.png",
+    "33-dashboard-light-1180x820.png",
+    "34-emergency-light-1180x820.png",
+    "35-profile-light-1180x820.png",
+    "36-dashboard-light-1440x900.png",
+    "37-emergency-light-1440x900.png",
+    "38-profile-light-1440x900.png",
+    "39-offline-reload-390.png",
+    "40-onboarding-fresh-light-390.png"
+  ],
+  "offline": {
+    "ok": true,
+    "detail": "SW register: scope=http://127.0.0.1:8860/; offline reload bodyLen=513"
+  },
+  "httpBad": [],
+  "screenAudits": [
+    {
+      "screenId": "dashboard",
+      "label": "dashboard:light:390x844",
+      "overflow": false,
+      "unnamed": 0,
+      "deadDivs": 0,
+      "axeSerious": 0
+    },
+    {
+      "screenId": "recovery",
+      "label": "recovery:light:390x844",
+      "overflow": false,
+      "unnamed": 0,
+      "deadDivs": 0,
+      "axeSerious": 0
+    },
+    {
+      "screenId": "emergency",
+      "label": "emergency:light:390x844",
+      "overflow": false,
+      "unnamed": 0,
+      "deadDivs": 0,
+      "axeSerious": 0
+    },
+    {
+      "screenId": "knowledge",
+      "label": "knowledge:light:390x844",
+      "overflow": false,
+      "unnamed": 0,
+      "deadDivs": 0,
+      "axeSerious": 0
+    },
+    {
+      "screenId": "profile",
+      "label": "profile:light:390x844",
+      "overflow": false,
+      "unnamed": 0,
+      "deadDivs": 0,
+      "axeSerious": 0
+    },
+    {
+      "screenId": "journal",
+      "label": "journal:light:390x844",
+      "overflow": false,
+      "unnamed": 0,
+      "deadDivs": 0,
+      "axeSerious": 0
+    },
+    {
+      "screenId": "dashboard",
+      "label": "dashboard:dark:390x844",
+      "overflow": false,
+      "unnamed": 0,
+      "deadDivs": 0,
+      "axeSerious": 0
+    },
+    {
+      "screenId": "recovery",
+      "label": "recovery:dark:390x844",
+      "overflow": false,
+      "unnamed": 0,
+      "deadDivs": 0,
+      "axeSerious": 0
+    },
+    {
+      "screenId": "emergency",
+      "label": "emergency:dark:390x844",
+      "overflow": false,
+      "unnamed": 0,
+      "deadDivs": 0,
+      "axeSerious": 0
+    },
+    {
+      "screenId": "knowledge",
+      "label": "knowledge:dark:390x844",
+      "overflow": false,
+      "unnamed": 0,
+      "deadDivs": 0,
+      "axeSerious": 0
+    },
+    {
+      "screenId": "profile",
+      "label": "profile:dark:390x844",
+      "overflow": false,
+      "unnamed": 0,
+      "deadDivs": 0,
+      "axeSerious": 0
+    },
+    {
+      "screenId": "journal",
+      "label": "journal:dark:390x844",
+      "overflow": false,
+      "unnamed": 0,
+      "deadDivs": 0,
+      "axeSerious": 0
+    },
+    {
+      "screenId": "add-habit",
+      "label": "sheet:_addHabit",
+      "overflow": false,
+      "unnamed": 0,
+      "deadDivs": 0,
+      "axeSerious": 0
+    },
+    {
+      "screenId": "add-med",
+      "label": "sheet:_addMed",
+      "overflow": false,
+      "unnamed": 0,
+      "deadDivs": 0,
+      "axeSerious": 0
+    },
+    {
+      "screenId": "sos-skip",
+      "label": "sos:skip-all",
+      "overflow": false,
+      "unnamed": 0,
+      "deadDivs": 0,
+      "axeSerious": 0
+    },
+    {
+      "screenId": "article",
+      "label": "knowledge:article",
+      "overflow": false,
+      "unnamed": 0,
+      "deadDivs": 0,
+      "axeSerious": 0
+    },
+    {
+      "screenId": "dashboard",
+      "label": "dashboard:light:744x1133",
+      "overflow": false,
+      "unnamed": 0,
+      "deadDivs": 0,
+      "axeSerious": 0
+    },
+    {
+      "screenId": "emergency",
+      "label": "emergency:light:744x1133",
+      "overflow": false,
+      "unnamed": 0,
+      "deadDivs": 0,
+      "axeSerious": 0
+    },
+    {
+      "screenId": "profile",
+      "label": "profile:light:744x1133",
+      "overflow": false,
+      "unnamed": 0,
+      "deadDivs": 0,
+      "axeSerious": 0
+    },
+    {
+      "screenId": "dashboard",
+      "label": "dashboard:light:1180x820",
+      "overflow": false,
+      "unnamed": 0,
+      "deadDivs": 0,
+      "axeSerious": 0
+    },
+    {
+      "screenId": "emergency",
+      "label": "emergency:light:1180x820",
+      "overflow": false,
+      "unnamed": 0,
+      "deadDivs": 0,
+      "axeSerious": 0
+    },
+    {
+      "screenId": "profile",
+      "label": "profile:light:1180x820",
+      "overflow": false,
+      "unnamed": 0,
+      "deadDivs": 0,
+      "axeSerious": 0
+    },
+    {
+      "screenId": "dashboard",
+      "label": "dashboard:light:1440x900",
+      "overflow": false,
+      "unnamed": 0,
+      "deadDivs": 0,
+      "axeSerious": 0
+    },
+    {
+      "screenId": "emergency",
+      "label": "emergency:light:1440x900",
+      "overflow": false,
+      "unnamed": 0,
+      "deadDivs": 0,
+      "axeSerious": 0
+    },
+    {
+      "screenId": "profile",
+      "label": "profile:light:1440x900",
+      "overflow": false,
+      "unnamed": 0,
+      "deadDivs": 0,
+      "axeSerious": 0
+    },
+    {
+      "screenId": "onboarding",
+      "label": "onboarding:fresh",
+      "overflow": false,
+      "unnamed": 0,
+      "deadDivs": 0,
+      "axeSerious": 0
+    }
+  ],
+  "findings": [],
+  "counts": {
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "axeSeriousCritical": 0,
+    "consoleErrors": 0,
+    "httpBad": 0
+  },
+  "gates": {
+    "axeSeriousCritical": true,
+    "consoleErrors": true,
+    "httpBad": true,
+    "offline": true
+  }
+}

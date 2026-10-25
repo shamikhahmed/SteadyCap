@@ -1,6 +1,6 @@
 # SteadyCap
 
-**Version:** 2.6.6
+**Version:** 2.7.0
 **Personal recovery companion — by Capricorn Systems.** Habits, daily routines, medicines, recovery timelines, emergency SOS, journal, and trigger intelligence.
 
 🔗 **Live:** https://shamikhahmed.github.io/SteadyCap/  
@@ -55,7 +55,7 @@ Illustrative day-in-the-life stories (fictional personas) with screenshots and c
 ## iPhone test checklist
 
 - [ ] Onboarding completes and lands on Today
-- [ ] Bottom nav switches all tabs (Today, Recovery, SOS, Learn, Journal, You)
+- [ ] Bottom nav switches all tabs (Today, Recovery, SOS, Learn, You); Journal opens from Today
 - [ ] Today's checklist: medicines + skincare + hair
 - [ ] SOS opens from one-tap button
 - [ ] Recovery timeline shows hourly milestones (first 72h)
@@ -73,7 +73,7 @@ python3 -m http.server 8765
 
 ## Stack
 
-Vanilla JS PWA · orange accent `#FF6B35` · offline-first · localStorage
+Vanilla JS PWA · hospital teal accent (`#00d4e6` dark / `#0b6e78` light) · offline-first · localStorage · see `DESIGN.md`
 
 ## Modules
 

@@ -1,0 +1,20 @@
+ios-behaviour-check engine=webkit
+PASS  tab bar + top bar tappable
+PASS  hit areas (tabs ≥44pt, pills ≥34pt + slop)
+PASS  no sideways overflow · dashboard
+PASS  document scrolls (no inner scroller) · dashboard
+PASS  no sideways overflow · recovery
+PASS  document scrolls (no inner scroller) · recovery
+PASS  no sideways overflow · knowledge
+PASS  document scrolls (no inner scroller) · knowledge
+PASS  no sideways overflow · profile
+PASS  document scrolls (no inner scroller) · profile
+PASS  programmatic scroll lands instantly
+PASS  tab tap navigates (no reload)
+PASS  new screen opens at top
+PASS  page locked behind sheet
+PASS  sheet keeps scroll position
+PASS  inputs ≥16px (no zoom-on-focus)
+PASS  mood tile tap selects
+PASS  no reload during session
+PASS  SW: no auto skipWaiting/clients.claim

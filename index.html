@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob:; connect-src 'self'; frame-src 'none'; object-src 'none'">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#1A1412" id="themeColorMeta">
+  <meta name="theme-color" content="#000000" id="themeColorMeta">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="SteadyCap">
@@ -22,14 +22,10 @@
       }
       document.documentElement.setAttribute('data-theme', t);
       var meta = document.querySelector('meta[name="theme-color"]');
-      if (meta) meta.setAttribute('content', t === 'light' ? '#F4F0EA' : '#1A1412'); // theme-color boot
+      if (meta) meta.setAttribute('content', t === 'light' ? '#F2F2F7' : '#000000'); // theme-color boot
     } catch (e) {}
   })();
   </script>
-<noscript>
-    <link rel="stylesheet" href="css/ios-tokens.css" />
-
-</noscript>
   <link rel="manifest" href="./manifest.json">
   <link rel="icon" type="image/svg+xml" href="./assets/icons/favicon.svg">
   <link rel="apple-touch-icon" href="./assets/icons/apple-touch-icon-180.png" sizes="180x180">
@@ -37,12 +33,16 @@
   <link rel="apple-touch-icon" sizes="512x512" href="./assets/icons/icon-512.png">
   <link rel="icon" type="image/png" sizes="192x192" href="./assets/icons/icon-192.png">
   <link rel="icon" type="image/png" sizes="512x512" href="./assets/icons/icon-512.png">
-  <link rel="stylesheet" href="css/fonts-local.css">
+  <!-- HIG design: legacy 2.x CSS sits in @layer legacy under the HIG components (css/cascade.css, DESIGN.md).
+       Preloads let the browser fetch the @imported files in parallel. -->
+  <link rel="preload" href="css/capricorn-core.css" as="style">
+  <link rel="preload" href="css/app.css" as="style">
+  <link rel="preload" href="css/ios-tokens.css" as="style">
+  <link rel="preload" href="css/design/system.css" as="style">
+  <link rel="preload" href="css/design/steadycap.css" as="style">
   <link rel="stylesheet" href="css/tokens.css">
-<link rel="stylesheet" href="css/ios-tokens.css">
-  <link rel="stylesheet" href="css/capricorn-core.css">
-  <link rel="stylesheet" href="./css/app.css">
-  <link rel="stylesheet" href="./css/identity.css">
+  <link rel="stylesheet" href="css/design/tokens.css">
+  <link rel="stylesheet" href="css/cascade.css">
   <style>
     /* Reserve splash + screen chrome before JS (CLS) */
     #splash.steady-splash { min-height: 100dvh; }
@@ -76,9 +76,6 @@
     <h1 class="steady-splash__title">SteadyCap</h1>
     <p class="steady-splash__tag">Triage tray · private</p>
   </div>
-  <div class="cap-ambient" aria-hidden="true"></div>
-  <canvas id="cap-scene" class="cap-scene-canvas cap-scene-canvas--subtle" aria-hidden="true"></canvas>
-  <div class="cap-scroll-progress" aria-hidden="true"></div>
   <div class="cap-desktop-shell">
     <nav id="cap-nav-sidebar" aria-label="Module navigation"></nav>
     <div id="app" class="cap-desktop-main cap-phone-shell">
@@ -106,6 +103,7 @@
   <script src="./js/data/habit-links.js"></script>
   <script src="./js/engines/recoveryEngine.js"></script>
   <script src="./js/engines/bodyEngine.js"></script>
+  <script src="./js/ui/scroll-lock.js"></script>
   <script src="./js/ui/navigation.js"></script>
   <script src="./js/modules/state.js"></script>
   <script src="./js/modules/demo-seed.js"></script>
@@ -138,10 +136,7 @@
       './js/modules/profile.js'
     ];
     function loadNext(i) {
-      if (i >= files.length) {
-        if (window.CapricornMotion) try { CapricornMotion.init(); } catch (e) {}
-        return;
-      }
+      if (i >= files.length) return;
       var s = document.createElement('script');
       s.src = files[i];
       s.onload = function () { loadNext(i + 1); };
@@ -156,7 +151,6 @@
     else window.addEventListener('load', kick);
   })();
   </script>
-  <script src="./js/capricorn-motion.js"></script>
 
 <!-- PRO UPGRADE MODAL -->
 <div id="proUpgradeModal" role="dialog" aria-modal="true" aria-label="SteadyCap Pro">
@@ -189,19 +183,30 @@
         </ul>
       </div>
     </div>
-    <button type="button" class="pro-waitlist" onclick="document.getElementById('proUpgradeModal').style.display='none'">Join Pro waitlist — coming soon →</button>
+    <button type="button" class="pro-waitlist" onclick="document.getElementById('proUpgradeModal').style.display='none'">Join Pro waitlist</button>
     <button type="button" class="pro-dismiss" onclick="document.getElementById('proUpgradeModal').style.display='none'">Continue with Free</button>
   </div>
 </div>
 <script>
 (function () {
+  function closePro() {
+    var m = document.getElementById('proUpgradeModal');
+    if (m) m.style.display = 'none';
+  }
   window.openProUpgrade = function () {
     var m = document.getElementById('proUpgradeModal');
     if (m) m.style.display = 'flex';
   };
   var modal = document.getElementById('proUpgradeModal');
-  if (modal) modal.addEventListener('click', function (e) {
-    if (e.target === modal) modal.style.display = 'none';
+  if (modal) {
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) closePro();
+    });
+  }
+  window.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    var m = document.getElementById('proUpgradeModal');
+    if (m && m.style.display === 'flex') closePro();
   });
 })();
 </script>

@@ -51,7 +51,8 @@ for (const route of ROUTES) {
     }, theme);
     await page.waitForTimeout(400);
 
-    const axe = await new AxeBuilder({ page }).analyze();
+    // preload:false — axe otherwise fetches @import'ed sheets at document root (/base.css 404s).
+    const axe = await new AxeBuilder({ page }).options({ preload: false }).analyze();
     const outName = `${route.id}-${theme}.json`;
     const payload = {
       url: page.url(),

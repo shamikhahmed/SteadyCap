@@ -1,7 +1,7 @@
 {
   "app": "SteadyCap",
-  "version": "2.6.6",
-  "swCache": "steadycap-v266",
-  "updated": "2026-10-21",
-  "notes": "V5 \u00a73b: notifications+journal on cold path for Due now; idle secondary screens \u00b7 v7 HIG ios-tokens scaffold"
+  "version": "2.7.0",
+  "swCache": "steadycap-v70",
+  "updated": "2026-10-25",
+  "notes": "HIG 3 release: Apple-feel redesign, iPhone scroll/sheets, a11y axe smoke; G-8 SW steadycap-v70 / ?v=70"
 }

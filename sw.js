@@ -1,5 +1,5 @@
 'use strict';
-const CACHE = 'steadycap-v266';
+const CACHE = 'steadycap-v70';
 const ASSETS = [
   './css/capricorn-core.css',
   './',
@@ -7,6 +7,11 @@ const ASSETS = [
   './manifest.json',
   './css/tokens.css',
   './css/app.css',
+  './css/cascade.css',
+  './css/ios-tokens.css',
+  './css/design/tokens.css',
+  './css/design/system.css',
+  './css/design/steadycap.css',
   './css/fonts-local.css',
   './css/identity.css',
   './js/app.js',
@@ -27,6 +32,7 @@ const ASSETS = [
   './js/engines/financeEngine.js',
   './js/engines/triggerEngine.js',
   './js/ui/charts.js',
+  './js/ui/scroll-lock.js',
   './js/ui/navigation.js',
   './js/modules/state.js',
   './js/modules/demo-seed.js',
@@ -54,29 +60,34 @@ const ASSETS = [
   './assets/icons/icon-1024.png',
   './assets/icons/icon-maskable-192.png',
   './assets/icons/icon-maskable-512.png',
-  './js/capricorn-motion.js',
-  './js/capricorn-scene.js',
   './js/capricorn-premium-nav.js',
   './js/capricorn-cinematic.js',
   './js/capricorn-deck.js',
   './js/capricorn-deck-pro.js',
   './js/capricorn-pitch.js',
+  './js/cap-desktop-nav.js',
+  './js/hig-dt.js',
   './js/vendor/gsap.min.js',
   './js/vendor/ScrollTrigger.min.js',
   './privacy.html',
   './changelog.html',
   './assets/qr-steadycap.png',
+  './assets/fonts/source-sans-3.woff2',
+  './assets/fonts/ibm-plex-mono-500.woff2',
+  './assets/fonts/ibm-plex-mono-600.woff2',
+  './assets/fonts/ibm-plex-mono-700.woff2',
 ];
 
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)).then(() => self.skipWaiting()));
+  // No skipWaiting/clients.claim: a new worker waits for the next cold launch instead of swapping a running app.
+  e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)));
 });
 
 self.addEventListener('activate', e => {
   e.waitUntil(
     caches.keys().then(keys =>
       Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
-    ).then(() => self.clients.claim())
+    )
   );
 });
 
