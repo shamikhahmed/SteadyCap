@@ -96,8 +96,8 @@ const Onboarding = (() => {
           const fieldId = `f_${key}_${f.id}`;
           if (f.type === 'select') {
             return `<div class="ob-field" id="wrap_${key}_${f.id}" ${style}>
-              <div class="ob-label">${f.label}</div>
-              <select class="ob-select" id="${fieldId}" onchange="Onboarding._setField('${key}','${f.id}',this.value)">
+              <label class="ob-label" for="${fieldId}">${f.label}</label>
+              <select class="ob-select" id="${fieldId}" aria-label="${f.label}" onchange="Onboarding._setField('${key}','${f.id}',this.value)">
                 ${(f.options||[]).map(o => `<option value="${o}" ${cfg[f.id]===o?'selected':''}>${o}</option>`).join('')}
               </select></div>`;
           }
@@ -142,8 +142,8 @@ const Onboarding = (() => {
         <input class="ob-input" type="text" id="ob-name" placeholder="What should we call you?" value="${escapeHtml(name)}">
       </div>
       <div class="ob-field">
-        <div class="ob-label">Currency</div>
-        <select class="ob-select" id="ob-currency">
+        <label class="ob-label" for="ob-currency">Currency</label>
+        <select class="ob-select" id="ob-currency" aria-label="Currency">
           ${['USD','GBP','AED','PKR','EUR'].map(c => `<option value="${c}" ${currency===c?'selected':''}>${c}</option>`).join('')}
         </select>
       </div>

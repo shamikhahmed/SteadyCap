@@ -156,8 +156,8 @@ const Profile = (() => {
             <input class="ob-input" type="text" id="p-name" placeholder="Your name" value="${escapeHtml(user.name||'')}" oninput="Profile._saveName(this.value)">
           </div>
           <div class="ob-field">
-            <div class="ob-label">Currency</div>
-            <select class="ob-select" id="p-currency" onchange="Profile._saveCurrency(this.value)">
+            <label class="ob-label" for="p-currency">Currency</label>
+            <select class="ob-select" id="p-currency" aria-label="Currency" onchange="Profile._saveCurrency(this.value)">
               ${['USD','GBP','AED','PKR','EUR'].map(c=>`<option value="${c}" ${currency===c?'selected':''}>${c}</option>`).join('')}
             </select>
           </div>
@@ -356,7 +356,7 @@ const Profile = (() => {
             <input class="ob-input" type="datetime-local" id="edit-quit" value="${DateTimeLocal.toInputValue(habit.quitTime)}">
           </div>
           ${hCfg.configFields.filter(f=>f.type!=='hidden').map(f=>{
-            if(f.type==='select') return `<div class="ob-field"><div class="ob-label">${f.label}</div><select class="ob-select" id="edit_${f.id}" name="${f.id}">${(f.options||[]).map(o=>`<option value="${o}" ${cfg[f.id]===o?'selected':''}>${o}</option>`).join('')}</select></div>`;
+            if(f.type==='select') return `<div class="ob-field"><label class="ob-label" for="edit_${f.id}">${f.label}</label><select class="ob-select" id="edit_${f.id}" name="${f.id}" aria-label="${f.label}">${(f.options||[]).map(o=>`<option value="${o}" ${cfg[f.id]===o?'selected':''}>${o}</option>`).join('')}</select></div>`;
             return `<div class="ob-field"><div class="ob-label">${f.label}</div><input class="ob-input" type="${f.type==='text'?'text':'number'}" id="edit_${f.id}" name="${f.id}" value="${cfg[f.id]||''}" placeholder="${f.placeholder||''}"></div>`;
           }).join('')}
           <button type="button" class="btn btn-primary" onclick="Profile._saveEdit('${id}')">Save Changes</button>
@@ -449,7 +449,7 @@ const Profile = (() => {
             <input class="ob-input" type="datetime-local" id="add-quit" value="${now}">
           </div>
           ${hCfg.configFields.filter(f=>f.type!=='hidden').map(f=>{
-            if(f.type==='select') return `<div class="ob-field"><div class="ob-label">${f.label}</div><select class="ob-select" id="add_${f.id}">${(f.options||[]).map(o=>`<option value="${o}">${o}</option>`).join('')}</select></div>`;
+            if(f.type==='select') return `<div class="ob-field"><label class="ob-label" for="add_${f.id}">${f.label}</label><select class="ob-select" id="add_${f.id}" aria-label="${f.label}">${(f.options||[]).map(o=>`<option value="${o}">${o}</option>`).join('')}</select></div>`;
             return `<div class="ob-field"><div class="ob-label">${f.label}</div><input class="ob-input" type="${f.type==='text'?'text':'number'}" id="add_${f.id}" placeholder="${f.placeholder||''}"></div>`;
           }).join('')}
           <button type="button" class="btn btn-primary" onclick="Profile._confirmAddHabit('${type}')">Add Habit</button>
@@ -520,8 +520,8 @@ const Profile = (() => {
           <div class="t-heading" style="margin-bottom:16px">Add Medicine</div>
           <div class="ob-field"><div class="ob-label">Name</div><input class="ob-input" id="med-name" placeholder="e.g. Finasteride"></div>
           <div class="ob-field"><div class="ob-label">Dose</div><input class="ob-input" id="med-dose" placeholder="e.g. 1mg"></div>
-          <div class="ob-field"><div class="ob-label">Schedule</div>
-            <select class="ob-select" id="med-schedule" onchange="document.getElementById('med-times-wrap').style.display=this.value==='fixed'?'block':'none'">
+          <div class="ob-field"><label class="ob-label" for="med-schedule">Schedule</label>
+            <select class="ob-select" id="med-schedule" aria-label="Schedule" onchange="document.getElementById('med-times-wrap').style.display=this.value==='fixed'?'block':'none'">
               <option value="fixed">Fixed times</option>
               <option value="as_needed">As needed</option>
             </select>
@@ -587,8 +587,8 @@ const Profile = (() => {
         <div style="background:var(--bg3);border-radius:var(--r-lg) var(--r-lg) 0 0;padding:24px 20px calc(20px + env(safe-area-inset-bottom));width:100%">
           <div class="t-heading" style="margin-bottom:16px">Add ${cat} step</div>
           <div class="ob-field"><div class="ob-label">Step name</div><input class="ob-input" id="routine-label" placeholder="e.g. Cleanser, Minoxidil"></div>
-          <div class="ob-field"><div class="ob-label">When</div>
-            <select class="ob-select" id="routine-slot">
+          <div class="ob-field"><label class="ob-label" for="routine-slot">When</label>
+            <select class="ob-select" id="routine-slot" aria-label="When">
               <option value="am">AM (morning)</option>
               <option value="pm">PM (evening)</option>
               <option value="weekly">Weekly</option>
