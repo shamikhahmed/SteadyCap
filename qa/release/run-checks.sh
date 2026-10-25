@@ -76,6 +76,13 @@ trap cleanup EXIT
 
 echo "== SteadyCap release checks (expect ${EXPECT_VERSION} / ${EXPECT_SW}) =="
 
+# --- 0. HIG static guards (standing rules 1–4; no browser) ---
+if run_logged "hig-guards" "00-hig-guards.log" node scripts/hig-guards.mjs; then
+  pass "hig-guards (standing rules 1–4)" "$(key_from_log "$LOG_DIR/00-hig-guards.log" 'OK|hit')"
+else
+  fail "hig-guards (standing rules 1–4)" "$(key_from_log "$LOG_DIR/00-hig-guards.log" 'hit|Error|OK')"
+fi
+
 # --- 1a. CI verify ---
 if run_logged "ci-verify" "01-ci-verify.log" npm run verify; then
   pass "ci.yml · npm run verify" "$(key_from_log "$LOG_DIR/01-ci-verify.log" 'passed|failed|skipped|Error')"
