@@ -20,8 +20,10 @@ let shotCount = 0;
 const findings = [];
 const shots = [];
 const consoleErrors = [];
+const httpBad = [];
 let engine = 'chromium';
 let webkitNote = null;
+const STRICT = process.env.PROD_READY_STRICT === '1' || process.env.PROD_READY_STRICT === 'true';
 
 function find(severity, screen, message, extra = {}) {
   findings.push({ severity, screen, message, ...extra, at: new Date().toISOString() });
@@ -166,6 +168,11 @@ const offlineResult = { ok: false, detail: '' };
   const page = await ctx.newPage();
   page.on('pageerror', (e) => consoleErrors.push(e.message));
   page.on('console', (msg) => { if (msg.type() === 'error') consoleErrors.push(msg.text()); });
+  page.on('response', (res) => {
+    try {
+      if (res.status() >= 400) httpBad.push({ status: res.status(), url: res.url() });
+    } catch (_) {}
+  });
 
   await page.goto(BASE + '/?demo=1', { waitUntil: 'domcontentloaded' });
   await waitReady(page);
@@ -325,6 +332,20 @@ for (const f of findings) {
   deduped.push(f);
 }
 
+const axeSeriousCritical = deduped.filter(
+  (f) =>
+    (f.severity === 'critical' || f.severity === 'high') &&
+    /^axe (serious|critical):/i.test(f.message || ''),
+).length;
+const consoleFindings = deduped.filter((f) => /^Console error:/i.test(f.message || '')).length;
+const sameOriginHttp = httpBad.filter((h) => {
+  try {
+    return new URL(h.url).origin === new URL(BASE).origin;
+  } catch {
+    return false;
+  }
+});
+
 const summary = {
   generatedAt: new Date().toISOString(),
   base: BASE,
@@ -334,6 +355,7 @@ const summary = {
   shotCount: shots.length,
   shots,
   offline: offlineResult,
+  httpBad: sameOriginHttp.slice(0, 40),
   screenAudits,
   findings: deduped,
   counts: {
@@ -341,10 +363,42 @@ const summary = {
     high: deduped.filter((f) => f.severity === 'high').length,
     medium: deduped.filter((f) => f.severity === 'medium').length,
     low: deduped.filter((f) => f.severity === 'low').length,
+    axeSeriousCritical,
+    consoleErrors: consoleFindings,
+    httpBad: sameOriginHttp.length,
+  },
+  gates: {
+    axeSeriousCritical: axeSeriousCritical === 0,
+    consoleErrors: consoleFindings === 0,
+    httpBad: sameOriginHttp.length === 0,
+    offline: Boolean(offlineResult.ok),
   },
 };
 
 fs.writeFileSync(path.join(OUT, 'AUDIT-RUN.json'), JSON.stringify(summary, null, 2));
-console.log(JSON.stringify({ engine, webkitNote, shots: shots.length, counts: summary.counts, offline: offlineResult }, null, 2));
+console.log(
+  JSON.stringify(
+    {
+      engine,
+      webkitNote,
+      shots: shots.length,
+      counts: summary.counts,
+      offline: offlineResult,
+      gates: summary.gates,
+    },
+    null,
+    2,
+  ),
+);
 console.log(`Wrote ${path.join(OUT, 'AUDIT-RUN.json')}`);
+
+const gateFail =
+  !summary.gates.axeSeriousCritical ||
+  !summary.gates.consoleErrors ||
+  !summary.gates.httpBad ||
+  !summary.gates.offline;
+if (STRICT && gateFail) {
+  console.error('PROD_READY_STRICT: gate FAIL', summary.gates);
+  process.exit(1);
+}
 process.exit(0);

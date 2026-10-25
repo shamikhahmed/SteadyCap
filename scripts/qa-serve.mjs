@@ -3,7 +3,8 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
+const defaultRoot = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
+const root = process.env.QA_ROOT ? path.resolve(process.env.QA_ROOT) : defaultRoot;
 const port = Number(process.env.PORT || 8768);
 const types = {
   '.html': 'text/html; charset=utf-8',

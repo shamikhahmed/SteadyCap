@@ -19,15 +19,20 @@ const step = async (name, fn) => {
   }
 };
 
-/** Prefer WebKit; fall back to Chromium + iPhone 15 Pro metrics (strip defaultBrowserType). */
+/** Prefer WebKit. Chromium fallback only when WEBKIT_ONLY is unset (local casual runs). Release gate sets WEBKIT_ONLY=1. */
 async function launchMobile() {
   const iphone = devices['iPhone 15 Pro'];
+  const webkitOnly = process.env.WEBKIT_ONLY === '1' || process.env.WEBKIT_ONLY === 'true';
   try {
     const browser = await webkit.launch();
     const ctx = await browser.newContext({ ...iphone, serviceWorkers: 'block' });
     return { browser, ctx, engine: 'webkit' };
   } catch (e) {
     const reason = String(e.message || e).split('\n')[0];
+    if (webkitOnly) {
+      console.error(`FAIL: WebKit required (WEBKIT_ONLY=1); unavailable: ${reason}`);
+      process.exit(1);
+    }
     console.error(`WebKit unavailable (${reason}); falling back to Chromium + iPhone 15 Pro metrics`);
     const { defaultBrowserType: _omit, ...iphoneNoType } = iphone;
     const browser = await chromium.launch();
