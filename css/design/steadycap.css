@@ -515,6 +515,7 @@ html[data-theme="dark"] .theme-seg button.on {
 .ob-input,
 .ob-select,
 .check-in-input,
+.kb-input,
 .ob-field input,
 .ob-field select {
   min-height: var(--hit);
@@ -523,6 +524,8 @@ html[data-theme="dark"] .theme-seg button.on {
   background: var(--fill);
   color: var(--label);
   font-family: var(--font-ui);
+  /* Beat 2.x 0.88–0.95rem field sizes (iOS zoom-on-focus if <16px). */
+  font-size: max(16px, 1em);
 }
 
 .ob-input:focus,
