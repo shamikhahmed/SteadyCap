@@ -2,6 +2,7 @@
   "app": "SteadyCap",
   "version": "2.7.0",
   "swCache": "steadycap-v70",
-  "updated": "2026-10-25",
-  "notes": "HIG 3 release: Apple-feel redesign, iPhone scroll/sheets, a11y axe smoke; G-8 SW steadycap-v70 / ?v=70"
+  "updated": "2026-11-26",
+  "notes": "HIG 3 release: Apple-feel redesign, iPhone scroll/sheets, a11y axe smoke; G-8 SW steadycap-v70 / ?v=70",
+  "motionContract": "capricorn-tooling/shared/design-system/MOTION.md"
 }

@@ -50,3 +50,9 @@ npm run gallery:view   # then open /screen-gallery.html
 - Dated decisions: Capricorn-Brain project note (path above)
 - Release history: `CHANGELOG.md`
 - Prod-ready audit: `qa/prod-ready/REPORT.md`
+
+## Motion contract (2026-11-26)
+
+- Motion contract: re-synced `capricorn-core.css` + `capricorn-motion.js` from `capricorn-tooling/shared/design-system` (tokens `--cap-dur-*`, splash, view transitions). App shells keep `data-cap-app="1"` instant reveals (no marketing scrub). See `docs/MOTION.md`.
+
+Source: `../capricorn-tooling/shared/design-system/` via `node scripts/sync-design-system.mjs`.
