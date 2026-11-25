@@ -106,4 +106,4 @@ Script: `capricorn-tooling/scripts/hig-check.mjs --url … --out … --viewport=
 | Medical claims | Locked: disclaimer visible; no cure language |
 | Full VoiceOver every control | Spot-check 10 controls in sim — see APP-REPORT |
 
-**Gate:** 0 FAIL rows remaining for §2.2 acceptance on shipped UI chrome.
+**Gate:** 0 FAIL viewport-runs remaining (rules: none) for §2.2 acceptance on shipped UI chrome.
