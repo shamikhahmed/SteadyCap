@@ -1,7 +1,7 @@
 # SteadyCap — Handover
 
 > Read this + `ROADMAP.md` + `~/Capricorn-Brain/01 Projects/SteadyCap.md` before working here.
-> Last updated: 2026-10-25 · Fleet-wide standard: `capricorn-tooling/shared/CAP-STANDARD.md`
+> Last updated: 2026-11-26 · Fleet-wide standard: `capricorn-tooling/shared/CAP-STANDARD.md` · gallery regen post-motion
 
 ## What this is
 Personal recovery companion — habits, medicines, SOS/emergency, knowledge. (Never “…OS” in user-facing copy — G-3.)

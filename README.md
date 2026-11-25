@@ -98,6 +98,8 @@ Built by Shamikh Ahmed.
 
 ## Screen gallery
 
+> Latest Playwright matrix: **14** shots (7 screens × mobile/desktop) · v2.7.0 · captured **2026-11-26** (post-motion craft) → `docs/screenshots/gallery/`
+
 ```bash
 npm run gallery        # regenerate docs/screenshots/gallery/ (14 shots)
 npm run gallery:view   # then open http://127.0.0.1:8768/screen-gallery.html
