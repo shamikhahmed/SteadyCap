@@ -1,9 +1,41 @@
 'use strict';
 window.APP_VERSION = '2.7.0';
 const App = (() => {
+  let splashSkipListeners = null;
+
+  function removeSplashSkipListeners() {
+    if (!splashSkipListeners) return;
+    window.removeEventListener('pointerdown', splashSkipListeners.onPointer);
+    window.removeEventListener('keydown', splashSkipListeners.onKey);
+    splashSkipListeners = null;
+  }
+
+  function attachSplashSkipListeners() {
+    if (splashSkipListeners) return;
+    const onSkip = () => hideSplash();
+    splashSkipListeners = { onPointer: onSkip, onKey: onSkip };
+    window.addEventListener('pointerdown', splashSkipListeners.onPointer, { once: true, passive: true });
+    window.addEventListener('keydown', splashSkipListeners.onKey, { once: true });
+  }
+
   function hideSplash() {
     const splash = document.getElementById('splash');
     if (!splash || splash.classList.contains('hide')) {
+      try {
+        window.__APP_READY__ = true;
+        document.documentElement.dataset.appReady = 'true';
+      } catch (_) {}
+      return;
+    }
+    removeSplashSkipListeners();
+    const instant =
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+      sessionStorage.getItem('steadycap_splash_seen') === '1';
+    try {
+      sessionStorage.setItem('steadycap_splash_seen', '1');
+    } catch (_) {}
+    if (instant) {
+      splash.remove();
       try {
         window.__APP_READY__ = true;
         document.documentElement.dataset.appReady = 'true';
@@ -17,10 +49,11 @@ const App = (() => {
         window.__APP_READY__ = true;
         document.documentElement.dataset.appReady = 'true';
       } catch (_) {}
-    }, 220);
+    }, 160);
   }
 
   function init() {
+    attachSplashSkipListeners();
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('./sw.js?v=70').catch(() => {});
